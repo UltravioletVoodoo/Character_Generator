@@ -1,15 +1,17 @@
 import {abilityScores} from "./abilityScores";
 import {range} from "./range";
+import { artAssets } from "./artAssets";
 
-export class race {
-
-    constructor(
-        public name: string,
-        public abilityScores: Partial<abilityScores>, 
-        public speed: number, 
-        public size: string, 
-        public traits: {[key: string]: string}, 
-        public ageRange: range, 
-        public languages: string[]
-    ){}
+export interface race {
+    name: string;
+    abilityScores: Partial<abilityScores>;
+    speed: number;
+    size: string;
+    traits: {[key: string]: string};
+    ageRange: range;
+    languages: string[];
+    proficiencies: string[];
+    skinColour: string;
+    artAssets: artAssets;
+    subRace: Partial<race>[];
 }
