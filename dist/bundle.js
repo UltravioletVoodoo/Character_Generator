@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("console.log(\"Nothing here yet. Complain to the dev for being lazy\");\r\nconst Elf = { name: \"Elf\", subRace: [{ name: \"High Elf\", abilityScores: { int: 2 } }, { abilityScores: { dex: 2 } }] };\r\nconsole.log(Elf[\"name\"]);\r\nconsole.log(Elf[\"subRace\"] ? Elf[\"subRace\"][0][\"name\"] : \"\");\r\nif (Elf[\"subRace\"]) {\r\n    console.log(Elf[\"name\"] + \" has one or more subraces\");\r\n    for (let x of Elf[\"subRace\"]) {\r\n        console.log(x[\"name\"]); // but I didnt have to define this name. It could have been undefined. Heckin' heck.\r\n    }\r\n}\r\nelse {\r\n    console.log(Elf[\"name\"] + \" has no subraces\");\r\n}\r\n\n\n//# sourceURL=webpack:///./target/main.js?");
+eval("console.log(\"Nothing here yet. Complain to the dev for being lazy\");\r\nconst Elf = { name: \"Elf\", subRace: [{ name: \"High Elf\", abilityScores: { int: 2 } }, { abilityScores: { dex: 2 } }] };\r\nif (Elf.subRace) {\r\n    console.log(Elf.name + \" has one or more subraces\");\r\n    for (let x of Elf.subRace) {\r\n        for (let attr in x) {\r\n            if (attr) {\r\n                console.log(attr + \": \" + x[attr]);\r\n            }\r\n        }\r\n    }\r\n}\r\nelse {\r\n    console.log(Elf.name + \" has no subraces\");\r\n}\r\n\n\n//# sourceURL=webpack:///./target/main.js?");
 
 /***/ })
 

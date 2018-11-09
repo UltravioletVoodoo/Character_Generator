@@ -1,4 +1,4 @@
-export interface abilityScores {
+export interface attributes {
     str: number;
     dex: number;
     con: number;
