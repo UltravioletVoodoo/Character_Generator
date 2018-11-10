@@ -2,6 +2,8 @@ import { attributes } from "./attributes";
 import { skills } from "./skills";
 import { range } from "./range";
 import { spells } from "./spells";
+import { colors } from "./colors";
+import { artAssets } from "./artAssets";
 
 export interface character {
     name: string;
@@ -26,10 +28,7 @@ export interface character {
     armor: string[];
     traits: string[]
     age: range;
-    height: number;
-    weight: number;
-    eyes: string;
-    skin: string;
-    hair: string;
+    colors: colors;
+    artAssets: artAssets;
     spells: spells;
 }
