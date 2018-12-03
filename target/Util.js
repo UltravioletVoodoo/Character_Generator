@@ -1,15 +1,11 @@
-import { Attributes } from "./Attributes";
-
 export class Util {
     //Just a class to store various helper functions
-
-    choice<T>(collection: T[]){
+    choice(collection) {
         const index = Math.floor(Math.random() * collection.length);
         return collection[index];
     }
-
-    pointBuy(){
-        const attrs: Attributes = {
+    pointBuy() {
+        const attrs = {
             str: 8,
             dex: 8,
             con: 8,
@@ -17,39 +13,36 @@ export class Util {
             wis: 8,
             cha: 8
         };
-
         let points = 27;
-        while(this.canBuy(attrs, points)) {
+        while (this.canBuy(attrs, points)) {
             console.log("attrs: " + attrs + "\n" + "points: " + points);
             const attr = this.choice(Object.keys(attrs));
             const cost = this.getCost(attrs, attr);
-            if (cost && cost <= points){
+            if (cost && cost <= points) {
                 attrs[attr]++;
                 points = points - cost;
             }
         }
         return attrs;
     }
-
-    private canBuy(attrs: Attributes, points: number){
-        if (points < 0){
-            throw 'Error: pointBuy exeeded point cap'
+    canBuy(attrs, points) {
+        if (points < 0) {
+            throw 'Error: pointBuy exeeded point cap';
         }
-        if(points == 0){
+        if (points == 0) {
             return false;
         }
-        if(points == 1 && Object.values(attrs).every(val => val >= 13)){
+        if (points == 1 && Object.values(attrs).every(val => val >= 13)) {
             return false;
         }
         return true;
     }
-
-    private getCost(attrs: Attributes, attr: string){
+    getCost(attrs, attr) {
         const currentValue = attrs[attr];
-        if(currentValue < 13){
+        if (currentValue < 13) {
             return 1;
         }
-        if(currentValue < 15){
+        if (currentValue < 15) {
             return 2;
         }
         return false;

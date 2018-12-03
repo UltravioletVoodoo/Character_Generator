@@ -86,14 +86,27 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./target/Util.js":
+/*!************************!*\
+  !*** ./target/Util.js ***!
+  \************************/
+/*! exports provided: Util */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Util\", function() { return Util; });\nclass Util {\r\n    //Just a class to store various helper functions\r\n    choice(collection) {\r\n        const index = Math.floor(Math.random() * collection.length);\r\n        return collection[index];\r\n    }\r\n    pointBuy() {\r\n        const attrs = {\r\n            str: 8,\r\n            dex: 8,\r\n            con: 8,\r\n            int: 8,\r\n            wis: 8,\r\n            cha: 8\r\n        };\r\n        let points = 27;\r\n        while (this.canBuy(attrs, points)) {\r\n            console.log(\"attrs: \" + attrs + \"\\n\" + \"points: \" + points);\r\n            const attr = this.choice(Object.keys(attrs));\r\n            const cost = this.getCost(attrs, attr);\r\n            if (cost && cost <= points) {\r\n                attrs[attr]++;\r\n                points = points - cost;\r\n            }\r\n        }\r\n        return attrs;\r\n    }\r\n    canBuy(attrs, points) {\r\n        if (points < 0) {\r\n            throw 'Error: pointBuy exeeded point cap';\r\n        }\r\n        if (points == 0) {\r\n            return false;\r\n        }\r\n        if (points == 1 && Object.values(attrs).every(val => val >= 13)) {\r\n            return false;\r\n        }\r\n        return true;\r\n    }\r\n    getCost(attrs, attr) {\r\n        const currentValue = attrs[attr];\r\n        if (currentValue < 13) {\r\n            return 1;\r\n        }\r\n        if (currentValue < 15) {\r\n            return 2;\r\n        }\r\n        return false;\r\n    }\r\n}\r\n\n\n//# sourceURL=webpack:///./target/Util.js?");
+
+/***/ }),
+
 /***/ "./target/main.js":
 /*!************************!*\
   !*** ./target/main.js ***!
   \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("console.log(\"Nothing here yet. Complain to the dev for being lazy\");\r\nconst Elf = { name: \"Elf\", subRace: [{ name: \"High Elf\", abilityScores: { int: 2 } }, { abilityScores: { dex: 2 } }] };\r\nif (Elf.subRace) {\r\n    console.log(Elf.name + \" has one or more subraces\");\r\n    for (let x of Elf.subRace) {\r\n        for (let attr in x) {\r\n            if (attr) {\r\n                console.log(attr + \": \" + x[attr]);\r\n            }\r\n        }\r\n    }\r\n}\r\nelse {\r\n    console.log(Elf.name + \" has no subraces\");\r\n}\r\n\n\n//# sourceURL=webpack:///./target/main.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Util */ \"./target/Util.js\");\n\r\nconst util = new _Util__WEBPACK_IMPORTED_MODULE_0__[\"Util\"];\r\nconsole.log(\"Nothing here yet. Complain to the dev for being lazy\");\r\nconsole.log(\"Creating an empty character...\");\r\nlet player = { attributes: util.pointBuy() };\r\nconsole.log(player);\r\n\n\n//# sourceURL=webpack:///./target/main.js?");
 
 /***/ })
 

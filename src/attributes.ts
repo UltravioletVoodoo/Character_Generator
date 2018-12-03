@@ -1,4 +1,5 @@
-export interface attributes {
+export interface Attributes {
+    [key: string]: number;
     str: number;
     dex: number;
     con: number;

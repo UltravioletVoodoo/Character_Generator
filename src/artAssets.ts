@@ -1,4 +1,4 @@
-export interface artAssets {
+export interface ArtAssets {
     head: string;
     hair: string;
     eyes: string;

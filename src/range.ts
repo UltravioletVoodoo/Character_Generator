@@ -1,1 +1,1 @@
-export type range = [number, number];
+export type Range = [number, number];

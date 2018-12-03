@@ -1,8 +1,12 @@
-import { character } from "./character";
+import { Util } from "./Util"
+import { Character } from "./character";
 
 
+const util = new Util;
 console.log("Nothing here yet. Complain to the dev for being lazy");
 
 
 console.log("Creating an empty character...")
-let player: Partial<character> = {attributes: {str: 8, dex: 8, con: 8, int: 8, wis: 8, cha: 8}};
+let player: Partial<Character> = {attributes: util.pointBuy()};
+
+console.log(player);

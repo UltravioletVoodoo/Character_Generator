@@ -1,4 +1,4 @@
-export interface skills {
+export interface Skills {
     str: {
         athletics: number;
     }

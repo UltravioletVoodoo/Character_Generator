@@ -1,18 +1,18 @@
-import { attributes } from "./attributes";
-import { skills } from "./skills";
-import { range } from "./range";
-import { spells } from "./spells";
-import { colors } from "./colors";
-import { artAssets } from "./artAssets";
+import { Attributes } from "./Attributes";
+import { Skills } from "./Skills";
+import { Range } from "./Range";
+import { Spells } from "./Spells";
+import { Colors } from "./Colors";
+import { ArtAssets } from "./ArtAssets";
 
-export interface character {
+export interface Character {
     name: string;
     raceName: string;
     alignment: string;
-    attributes: attributes;
+    attributes: Attributes;
     proficiencyBonus: 2;
-    savingThrows: attributes;
-    skills: skills;
+    savingThrows: Attributes;
+    skills: Skills;
     ac: number;
     initiative: number;
     speed: number;
@@ -27,8 +27,8 @@ export interface character {
     weapons: string[];
     armor: string[];
     traits: string[]
-    age: range;
-    colors: colors;
-    artAssets: artAssets;
-    spells: spells;
+    age: Range;
+    colors: Colors;
+    artAssets: ArtAssets;
+    spells: Spells;
 }
