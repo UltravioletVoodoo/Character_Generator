@@ -1,12 +1,21 @@
-import { Util } from "./Util"
-import { Character } from "./character";
+import { Character } from "./Character";
 
+import { generateRace } from "./GenerateRace";
+import { generateCharacterClass } from "./GenerateCharacterClass";
+import { generatePlayer } from "./GeneratePlayer";
 
-const util = new Util;
-console.log("Nothing here yet. Complain to the dev for being lazy");
+import SVG from "svg.js";
 
 
 console.log("Creating an empty character...")
-let player: Partial<Character> = {attributes: util.pointBuy()};
 
-console.log(player);
+let race = generateRace();
+let characterClass = generateCharacterClass();
+//let player = generatePlayer();
+//player = mergeCharacterPartials(race, characterClass, player);
+
+console.log(race);
+console.log(characterClass);
+
+let draw = SVG('drawing').size(300, 300)
+let rect = draw.rect(100, 100).attr({fill: '#f06'})

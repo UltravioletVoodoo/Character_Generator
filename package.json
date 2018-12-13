@@ -20,5 +20,8 @@
   "homepage": "https://www.github.com/UltravioletVoodoo/Character_Generator#readme",
   "devDependencies": {
     "typescript": "^3.1.6"
+  },
+  "dependencies": {
+    "svg.js": "^2.7.1"
   }
 }
