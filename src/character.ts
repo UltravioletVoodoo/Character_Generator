@@ -4,6 +4,7 @@ import { Range } from "./Range";
 import { Spells } from "./Spells";
 import { Colors } from "./Colors";
 import { ArtAssets } from "./ArtAssets";
+import { Weapon } from "./WeaponSets"
 
 export interface Character {
     name: string;
@@ -22,11 +23,14 @@ export interface Character {
     ideals: string[];
     bonds: string[];
     flaws: string[];
-    languages: string[];
-    proficiencies: string[];
-    weapons: string[];
+    languages: Set<string>;
+    weaponProficiencies: Set<Weapon>;
+    armorProficiencies: Set<string>;
+    skillProficiencies: Set<string>;
+    generalProficiencies: Set<string>;
+    weapons: Weapon[];
     armor: string[];
-    traits: string[]
+    traits: Set<string>;
     age: Range;
     colors: Colors;
     artAssets: ArtAssets;
