@@ -108,7 +108,7 @@ export const simpleMelee: Weapon[] = [
         weight: "3 lb.",
         properties: ["Thrown", "Versatile"]
     }
-]
+];
 
 export const simpleRanged: Weapon[] = [
     {
@@ -143,7 +143,7 @@ export const simpleRanged: Weapon[] = [
         weight: "",
         properties: ["Ammunition"]
     },
-]
+];
 
 export const martialMelee: Weapon[] = [
     {
@@ -290,7 +290,7 @@ export const martialMelee: Weapon[] = [
         weight: "3 lb.",
         properties: ["Finesse", "Reach"]
     }
-]
+];
 
 export const martialRanged: Weapon[] = [
     {
@@ -333,4 +333,4 @@ export const martialRanged: Weapon[] = [
         weight: " 3 lb.",
         properties: ["Special", "Thrown"]
     }
-]
+];
