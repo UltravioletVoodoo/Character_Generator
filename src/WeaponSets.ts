@@ -11,7 +11,7 @@ export function findWeapon(name: string): Weapon{
         cost: 0,
         damage: "0",
         damageType: "",
-        weight: "0 lb.",
+        weight: 0,
         properties: []
     }
 }
@@ -21,7 +21,7 @@ export interface Weapon {
     cost: number,
     damage: string,
     damageType: string,
-    weight: string,
+    weight: number,
     properties: string[]
 }
     
@@ -33,7 +33,7 @@ export const simpleMelee: Weapon[] = [
         cost: 0.1,
         damage: "1d4",
         damageType: "Bludgeoning",
-        weight: "2 lb.",
+        weight: 2,
         properties: ["Light"]
     },
     {
@@ -41,7 +41,7 @@ export const simpleMelee: Weapon[] = [
         cost: 2,
         damage: "1d4",
         damageType: "piercing",
-        weight: "1 lb.",
+        weight: 1,
         properties: ["Finesse", "Light", "Thrown"]
     },
     {
@@ -49,7 +49,7 @@ export const simpleMelee: Weapon[] = [
         cost: 0.2,
         damage: "1d8",
         damageType: "Bludgeoning",
-        weight: "10 lb.",
+        weight: 10,
         properties: ["Two-Handed"]
     },
     {
@@ -57,7 +57,7 @@ export const simpleMelee: Weapon[] = [
         cost: 5,
         damage: "1d6",
         damageType: "Slashing",
-        weight: "2 lb.",
+        weight: 2,
         properties: ["Light", "Thrown"]
     },
     {
@@ -65,7 +65,7 @@ export const simpleMelee: Weapon[] = [
         cost: 0.5,
         damage: "1d6",
         damageType: "Piercing",
-        weight: "2 lb.",
+        weight: 2,
         properties: ["Thrown"]
     },
     {
@@ -73,7 +73,7 @@ export const simpleMelee: Weapon[] = [
         cost: 0.2,
         damage: "1d4",
         damageType: "Bludgeoning",
-        weight: "2 lb.",
+        weight: 2,
         properties: ["Light", "Thrown"]
     },
     {
@@ -81,7 +81,7 @@ export const simpleMelee: Weapon[] = [
         cost: 5,
         damage: "1d6",
         damageType: "Bludgeoning",
-        weight: "4 lb.",
+        weight: 4,
         properties: [],
     },
     {
@@ -89,7 +89,7 @@ export const simpleMelee: Weapon[] = [
         cost: 0.2,
         damage: "1d6",
         damageType: "Bludgeoning",
-        weight: "4 lb.",
+        weight: 4,
         properties: ["Versatile"]
     },
     {
@@ -97,7 +97,7 @@ export const simpleMelee: Weapon[] = [
         cost: 1,
         damage: "1d4",
         damageType: "Slashing",
-        weight: "2 lb.",
+        weight: 2,
         properties: ["Light"]
     },
     {
@@ -105,7 +105,7 @@ export const simpleMelee: Weapon[] = [
         cost: 1,
         damage: "1d6",
         damageType: "Piercing",
-        weight: "3 lb.",
+        weight: 3,
         properties: ["Thrown", "Versatile"]
     }
 ];
@@ -116,7 +116,7 @@ export const simpleRanged: Weapon[] = [
         cost: 25,
         damage: "1d8",
         damageType: "Piercing",
-        weight: "5 lb.",
+        weight: 5,
         properties: ["Ammunition", "Loading", "Two-Handed"]
     },
     {
@@ -124,7 +124,7 @@ export const simpleRanged: Weapon[] = [
         cost: 0.05,
         damage: "1d4",
         damageType: "Piercing",
-        weight: "1/4 lb.",
+        weight: 0.25,
         properties: ["Finesse", "Thrown"]
     },
     {
@@ -132,7 +132,7 @@ export const simpleRanged: Weapon[] = [
         cost: 25,
         damage: "1d6",
         damageType: "Piercing",
-        weight: "2 lb.",
+        weight: 2,
         properties: ["Ammunition", "Two-Handed"]
     },
     {
@@ -140,7 +140,7 @@ export const simpleRanged: Weapon[] = [
         cost: 0.1,
         damage: "1d4",
         damageType: "Bludgeoning",
-        weight: "",
+        weight: 0,
         properties: ["Ammunition"]
     },
 ];
@@ -151,7 +151,7 @@ export const martialMelee: Weapon[] = [
         cost: 10,
         damage: "1d8",
         damageType: "Slashing",
-        weight: "4 lb.",
+        weight: 4,
         properties: ["Versatile"]
     },
     {
@@ -159,7 +159,7 @@ export const martialMelee: Weapon[] = [
         cost: 10,
         damage: "1d8",
         damageType: "Bludgeoning",
-        weight: "2 lb.",
+        weight: 2,
         properties: []
     },
     {
@@ -167,7 +167,7 @@ export const martialMelee: Weapon[] = [
         cost: 20,
         damage: "1d10",
         damageType: "Slashing",
-        weight: "6 lb.",
+        weight: 6,
         properties: ["Heavy", "Reach", "Two-Handed"]
     },
     {
@@ -175,7 +175,7 @@ export const martialMelee: Weapon[] = [
         cost: 30,
         damage: "1d12",
         damageType: "Slashing",
-        weight: "7 lb.",
+        weight: 7,
         properties: ["Heavy", "Two-Handed"]
     },
     {
@@ -183,7 +183,7 @@ export const martialMelee: Weapon[] = [
         cost: 50,
         damage: "2d6",
         damageType: "Slashing",
-        weight: "6 lb.",
+        weight: 6,
         properties: ["Heavy", "Two-Handed"]
     },
     {
@@ -191,7 +191,7 @@ export const martialMelee: Weapon[] = [
         cost: 20,
         damage: "1d10",
         damageType: "Slashing",
-        weight: "6 lb.",
+        weight: 6,
         properties: ["Heavy", "Reach", "Two-Handed"]
     },
     {
@@ -199,7 +199,7 @@ export const martialMelee: Weapon[] = [
         cost: 10,
         damage: "1d12",
         damageType: "Piercing",
-        weight: "6 lb.",
+        weight: 6,
         properties: ["Reach", "Special"]
     },
     {
@@ -207,7 +207,7 @@ export const martialMelee: Weapon[] = [
         cost: 15,
         damage: "1d8",
         damageType: "Slashing",
-        weight: "3 lb.",
+        weight: 3,
         properties: ["Versatile"]
     },
     {
@@ -215,7 +215,7 @@ export const martialMelee: Weapon[] = [
         cost: 10,
         damage: "2d6",
         damageType: "Bludgeoning",
-        weight: "10 lb.",
+        weight: 10,
         properties: ["Heavy", "Two-Handed"]
     },
     {
@@ -223,7 +223,7 @@ export const martialMelee: Weapon[] = [
         cost: 15,
         damage: "1d8",
         damageType: "Piercing",
-        weight: "4 lb.",
+        weight: 4,
         properties: []
     },
     {
@@ -231,7 +231,7 @@ export const martialMelee: Weapon[] = [
         cost: 5,
         damage: "1d10",
         damageType: "Piercing",
-        weight: "18 lb.",
+        weight: 18,
         properties: ["Heavy", "Reach", "Two-Handed"]
     },
     {
@@ -239,7 +239,7 @@ export const martialMelee: Weapon[] = [
         cost: 25,
         damage: "1d8",
         damageType: "Piercing",
-        weight: "2 lb.",
+        weight: 2,
         properties: ["Finesse"]
     },
     {
@@ -247,7 +247,7 @@ export const martialMelee: Weapon[] = [
         cost: 25,
         damage: "1d6",
         damageType: "Slashing",
-        weight: "3 lb.",
+        weight: 3,
         properties: ["Finesse", "Light"]
     },
     {
@@ -255,7 +255,7 @@ export const martialMelee: Weapon[] = [
         cost: 10,
         damage: "1d6",
         damageType: "Piercing",
-        weight: "2 lb.",
+        weight: 2,
         properties: ["Finesse", "Light"]
     },
     {
@@ -263,7 +263,7 @@ export const martialMelee: Weapon[] = [
         cost: 5,
         damage: "1d6",
         damageType: "Piercing",
-        weight: "4 lb.",
+        weight: 4,
         properties: ["Thrown", "Versatile"]
     },
     {
@@ -271,7 +271,7 @@ export const martialMelee: Weapon[] = [
         cost: 5,
         damage: "1d8",
         damageType: "Piercing",
-        weight: "2 lb.",
+        weight: 2,
         properties: []
     },
     {
@@ -279,7 +279,7 @@ export const martialMelee: Weapon[] = [
         cost: 15,
         damage: "1d8",
         damageType: "Bludgeoning",
-        weight: "2 lb.",
+        weight: 2,
         properties: ["Versatile"]
     },
     {
@@ -287,7 +287,7 @@ export const martialMelee: Weapon[] = [
         cost: 2,
         damage: "1d4",
         damageType: "Slashing",
-        weight: "3 lb.",
+        weight: 3,
         properties: ["Finesse", "Reach"]
     }
 ];
@@ -298,7 +298,7 @@ export const martialRanged: Weapon[] = [
         cost: 10,
         damage: "1",
         damageType: "Piercing",
-        weight: "1 lb.",
+        weight: 1,
         properties: ["Ammunition", "Loading"]
     },
     {
@@ -306,7 +306,7 @@ export const martialRanged: Weapon[] = [
         cost: 75,
         damage: "1d6",
         damageType: "Piercing",
-        weight: "3 lb.",
+        weight: 3,
         properties: ["Ammunition", "Light", "Loading"]
     },
     {
@@ -314,7 +314,7 @@ export const martialRanged: Weapon[] = [
         cost: 50,
         damage: "1d10",
         damageType: "Piercing",
-        weight: "18 lb.",
+        weight: 18,
         properties: ["Ammunition", "Heavy", "Loading", "Two-Handed"]
     },
     {
@@ -322,7 +322,7 @@ export const martialRanged: Weapon[] = [
         cost: 50,
         damage: "1d8",
         damageType: "Piercing",
-        weight: "2 lb.",
+        weight: 2,
         properties: ["Ammunition", "Heavy", "Two-Handed"]
     },
     {
@@ -330,7 +330,7 @@ export const martialRanged: Weapon[] = [
         cost: 1,
         damage: "0",
         damageType: "",
-        weight: " 3 lb.",
+        weight: 3,
         properties: ["Special", "Thrown"]
     }
 ];

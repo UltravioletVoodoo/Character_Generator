@@ -1,6 +1,8 @@
 import { Character } from "./Character";
 import { util } from "./Util";
-import { Weapon, findWeapon } from "./WeaponSets"
+import { findWeapon } from "./WeaponSets"
+import { findTool } from "./ToolSets";
+import { light, medium, } from "./ArmorSets"
 
 export function generateRace(){
     return util.choice(races);
@@ -170,8 +172,8 @@ const races: Partial<Character>[] = [
         age: [50, 350],
         speed: 25,
         languages: new Set(["Common", "Dwarvish"]),
-        weaponProficiencies: new Set([findWeapon("Battleaxe"), findWeapon("Handaxe"), findWeapon("Light Hammer"), findWeapon("Warhammer")]),
-        generalProficiencies: new Set([util.choice(["Smith's Tools", "Brewer's Supplies", "Mason's Tools"])]),
+        weaponProficiencies: new Set([findWeapon("Battleaxe"), findWeapon("Handaxe"), findWeapon("Light hammer"), findWeapon("Warhammer")]),
+        toolProficiencies: new Set([util.choice([findTool("Smith's tools"), findTool("Brewer's supplies"), findTool("Mason's tools")])]),
         traits: new Set(["Darkvision", "Dwarven Resilience", "Stonecunning", "Dwarven Toughness"]),
         hitPoints: 1
     },
@@ -189,8 +191,8 @@ const races: Partial<Character>[] = [
         speed: 25,
         languages: new Set(["Common", "Dwarvish"]),
         weaponProficiencies: new Set([findWeapon("Battleaxe"), findWeapon("Handaxe"), findWeapon("Light hammer"), findWeapon("Warhammer")]),
-        armorProficiencies: new Set(["Light", "Medium"]),
-        generalProficiencies: new Set([util.choice(["Smith's Tools", "Brewer's Supplies", "Mason's Tools"])]),
+        armorProficiencies: new Set(light.concat(medium)),
+        toolProficiencies: new Set([util.choice([findTool("Smith's tools"), findTool("Brewer's supplies"), findTool("Mason's tools")])]),
         traits: new Set(["Darkvision", "Dwarven Resilience", "Stonecunning"]),
     },
     ];

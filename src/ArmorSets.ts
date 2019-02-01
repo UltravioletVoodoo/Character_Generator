@@ -1,5 +1,3 @@
-import { Attributes } from "./Attributes";
-
 export function findArmor(name: string): Armor{
     for (const armorList of [light, medium, heavy, shield]){
         for(const armor of armorList){
@@ -17,7 +15,7 @@ export function findArmor(name: string): Armor{
         },
         strReq: 0,
         stealthDis: false,
-        weight: "0"
+        weight: 0
     }
 }
 
@@ -32,7 +30,7 @@ export interface Armor {
     ac: armorClass,
     strReq: number,
     stealthDis: boolean,
-    weight: string
+    weight: number
 }
 
 export const light: Armor[] = [
@@ -45,7 +43,7 @@ export const light: Armor[] = [
         },
         strReq: 0,
         stealthDis: true,
-        weight: "8 lb."
+        weight: 8
     },
     {
         name: "Leather",
@@ -56,7 +54,7 @@ export const light: Armor[] = [
         },
         strReq: 0,
         stealthDis: false,
-        weight: "10 lb."
+        weight: 10
     },
     {
         name: "Studded leather",
@@ -67,7 +65,7 @@ export const light: Armor[] = [
         },
         strReq: 0,
         stealthDis: false,
-        weight: "13 lb."
+        weight: 13
     }
 ];
 
@@ -81,7 +79,7 @@ export const medium: Armor[] = [
         },
         strReq: 0,
         stealthDis: false,
-        weight: "12 lb."
+        weight: 12
     },
     {
         name: "Chain shirt",
@@ -92,7 +90,7 @@ export const medium: Armor[] = [
         },
         strReq: 0,
         stealthDis: false,
-        weight: "20 lb."
+        weight: 20
     },
     {
         name: "Scale mail",
@@ -103,7 +101,7 @@ export const medium: Armor[] = [
         },
         strReq: 0,
         stealthDis: true,
-        weight: "45 lb."
+        weight: 45
     },
     {
         name: "Breastplate",
@@ -114,7 +112,7 @@ export const medium: Armor[] = [
         },
         strReq: 0,
         stealthDis: false,
-        weight: "20 lb."
+        weight: 20
     },
     {
         name: "Half plate",
@@ -125,7 +123,7 @@ export const medium: Armor[] = [
         },
         strReq: 0,
         stealthDis: true,
-        weight: "40 lb."
+        weight: 40
     },
 ];
 
@@ -139,7 +137,7 @@ export const heavy: Armor[] = [
         },
         strReq: 0,
         stealthDis: true,
-        weight: "40 lb."
+        weight: 40
     },
     {
         name: "Chain mail",
@@ -150,7 +148,7 @@ export const heavy: Armor[] = [
         },
         strReq: 13,
         stealthDis: true,
-        weight: "55 lb."
+        weight: 55
     },
     {
         name: "Splint",
@@ -161,7 +159,7 @@ export const heavy: Armor[] = [
         },
         strReq: 15,
         stealthDis: true,
-        weight: "60 lb."
+        weight: 60
     },
     {
         name: "Plate",
@@ -172,7 +170,7 @@ export const heavy: Armor[] = [
         },
         strReq: 15,
         stealthDis: true,
-        weight: "65 lb."
+        weight: 65
     },
 ];
 
@@ -186,6 +184,6 @@ export const shield: Armor[] = [
         },
         strReq: 0,
         stealthDis: false,
-        weight: " 6 lb."
+        weight: 6
     }
 ];

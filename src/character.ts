@@ -5,14 +5,16 @@ import { Spells } from "./Spells";
 import { Colors } from "./Colors";
 import { ArtAssets } from "./ArtAssets";
 import { Weapon } from "./WeaponSets"
+import { Armor } from "./ArmorSets";
+import { Tool } from "./ToolSets";
 
 export interface Character {
     name: string;
     raceName: string;
+    className: string;
     alignment: string;
     attributes: Attributes;
     proficiencyBonus: 2;
-    savingThrows: Attributes;
     skills: Skills;
     ac: number;
     initiative: number;
@@ -24,10 +26,11 @@ export interface Character {
     bonds: string[];
     flaws: string[];
     languages: Set<string>;
+    armorProficiencies: Set<Armor>;
     weaponProficiencies: Set<Weapon>;
-    armorProficiencies: Set<string>;
-    skillProficiencies: Set<string>;
-    generalProficiencies: Set<string>;
+    toolProficiencies: Set<Tool>;
+    savingThrowProficiencies: Partial<Attributes>;
+    skillProficiencies: Partial<Skills>;
     weapons: Weapon[];
     armor: string[];
     traits: Set<string>;
