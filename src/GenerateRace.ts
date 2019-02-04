@@ -2,7 +2,7 @@ import { Character } from "./Character";
 import { util } from "./Util";
 import { findWeapon } from "./WeaponSets"
 import { findTool } from "./ToolSets";
-import { light, medium, } from "./ArmorSets"
+import { light, medium, findArmor, } from "./ArmorSets"
 
 export function generateRace(){
     return util.choice(races);
@@ -192,6 +192,7 @@ const races: Partial<Character>[] = [
         languages: new Set(["Common", "Dwarvish"]),
         weaponProficiencies: new Set([findWeapon("Battleaxe"), findWeapon("Handaxe"), findWeapon("Light hammer"), findWeapon("Warhammer")]),
         armorProficiencies: new Set(light.concat(medium)),
+        shieldProficiencies: new Set([findArmor("Medium shield")]),
         toolProficiencies: new Set([util.choice([findTool("Smith's tools"), findTool("Brewer's supplies"), findTool("Mason's tools")])]),
         traits: new Set(["Darkvision", "Dwarven Resilience", "Stonecunning"]),
     },

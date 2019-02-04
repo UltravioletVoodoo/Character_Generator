@@ -27,15 +27,17 @@ export interface Character {
     flaws: string[];
     languages: Set<string>;
     armorProficiencies: Set<Armor>;
+    shieldProficiencies: Set<Armor>;
     weaponProficiencies: Set<Weapon>;
     toolProficiencies: Set<Tool>;
     savingThrowProficiencies: Partial<Attributes>;
-    skillProficiencies: Partial<Skills>;
+    skillProficiencies: Skills;
+    startingGold: number;
     weapons: Weapon[];
     armor: string[];
     traits: Set<string>;
     age: Range;
     colors: Colors;
     artAssets: ArtAssets;
-    spells: Spells;
+    spells: Spells[];
 }

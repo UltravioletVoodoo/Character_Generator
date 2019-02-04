@@ -3,5 +3,51 @@ export namespace util{
         const index = Math.floor(Math.random() * collection.length);
         return collection[index];
     }
+
+    export function choices<T>(collection: T[], n: number){
+        const results: T[] = [];
+        for(let x of range(n)){
+            let Choice = choice(collection);
+            collection = arrayDelete(collection, Choice);
+            results.concat(Choice);
+        }
+        return results;
+    }
+
+    export function range(start: number, end?: number, step?: number){
+        const array = []
+        if (end === undefined){
+            end = start;
+            start = 0
+        }
+
+        if (step === undefined){
+            if (start < end){
+                step = 1;
+            }else{
+                step = -1;
+            }
+        }
+
+        let current = start;
+        if (start < end){
+            while (current < end){
+                array.push(current);
+                current = current + step;
+            }
+        }else{
+            while (current > end){
+                array.push(current);
+                current = current + step;
+            }
+        }
+        return array;
+    }
+
+    export function arrayDelete<T>(collection: T[], value: T){
+        return collection.filter(function(item){
+            return item !== value
+        });
+    }
 }
 
