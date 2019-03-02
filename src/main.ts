@@ -10,7 +10,11 @@ import SVG from "svg.js";
 console.log("Creating an empty character...")
 
 let race = generateRace();
-let characterClass = generateCharacterClass(race);
+let characterClass = generateCharacterClass();
+let player = generatePlayer(race, characterClass);
+console.log(race)
+console.log(characterClass)
+console.log(player)
 //let player = generatePlayer();
 //player = mergeCharacterPartials(race, characterClass, player);
 

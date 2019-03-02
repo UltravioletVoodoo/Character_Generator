@@ -5,11 +5,11 @@ export namespace util{
     }
 
     export function choices<T>(collection: T[], n: number){
-        const results: T[] = [];
+        let results: T[] = [];
         for(let x of range(n)){
             let Choice = choice(collection);
             collection = arrayDelete(collection, Choice);
-            results.concat(Choice);
+            results = results.concat(Choice);
         }
         return results;
     }

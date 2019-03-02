@@ -14,7 +14,7 @@ export interface Character {
     className: string;
     alignment: string;
     attributes: Attributes;
-    proficiencyBonus: 2;
+    proficiencyBonus: number;
     skills: Skills;
     ac: number;
     initiative: number;
