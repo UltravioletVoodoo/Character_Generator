@@ -4,13 +4,17 @@ import { light, medium, findArmor } from "./ArmorSets";
 import { chooseProf } from "./Skills";
 import { musical } from "./ToolSets";
 import { bardSpells } from "./Spells";
-export function generateCharacterClass(race) {
+export function generateCharacterClass() {
     return util.choice(characterClass);
 }
 function chooseSpells(array) {
     let result = [];
     for (let x of array) {
-        result = result.concat({ level: x.level, spellList: util.choices(x.spellList, x.known), known: x.known });
+        result = result.concat({
+            level: x.level,
+            spellList: util.choices(x.spellList, x.known),
+            known: x.known
+        });
     }
     return result;
 }
@@ -18,9 +22,15 @@ const characterClass = [
     {
         className: "Barbarian",
         hitDice: 12,
-        armorProficiencies: new Set(light.concat(medium).concat(findArmor("Unarmored defence con"))),
-        shieldProficiencies: new Set([findArmor("Buckler")].concat(findArmor("Medium shield"))),
-        weaponProficiencies: new Set(simpleMelee.concat(martialMelee).concat(simpleRanged).concat(martialRanged)),
+        armorProficiencies: new Set(light
+            .concat(medium)
+            .concat(findArmor("Unarmored defence con"))),
+        shieldProficiencies: new Set([findArmor("Buckler")]
+            .concat(findArmor("Medium shield"))),
+        weaponProficiencies: new Set(simpleMelee
+            .concat(martialMelee)
+            .concat(simpleRanged)
+            .concat(martialRanged)),
         toolProficiencies: new Set(),
         savingThrowProficiencies: {
             str: 2,

@@ -3,7 +3,7 @@ import { generateCharacterClass } from "./GenerateCharacterClass";
 import SVG from "svg.js";
 console.log("Creating an empty character...");
 let race = generateRace();
-let characterClass = generateCharacterClass(race);
+let characterClass = generateCharacterClass();
 console.log(race);
 console.log(characterClass);
 //let player = generatePlayer();

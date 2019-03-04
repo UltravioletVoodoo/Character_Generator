@@ -58,7 +58,7 @@ function addSkills(item1, item2) {
     return skills;
 }
 //take an array of DeepPartial<Skills>, return them all combined
-function sumSkills(array) {
+export function sumSkills(array) {
     let sum = baseSkills;
     while (array.length > 0) {
         sum = addSkills(sum, array.pop());
