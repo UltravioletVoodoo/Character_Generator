@@ -3,6 +3,7 @@ import { util } from "./Util";
 import { findWeapon } from "./WeaponSets"
 import { findTool } from "./ToolSets";
 import { light, medium, findArmor, } from "./ArmorSets"
+import { dragonBornNames, dwarfNames } from "./NameSets"
 
 export function generateRace(){
     return util.choice(races);
@@ -11,6 +12,7 @@ export function generateRace(){
 const races: Partial<Character>[] = [
     {
         raceName: "Black Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -26,6 +28,7 @@ const races: Partial<Character>[] = [
     },
     {
         raceName: "Blue Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -41,6 +44,7 @@ const races: Partial<Character>[] = [
     },
     {
         raceName: "Brass Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -56,6 +60,7 @@ const races: Partial<Character>[] = [
     },
     {
         raceName: "Bronze Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -71,6 +76,7 @@ const races: Partial<Character>[] = [
     },
     {
         raceName: "Copper Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -86,6 +92,7 @@ const races: Partial<Character>[] = [
     },
     {
         raceName: "Gold Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -101,6 +108,7 @@ const races: Partial<Character>[] = [
     },
     {
         raceName: "Green Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -116,6 +124,7 @@ const races: Partial<Character>[] = [
     },
     {
         raceName: "Red Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -131,6 +140,7 @@ const races: Partial<Character>[] = [
     },
     {
         raceName: "Silver Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -146,6 +156,7 @@ const races: Partial<Character>[] = [
     },
     {
         raceName: "White Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -161,6 +172,7 @@ const races: Partial<Character>[] = [
     },
     {
         raceName: "Hill Dwarf",
+        name: util.choice(dwarfNames),
         attributes: {
             str: 0,
             dex: 0,
@@ -179,6 +191,7 @@ const races: Partial<Character>[] = [
     },
     {
         raceName: "Mountain Dwarf",
+        name: util.choice(dwarfNames),
         attributes: {
             str: 2,
             dex: 0,

@@ -5,7 +5,7 @@ export interface Spell {
 export interface Spells {
     level: number;
     known: number;
-    spellList: Spell[];
+    spellList: string[];
 }
 
 export const bardSpells: Spells[] = [
@@ -13,114 +13,46 @@ export const bardSpells: Spells[] = [
         level: 0,
         known: 2,
         spellList: [
-            {
-                name: "Blade ward"
-            },
-            {
-                name: "Dancing lights"
-            },
-            {
-                name: "Friends"
-            },
-            {
-                name: "Light"
-            },
-            {
-                name: "Mage hand"
-            },
-            {
-                name: "Mending"
-            },
-            {
-                name: "Message"
-            },
-            {
-                name: "Minor illusion"
-            },
-            {
-                name: "Prestidigitation"
-            },
-            {
-                name: "Thunderclap"
-            },
-            {
-                name: "True strike"
-            },
-            {
-                name: "Vicious mockery"
-            }
+            "Blade ward",
+            "Dancing lights",
+            "Friends",
+            "Light",
+            "Mage hand",
+            "Mending",
+            "Message",
+            "Minor illusion",
+            "Prestidigitation",
+            "Thunderclap",
+            "True strike",
+            "Vicious mockery"
         ]
     },
     {
         level: 1,
         known: 4,
         spellList: [
-            {
-                name: "Animal friendship"
-            },
-            {
-                name: "Bane"
-            },
-            {
-                name: "Charm person"
-            },
-            {
-                name: "Comprehend languages"
-            },
-            {
-                name: "Cure wounds"
-            },
-            {
-                name: "Detect magic"
-            },
-            {
-                name: "Disguise self"
-            },
-            {
-                name: "Dissonant whispers"
-            },
-            {
-                name: "Earth tremor"
-            },
-            {
-                name: "Faerie fire"
-            },
-            {
-                name: "Feather fall"
-            },
-            {
-                name: "Healing word"
-            },
-            {
-                name: "Heroism"
-            },
-            {
-                name: "Identify"
-            },
-            {
-                name: "Illusory script"
-            },
-            {
-                name: "Longstrider"
-            },
-            {
-                name: "Silent image"
-            },
-            {
-                name: "Sleep"
-            },
-            {
-                name: "Speak with animals"
-            },
-            {
-                name: "Tasha's hideous laughter"
-            },
-            {
-                name: "Thunderwave"
-            },
-            {
-                name: "Unseen servant"
-            }
+            "Animal friendship",
+            "Bane",
+            "Charm person",
+            "Comprehend languages",
+            "Cure wounds",
+            "Detect magic",
+            "Disguise self",
+            "Dissonant whispers",
+            "Earth tremor",
+            "Faerie fire",
+            "Feather fall",
+            "Healing word",
+            "Heroism",
+            "Identify",
+            "Illusory script",
+            "Longstrider",
+            "Silent image",
+            "Sleep",
+            "Speak with animals",
+            "Tasha's hideous laughter",
+            "Thunderwave",
+            "Unseen servant"
         ]
     }
 ];
@@ -130,87 +62,37 @@ export const clericSpells: Spells[] = [
         level: 0,
         known: 3,
         spellList: [
-            {
-                name: "Guidance"
-            },
-            {
-                name: "Light"
-            },
-            {
-                name: "Mending"
-            },
-            {
-                name: "Resistance"
-            },
-            {
-                name: "Sacred flame"
-            },
-            {
-                name: "Spare the dying"
-            },
-            {
-                name: "Thaumaturgy"
-            },
-            {
-                name: "Toll the dead"
-            },
-            {
-                name: "Word of radiance"
-            }
+            "Guidance",
+            "Light",
+            "Mending",
+            "Resistance",
+            "Sacred flame",
+            "Spare the dying",
+            "Thaumaturgy",
+            "Toll the dead",
+            "Word of radiance"
         ]
     },
     {
         level: 1,
         known: 2,
         spellList: [
-            {
-                name: "Bane"
-            },
-            {
-                name: "Bless"
-            },
-            {
-                name: "Ceremony"
-            },
-            {
-                name: "Command"
-            },
-            {
-                name: "Create or destroy water"
-            },
-            {
-                name: "Cure wounds"
-            },
-            {
-                name: "Detect evil and good"
-            },
-            {
-                name: "Detect magic"
-            },
-            {
-                name: "Detect poison and disease"
-            },
-            {
-                name: "Guiding bolt"
-            },
-            {
-                name: "Healing word"
-            },
-            {
-                name: "Inflict wounds"
-            },
-            {
-                name: "Protection from evil and good"
-            },
-            {
-                name: "Purify food and drink"
-            },
-            {
-                name: "Sanctuary"
-            },
-            {
-                name: "Shield of faith"
-            }
+            "Bane",
+            "Bless",
+            "Ceremony",
+            "Command",
+            "Create or destroy water",
+            "Cure wounds",
+            "Detect evil and good",
+            "Detect magic",
+            "Detect poison and disease",
+            "Guiding bolt",
+            "Healing word",
+            "Inflict wounds",
+            "Protection from evil and good",
+            "Purify food and drink",
+            "Sanctuary",
+            "Shield of faith"
         ]
     }
 ];
@@ -220,129 +102,51 @@ export const druidSpells: Spells[] = [
         level: 0,
         known: 2,
         spellList: [
-            {
-                name: "Control flames"
-            },
-            {
-                name: "Create bonfire"
-            },
-            {
-                name: "Druidcraft"
-            },
-            {
-                name: "Frostbite"
-            },
-            {
-                name: "Guidance"
-            },
-            {
-                name: "Gust"
-            },
-            {
-                name: "Infestation"
-            },
-            {
-                name: "Magic stone"
-            },
-            {
-                name: "Mending"
-            },
-            {
-                name: "Mold earth"
-            },
-            {
-                name: "Poison spray"
-            },
-            {
-                name: "Primal savagery"
-            },
-            {
-                name: "Produce flame"
-            },
-            {
-                name: "Resistance"
-            },
-            {
-                name: "Shape water"
-            },
-            {
-                name: "Shillelagh"
-            },
-            {
-                name: "Thorn whip"
-            },
-            {
-                name: "Thunderclap"
-            }
+            "Control flames",
+            "Create bonfire",
+            "Druidcraft",
+            "Frostbite",
+            "Guidance",
+            "Gust",
+            "Infestation",
+            "Magic stone",
+            "Mending",
+            "Mold earth",
+            "Poison spray",
+            "Primal savagery",
+            "Produce flame",
+            "Resistance",
+            "Shape water",
+            "Shillelagh",
+            "Thorn whip",
+            "Thunderclap"
         ]
     },
     {
         level: 1,
         known: 2,
         spellList: [
-            {
-                name: "Absorb elements"
-            },
-            {
-                name: "Animal friendship"
-            },
-            {
-                name: "Beast bond"
-            },
-            {
-                name: "Charm person"
-            },
-            {
-                name: "Create or destroy water"
-            },
-            {
-                name: "Cure wounds"
-            },
-            {
-                name: "Detect magic"
-            },
-            {
-                name: "Detect poison and disease"
-            },
-            {
-                name: "Earth tremor"
-            },
-            {
-                name: "Entangle"
-            },
-            {
-                name: "Faerie fire"
-            },
-            {
-                name: "Fog cloud"
-            },
-            {
-                name: "Goodberry"
-            },
-            {
-                name: "Healing word"
-            },
-            {
-                name: "Ice knife"
-            },
-            {
-                name: "Jump"
-            },
-            {
-                name: "Longstrider"
-            },
-            {
-                name: "Purify food and drink"
-            },
-            {
-                name: "Snare"
-            },
-            {
-                name: "Speak with animals"
-            },
-            {
-                name: "Thunderwave"
-            }
+            "Absorb elements",
+            "Animal friendship",
+            "Beast bond",
+            "Charm person",
+            "Create or destroy water",
+            "Cure wounds",
+            "Detect magic",
+            "Detect poison and disease",
+            "Earth tremor",
+            "Entangle",
+            "Faerie fire",
+            "Fog cloud",
+            "Goodberry",
+            "Healing word",
+            "Ice knife",
+            "Jump",
+            "Longstrider",
+            "Purify food and drink",
+            "Snare",
+            "Speak with animals",
+            "Thunderwave"
         ]
     }
 ];
@@ -352,171 +156,65 @@ export const sorcererSpells: Spells[] = [
         level: 0,
         known: 4,
         spellList: [
-            {
-                name: "Acid splash"
-            },
-            {
-                name: "Blade ward"
-            },
-            {
-                name: "Booming blade"
-            },
-            {
-                name: "Chill touch"
-            },
-            {
-                name: "Control flames"
-            },
-            {
-                name: "Create bonfire"
-            },
-            {
-                name: "Dancing lights"
-            },
-            {
-                name: "Fire bolt"
-            },
-            {
-                name: "Friends"
-            },
-            {
-                name: "Frostbite"
-            },
-            {
-                name: "Green flame blade"
-            },
-            {
-                name: "Gust"
-            },
-            {
-                name: "Infestation"
-            },
-            {
-                name: "Light"
-            },
-            {
-                name: "Lightning lure"
-            },
-            {
-                name: "Mage hand"
-            },
-            {
-                name: "Mending"
-            },
-            {
-                name: "Message"
-            },
-            {
-                name: "Minor illusion"
-            },
-            {
-                name: "Mold earth"
-            },
-            {
-                name: "Poison spray"
-            },
-            {
-                name: "Prestidigitation"
-            },
-            {
-                name: "Ray of frost"
-            },
-            {
-                name: "Shape water"
-            },
-            {
-                name: "Shocking grasp"
-            },
-            {
-                name: "Sword burst"
-            },
-            {
-                name: "Thunderclap"
-            },
-            {
-                name: "True strike"
-            }
+            "Acid splash",
+            "Blade ward",
+            "Booming blade",
+            "Chill touch",
+            "Control flames",
+            "Create bonfire",
+            "Dancing lights",
+            "Fire bolt",
+            "Friends",
+            "Frostbite",
+            "Green flame blade",
+            "Gust",
+            "Infestation",
+            "Light",
+            "Lightning lure",
+            "Mage hand",
+            "Mending",
+            "Message",
+            "Minor illusion",
+            "Mold earth",
+            "Poison spray",
+            "Prestidigitation",
+            "Ray of frost",
+            "Shape water",
+            "Shocking grasp",
+            "Sword burst",
+            "Thunderclap",
+            "True strike"
         ]
     },
     {
         level: 1,
         known: 2,
         spellList: [
-            {
-                name: "Absorb elements"
-            },
-            {
-                name: "Burning hands"
-            },
-            {
-                name: "Catapult"
-            },
-            {
-                name: "Chaos bolt"
-            },
-            {
-                name: "Charm person"
-            },
-            {
-                name: "Chromatic orb"
-            },
-            {
-                name: "Color spray"
-            },
-            {
-                name: "Comprehend languages"
-            },
-            {
-                name: "Detect magic"
-            },
-            {
-                name: "Disguise self"
-            },
-            {
-                name: "Earth tremor"
-            },
-            {
-                name: "Expeditious retreat"
-            },
-            {
-                name: "False life"
-            },
-            {
-                name: "Feather fall"
-            },
-            {
-                name: "Fog cloud"
-            },
-            {
-                name: "Ice knife"
-            },
-            {
-                name: "Jump"
-            },
-            {
-                name: "Mage armor"
-            },
-            {
-                name: "Magic missile"
-            },
-            {
-                name: "Ray of sickness"
-            },
-            {
-                name: "Shield"
-            },
-            {
-                name: "Silent image"
-            },
-            {
-                name: "Sleep"
-            },
-            {
-                name: "Thunderwave"
-            },
-            {
-                name: "Witch bolt"
-            }
+            "Absorb elements",
+            "Burning hands",
+            "Catapult",
+            "Chaos bolt",
+            "Charm person",
+            "Chromatic orb",
+            "Color spray",
+            "Comprehend languages",
+            "Detect magic",
+            "Disguise self",
+            "Earth tremor",
+            "Expeditious retreat",
+            "False life",
+            "Feather fall",
+            "Fog cloud",
+            "Ice knife",
+            "Jump",
+            "Mage armor",
+            "Magic missile",
+            "Ray of sickness",
+            "Shield",
+            "Silent image",
+            "Sleep",
+            "Thunderwave",
+            "Witch bolt"
         ]
     }
 ];
@@ -526,105 +224,43 @@ export const warlockSpells: Spells[] = [
         level: 0,
         known: 2,
         spellList: [
-            {
-                name: "Blade ward"
-            },
-            {
-                name: "Booming blade"
-            },
-            {
-                name: "Chill touch"
-            },
-            {
-                name: "Create bonfire"
-            },
-            {
-                name: "Eldritch blast"
-            },
-            {
-                name: "Friends"
-            },
-            {
-                name: "Frostbite"
-            },
-            {
-                name: "Green flame blade"
-            },
-            {
-                name: "Infestation"
-            },
-            {
-                name: "Lightning lure"
-            },
-            {
-                name: "Mage hand"
-            },
-            {
-                name: "Magic stone"
-            },
-            {
-                name: "Minor illusion"
-            },
-            {
-                name: "Poison spray"
-            },
-            {
-                name: "Prestidigitation"
-            },
-            {
-                name: "Sword burst"
-            },
-            {
-                name: "Thunderclap"
-            },
-            {
-                name: "Toll the dead"
-            },
-            {
-                name: "True strike"
-            }
+            "Blade ward",
+            "Booming blade",
+            "Chill touch",
+            "Create bonfire",
+            "Eldritch blast",
+            "Friends",
+            "Frostbite",
+            "Green flame blade",
+            "Infestation",
+            "Lightning lure",
+            "Mage hand",
+            "Magic stone",
+            "Minor illusion",
+            "Poison spray",
+            "Prestidigitation",
+            "Sword burst",
+            "Thunderclap",
+            "Toll the dead",
+            "True strike"
         ]
     },
     {
         level: 1,
         known: 2,
         spellList: [
-            {
-                name: "Armor of agathys"
-            },
-            {
-                name: "Arms of hadar"
-            },
-            {
-                name: "Cause fear"
-            },
-            {
-                name: "Charm person"
-            },
-            {
-                name: "Comprehend languages"
-            },
-            {
-                name: "Expeditious retreat"
-            },
-            {
-                name: "Hellish rebuke"
-            },
-            {
-                name: "Hex"
-            },
-            {
-                name: "Illusory script"
-            },
-            {
-                name: "Protection from evil and good"
-            },
-            {
-                name: "Unseen servant"
-            },
-            {
-                name: "Witch bolt"
-            }
+            "Armor of agathys",
+            "Arms of hadar",
+            "Cause fear",
+            "Charm person",
+            "Comprehend languages",
+            "Expeditious retreat",
+            "Hellish rebuke",
+            "Hex",
+            "Illusory script",
+            "Protection from evil and good",
+            "Unseen servant",
+            "Witch bolt"
         ]
     }
 ];
@@ -634,210 +270,78 @@ export const wizardSpells: Spells[] = [
         level: 0,
         known: 3,
         spellList: [
-            {
-                name: "Acid splash"
-            },
-            {
-                name: "Blade ward"
-            },
-            {
-                name: "Booming blade"
-            },
-            {
-                name: "Chill touch"
-            },
-            {
-                name: "Control flames"
-            },
-            {
-                name: "Create bonfire"
-            },
-            {
-                name: "Dancing lights"
-            },
-            {
-                name: "Encode thoughts"
-            },
-            {
-                name: "Fire bolt"
-            },
-            {
-                name: "Friends"
-            },
-            {
-                name: "Frostbite"
-            },
-            {
-                name: "Green flame blade"
-            },
-            {
-                name: "Gust"
-            },
-            {
-                name: "Infestation"
-            },
-            {
-                name: "Light"
-            },
-            {
-                name: "Lightnight lure"
-            },
-            {
-                name: "Mage hand"
-            },
-            {
-                name: "Mending"
-            },
-            {
-                name: "Message"
-            },
-            {
-                name: "Minor illusion"
-            },
-            {
-                name: "Mold earth"
-            },
-            {
-                name: "Poison spray"
-            },
-            {
-                name: "Prestidigitation"
-            },
-            {
-                name: "Ray of frost"
-            },
-            {
-                name: "Shape water"
-            },
-            {
-                name: "Shocking grasp"
-            },
-            {
-                name: "Sword burst"
-            },
-            {
-                name: "Thunderclap"
-            },
-            {
-                name: "Toll the dead"
-            },
-            {
-                name: "True strike"
-            }
+            "Acid splash",
+            "Blade ward",
+            "Booming blade",
+            "Chill touch",
+            "Control flames",
+            "Create bonfire",
+            "Dancing lights",
+            "Encode thoughts",
+            "Fire bolt",
+            "Friends",
+            "Frostbite",
+            "Green flame blade",
+            "Gust",
+            "Infestation",
+            "Light",
+            "Lightnight lure",
+            "Mage hand",
+            "Mending",
+            "Message",
+            "Minor illusion",
+            "Mold earth",
+            "Poison spray",
+            "Prestidigitation",
+            "Ray of frost",
+            "Shape water",
+            "Shocking grasp",
+            "Sword burst",
+            "Thunderclap",
+            "Toll the dead",
+            "True strike"
         ]
     },
     {
         level: 1,
         known: 2,
         spellList: [
-            {
-                name: "Absorb elements"
-            },
-            {
-                name: "Alarm"
-            },
-            {
-                name: "Burning hands"
-            },
-            {
-                name: "Catapult"
-            },
-            {
-                name: "Cause fear"
-            },
-            {
-                name: "Charm person"
-            },
-            {
-                name: "Chromatic orb"
-            },
-            {
-                name: "Color spray"
-            },
-            {
-                name: "Comprehend languages"
-            },
-            {
-                name: "Detect magic"
-            },
-            {
-                name: "Disguise self"
-            },
-            {
-                name: "Earth tremor"
-            },
-            {
-                name: "Expeditious retreat"
-            },
-            {
-                name: "False life"
-            },
-            {
-                name: "Feather fall"
-            },
-            {
-                name: "Find familiar"
-            },
-            {
-                name: "Fog cloud"
-            },
-            {
-                name: "Grease"
-            },
-            {
-                name: "Ice knife"
-            },
-            {
-                name: "Identify"
-            },
-            {
-                name: "Illusory script"
-            },
-            {
-                name: "Jump"
-            },
-            {
-                name: "Longstrider"
-            },
-            {
-                name: "Mage armor"
-            },
-            {
-                name: "Magic missile"
-            },
-            {
-                name: "Protection from evil and good"
-            },
-            {
-                name: "Ray of sickness"
-            },
-            {
-                name: "Shield"
-            },
-            {
-                name: "Silent image"
-            },
-            {
-                name: "Sleep"
-            },
-            {
-                name: "Snare"
-            },
-            {
-                name: "Tasha's hideous laughter"
-            },
-            {
-                name: "Tenser's floating disk"
-            },
-            {
-                name: "Thunderwave"
-            },
-            {
-                name: "Unseen servant"
-            },
-            {
-                name: "Witch bolt"
-            }
+            "Absorb elements",
+            "Alarm",
+            "Burning hands",
+            "Catapult",
+            "Cause fear",
+            "Charm person",
+            "Chromatic orb",
+            "Color spray",
+            "Comprehend languages",
+            "Detect magic",
+            "Disguise self",
+            "Earth tremor",
+            "Expeditious retreat",
+            "False life",
+            "Feather fall",
+            "Find familiar",
+            "Fog cloud",
+            "Grease",
+            "Ice knife",
+            "Identify",
+            "Illusory script",
+            "Jump",
+            "Longstrider",
+            "Mage armor",
+            "Magic missile",
+            "Protection from evil and good",
+            "Ray of sickness",
+            "Shield",
+            "Silent image",
+            "Sleep",
+            "Snare",
+            "Tasha's hideous laughter",
+            "Tenser's floating disk",
+            "Thunderwave",
+            "Unseen servant",
+            "Witch bolt"
         ]
     }
 ];

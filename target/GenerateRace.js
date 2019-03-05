@@ -2,12 +2,14 @@ import { util } from "./Util";
 import { findWeapon } from "./WeaponSets";
 import { findTool } from "./ToolSets";
 import { light, medium, findArmor, } from "./ArmorSets";
+import { dragonBornNames, dwarfNames } from "./NameSets";
 export function generateRace() {
     return util.choice(races);
 }
 const races = [
     {
         raceName: "Black Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -23,6 +25,7 @@ const races = [
     },
     {
         raceName: "Blue Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -38,6 +41,7 @@ const races = [
     },
     {
         raceName: "Brass Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -53,6 +57,7 @@ const races = [
     },
     {
         raceName: "Bronze Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -68,6 +73,7 @@ const races = [
     },
     {
         raceName: "Copper Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -83,6 +89,7 @@ const races = [
     },
     {
         raceName: "Gold Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -98,6 +105,7 @@ const races = [
     },
     {
         raceName: "Green Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -113,6 +121,7 @@ const races = [
     },
     {
         raceName: "Red Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -128,6 +137,7 @@ const races = [
     },
     {
         raceName: "Silver Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -143,6 +153,7 @@ const races = [
     },
     {
         raceName: "White Dragonborn",
+        name: util.choice(dragonBornNames),
         attributes: {
             str: 2,
             dex: 0,
@@ -158,6 +169,7 @@ const races = [
     },
     {
         raceName: "Hill Dwarf",
+        name: util.choice(dwarfNames),
         attributes: {
             str: 0,
             dex: 0,
@@ -176,6 +188,7 @@ const races = [
     },
     {
         raceName: "Mountain Dwarf",
+        name: util.choice(dwarfNames),
         attributes: {
             str: 2,
             dex: 0,
