@@ -121,6 +121,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
+/***/ "./target/Attributes.js":
+/*!******************************!*\
+  !*** ./target/Attributes.js ***!
+  \******************************/
+/*! exports provided: mergeAttributes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"mergeAttributes\", function() { return mergeAttributes; });\nfunction mergeAttributes(a, b = {\r\n    str: 0,\r\n    dex: 0,\r\n    con: 0,\r\n    int: 0,\r\n    wis: 0,\r\n    cha: 0\r\n}) {\r\n    return {\r\n        str: a.str + b.str,\r\n        dex: a.dex + b.dex,\r\n        con: a.con + b.con,\r\n        int: a.int + b.int,\r\n        wis: a.wis + b.wis,\r\n        cha: a.cha + b.cha\r\n    };\r\n}\r\n\n\n//# sourceURL=webpack:///./target/Attributes.js?");
+
+/***/ }),
+
 /***/ "./target/GenerateCharacterClass.js":
 /*!******************************************!*\
   !*** ./target/GenerateCharacterClass.js ***!
@@ -154,6 +166,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"dragonBornNames\", function() { return dragonBornNames; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"dwarfNames\", function() { return dwarfNames; });\nconst dragonBornNames = [\r\n    \"dragonborn test1\",\r\n    \"dragonborn test2\"\r\n];\r\nconst dwarfNames = [\r\n    \"dwarf test1\",\r\n    \"dwarf test2\"\r\n];\r\n\n\n//# sourceURL=webpack:///./target/NameSets.js?");
+
+/***/ }),
+
+/***/ "./target/PointBuy.js":
+/*!****************************!*\
+  !*** ./target/PointBuy.js ***!
+  \****************************/
+/*! exports provided: pointBuy */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"pointBuy\", function() { return pointBuy; });\n/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Util */ \"./target/Util.js\");\n\r\n// Uses the point buy system to generate character attributes\r\nfunction pointBuy() {\r\n    const attrs = {\r\n        str: 8,\r\n        dex: 8,\r\n        con: 8,\r\n        int: 8,\r\n        wis: 8,\r\n        cha: 8\r\n    };\r\n    let points = 27;\r\n    while (canBuy(attrs, points)) {\r\n        console.log(\"attrs: \" + attrs + \"\\n\" + \"points: \" + points);\r\n        const attr = _Util__WEBPACK_IMPORTED_MODULE_0__[\"util\"].choice(Object.keys(attrs));\r\n        const cost = getCost(attrs, attr);\r\n        if (cost && cost <= points) {\r\n            attrs[attr]++;\r\n            points = points - cost;\r\n        }\r\n    }\r\n    return attrs;\r\n}\r\nfunction canBuy(attrs, points) {\r\n    if (points < 0) {\r\n        throw 'Error: pointBuy exeeded point cap';\r\n    }\r\n    if (points == 0) {\r\n        return false;\r\n    }\r\n    if (points == 1 && Object.values(attrs).every(val => val >= 13)) {\r\n        return false;\r\n    }\r\n    return true;\r\n}\r\nfunction getCost(attrs, attr) {\r\n    const currentValue = attrs[attr];\r\n    if (currentValue < 13) {\r\n        return 1;\r\n    }\r\n    if (currentValue < 15) {\r\n        return 2;\r\n    }\r\n    return false;\r\n}\r\n\n\n//# sourceURL=webpack:///./target/PointBuy.js?");
 
 /***/ }),
 
@@ -225,7 +249,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _GenerateRace__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GenerateRace */ \"./target/GenerateRace.js\");\n/* harmony import */ var _GenerateCharacterClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GenerateCharacterClass */ \"./target/GenerateCharacterClass.js\");\n/* harmony import */ var svg_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! svg.js */ \"./node_modules/svg.js/dist/svg.js\");\n/* harmony import */ var svg_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(svg_js__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util */ \"./target/Util.js\");\n/* harmony import */ var _Alignment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Alignment */ \"./target/Alignment.js\");\n\r\n\r\n\r\n\r\n\r\nconsole.log(\"Creating an empty character...\");\r\nlet race = Object(_GenerateRace__WEBPACK_IMPORTED_MODULE_0__[\"generateRace\"])();\r\nlet characterClass = Object(_GenerateCharacterClass__WEBPACK_IMPORTED_MODULE_1__[\"generateCharacterClass\"])();\r\nlet player = {\r\n    name: race.name,\r\n    raceName: race.raceName,\r\n    className: characterClass.className,\r\n    alignment: _Util__WEBPACK_IMPORTED_MODULE_3__[\"util\"].choice(_Alignment__WEBPACK_IMPORTED_MODULE_4__[\"alignment\"])\r\n};\r\nconsole.log(race);\r\nconsole.log(characterClass);\r\nconsole.log(player);\r\n//let player = generatePlayer();\r\n//player = mergeCharacterPartials(race, characterClass, player);\r\nlet draw = svg_js__WEBPACK_IMPORTED_MODULE_2___default()('drawing').size(300, 300);\r\nlet rect = draw.rect(100, 100).attr({ fill: '#f06' });\r\n\n\n//# sourceURL=webpack:///./target/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _GenerateRace__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GenerateRace */ \"./target/GenerateRace.js\");\n/* harmony import */ var _GenerateCharacterClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GenerateCharacterClass */ \"./target/GenerateCharacterClass.js\");\n/* harmony import */ var svg_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! svg.js */ \"./node_modules/svg.js/dist/svg.js\");\n/* harmony import */ var svg_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(svg_js__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _Util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Util */ \"./target/Util.js\");\n/* harmony import */ var _Alignment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Alignment */ \"./target/Alignment.js\");\n/* harmony import */ var _PointBuy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./PointBuy */ \"./target/PointBuy.js\");\n/* harmony import */ var _Attributes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Attributes */ \"./target/Attributes.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nconsole.log(\"Generating race...\");\r\nlet race = Object(_GenerateRace__WEBPACK_IMPORTED_MODULE_0__[\"generateRace\"])();\r\nconsole.log(\"Generating class...\");\r\nlet characterClass = Object(_GenerateCharacterClass__WEBPACK_IMPORTED_MODULE_1__[\"generateCharacterClass\"])();\r\nconsole.log(\"Merging class/race...\");\r\nlet player = {\r\n    name: race.name,\r\n    raceName: race.raceName,\r\n    className: characterClass.className,\r\n    alignment: _Util__WEBPACK_IMPORTED_MODULE_3__[\"util\"].choice(_Alignment__WEBPACK_IMPORTED_MODULE_4__[\"alignment\"]),\r\n    attributes: Object(_Attributes__WEBPACK_IMPORTED_MODULE_6__[\"mergeAttributes\"])(Object(_PointBuy__WEBPACK_IMPORTED_MODULE_5__[\"pointBuy\"])(), race.attributes)\r\n};\r\nconsole.log(race);\r\nconsole.log(characterClass);\r\nconsole.log(player);\r\nlet draw = svg_js__WEBPACK_IMPORTED_MODULE_2___default()('drawing').size(300, 300);\r\nlet rect = draw.rect(100, 100).attr({ fill: '#f06' });\r\n\n\n//# sourceURL=webpack:///./target/main.js?");
 
 /***/ })
 

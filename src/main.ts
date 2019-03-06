@@ -6,6 +6,8 @@ import { generateCharacterClass } from "./GenerateCharacterClass";
 import SVG from "svg.js";
 import { util } from "./Util";
 import { alignment } from "./Alignment";
+import { pointBuy } from "./PointBuy";
+import { mergeAttributes } from "./Attributes"
 
 
 console.log("Generating race...")
@@ -19,16 +21,13 @@ let player: Partial<Character> = {
     name: race.name,
     raceName: race.raceName,
     className: characterClass.className,
-    alignment: util.choice(alignment)
+    alignment: util.choice(alignment),
+    attributes: mergeAttributes(pointBuy(), race.attributes)
 }
 
 console.log(race)
 console.log(characterClass)
 console.log(player)
-
-
-//let player = generatePlayer();
-//player = mergeCharacterPartials(race, characterClass, player);
 
 
 let draw = SVG('drawing').size(300, 300);
