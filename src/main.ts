@@ -7,22 +7,43 @@ import SVG from "svg.js";
 import { util } from "./Util";
 import { alignment } from "./Alignment";
 import { pointBuy } from "./PointBuy";
-import { mergeAttributes } from "./Attributes"
+import { mergeAttributes, generateMods } from "./Attributes"
+import { sumSkills, Skills, convertAttrToSkills, baseSkills } from "./Skills";
+import { Armor } from "./ArmorSets"
+import { Weapon } from "./WeaponSets"
 
 
 console.log("Generating race...")
-let race = generateRace();
+const race = generateRace();
 
 console.log("Generating class...")
-let characterClass = generateCharacterClass();
+const characterClass = generateCharacterClass();
 
 console.log("Merging class/race...")
-let player: Partial<Character> = {
+const attr = mergeAttributes(pointBuy(), race.attributes)
+const armor = util.choice(Array.from(new Set([race.armorProficiencies, characterClass.armorProficiencies])))
+const handOptions = util.choice([1,2,3,4])
+
+//God damn it I have no clue what I am doing here lol. Taking a break
+let oneHandFull = false
+switch(handOptions) {
+    case 1: //weapon pick
+    case 2: //shield pick
+}
+
+const player: Partial<Character> = {
     name: race.name,
     raceName: race.raceName,
     className: characterClass.className,
     alignment: util.choice(alignment),
-    attributes: mergeAttributes(pointBuy(), race.attributes)
+    attributes: attr,
+    proficiencyBonus: 2,
+    skills: sumSkills([
+        convertAttrToSkills(generateMods(attr)),
+        race.skillProficiencies != null ? 
+            race.skillProficiencies : baseSkills
+    ]),
+    ac: 
 }
 
 console.log(race)

@@ -1,4 +1,5 @@
 import { util } from "./Util";
+import { Attributes } from "./Attributes";
 
 
 export interface Skills {
@@ -32,7 +33,7 @@ export interface Skills {
     }
 }
 
-const baseSkills: Skills = {
+export const baseSkills: Skills = {
     str: {
         athletics: 0,
     },
@@ -65,7 +66,7 @@ const baseSkills: Skills = {
 }
 
 //Define the DeepPartial
-type DeepPartial<T> = {
+export type DeepPartial<T> = {
     [P in keyof T]?: T[P] extends Array<infer U>
       ? Array<DeepPartial<U>>
       : T[P] extends ReadonlyArray<infer U>
@@ -114,4 +115,8 @@ export function sumSkills(array: DeepPartial<Skills>[]){
 //take a number to pick, and a list of DeepPartial<Skills>. Return the choices combined
 export function chooseProf(n: number, options: DeepPartial<Skills>[]){
     return sumSkills((util.choices(options, n)));
+}
+
+export function convertAttrToSkills(attr: Attributes): Skills{
+
 }
