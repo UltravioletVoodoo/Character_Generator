@@ -49,5 +49,15 @@ export namespace util{
             return item !== value
         });
     }
+
+    export function min(collection: number[]): number{
+        let min = collection[0]
+        for(let x of collection){
+            if(x < min){
+                min = x
+            }
+        }
+        return min
+    }
 }
 

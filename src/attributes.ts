@@ -28,6 +28,17 @@ export function mergeAttributes(a: Attributes, b: Attributes = zeroAttributes): 
     }
 }
 
+export function fleshOutAttributes(a: Partial<Attributes>): Attributes{
+    return {
+        str: a.str ? a.str : 0,
+        dex: a.dex ? a.dex : 0,
+        con: a.con ? a.con : 0,
+        int: a.int ? a.int : 0,
+        wis: a.wis ? a.wis : 0,
+        cha: a.cha ? a.cha : 0
+    }
+}
+
 export function generateMods(a: Attributes): Attributes{
     return {
         str: calculateMod(a.str),
@@ -40,5 +51,5 @@ export function generateMods(a: Attributes): Attributes{
 }
 
 function calculateMod(n: number): number{
-    return Math.ceil((n - 10) / 2)
+    return Math.floor((n - 10) / 2)
 }

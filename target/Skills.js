@@ -1,5 +1,5 @@
 import { util } from "./Util";
-const baseSkills = {
+export const baseSkills = {
     str: {
         athletics: 0,
     },
@@ -68,4 +68,35 @@ export function sumSkills(array) {
 //take a number to pick, and a list of DeepPartial<Skills>. Return the choices combined
 export function chooseProf(n, options) {
     return sumSkills((util.choices(options, n)));
+}
+export function convertAttrToSkills(mods) {
+    return { str: {
+            athletics: mods.str,
+        },
+        dex: {
+            acrobatics: mods.dex,
+            sleightOfHand: mods.dex,
+            stealth: mods.dex
+        },
+        int: {
+            arcana: mods.int,
+            history: mods.int,
+            investigation: mods.int,
+            nature: mods.int,
+            religion: mods.int
+        },
+        wis: {
+            animalHandling: mods.wis,
+            insight: mods.wis,
+            medicine: mods.wis,
+            perception: mods.wis,
+            survival: mods.wis
+        },
+        cha: {
+            deception: mods.cha,
+            intimidation: mods.cha,
+            performance: mods.cha,
+            persuasion: mods.cha
+        }
+    };
 }

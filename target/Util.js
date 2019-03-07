@@ -51,4 +51,14 @@ export var util;
         });
     }
     util.arrayDelete = arrayDelete;
+    function min(collection) {
+        let min = collection[0];
+        for (let x of collection) {
+            if (x < min) {
+                min = x;
+            }
+        }
+        return min;
+    }
+    util.min = min;
 })(util || (util = {}));

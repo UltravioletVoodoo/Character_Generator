@@ -117,6 +117,34 @@ export function chooseProf(n: number, options: DeepPartial<Skills>[]){
     return sumSkills((util.choices(options, n)));
 }
 
-export function convertAttrToSkills(attr: Attributes): Skills{
-
+export function convertAttrToSkills(mods: Attributes): Skills{
+    return {str: {
+        athletics: mods.str,
+    },
+    dex: {
+        acrobatics: mods.dex,
+        sleightOfHand: mods.dex,
+        stealth: mods.dex
+    },
+    int: {
+        arcana: mods.int,
+        history: mods.int,
+        investigation: mods.int,
+        nature: mods.int,
+        religion: mods.int
+    },
+    wis: {
+        animalHandling: mods.wis,
+        insight: mods.wis,
+        medicine: mods.wis,
+        perception: mods.wis,
+        survival: mods.wis
+    },
+    cha: {
+        deception: mods.cha,
+        intimidation: mods.cha,
+        performance: mods.cha,
+        persuasion: mods.cha
+    }
+}
 }

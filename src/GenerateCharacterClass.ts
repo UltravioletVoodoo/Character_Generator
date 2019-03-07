@@ -1,6 +1,6 @@
 import { util } from "./Util";
 import { Character } from "./Character"
-import { simpleMelee, martialMelee, simpleRanged, martialRanged, findWeapon } from "./WeaponSets"
+import { simpleMelee, martialMelee, simpleRanged, martialRanged, findWeapon, bareFist } from "./WeaponSets"
 import { light, medium, findArmor } from "./ArmorSets"
 import { chooseProf } from "./Skills";
 import { musical } from "./ToolSets";
@@ -38,6 +38,7 @@ const characterClass: Partial<Character>[] = [
             .concat(martialMelee)
             .concat(simpleRanged)
             .concat(martialRanged)
+            .concat(bareFist)
             ),
         toolProficiencies: new Set(),
         savingThrowProficiencies: {
@@ -67,6 +68,7 @@ const characterClass: Partial<Character>[] = [
             .concat(findWeapon("Longsword"))
             .concat(findWeapon("Rapier"))
             .concat(findWeapon("Shortsword"))
+            .concat(bareFist)
             ),
         toolProficiencies: new Set(util.choices(musical, 3)),
         savingThrowProficiencies: {

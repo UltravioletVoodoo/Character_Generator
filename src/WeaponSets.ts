@@ -1,3 +1,5 @@
+import { util } from "./Util";
+
 export function findWeapon(name: string): Weapon{
     for(const weaponList of [simpleMelee, simpleRanged, martialMelee, martialRanged]){
         for(const weapon of weaponList){
@@ -6,14 +8,36 @@ export function findWeapon(name: string): Weapon{
             }
         }
     }
-    return {
-        name: "No weapon found",
-        cost: 0,
-        damage: "0",
-        damageType: "",
-        weight: 0,
-        properties: []
+    return bareFist
+}
+
+function chooseWeapon(list: Weapon[], money: number, cantBeTwoHanded: boolean): Weapon{
+    let newList: Weapon[] = []
+    for(let x of list){
+        if(x.cost <= money && !cantBeTwoHanded){
+            newList = newList.concat(x)
+        }
+        if(x.cost <= money && cantBeTwoHanded){
+            if(x.twoHanded === false){
+                newList = newList.concat(x)
+            }
+        }
     }
+    return util.choice(newList)
+}
+
+function isTwoHanded(w: Weapon){
+    return w.twoHanded ? true:false
+}
+
+export function chooseWeapons(list: Weapon[], money: number): Weapon[]{
+    let x = [chooseWeapon(list, money, false)]
+    money -= x[0].cost
+
+    if(util.choice([1,2,3]) === 1 && !isTwoHanded(x[0])){
+        x = x.concat(chooseWeapon(list, money, true))
+    }
+    return x
 }
 
 export interface Weapon {
@@ -23,9 +47,18 @@ export interface Weapon {
     damageType: string,
     weight: number,
     properties: string[]
+    twoHanded: boolean
 }
     
-    
+export const bareFist: Weapon = {
+    name: "Fist",
+    cost: 0,
+    damage: "1",
+    damageType: "Bludgeoning",
+    weight: 0,
+    properties: [],
+    twoHanded: false
+}  
 
 export const simpleMelee: Weapon[] = [
     {
@@ -34,7 +67,8 @@ export const simpleMelee: Weapon[] = [
         damage: "1d4",
         damageType: "Bludgeoning",
         weight: 2,
-        properties: ["Light"]
+        properties: ["Light"],
+        twoHanded: false
     },
     {
         name: "Dagger",
@@ -42,7 +76,8 @@ export const simpleMelee: Weapon[] = [
         damage: "1d4",
         damageType: "piercing",
         weight: 1,
-        properties: ["Finesse", "Light", "Thrown"]
+        properties: ["Finesse", "Light", "Thrown"],
+        twoHanded: false
     },
     {
         name: "Greatclub",
@@ -50,7 +85,8 @@ export const simpleMelee: Weapon[] = [
         damage: "1d8",
         damageType: "Bludgeoning",
         weight: 10,
-        properties: ["Two-Handed"]
+        properties: [],
+        twoHanded: true
     },
     {
         name: "Handaxe",
@@ -58,7 +94,8 @@ export const simpleMelee: Weapon[] = [
         damage: "1d6",
         damageType: "Slashing",
         weight: 2,
-        properties: ["Light", "Thrown"]
+        properties: ["Light", "Thrown"],
+        twoHanded: false
     },
     {
         name: "Javelin",
@@ -66,7 +103,8 @@ export const simpleMelee: Weapon[] = [
         damage: "1d6",
         damageType: "Piercing",
         weight: 2,
-        properties: ["Thrown"]
+        properties: ["Thrown"],
+        twoHanded: false
     },
     {
         name: "Light Hammer",
@@ -74,7 +112,8 @@ export const simpleMelee: Weapon[] = [
         damage: "1d4",
         damageType: "Bludgeoning",
         weight: 2,
-        properties: ["Light", "Thrown"]
+        properties: ["Light", "Thrown"],
+        twoHanded: false
     },
     {
         name: "Mace",
@@ -83,6 +122,7 @@ export const simpleMelee: Weapon[] = [
         damageType: "Bludgeoning",
         weight: 4,
         properties: [],
+        twoHanded: false
     },
     {
         name: "Quarterstaff",
@@ -90,7 +130,8 @@ export const simpleMelee: Weapon[] = [
         damage: "1d6",
         damageType: "Bludgeoning",
         weight: 4,
-        properties: ["Versatile"]
+        properties: ["Versatile"],
+        twoHanded: false
     },
     {
         name: "Sickle",
@@ -98,7 +139,8 @@ export const simpleMelee: Weapon[] = [
         damage: "1d4",
         damageType: "Slashing",
         weight: 2,
-        properties: ["Light"]
+        properties: ["Light"],
+        twoHanded: false
     },
     {
         name: "Spear",
@@ -106,7 +148,8 @@ export const simpleMelee: Weapon[] = [
         damage: "1d6",
         damageType: "Piercing",
         weight: 3,
-        properties: ["Thrown", "Versatile"]
+        properties: ["Thrown", "Versatile"],
+        twoHanded: false
     }
 ];
 
@@ -117,7 +160,8 @@ export const simpleRanged: Weapon[] = [
         damage: "1d8",
         damageType: "Piercing",
         weight: 5,
-        properties: ["Ammunition", "Loading", "Two-Handed"]
+        properties: ["Ammunition", "Loading"],
+        twoHanded: true
     },
     {
         name: "Dart",
@@ -125,7 +169,8 @@ export const simpleRanged: Weapon[] = [
         damage: "1d4",
         damageType: "Piercing",
         weight: 0.25,
-        properties: ["Finesse", "Thrown"]
+        properties: ["Finesse", "Thrown"],
+        twoHanded: false
     },
     {
         name: "Shortbow",
@@ -133,7 +178,8 @@ export const simpleRanged: Weapon[] = [
         damage: "1d6",
         damageType: "Piercing",
         weight: 2,
-        properties: ["Ammunition", "Two-Handed"]
+        properties: ["Ammunition"],
+        twoHanded: true
     },
     {
         name: "Sling",
@@ -141,7 +187,8 @@ export const simpleRanged: Weapon[] = [
         damage: "1d4",
         damageType: "Bludgeoning",
         weight: 0,
-        properties: ["Ammunition"]
+        properties: ["Ammunition"],
+        twoHanded: false
     },
 ];
 
@@ -152,7 +199,8 @@ export const martialMelee: Weapon[] = [
         damage: "1d8",
         damageType: "Slashing",
         weight: 4,
-        properties: ["Versatile"]
+        properties: ["Versatile"],
+        twoHanded: false
     },
     {
         name: "Flail",
@@ -160,7 +208,8 @@ export const martialMelee: Weapon[] = [
         damage: "1d8",
         damageType: "Bludgeoning",
         weight: 2,
-        properties: []
+        properties: [],
+        twoHanded: false
     },
     {
         name: "Glaive",
@@ -168,7 +217,8 @@ export const martialMelee: Weapon[] = [
         damage: "1d10",
         damageType: "Slashing",
         weight: 6,
-        properties: ["Heavy", "Reach", "Two-Handed"]
+        properties: ["Heavy", "Reach"],
+        twoHanded: true
     },
     {
         name: "Greataxe",
@@ -176,7 +226,8 @@ export const martialMelee: Weapon[] = [
         damage: "1d12",
         damageType: "Slashing",
         weight: 7,
-        properties: ["Heavy", "Two-Handed"]
+        properties: ["Heavy"],
+        twoHanded: true
     },
     {
         name: "Greatsword",
@@ -184,7 +235,8 @@ export const martialMelee: Weapon[] = [
         damage: "2d6",
         damageType: "Slashing",
         weight: 6,
-        properties: ["Heavy", "Two-Handed"]
+        properties: ["Heavy"],
+        twoHanded: true
     },
     {
         name: "Halberd",
@@ -192,7 +244,8 @@ export const martialMelee: Weapon[] = [
         damage: "1d10",
         damageType: "Slashing",
         weight: 6,
-        properties: ["Heavy", "Reach", "Two-Handed"]
+        properties: ["Heavy", "Reach"],
+        twoHanded: true
     },
     {
         name: "Lance",
@@ -200,7 +253,8 @@ export const martialMelee: Weapon[] = [
         damage: "1d12",
         damageType: "Piercing",
         weight: 6,
-        properties: ["Reach", "Special"]
+        properties: ["Reach", "Special"],
+        twoHanded: false
     },
     {
         name: "Longsword",
@@ -208,7 +262,8 @@ export const martialMelee: Weapon[] = [
         damage: "1d8",
         damageType: "Slashing",
         weight: 3,
-        properties: ["Versatile"]
+        properties: ["Versatile"],
+        twoHanded: false
     },
     {
         name: "Maul",
@@ -216,7 +271,8 @@ export const martialMelee: Weapon[] = [
         damage: "2d6",
         damageType: "Bludgeoning",
         weight: 10,
-        properties: ["Heavy", "Two-Handed"]
+        properties: ["Heavy"],
+        twoHanded: true
     },
     {
         name: "Morningstar",
@@ -224,7 +280,8 @@ export const martialMelee: Weapon[] = [
         damage: "1d8",
         damageType: "Piercing",
         weight: 4,
-        properties: []
+        properties: [],
+        twoHanded: false
     },
     {
         name: "Pike",
@@ -232,7 +289,8 @@ export const martialMelee: Weapon[] = [
         damage: "1d10",
         damageType: "Piercing",
         weight: 18,
-        properties: ["Heavy", "Reach", "Two-Handed"]
+        properties: ["Heavy", "Reach"],
+        twoHanded: true
     },
     {
         name: "Rapier",
@@ -240,7 +298,8 @@ export const martialMelee: Weapon[] = [
         damage: "1d8",
         damageType: "Piercing",
         weight: 2,
-        properties: ["Finesse"]
+        properties: ["Finesse"],
+        twoHanded: false
     },
     {
         name: "Scimitar",
@@ -248,7 +307,8 @@ export const martialMelee: Weapon[] = [
         damage: "1d6",
         damageType: "Slashing",
         weight: 3,
-        properties: ["Finesse", "Light"]
+        properties: ["Finesse", "Light"],
+        twoHanded: false
     },
     {
         name: "Shortsword",
@@ -256,7 +316,8 @@ export const martialMelee: Weapon[] = [
         damage: "1d6",
         damageType: "Piercing",
         weight: 2,
-        properties: ["Finesse", "Light"]
+        properties: ["Finesse", "Light"],
+        twoHanded: false
     },
     {
         name: "Trident",
@@ -264,7 +325,8 @@ export const martialMelee: Weapon[] = [
         damage: "1d6",
         damageType: "Piercing",
         weight: 4,
-        properties: ["Thrown", "Versatile"]
+        properties: ["Thrown", "Versatile"],
+        twoHanded: false
     },
     {
         name: "War Pick",
@@ -272,7 +334,8 @@ export const martialMelee: Weapon[] = [
         damage: "1d8",
         damageType: "Piercing",
         weight: 2,
-        properties: []
+        properties: [],
+        twoHanded: false
     },
     {
         name: "Warhammer",
@@ -280,7 +343,8 @@ export const martialMelee: Weapon[] = [
         damage: "1d8",
         damageType: "Bludgeoning",
         weight: 2,
-        properties: ["Versatile"]
+        properties: ["Versatile"],
+        twoHanded: false
     },
     {
         name: "Whip",
@@ -288,7 +352,8 @@ export const martialMelee: Weapon[] = [
         damage: "1d4",
         damageType: "Slashing",
         weight: 3,
-        properties: ["Finesse", "Reach"]
+        properties: ["Finesse", "Reach"],
+        twoHanded: false
     }
 ];
 
@@ -299,7 +364,8 @@ export const martialRanged: Weapon[] = [
         damage: "1",
         damageType: "Piercing",
         weight: 1,
-        properties: ["Ammunition", "Loading"]
+        properties: ["Ammunition", "Loading"],
+        twoHanded: false
     },
     {
         name: "Hand Crossbow",
@@ -307,7 +373,8 @@ export const martialRanged: Weapon[] = [
         damage: "1d6",
         damageType: "Piercing",
         weight: 3,
-        properties: ["Ammunition", "Light", "Loading"]
+        properties: ["Ammunition", "Light", "Loading"],
+        twoHanded: false
     },
     {
         name: "Heavy Crossbow",
@@ -315,7 +382,8 @@ export const martialRanged: Weapon[] = [
         damage: "1d10",
         damageType: "Piercing",
         weight: 18,
-        properties: ["Ammunition", "Heavy", "Loading", "Two-Handed"]
+        properties: ["Ammunition", "Heavy", "Loading"],
+        twoHanded: true
     },
     {
         name: "Longbow",
@@ -323,7 +391,8 @@ export const martialRanged: Weapon[] = [
         damage: "1d8",
         damageType: "Piercing",
         weight: 2,
-        properties: ["Ammunition", "Heavy", "Two-Handed"]
+        properties: ["Ammunition", "Heavy"],
+        twoHanded: true
     },
     {
         name: "Net",
@@ -331,6 +400,7 @@ export const martialRanged: Weapon[] = [
         damage: "0",
         damageType: "",
         weight: 3,
-        properties: ["Special", "Thrown"]
+        properties: ["Special", "Thrown"],
+        twoHanded: false
     }
 ];

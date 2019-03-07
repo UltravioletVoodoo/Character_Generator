@@ -1,5 +1,5 @@
 import { util } from "./Util";
-import { simpleMelee, martialMelee, simpleRanged, martialRanged, findWeapon } from "./WeaponSets";
+import { simpleMelee, martialMelee, simpleRanged, martialRanged, findWeapon, bareFist } from "./WeaponSets";
 import { light, medium, findArmor } from "./ArmorSets";
 import { chooseProf } from "./Skills";
 import { musical } from "./ToolSets";
@@ -30,7 +30,8 @@ const characterClass = [
         weaponProficiencies: new Set(simpleMelee
             .concat(martialMelee)
             .concat(simpleRanged)
-            .concat(martialRanged)),
+            .concat(martialRanged)
+            .concat(bareFist)),
         toolProficiencies: new Set(),
         savingThrowProficiencies: {
             str: 2,
@@ -57,7 +58,8 @@ const characterClass = [
             .concat(findWeapon("Hand Crossbow"))
             .concat(findWeapon("Longsword"))
             .concat(findWeapon("Rapier"))
-            .concat(findWeapon("Shortsword"))),
+            .concat(findWeapon("Shortsword"))
+            .concat(bareFist)),
         toolProficiencies: new Set(util.choices(musical, 3)),
         savingThrowProficiencies: {
             dex: 2,

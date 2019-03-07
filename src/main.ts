@@ -8,28 +8,65 @@ import { util } from "./Util";
 import { alignment } from "./Alignment";
 import { pointBuy } from "./PointBuy";
 import { mergeAttributes, generateMods } from "./Attributes"
-import { sumSkills, Skills, convertAttrToSkills, baseSkills } from "./Skills";
-import { Armor } from "./ArmorSets"
-import { Weapon } from "./WeaponSets"
+import { sumSkills, convertAttrToSkills, baseSkills } from "./Skills";
+import { Armor, chooseArmor, none, calculateAc } from "./ArmorSets"
+import { Weapon, chooseWeapons } from "./WeaponSets"
 
 
-console.log("Generating race...")
+console.log("Generating race...");
 const race = generateRace();
 
-console.log("Generating class...")
+console.log("Generating class...");
 const characterClass = generateCharacterClass();
 
-console.log("Merging class/race...")
-const attr = mergeAttributes(pointBuy(), race.attributes)
-const armor = util.choice(Array.from(new Set([race.armorProficiencies, characterClass.armorProficiencies])))
-const handOptions = util.choice([1,2,3,4])
+console.log("Merging class/race...");
+const attr = mergeAttributes(pointBuy(), race.attributes);
+const mods = generateMods(attr);
+let money = characterClass.startingGold != null ? characterClass.startingGold : 0;
 
-//God damn it I have no clue what I am doing here lol. Taking a break
-let oneHandFull = false
-switch(handOptions) {
-    case 1: //weapon pick
-    case 2: //shield pick
+const weaponProfs = new Set([
+    ...race.weaponProficiencies ? race.weaponProficiencies : [],
+    ...characterClass.weaponProficiencies ? characterClass.weaponProficiencies : []
+]);
+
+const weapons = chooseWeapons(
+    Array.from(weaponProfs.values()),
+    money
+);
+
+//reduce spending money by the cost of weapons we just chose
+for (let x of weapons){
+    money -= x.cost;
 }
+
+const armorProfs = new Set([
+    ...race.armorProficiencies ? race.armorProficiencies : [],
+    ...characterClass.armorProficiencies ? characterClass.armorProficiencies : []
+]);
+
+const armor = chooseArmor(
+    Array.from(armorProfs.values()),
+    money
+);
+
+money -= armor.cost;
+
+const shieldProfs = new Set([
+    ...race.shieldProficiencies ? race.shieldProficiencies : [],
+    ...characterClass.shieldProficiencies ? characterClass.shieldProficiencies : []
+]);
+
+
+let shield = none
+let x = util.choice([1,2,3])
+if(x === 1 || x === 2){
+    shield = chooseArmor(
+        Array.from(shieldProfs.values()),
+        money
+    );
+}
+money -= shield.cost
+
 
 const player: Partial<Character> = {
     name: race.name,
@@ -39,11 +76,15 @@ const player: Partial<Character> = {
     attributes: attr,
     proficiencyBonus: 2,
     skills: sumSkills([
-        convertAttrToSkills(generateMods(attr)),
+        convertAttrToSkills(mods),
         race.skillProficiencies != null ? 
             race.skillProficiencies : baseSkills
     ]),
-    ac: 
+    armorProficiencies: armorProfs,
+    shieldProficiencies: shieldProfs,
+    armor: armor,
+    shield: shield,
+    ac: calculateAc(armor, shield, mods)
 }
 
 console.log(race)

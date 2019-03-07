@@ -1,4 +1,6 @@
-import { Attributes } from "./Attributes";
+import { Attributes, mergeAttributes, fleshOutAttributes } from "./Attributes";
+import { util } from "./Util";
+import { Weapon } from "./WeaponSets";
 
 export function findArmor(name: string): Armor{
     for (const armorList of [light, medium, heavy, misc]){
@@ -8,31 +10,60 @@ export function findArmor(name: string): Armor{
             }
         }
     }
-    return {
-        name: "No armor found",
-        cost: 0,
-        ac: {
-            base: 0,
-            caps: {}
-        },
-        strReq: 0,
-        stealthDis: false,
-        weight: 0
+    return none
+}
+
+export function chooseArmor(list: Armor[], money: number): Armor{
+    let newList: Armor[] = []
+    for(let x of list){
+        if (x.cost <= money){
+            newList = newList.concat(x)
+        }
     }
+    return util.choice(newList)
+}
+
+function statBonus(a: Armor, mods: Attributes){
+    let caps = fleshOutAttributes(a.ac.caps)
+    return util.min([caps.str,mods.str]) +
+        util.min([caps.dex, mods.dex]) +
+        util.min([caps.con, mods.con]) +
+        util.min([caps.int, mods.int]) +
+        util.min([caps.wis, mods.wis]) +
+        util.min([caps.cha, mods.cha]) 
+}
+
+export function calculateAc(a: Armor, s: Armor, mods: Attributes): number{
+    console.log(a.ac.base)
+    console.log(statBonus(a, mods))
+    console.log(s.ac.base)
+    return a.ac.base + statBonus(a, mods) + s.ac.base
 }
 
 export interface armorClass {
-    base: number,
-    caps: Partial<Attributes>
+    base: number;
+    caps: Partial<Attributes>;
 }
 
 export interface Armor {
-    name: string,
-    cost: number,
-    ac: armorClass,
-    strReq: number,
-    stealthDis: boolean,
-    weight: number
+    name: string;
+    cost: number;
+    ac: armorClass;
+    strReq: number;
+    stealthDis: boolean;
+    weight: number;
+}
+
+export const none: Armor = {
+    name: "None",
+    cost: 0,
+    ac: {
+        base: 0,
+        caps: {}
+    },
+    strReq: 0,
+    stealthDis: false,
+    weight: 0
 }
 
 export const light: Armor[] = [

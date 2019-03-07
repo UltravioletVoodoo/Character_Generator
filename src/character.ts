@@ -16,6 +16,10 @@ export interface Character {
     attributes: Attributes;
     proficiencyBonus: number;
     skills: Skills;
+    armorProficiencies: Set<Armor>;
+    shieldProficiencies: Set<Armor>;
+    armor: Armor;
+    shield: Armor;
     ac: number;
     initiative: number;
     speed: number;
@@ -26,15 +30,12 @@ export interface Character {
     bonds: string[];
     flaws: string[];
     languages: Set<string>;
-    armorProficiencies: Set<Armor>;
-    shieldProficiencies: Set<Armor>;
     weaponProficiencies: Set<Weapon>;
+    weapons: Weapon[];
     toolProficiencies: Set<Tool>;
     savingThrowProficiencies: Partial<Attributes>;
     skillProficiencies: Skills;
     startingGold: number;
-    weapons: Weapon[];
-    armor: string[];
     traits: Set<string>;
     age: Range;
     colors: Colors;

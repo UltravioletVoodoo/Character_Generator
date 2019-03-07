@@ -1,3 +1,5 @@
+import { fleshOutAttributes } from "./Attributes";
+import { util } from "./Util";
 export function findArmor(name) {
     for (const armorList of [light, medium, heavy, misc]) {
         for (const armor of armorList) {
@@ -6,18 +8,43 @@ export function findArmor(name) {
             }
         }
     }
-    return {
-        name: "No armor found",
-        cost: 0,
-        ac: {
-            base: 0,
-            caps: {}
-        },
-        strReq: 0,
-        stealthDis: false,
-        weight: 0
-    };
+    return none;
 }
+export function chooseArmor(list, money) {
+    let newList = [];
+    for (let x of list) {
+        if (x.cost <= money) {
+            newList = newList.concat(x);
+        }
+    }
+    return util.choice(newList);
+}
+function statBonus(a, mods) {
+    let caps = fleshOutAttributes(a.ac.caps);
+    return util.min([caps.str, mods.str]) +
+        util.min([caps.dex, mods.dex]) +
+        util.min([caps.con, mods.con]) +
+        util.min([caps.int, mods.int]) +
+        util.min([caps.wis, mods.wis]) +
+        util.min([caps.cha, mods.cha]);
+}
+export function calculateAc(a, s, mods) {
+    console.log(a.ac.base);
+    console.log(statBonus(a, mods));
+    console.log(s.ac.base);
+    return a.ac.base + statBonus(a, mods) + s.ac.base;
+}
+export const none = {
+    name: "None",
+    cost: 0,
+    ac: {
+        base: 0,
+        caps: {}
+    },
+    strReq: 0,
+    stealthDis: false,
+    weight: 0
+};
 export const light = [
     {
         name: "Padded",
