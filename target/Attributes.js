@@ -1,4 +1,4 @@
-const zeroAttributes = {
+export const zeroAttributes = {
     str: 0,
     dex: 0,
     con: 0,

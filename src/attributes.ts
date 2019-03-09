@@ -8,7 +8,7 @@ export interface Attributes {
     cha: number;
 }
 
-const zeroAttributes: Attributes = {
+export const zeroAttributes: Attributes = {
     str: 0,
     dex: 0,
     con: 0,

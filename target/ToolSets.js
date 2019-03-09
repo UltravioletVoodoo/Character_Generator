@@ -1,3 +1,4 @@
+import { util } from "./Util";
 export function findTool(name) {
     for (const toolList of [artisan, gaming, musical]) {
         for (const tool of toolList) {
@@ -6,11 +7,24 @@ export function findTool(name) {
             }
         }
     }
-    return {
-        name: "No tool found",
-        cost: 0,
-        weight: 0
-    };
+    return blankTool;
+}
+export const blankTool = {
+    name: "No tool found",
+    cost: 0,
+    weight: 0
+};
+export function chooseTool(list, money) {
+    let newList = [];
+    for (let x of list) {
+        if (x.cost <= money) {
+            newList = newList.concat(x);
+        }
+    }
+    if (newList.length === 0) {
+        return blankTool;
+    }
+    return util.choice(newList);
 }
 export const artisan = [
     {

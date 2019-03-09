@@ -21,7 +21,7 @@ const races: Partial<Character>[] = [
             wis: 0,
             cha: 1
         },
-        age: [15, 100],
+        ageRange: [15, 100],
         speed: 30,
         languages: new Set(["Common", "Draconic"]),
         traits: new Set(["Acid Resistance", "Acid Breath"])
@@ -37,7 +37,7 @@ const races: Partial<Character>[] = [
             wis: 0,
             cha: 1
         },
-        age: [15, 100],
+        ageRange: [15, 100],
         speed: 30,
         languages: new Set(["Common", "Draconic"]),
         traits: new Set(["Lightning Resistance", "Lightning Breath"])
@@ -53,7 +53,7 @@ const races: Partial<Character>[] = [
             wis: 0,
             cha: 1
         },
-        age: [15, 100],
+        ageRange: [15, 100],
         speed: 30,
         languages: new Set(["Common", "Draconic"]),
         traits: new Set(["Fire Resistance", "Fire Breath"])
@@ -69,7 +69,7 @@ const races: Partial<Character>[] = [
             wis: 0,
             cha: 1
         },
-        age: [15, 100],
+        ageRange: [15, 100],
         speed: 30,
         languages: new Set(["Common", "Draconic"]),
         traits: new Set(["Lightning Resistance", "Lightning Breath"])
@@ -85,7 +85,7 @@ const races: Partial<Character>[] = [
             wis: 0,
             cha: 1
         },
-        age: [15, 100],
+        ageRange: [15, 100],
         speed: 30,
         languages: new Set(["Common", "Draconic"]),
         traits: new Set(["Acid Resistance", "Acid Breath"])
@@ -101,7 +101,7 @@ const races: Partial<Character>[] = [
             wis: 0,
             cha: 1
         },
-        age: [15, 100],
+        ageRange: [15, 100],
         speed: 30,
         languages: new Set(["Common", "Draconic"]),
         traits: new Set(["Fire Resistance", "Fire Breath"])
@@ -117,7 +117,7 @@ const races: Partial<Character>[] = [
             wis: 0,
             cha: 1
         },
-        age: [15, 100],
+        ageRange: [15, 100],
         speed: 30,
         languages: new Set(["Common", "Draconic"]),
         traits: new Set(["Poison Resistance", "Poison Breath"])
@@ -133,7 +133,7 @@ const races: Partial<Character>[] = [
             wis: 0,
             cha: 1
         },
-        age: [15, 100],
+        ageRange: [15, 100],
         speed: 30,
         languages: new Set(["Common", "Draconic"]),
         traits: new Set(["Fire Resistance", "Fire Breath"])
@@ -149,7 +149,7 @@ const races: Partial<Character>[] = [
             wis: 0,
             cha: 1
         },
-        age: [15, 100],
+        ageRange: [15, 100],
         speed: 30,
         languages: new Set(["Common", "Draconic"]),
         traits: new Set(["Cold Resistance", "Cold Breath"])
@@ -165,7 +165,7 @@ const races: Partial<Character>[] = [
             wis: 0,
             cha: 1
         },
-        age: [15, 100],
+        ageRange: [15, 100],
         speed: 30,
         languages: new Set(["Common", "Draconic"]),
         traits: new Set(["Cold Resistance", "Cold Breath"])
@@ -181,7 +181,7 @@ const races: Partial<Character>[] = [
             wis: 1,
             cha: 0
         },
-        age: [50, 350],
+        ageRange: [50, 350],
         speed: 25,
         languages: new Set(["Common", "Dwarvish"]),
         weaponProficiencies: new Set([findWeapon("Battleaxe"), findWeapon("Handaxe"), findWeapon("Light hammer"), findWeapon("Warhammer")]),
@@ -200,7 +200,7 @@ const races: Partial<Character>[] = [
             wis: 0,
             cha: 0
         },
-        age: [50, 350],
+        ageRange: [50, 350],
         speed: 25,
         languages: new Set(["Common", "Dwarvish"]),
         weaponProficiencies: new Set([findWeapon("Battleaxe"), findWeapon("Handaxe"), findWeapon("Light hammer"), findWeapon("Warhammer")]),

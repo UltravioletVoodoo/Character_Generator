@@ -29,9 +29,6 @@ function statBonus(a, mods) {
         util.min([caps.cha, mods.cha]);
 }
 export function calculateAc(a, s, mods) {
-    console.log(a.ac.base);
-    console.log(statBonus(a, mods));
-    console.log(s.ac.base);
     return a.ac.base + statBonus(a, mods) + s.ac.base;
 }
 export const none = {
