@@ -1,6 +1,5 @@
 import { Attributes, mergeAttributes, fleshOutAttributes } from "./Attributes";
 import { util } from "./Util";
-import { Weapon } from "./WeaponSets";
 
 export function findArmor(name: string): Armor{
     for (const armorList of [light, medium, heavy, misc]){

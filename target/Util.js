@@ -61,4 +61,8 @@ export var util;
         return min;
     }
     util.min = min;
+    function getElement(id) {
+        return document.getElementById(id);
+    }
+    util.getElement = getElement;
 })(util || (util = {}));

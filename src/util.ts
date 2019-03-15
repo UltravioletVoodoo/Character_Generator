@@ -59,5 +59,9 @@ export namespace util{
         }
         return min
     }
+
+    export function getElement(id: string): HTMLElement{
+        return document.getElementById(id) as HTMLElement
+    }
 }
 

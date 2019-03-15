@@ -1,10 +1,11 @@
+import { Character } from "./Character";
 import { util } from "./Util";
 import { alignment } from "./Alignment";
 import { pointBuy } from "./PointBuy";
-import { mergeAttributes, generateMods, fleshOutAttributes, zeroAttributes } from "./Attributes";
+import { mergeAttributes, generateMods, fleshOutAttributes, zeroAttributes } from "./Attributes"
 import { sumSkills, convertAttrToSkills, baseSkills } from "./Skills";
-import { chooseArmor, none, calculateAc } from "./ArmorSets";
-import { chooseWeapons } from "./WeaponSets";
+import { chooseArmor, none, calculateAc } from "./ArmorSets"
+import { chooseWeapons } from "./WeaponSets"
 import { chooseTool } from "./ToolSets";
 import { personalityTraits } from "./TraitSets";
 import { ideals } from "./IdealSets";
@@ -12,48 +13,75 @@ import { bonds } from "./BondSets";
 import { flaws } from "./FlawSets";
 import { generateRace } from "./GenerateRace";
 import { generateCharacterClass } from "./GenerateCharacterClass";
-export function generatePlayer() {
+
+
+export function generatePlayer(): Partial<Character>{
     const race = generateRace();
+    
     const characterClass = generateCharacterClass();
+
     const attr = mergeAttributes(pointBuy(), race.attributes);
     const mods = generateMods(attr);
     let money = characterClass.startingGold ? characterClass.startingGold : 0;
+
     const weaponProfs = new Set([
         ...race.weaponProficiencies ? race.weaponProficiencies : [],
         ...characterClass.weaponProficiencies ? characterClass.weaponProficiencies : []
     ]);
-    const weapons = chooseWeapons(Array.from(weaponProfs.values()), money);
+
+    const weapons = chooseWeapons(
+        Array.from(weaponProfs.values()),
+        money
+    );
+
     //reduce spending money by the cost of weapons we just chose
-    for (let x of weapons) {
+    for (let x of weapons){
         money -= x.cost;
     }
+
     const armorProfs = new Set([
         ...race.armorProficiencies ? race.armorProficiencies : [],
         ...characterClass.armorProficiencies ? characterClass.armorProficiencies : []
     ]);
-    const armor = chooseArmor(Array.from(armorProfs.values()), money);
+
+    const armor = chooseArmor(
+        Array.from(armorProfs.values()),
+        money
+    );
+
     money -= armor.cost;
+
     const shieldProfs = new Set([
         ...race.shieldProficiencies ? race.shieldProficiencies : [],
         ...characterClass.shieldProficiencies ? characterClass.shieldProficiencies : []
     ]);
-    let shield = none;
-    let x = util.choice([1, 2, 3]);
-    if (x === 1 || x === 2) {
-        shield = chooseArmor(Array.from(shieldProfs.values()), money);
+
+
+    let shield = none
+    let x = util.choice([1,2,3])
+    if(x === 1 || x === 2){
+        shield = chooseArmor(
+            Array.from(shieldProfs.values()),
+            money
+        );
     }
     money -= shield.cost;
+
     const toolProfs = new Set([
         ...race.toolProficiencies ? race.toolProficiencies : [],
         ...characterClass.toolProficiencies ? characterClass.toolProficiencies : []
     ]);
+
     const tool = chooseTool(Array.from(toolProfs.values()), money);
     money -= tool.cost;
+
     const traits = new Set([
         ...race.traits ? race.traits : [],
         ...characterClass.traits ? characterClass.traits : []
     ]);
-    const hp = (race.hitPoints ? race.hitPoints : 0) + (characterClass.hitDice ? characterClass.hitDice : 0) + mods.con;
+
+    const hp = (race.hitPoints ? race.hitPoints : 0) + (characterClass.hitDice ? characterClass.hitDice : 0) + mods.con
+
     return {
         name: race.name,
         raceName: race.raceName,
@@ -90,5 +118,7 @@ export function generatePlayer() {
         traits: traits,
         age: util.choice(util.range(race.ageRange ? race.ageRange[0] : 0, race.ageRange ? race.ageRange[1] : 0)),
         spells: characterClass.spells ? characterClass.spells : [],
-    };
+        //colors
+        //artAssets
+    }
 }
