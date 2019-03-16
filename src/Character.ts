@@ -14,6 +14,7 @@ export interface Character {
     className: string;
     alignment: string;
     attributes: Attributes;
+    attrMods: Attributes;
     proficiencyBonus: number;
     skills: Skills;
     armorProficiencies: Set<Armor>;

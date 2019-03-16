@@ -40,6 +40,13 @@ export function chooseWeapons(list: Weapon[], money: number): Weapon[]{
     return x
 }
 
+export function isFinesse(w: Weapon): boolean{
+    if(w.properties.includes("Finesse")){
+        return true;
+    }
+    return false;
+}
+
 export interface Weapon {
     name: string,
     cost: number,

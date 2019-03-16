@@ -39,7 +39,7 @@ export function generatePlayer() {
     ]);
     let shield = none;
     let x = util.choice([1, 2, 3]);
-    if (x === 1 || x === 2) {
+    if ((x === 1 || x === 2) && weapons.length != 2 && !weapons[0].twoHanded) {
         shield = chooseArmor(Array.from(shieldProfs.values()), money);
     }
     money -= shield.cost;
@@ -60,6 +60,7 @@ export function generatePlayer() {
         className: characterClass.className,
         alignment: util.choice(alignment),
         attributes: attr,
+        attrMods: mods,
         proficiencyBonus: 2,
         skills: sumSkills([
             convertAttrToSkills(mods),

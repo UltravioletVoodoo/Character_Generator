@@ -17,7 +17,10 @@ export function chooseArmor(list, money) {
             newList = newList.concat(x);
         }
     }
-    return util.choice(newList);
+    if (newList.length > 0) {
+        return util.choice(newList);
+    }
+    return none;
 }
 function statBonus(a, mods) {
     let caps = fleshOutAttributes(a.ac.caps);
@@ -32,7 +35,7 @@ export function calculateAc(a, s, mods) {
     return a.ac.base + statBonus(a, mods) + s.ac.base;
 }
 export const none = {
-    name: "None",
+    name: "",
     cost: 0,
     ac: {
         base: 0,

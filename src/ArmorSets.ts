@@ -19,7 +19,10 @@ export function chooseArmor(list: Armor[], money: number): Armor{
             newList = newList.concat(x)
         }
     }
-    return util.choice(newList)
+    if(newList.length > 0){
+        return util.choice(newList);
+    }
+    return none;
 }
 
 function statBonus(a: Armor, mods: Attributes){
@@ -51,7 +54,7 @@ export interface Armor {
 }
 
 export const none: Armor = {
-    name: "None",
+    name: "",
     cost: 0,
     ac: {
         base: 0,

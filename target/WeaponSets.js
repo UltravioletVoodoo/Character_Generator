@@ -34,6 +34,12 @@ export function chooseWeapons(list, money) {
     }
     return x;
 }
+export function isFinesse(w) {
+    if (w.properties.includes("Finesse")) {
+        return true;
+    }
+    return false;
+}
 export const bareFist = {
     name: "Fist",
     cost: 0,

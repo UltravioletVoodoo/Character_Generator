@@ -1,0 +1,8 @@
+.namebox{
+    border: 1px solid #F00;
+    padding: 10px;
+}
+
+.namebox div {
+    font-size: 24px;
+}

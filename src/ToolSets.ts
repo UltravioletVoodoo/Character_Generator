@@ -18,7 +18,7 @@ export interface Tool {
 }
 
 export const blankTool: Tool = {
-    name: "No tool found",
+    name: "",
     cost: 0,
     weight: 0
 }

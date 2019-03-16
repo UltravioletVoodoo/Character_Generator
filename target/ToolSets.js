@@ -10,7 +10,7 @@ export function findTool(name) {
     return blankTool;
 }
 export const blankTool = {
-    name: "No tool found",
+    name: "",
     cost: 0,
     weight: 0
 };
