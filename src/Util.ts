@@ -60,8 +60,8 @@ export namespace util{
         return min
     }
 
-    export function getElement(id: string): HTMLElement{
-        return document.getElementById(id) as HTMLElement
+    export function getElement(id: string): HTMLInputElement{
+        return document.getElementById(id) as HTMLInputElement
     }
 }
 
