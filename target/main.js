@@ -45,12 +45,13 @@ util.getElement("intimidation").value = player.skills.cha.intimidation.toString(
 util.getElement("performance").value = player.skills.cha.performance.toString();
 util.getElement("persuasion").value = player.skills.cha.persuasion.toString();
 util.getElement("proficiencyBonus").value = player.proficiencyBonus.toString();
-util.getElement("languages").value = Array.from(player.languages).toString();
-util.getElement("toolProfs").value = Array.from(player.toolProficiencies).map(tool => tool.name).toString();
+util.getElement("languages").innerHTML = Array.from(player.languages).toString();
+util.getElement("toolProfs").innerHTML = Array.from(player.toolProficiencies).map(tool => tool.name).toString();
 util.getElement("ac").value = player.ac.toString();
 util.getElement("initiative").value = player.initiative.toString();
 util.getElement("speed").value = player.speed.toString();
-util.getElement("hitdice").value = player.hitDice.toString();
+util.getElement("hitDice").value = player.hitDice.toString();
+util.getElement("hp").value = player.hitPoints.toString();
 util.getElement("weapon1Name").value = player.weapons[0].name;
 let weaponMod = player.attrMods.str;
 if (isFinesse(player.weapons[0])) {

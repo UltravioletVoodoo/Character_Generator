@@ -188,46 +188,48 @@
         </div>
       </section>
       <div class="otherprofs box textblock">
-        <label for="otherprofs">Other Proficiencies and Languages</label><textarea name="otherprofs"></textarea>
+        <label for="otherprofs">Other Proficiencies and Languages</label>
+        <div id="languages"></div>
+        <div id="toolProfs"></div>
       </div>
     </section>
     <section>
       <section class="combat">
         <div class="armorclass">
           <div>
-            <label for="ac">Armor Class</label><input name="ac" placeholder="10" type="text" />
+            <label for="ac">Armor Class</label><input name="ac" id="ac" type="text" readonly />
           </div>
         </div>
         <div class="initiative">
           <div>
-            <label for="initiative">Initiative</label><input name="initiative" placeholder="+0" type="text" />
+            <label for="initiative">Initiative</label><input name="initiative" id="initiative" type="text" readonly />
           </div>
         </div>
         <div class="speed">
           <div>
-            <label for="speed">Speed</label><input name="speed" placeholder="30" type="text" />
+            <label for="speed">Speed</label><input name="speed" id="speed" type="text" readonly />
           </div>
         </div>
         <div class="hp">
           <div class="regular">
             <div class="max">
-              <label for="maxhp">Hit Point Maximum</label><input name="maxhp" placeholder="10" type="text" />
+              <label for="maxhp">Hit Point Maximum</label><input name="maxhp" id="hp" type="text" readonly />
             </div>
             <div class="current">
-              <label for="currenthp">Current Hit Points</label><input name="currenthp" type="text" />
+              <label for="currenthp">Current Hit Points</label><input name="currenthp" type="text" readonly />
             </div>
           </div>
           <div class="temporary">
-            <label for="temphp">Temporary Hit Points</label><input name="temphp" type="text" />
+            <label for="temphp">Temporary Hit Points</label><input name="temphp" type="text" readonly />
           </div>
         </div>
         <div class="hitdice">
           <div>
             <div class="total">
-              <label for="totalhd">Total</label><input name="totalhd" placeholder="2d10" type="text" />
+              <label for="totalhd">Total</label><input name="totalhd" id="hitDice" type="text" readonly />
             </div>
             <div class="remaining">
-              <label for="remaininghd">Hit Dice</label><input name="remaininghd" type="text" />
+              <label for="remaininghd">Hit Dice</label>
             </div>
           </div>
         </div>
@@ -259,7 +261,7 @@
       </section>
       <section class="attacksandspellcasting">
         <div>
-          <label>Attacks & Spellcasting</label>
+          <label>Weapons</label>
           <table>
             <thead>
               <tr>
@@ -270,47 +272,44 @@
                   Atk Bonus
                 </th>
                 <th>
-                  Damage/Type
+                  Damage
+                </th>
+                <th>
+                  Type
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>
-                  <input name="atkname1" type="text" />
+                  <input name="atkname1" type="text" id="weapon1Name" readonly />
                 </td>
                 <td>
-                  <input name="atkbonus1" type="text" />
+                  <input name="atkbonus1" type="text" id="weapon1AtkBonus" readonly />
                 </td>
                 <td>
-                  <input name="atkdamage1" type="text" />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input name="atkname2" type="text" />
+                  <input name="atkdamage1" type="text" id="weapon1Damage" readonly />
                 </td>
                 <td>
-                  <input name="atkbonus2" type="text" />
-                </td>
-                <td>
-                  <input name="atkdamage2" type="text" />
+                  <input name="atkdamagetype1" type="text" id="weapon1DamageType" readonly />
                 </td>
               </tr>
               <tr>
                 <td>
-                  <input name="atkname3" type="text" />
+                  <input name="atkname2" type="text" id="weapon2Name" readonly />
                 </td>
                 <td>
-                  <input name="atkbonus3" type="text" />
+                  <input name="atkbonus2" type="text" id="weapon2AtkBonus" readonly />
                 </td>
                 <td>
-                  <input name="atkdamage3" type="text" />
+                  <input name="atkdamage2" type="text" id="weapon2Damage" readonly />
+                </td>
+                <td>
+                  <input name="atkdamagetype2" type="text" id="weapon2DamageType" readonly />
                 </td>
               </tr>
             </tbody>
           </table>
-          <textarea></textarea>
         </div>
       </section>
       <section class="equipment">
