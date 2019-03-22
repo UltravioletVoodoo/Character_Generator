@@ -1,7 +1,3 @@
-export interface Spell {
-    name: string;
-}
-
 export interface Spells {
     level: number;
     known: number;

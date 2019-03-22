@@ -1,5 +1,3 @@
-import SVG from "svg.js";
-
 import { generatePlayer } from "./GeneratePlayer";
 import { util } from "./Util"
 import { Character } from "./Character";
@@ -16,6 +14,7 @@ util.getElement("level").value = "1";
 
 util.getElement("raceName").value = player.raceName;
 util.getElement("alignment").value = player.alignment;
+util.getElement("sex").value = player.sex;
 
 util.getElement("str").value = player.attributes.str.toString();
 util.getElement("dex").value = player.attributes.dex.toString();
@@ -93,6 +92,7 @@ util.getElement("weapon2DamageType").value = weaponDamageType;
 util.getElement("weapon2Damage").value = weaponDamage;
 util.getElement("armorAC").value = player.armor.ac.base.toString();
 util.getElement("armorName").value = player.armor.name;
+util.getElement("startingGold").value = player.startingGold.toString();
 if(player.shield.cost != 0){
     util.getElement("shieldAC").value = player.shield.ac.base.toString();
     util.getElement("shieldName").value = player.shield.name;

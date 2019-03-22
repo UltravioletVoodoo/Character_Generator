@@ -12,6 +12,7 @@ import { bonds } from "./BondSets";
 import { flaws } from "./FlawSets";
 import { generateRace } from "./GenerateRace";
 import { generateCharacterClass } from "./GenerateCharacterClass";
+import { sex } from "./Sex";
 export function generatePlayer() {
     const race = generateRace();
     const characterClass = generateCharacterClass();
@@ -56,6 +57,7 @@ export function generatePlayer() {
     const hp = (race.hitPoints ? race.hitPoints : 0) + (characterClass.hitDice ? characterClass.hitDice : 0) + mods.con;
     return {
         name: race.name,
+        sex: util.choice(sex),
         raceName: race.raceName,
         className: characterClass.className,
         alignment: util.choice(alignment),

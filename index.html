@@ -32,7 +32,7 @@
           <label for="alignment">Alignment</label><input name="alignment" id="alignment" readonly/>
         </li>
         <li>
-          <label for="experiencepoints">Experience Points</label><input name="experiencepoints" placeholder="3240" />
+          <label for="sex">Sex</label><input name="sex" id="sex" readonly />
         </li>
       </ul>
     </section>
@@ -187,11 +187,14 @@
           </div>
         </div>
       </section>
-      <div class="otherprofs box textblock">
-        <label for="otherprofs">Other Proficiencies and Languages</label>
-        <div id="languages"></div>
-        <div id="toolProfs"></div>
-      </div>
+      <section class="flavor">
+        <div class="personality">
+          <label for="toolProfs">Tool Proficiencies</label><textarea name="toolProfs" id="toolProfs" readonly></textarea>
+        </div>
+        <div class="flaws">
+          <label for="languages">Languages</label><textarea name="languages" id="languages" readonly></textarea>
+        </div>
+      </section>
     </section>
     <section>
       <section class="combat">
@@ -314,48 +317,94 @@
       </section>
       <section class="equipment">
         <div>
-          <label>Equipment</label>
+          <label>Money</label>
           <div class="money">
             <ul>
               <li>
-                <label for="cp">cp</label><input name="cp" />
+                <label for="startingGold">Starting Gold</label><input name="startingGold" id="startingGold" readonly/>
               </li>
               <li>
-                <label for="sp">sp</label><input name="sp" />
-              </li>
-              <li>
-                <label for="ep">ep</label><input name="ep" />
-              </li>
-              <li>
-                <label for="gp">gp</label><input name="gp" />
-              </li>
-              <li>
-                <label for="pp">pp</label><input name="pp" />
+                <label for="currentGold">Current Gold</label><input name="currentGold" readonly/>
               </li>
             </ul>
           </div>
-          <textarea placeholder="Equipment list here"></textarea>
+        </div>
+      </section>
+      <section class="attacksandspellcasting">
+        <div>
+          <label>Equipment</label>
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  AC
+                </th>
+                <th>
+                  Name
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <input name="armorAC" type="text" id="armorAC" readonly />
+                </td>
+                <td>
+                  <input name="armorName" type="text" id="armorName" readonly />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input name="shieldAC" type="text" id="shieldAC" readonly />
+                </td>
+                <td>
+                  <input name="shieldName" type="text" id="shieldName" readonly />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="attacksandspellcasting">
+        <div>
+          <label>Tools</label>
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  Name
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <input name="tool" type="text" id="tool" readonly />
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
     </section>
     <section>
       <section class="flavor">
         <div class="personality">
-          <label for="personality">Personality</label><textarea name="personality"></textarea>
+          <label for="personality">Personality</label><textarea name="personality" id="personalityTraits" readonly></textarea>
         </div>
         <div class="ideals">
-          <label for="ideals">Ideals</label><textarea name="ideals"></textarea>
+          <label for="ideals">Ideals</label><textarea name="ideals" id="ideals" readonly></textarea>
         </div>
         <div class="bonds">
-          <label for="bonds">Bonds</label><textarea name="bonds"></textarea>
+          <label for="bonds">Bonds</label><textarea name="bonds" id="bonds" readonly></textarea>
         </div>
         <div class="flaws">
-          <label for="flaws">Flaws</label><textarea name="flaws"></textarea>
+          <label for="flaws">Flaws</label><textarea name="flaws" id="flaws" readonly></textarea>
         </div>
       </section>
       <section class="features">
         <div>
-          <label for="features">Features & Traits</label><textarea name="features"></textarea>
+          <label for="features">Features & Traits</label><textarea name="features" id="traits" readonly></textarea>
         </div>
       </section>
     </section>

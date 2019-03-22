@@ -27,15 +27,18 @@ export function chooseArmor(list: Armor[], money: number): Armor{
 
 function statBonus(a: Armor, mods: Attributes){
     let caps = fleshOutAttributes(a.ac.caps)
-    return util.min([caps.str,mods.str]) +
-        util.min([caps.dex, mods.dex]) +
-        util.min([caps.con, mods.con]) +
-        util.min([caps.int, mods.int]) +
-        util.min([caps.wis, mods.wis]) +
-        util.min([caps.cha, mods.cha]) 
+    return util.min([caps.str,mods.str], true) +
+        util.min([caps.dex, mods.dex], true) +
+        util.min([caps.con, mods.con], true) +
+        util.min([caps.int, mods.int], true) +
+        util.min([caps.wis, mods.wis], true) +
+        util.min([caps.cha, mods.cha], true) 
 }
 
 export function calculateAc(a: Armor, s: Armor, mods: Attributes): number{
+    console.log(a.ac.base)
+    console.log(statBonus(a,mods))
+    console.log(s.ac.base)
     return a.ac.base + statBonus(a, mods) + s.ac.base
 }
 

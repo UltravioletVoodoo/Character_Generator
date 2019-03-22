@@ -51,11 +51,16 @@ export var util;
         });
     }
     util.arrayDelete = arrayDelete;
-    function min(collection) {
+    function min(collection, notIncludingNegative = false) {
         let min = collection[0];
         for (let x of collection) {
             if (x < min) {
                 min = x;
+            }
+        }
+        if (notIncludingNegative) {
+            if (min < 0) {
+                min = 0;
             }
         }
         return min;

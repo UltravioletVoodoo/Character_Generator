@@ -13,6 +13,7 @@ import { bonds } from "./BondSets";
 import { flaws } from "./FlawSets";
 import { generateRace } from "./GenerateRace";
 import { generateCharacterClass } from "./GenerateCharacterClass";
+import { sex } from "./Sex";
 
 
 export function generatePlayer(): Partial<Character>{
@@ -84,6 +85,7 @@ export function generatePlayer(): Partial<Character>{
 
     return {
         name: race.name,
+        sex: util.choice(sex),
         raceName: race.raceName,
         className: characterClass.className,
         alignment: util.choice(alignment),

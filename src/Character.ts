@@ -10,6 +10,7 @@ import { Tool } from "./ToolSets";
 
 export interface Character {
     name: string;
+    sex: string;
     raceName: string;
     className: string;
     alignment: string;

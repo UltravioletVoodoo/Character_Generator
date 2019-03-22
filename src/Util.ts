@@ -50,11 +50,16 @@ export namespace util{
         });
     }
 
-    export function min(collection: number[]): number{
+    export function min(collection: number[], notIncludingNegative: boolean = false): number{
         let min = collection[0]
         for(let x of collection){
             if(x < min){
                 min = x
+            }
+        }
+        if (notIncludingNegative){
+            if(min < 0){
+                min = 0
             }
         }
         return min
