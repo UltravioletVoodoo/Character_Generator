@@ -4,7 +4,7 @@ import { simpleMelee, martialMelee, simpleRanged, martialRanged, findWeapon, bar
 import { light, medium, findArmor } from "./ArmorSets"
 import { musical } from "./ToolSets";
 import { Spells, bardSpells } from "./Spells";
-import { generateSkillProfs, sumSkills } from "./Skills"
+import { sumSkills } from "./Skills"
 
 
 export function generateCharacterClass(){

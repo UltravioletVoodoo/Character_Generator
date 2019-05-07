@@ -1,5 +1,5 @@
 import { Attributes } from "./Attributes";
-import { Skills, SkillProfs } from "./Skills";
+import { Skills } from "./Skills";
 import { Range } from "./Range";
 import { Spells } from "./Spells";
 import { Colors } from "./Colors";

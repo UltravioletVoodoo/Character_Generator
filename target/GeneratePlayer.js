@@ -55,6 +55,10 @@ export function generatePlayer() {
         ...characterClass.traits ? characterClass.traits : []
     ]);
     const hp = (race.hitPoints ? race.hitPoints : 0) + (characterClass.hitDice ? characterClass.hitDice : 0) + mods.con;
+    const skillProfBonus = sumSkills([
+        race.skillProficiencies ? race.skillProficiencies : baseSkills,
+        characterClass.skillProficiencies ? characterClass.skillProficiencies : baseSkills
+    ]);
     return {
         name: race.name,
         sex: util.choice(sex),
@@ -66,13 +70,9 @@ export function generatePlayer() {
         proficiencyBonus: 2,
         skills: sumSkills([
             convertAttrToSkills(mods),
-            race.skillProficiencies ? race.skillProficiencies : baseSkills,
-            characterClass.skillProficiencies ? characterClass.skillProficiencies : baseSkills
+            skillProfBonus
         ]),
-        skillProficiencies: sumSkills([
-            race.skillProficiencies ? race.skillProficiencies : baseSkills,
-            characterClass.skillProficiencies ? characterClass.skillProficiencies : baseSkills
-        ]),
+        skillProficiencies: skillProfBonus,
         armorProficiencies: armorProfs,
         shieldProficiencies: shieldProfs,
         armor: armor,

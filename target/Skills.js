@@ -1,33 +1,3 @@
-export const baseSkillProfs = {
-    str: {
-        athletics: false
-    },
-    dex: {
-        acrobatics: false,
-        sleightOfHand: false,
-        stealth: false
-    },
-    int: {
-        arcana: false,
-        history: false,
-        investigation: false,
-        nature: false,
-        religion: false
-    },
-    wis: {
-        animalHandling: false,
-        insight: false,
-        medicine: false,
-        perception: false,
-        survival: false
-    },
-    cha: {
-        deception: false,
-        intimidation: false,
-        performance: false,
-        persuasion: false
-    }
-};
 export const baseSkills = {
     str: {
         athletics: 0,
@@ -94,75 +64,15 @@ export function sumSkills(array) {
     }
     return sum;
 }
-export function generateSkillProfs(array) {
-    let results = baseSkillProfs; //refactor with eric RIP in Peace
-    for (let prof of array) {
-        if (prof.str) {
-            if (prof.str.athletics) {
-                results.str.athletics = true;
-            }
-        }
-        if (prof.dex) {
-            if (prof.dex.acrobatics) {
-                results.dex.acrobatics = true;
-            }
-            if (prof.dex.sleightOfHand) {
-                results.dex.sleightOfHand = true;
-            }
-            if (prof.dex.stealth) {
-                results.dex.stealth = true;
-            }
-        }
-        if (prof.int) {
-            if (prof.int.arcana) {
-                results.int.arcana = true;
-            }
-            if (prof.int.history) {
-                results.int.history = true;
-            }
-            if (prof.int.investigation) {
-                results.int.investigation = true;
-            }
-            if (prof.int.nature) {
-                results.int.nature = true;
-            }
-            if (prof.int.religion) {
-                results.int.religion = true;
-            }
-        }
-        if (prof.wis) {
-            if (prof.wis.animalHandling) {
-                results.wis.animalHandling = true;
-            }
-            if (prof.wis.insight) {
-                results.wis.insight = true;
-            }
-            if (prof.wis.medicine) {
-                results.wis.medicine = true;
-            }
-            if (prof.wis.perception) {
-                results.wis.perception = true;
-            }
-            if (prof.wis.survival) {
-                results.wis.survival = true;
-            }
-        }
-        if (prof.cha) {
-            if (prof.cha.deception) {
-                results.cha.deception = true;
-            }
-            if (prof.cha.intimidation) {
-                results.cha.intimidation = true;
-            }
-            if (prof.cha.performance) {
-                results.cha.performance = true;
-            }
-            if (prof.cha.persuasion) {
-                results.cha.persuasion = true;
+export function skillProfCap(s) {
+    for (let attr of Object.keys(s)) {
+        for (let skill of Object.keys(attr)) {
+            if (s[attr][skill] > 0) {
+                s[attr][skill] == 2;
             }
         }
     }
-    return results;
+    return s;
 }
 export function convertAttrToSkills(mods) {
     return { str: {
