@@ -1,5 +1,5 @@
 import { Attributes } from "./Attributes";
-import { Skills } from "./Skills";
+import { Skills, SkillProfs } from "./Skills";
 import { Range } from "./Range";
 import { Spells } from "./Spells";
 import { Colors } from "./Colors";
@@ -18,6 +18,7 @@ export interface Character {
     attrMods: Attributes;
     proficiencyBonus: number;
     skills: Skills;
+    skillProficiencies: Skills;
     armorProficiencies: Set<Armor>;
     shieldProficiencies: Set<Armor>;
     armor: Armor;
@@ -34,7 +35,6 @@ export interface Character {
     tool: Tool;
     savingThrowProficiencies: Partial<Attributes>;
     savingThrow: Attributes;
-    skillProficiencies: Skills;
     startingGold: number;
     personalityTraits: string[];
     ideals: string[];

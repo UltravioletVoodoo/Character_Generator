@@ -97,6 +97,10 @@ export function generatePlayer(): Partial<Character>{
             race.skillProficiencies ? race.skillProficiencies : baseSkills,
             characterClass.skillProficiencies ? characterClass.skillProficiencies : baseSkills
         ]),
+        skillProficiencies: sumSkills([
+            race.skillProficiencies ? race.skillProficiencies : baseSkills,
+            characterClass.skillProficiencies ? characterClass.skillProficiencies : baseSkills
+        ]),
         armorProficiencies: armorProfs,
         shieldProficiencies: shieldProfs,
         armor: armor,

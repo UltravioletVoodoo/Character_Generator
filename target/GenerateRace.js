@@ -2,7 +2,9 @@ import { util } from "./Util";
 import { findWeapon } from "./WeaponSets";
 import { findTool } from "./ToolSets";
 import { light, medium, findArmor, } from "./ArmorSets";
-import { dragonBornNames, dwarfNames } from "./NameSets";
+import { dragonBornNames, dwarfNames, elfNames } from "./NameSets";
+import { wizardSpells } from "./Spells";
+import { languages } from "./Languages";
 export function generateRace() {
     return util.choice(races);
 }
@@ -206,4 +208,35 @@ const races = [
         toolProficiencies: new Set([util.choice([findTool("Smith's tools"), findTool("Brewer's supplies"), findTool("Mason's tools")])]),
         traits: new Set(["Darkvision", "Dwarven Resilience", "Stonecunning"]),
     },
+    {
+        raceName: "High Elf",
+        name: util.choice(elfNames),
+        attributes: {
+            str: 0,
+            dex: 2,
+            con: 0,
+            int: 1,
+            wis: 0,
+            cha: 0
+        },
+        ageRange: [100, 750],
+        speed: 30,
+        languages: new Set(["Common", "Elvish"].concat(util.choice(util.arrayDelete(util.arrayDelete(languages, "Common"), "Elvish")))),
+        weaponProficiencies: new Set([findWeapon("Longsword"), findWeapon("Shortsword"), findWeapon("Shortbow"), findWeapon("Longbow")]),
+        spells: [
+            {
+                level: 0,
+                known: 1,
+                spellList: [
+                    util.choice(wizardSpells[0].spellList)
+                ]
+            }
+        ],
+        // skillProficiencies: {
+        //     str: {
+        //         athletics: 0
+        //     }
+        // }
+        traits: new Set(["Darkvision", "Fey Ancestry", "Trance"])
+    }
 ];

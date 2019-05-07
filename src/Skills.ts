@@ -33,6 +33,68 @@ export interface Skills {
     }
 }
 
+export interface SkillProfs {
+    str: {
+        athletics: boolean;
+    }
+    dex: {
+        acrobatics: boolean;
+        sleightOfHand: boolean;
+        stealth: boolean;
+    }
+    int: {
+        arcana: boolean;
+        history: boolean;
+        investigation: boolean;
+        nature: boolean;
+        religion: boolean;
+    }
+    wis: {
+        animalHandling: boolean;
+        insight: boolean;
+        medicine: boolean;
+        perception: boolean;
+        survival: boolean;
+    }
+    cha: {
+        deception: boolean;
+        intimidation: boolean;
+        performance: boolean;
+        persuasion: boolean;
+    }
+}
+
+export const baseSkillProfs: SkillProfs = {
+    str: {
+        athletics: false
+    },
+    dex: {
+        acrobatics: false,
+        sleightOfHand: false,
+        stealth: false
+    },
+    int: {
+        arcana: false,
+        history: false,
+        investigation: false,
+        nature: false,
+        religion: false
+    },
+    wis: {
+        animalHandling: false,
+        insight: false,
+        medicine: false,
+        perception: false,
+        survival: false
+    },
+    cha: {
+        deception: false,
+        intimidation: false,
+        performance: false,
+        persuasion: false
+    }
+}
+
 export const baseSkills: Skills = {
     str: {
         athletics: 0,
@@ -112,9 +174,75 @@ export function sumSkills(array: DeepPartial<Skills>[]){
     return sum;
 }
 
-//take a number to pick, and a list of DeepPartial<Skills>. Return the choices combined
-export function chooseProf(n: number, options: DeepPartial<Skills>[]){
-    return sumSkills((util.choices(options, n)));
+export function generateSkillProfs(array: DeepPartial<SkillProfs>[]): SkillProfs{
+    let results = baseSkillProfs;//refactor with eric RIP in Peace
+    for (let prof of array){
+        if(prof.str){
+            if(prof.str.athletics){
+                results.str.athletics = true;
+            }
+        }
+        if(prof.dex){
+            if(prof.dex.acrobatics){
+                results.dex.acrobatics = true;
+            }
+            if(prof.dex.sleightOfHand){
+                results.dex.sleightOfHand = true;
+            }
+            if(prof.dex.stealth){
+                results.dex.stealth = true;
+            }
+        }
+        if(prof.int){
+            if(prof.int.arcana){
+                results.int.arcana = true;
+            }
+            if(prof.int.history){
+                results.int.history = true;
+            }
+            if(prof.int.investigation){
+                results.int.investigation = true;
+            }
+            if(prof.int.nature){
+                results.int.nature = true;
+            }
+            if(prof.int.religion){
+                results.int.religion = true;
+            }
+        }
+        if(prof.wis){
+            if(prof.wis.animalHandling){
+                results.wis.animalHandling = true;
+            }
+            if(prof.wis.insight){
+                results.wis.insight = true;
+            }
+            if(prof.wis.medicine){
+                results.wis.medicine = true;
+            }
+            if(prof.wis.perception){
+                results.wis.perception = true;
+            }
+            if(prof.wis.survival){
+                results.wis.survival = true;
+            }
+        }
+        if(prof.cha){
+            if(prof.cha.deception){
+                results.cha.deception = true;
+            }
+            if(prof.cha.intimidation){
+                results.cha.intimidation = true;   
+            }
+            if(prof.cha.performance){
+                results.cha.performance = true;
+            }
+            if(prof.cha.persuasion){
+                results.cha.persuasion = true;
+            }
+        }
+    }
+    return results;
 }
 
 export function convertAttrToSkills(mods: Attributes): Skills{
