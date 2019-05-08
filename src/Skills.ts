@@ -152,5 +152,5 @@ export function convertAttrToSkills(mods: Attributes): Skills{
         performance: mods.cha,
         persuasion: mods.cha
     }
-}
+    }
 }

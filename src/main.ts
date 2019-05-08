@@ -35,6 +35,7 @@ util.getElement("conSaving").value = player.savingThrow.con.toString();
 util.getElement("intSaving").value = player.savingThrow.int.toString();
 util.getElement("wisSaving").value = player.savingThrow.wis.toString();
 util.getElement("chaSaving").value = player.savingThrow.cha.toString();
+
 util.getElement("athletics").value = player.skills.str.athletics.toString();
 util.getElement("acrobatics").value = player.skills.dex.acrobatics.toString();
 util.getElement("sleightOfHand").value = player.skills.dex.sleightOfHand.toString();
@@ -53,6 +54,25 @@ util.getElement("deception").value = player.skills.cha.deception.toString();
 util.getElement("intimidation").value = player.skills.cha.intimidation.toString();
 util.getElement("performance").value = player.skills.cha.performance.toString();
 util.getElement("persuasion").value = player.skills.cha.persuasion.toString();
+
+util.getElement("athleticsProf").checked = player.skillProficiencies.str.athletics > 0 ? true : false;
+util.getElement("acrobaticsProf").checked = player.skillProficiencies.dex.acrobatics > 0 ? true : false;
+util.getElement("sleightOfHandProf").checked = player.skillProficiencies.dex.sleightOfHand > 0 ? true : false;
+util.getElement("stealthProf").checked = player.skillProficiencies.dex.stealth > 0 ? true : false;
+util.getElement("arcanaProf").checked = player.skillProficiencies.int.arcana > 0 ? true : false;
+util.getElement("historyProf").checked = player.skillProficiencies.int.history > 0 ? true : false;
+util.getElement("investigationProf").checked = player.skillProficiencies.int.investigation > 0 ? true : false;
+util.getElement("natureProf").checked = player.skillProficiencies.int.nature > 0 ? true : false;
+util.getElement("religionProf").checked = player.skillProficiencies.int.religion > 0 ? true : false;
+util.getElement("animalHandlingProf").checked = player.skillProficiencies.wis.animalHandling > 0 ? true : false;
+util.getElement("insightProf").checked = player.skillProficiencies.wis.insight > 0 ? true : false;
+util.getElement("medicineProf").checked = player.skillProficiencies.wis.medicine > 0 ? true : false;
+util.getElement("perceptionProf").checked = player.skillProficiencies.wis.perception > 0 ? true : false;
+util.getElement("survivalProf").checked = player.skillProficiencies.wis.survival > 0 ? true : false;
+util.getElement("deceptionProf").checked = player.skillProficiencies.cha.deception > 0 ? true : false;
+util.getElement("intimidationProf").checked = player.skillProficiencies.cha.intimidation > 0 ? true : false;
+util.getElement("performanceProf").checked = player.skillProficiencies.cha.performance > 0 ? true : false;
+util.getElement("persuasionProf").checked = player.skillProficiencies.cha.persuasion > 0 ? true : false;
 
 util.getElement("proficiencyBonus").value = player.proficiencyBonus.toString();
 util.getElement("languages").innerHTML = Array.from(player.languages).toString();
