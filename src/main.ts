@@ -127,10 +127,10 @@ if(player.shield.cost != 0){
 util.getElement("tool").value = player.tool.name;
 
 
-util.getElement("personalityTraits").value = player.personalityTraits.toString();
-util.getElement("ideals").value = player.ideals.toString();
-util.getElement("bonds").value = player.bonds.toString();
-util.getElement("flaws").value = player.flaws.toString();
+util.getElement("personalityTraits").value = player.personalityTrait;
+util.getElement("ideals").value = player.ideal;
+util.getElement("bonds").value = player.bond;
+util.getElement("flaws").value = player.flaw;
 util.getElement("traits").value = Array.from(player.traits).toString();
 
 

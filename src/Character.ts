@@ -36,10 +36,10 @@ export interface Character {
     savingThrowProficiencies: Attributes;
     savingThrow: Attributes;
     startingGold: number;
-    personalityTraits: string[];
-    ideals: string[];
-    bonds: string[];
-    flaws: string[];
+    personalityTrait: string;
+    ideal: string;
+    bond: string;
+    flaw: string;
     traits: Set<string>;
     ageRange: Range;
     age: number;
