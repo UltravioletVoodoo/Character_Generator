@@ -1,4 +1,4 @@
-import { Attributes, mergeAttributes, fleshOutAttributes } from "./Attributes";
+import { Attributes, fleshOutAttributes } from "./Attributes";
 import { util } from "./Util";
 
 export function findArmor(name: string): Armor{

@@ -17,15 +17,17 @@ export const zeroAttributes: Attributes = {
     cha: 0
 }
 
-export function mergeAttributes(a: Attributes, b: Attributes = zeroAttributes): Attributes { 
-    return {
-        str: a.str + b.str,
-        dex: a.dex + b.dex,
-        con: a.con + b.con,
-        int: a.int + b.int,
-        wis: a.wis + b.wis,
-        cha: a.cha + b.cha
+export function mergeAttributes(aList: Attributes[]): Attributes { 
+    let result = zeroAttributes;
+    for (let x of aList){
+        result.str += x.str;
+        result.dex += x.dex;
+        result.con += x.con;
+        result.int += x.int;
+        result.wis += x.wis;
+        result.cha += x.cha;
     }
+    return result
 }
 
 export function fleshOutAttributes(a: Partial<Attributes>): Attributes{

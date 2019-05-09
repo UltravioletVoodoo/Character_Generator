@@ -22,7 +22,7 @@ export function generatePlayer(): Partial<Character>{
     
     const characterClass = generateCharacterClass();
 
-    const attr = mergeAttributes(pointBuy(), race.attributes);
+    const attr = mergeAttributes([pointBuy(), race.attributes ? race.attributes : zeroAttributes]);
     const mods = generateMods(attr);
     let money = characterClass.startingGold ? characterClass.startingGold : 0;
 
@@ -125,7 +125,7 @@ export function generatePlayer(): Partial<Character>{
         toolProficiencies: toolProfs,
         tool: tool,
         savingThrowProficiencies: characterClass.savingThrowProficiencies,
-        savingThrow: mergeAttributes(characterClass.savingThrowProficiencies ? characterClass.savingThrowProficiencies : zeroAttributes, mods),
+        savingThrow: mergeAttributes([characterClass.savingThrowProficiencies ? characterClass.savingThrowProficiencies : zeroAttributes, mods]),
         startingGold: money,
         personalityTrait: util.choice(personalityTraits),
         ideal: util.choice(ideals),
