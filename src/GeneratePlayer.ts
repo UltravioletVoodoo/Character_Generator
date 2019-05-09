@@ -14,6 +14,7 @@ import { flaws } from "./FlawSets";
 import { generateRace } from "./GenerateRace";
 import { generateCharacterClass } from "./GenerateCharacterClass";
 import { sex } from "./Sex";
+import { chooseSpells } from "./Spells";
 
 
 export function generatePlayer(): Partial<Character>{
@@ -88,6 +89,13 @@ export function generatePlayer(): Partial<Character>{
         characterClass.skillProficiencies ? characterClass.skillProficiencies : baseSkills
     ]);
 
+    let spells = race.spells ? race.spells : [[],[]];
+    spells = chooseSpells(
+        characterClass.spells ? characterClass.spells : [[],[]],
+        characterClass.spellsKnown ? characterClass.spellsKnown : [0,0],
+        spells
+        );
+
     return {
         name: race.name,
         sex: util.choice(sex),
@@ -125,8 +133,6 @@ export function generatePlayer(): Partial<Character>{
         flaw: util.choice(flaws),
         traits: traits,
         age: util.choice(util.range(race.ageRange ? race.ageRange[0] : 0, race.ageRange ? race.ageRange[1] : 0)),
-        spells: characterClass.spells ? characterClass.spells : [],
-        //colors
-        //artAssets
+        spells: spells
     }
 }

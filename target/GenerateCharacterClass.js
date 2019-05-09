@@ -8,17 +8,6 @@ import { fleshOutAttributes } from "./Attributes";
 export function generateCharacterClass() {
     return util.choice(characterClass);
 }
-function chooseSpells(array) {
-    let result = [];
-    for (let x of array) {
-        result = result.concat({
-            level: x.level,
-            spellList: util.choices(x.spellList, x.known),
-            known: x.known
-        });
-    }
-    return result;
-}
 const characterClass = [
     {
         className: "Barbarian",
@@ -88,6 +77,7 @@ const characterClass = [
         ], 3)),
         startingGold: 200,
         traits: new Set(["Bardic inspiration (d6)"]),
-        spells: chooseSpells(bardSpells)
+        spells: bardSpells,
+        spellsKnown: [2, 4]
     }
 ];

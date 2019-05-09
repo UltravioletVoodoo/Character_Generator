@@ -36,9 +36,6 @@ function statBonus(a: Armor, mods: Attributes){
 }
 
 export function calculateAc(a: Armor, s: Armor, mods: Attributes): number{
-    console.log(a.ac.base)
-    console.log(statBonus(a,mods))
-    console.log(s.ac.base)
     return a.ac.base + statBonus(a, mods) + s.ac.base
 }
 

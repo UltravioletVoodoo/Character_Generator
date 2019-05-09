@@ -3,25 +3,13 @@ import { Character } from "./Character"
 import { simpleMelee, martialMelee, simpleRanged, martialRanged, findWeapon, bareFist } from "./WeaponSets"
 import { light, medium, findArmor } from "./ArmorSets"
 import { musical } from "./ToolSets";
-import { Spells, bardSpells } from "./Spells";
+import { bardSpells } from "./Spells";
 import { sumSkills } from "./Skills"
 import { fleshOutAttributes } from "./Attributes";
 
 
 export function generateCharacterClass(){
     return util.choice(characterClass);
-}
-
-function chooseSpells(array: Spells[]){
-    let result: Spells[] = [];
-    for (let x of array){
-        result = result.concat({
-            level: x.level,
-            spellList: util.choices(x.spellList, x.known),
-            known: x.known
-        });
-    }
-    return result;
 }
 
 const characterClass: Partial<Character>[] = [
@@ -98,6 +86,7 @@ const characterClass: Partial<Character>[] = [
         ],3)),
         startingGold: 200,
         traits: new Set(["Bardic inspiration (d6)"]),
-        spells: chooseSpells(bardSpells)
+        spells: bardSpells,
+        spellsKnown: [2,4]
     }
 ];

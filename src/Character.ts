@@ -1,7 +1,6 @@
 import { Attributes } from "./Attributes";
 import { Skills } from "./Skills";
 import { Range } from "./Range";
-import { Spells } from "./Spells";
 import { Colors } from "./Colors";
 import { ArtAssets } from "./ArtAssets";
 import { Weapon } from "./WeaponSets"
@@ -45,5 +44,6 @@ export interface Character {
     age: number;
     colors: Colors;
     artAssets: ArtAssets;
-    spells: Spells[];
+    spells: String[][];
+    spellsKnown: number[];
 }
