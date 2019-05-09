@@ -33,7 +33,7 @@ export interface Character {
     languages: Set<string>;
     toolProficiencies: Set<Tool>;
     tool: Tool;
-    savingThrowProficiencies: Partial<Attributes>;
+    savingThrowProficiencies: Attributes;
     savingThrow: Attributes;
     startingGold: number;
     personalityTraits: string[];

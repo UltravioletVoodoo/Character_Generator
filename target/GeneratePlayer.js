@@ -1,7 +1,7 @@
 import { util } from "./Util";
 import { alignment } from "./Alignment";
 import { pointBuy } from "./PointBuy";
-import { mergeAttributes, generateMods, fleshOutAttributes, zeroAttributes } from "./Attributes";
+import { mergeAttributes, generateMods, zeroAttributes } from "./Attributes";
 import { sumSkills, convertAttrToSkills, baseSkills } from "./Skills";
 import { chooseArmor, none, calculateAc } from "./ArmorSets";
 import { chooseWeapons } from "./WeaponSets";
@@ -88,7 +88,7 @@ export function generatePlayer() {
         toolProficiencies: toolProfs,
         tool: tool,
         savingThrowProficiencies: characterClass.savingThrowProficiencies,
-        savingThrow: mergeAttributes(fleshOutAttributes(characterClass.savingThrowProficiencies ? characterClass.savingThrowProficiencies : zeroAttributes), mods),
+        savingThrow: mergeAttributes(characterClass.savingThrowProficiencies ? characterClass.savingThrowProficiencies : zeroAttributes, mods),
         startingGold: money,
         personalityTraits: util.choices(personalityTraits, 3),
         ideals: util.choices(ideals, 3),

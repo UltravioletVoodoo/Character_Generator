@@ -117,7 +117,7 @@ export function generatePlayer(): Partial<Character>{
         toolProficiencies: toolProfs,
         tool: tool,
         savingThrowProficiencies: characterClass.savingThrowProficiencies,
-        savingThrow: mergeAttributes(fleshOutAttributes(characterClass.savingThrowProficiencies ? characterClass.savingThrowProficiencies : zeroAttributes), mods),
+        savingThrow: mergeAttributes(characterClass.savingThrowProficiencies ? characterClass.savingThrowProficiencies : zeroAttributes, mods),
         startingGold: money,
         personalityTraits: util.choices(personalityTraits, 3),
         ideals: util.choices(ideals, 3),

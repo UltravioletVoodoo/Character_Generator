@@ -5,6 +5,7 @@ import { light, medium, findArmor } from "./ArmorSets"
 import { musical } from "./ToolSets";
 import { Spells, bardSpells } from "./Spells";
 import { sumSkills } from "./Skills"
+import { fleshOutAttributes } from "./Attributes";
 
 
 export function generateCharacterClass(){
@@ -41,10 +42,10 @@ const characterClass: Partial<Character>[] = [
             .concat(bareFist)
             ),
         toolProficiencies: new Set(),
-        savingThrowProficiencies: {
+        savingThrowProficiencies: fleshOutAttributes({
             str: 2,
             con: 2,
-        },
+        }),
         skillProficiencies: sumSkills(util.choices([
             {wis: {animalHandling: 2}},
             {str: {athletics: 2}},
@@ -71,10 +72,10 @@ const characterClass: Partial<Character>[] = [
             .concat(bareFist)
             ),
         toolProficiencies: new Set(util.choices(musical, 3)),
-        savingThrowProficiencies: {
+        savingThrowProficiencies: fleshOutAttributes({
             dex: 2,
             cha: 2
-        },
+        }),
         skillProficiencies: sumSkills(util.choices([
             {str: {athletics: 2}},
             {dex: {acrobatics: 2}},

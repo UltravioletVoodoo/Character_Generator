@@ -36,6 +36,13 @@ util.getElement("intSaving").value = player.savingThrow.int.toString();
 util.getElement("wisSaving").value = player.savingThrow.wis.toString();
 util.getElement("chaSaving").value = player.savingThrow.cha.toString();
 
+util.getElement("strSaveProf").checked = player.savingThrowProficiencies.str > 0 ? true : false;
+util.getElement("dexSaveProf").checked = player.savingThrowProficiencies.dex > 0 ? true : false;
+util.getElement("conSaveProf").checked = player.savingThrowProficiencies.con > 0 ? true : false;
+util.getElement("intSaveProf").checked = player.savingThrowProficiencies.int > 0 ? true : false;
+util.getElement("wisSaveProf").checked = player.savingThrowProficiencies.wis > 0 ? true : false;
+util.getElement("chaSaveProf").checked = player.savingThrowProficiencies.cha > 0 ? true : false;
+
 util.getElement("athletics").value = player.skills.str.athletics.toString();
 util.getElement("acrobatics").value = player.skills.dex.acrobatics.toString();
 util.getElement("sleightOfHand").value = player.skills.dex.sleightOfHand.toString();
