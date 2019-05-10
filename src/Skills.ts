@@ -65,6 +65,27 @@ export const baseSkills: Skills = {
 
 }
 
+export const allSkillPartialProfs: DeepPartial<Skills>[] = [
+    {str: {athletics: 2}},
+    {dex: {acrobatics: 2}},
+    {dex: {sleightOfHand: 2}},
+    {dex: {stealth: 2}},
+    {int: {arcana: 2}},
+    {int: {history: 2}},
+    {int: {investigation: 2}},
+    {int: {nature: 2}},
+    {int: {religion: 2}},
+    {wis: {animalHandling: 2}},
+    {wis: {insight: 2}},
+    {wis: {medicine: 2}},
+    {wis: {perception: 2}},
+    {wis: {survival: 2}},
+    {cha: {deception: 2}},
+    {cha: {intimidation: 2}},
+    {cha: {performance: 2}},
+    {cha: {persuasion: 2}},
+]
+
 //Define the DeepPartial
 export type DeepPartial<T> = {
     [P in keyof T]?: T[P] extends Array<infer U>

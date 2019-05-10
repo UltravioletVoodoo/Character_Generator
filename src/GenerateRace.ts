@@ -6,7 +6,7 @@ import { light, medium, findArmor, } from "./ArmorSets"
 import { dragonBornNames, dwarfNames, elfNames } from "./NameSets"
 import { wizardSpells, chooseSpells } from "./Spells";
 import { languages } from "./Languages";
-import { sumSkills } from "./Skills";
+import { sumSkills, allSkillPartialProfs } from "./Skills";
 import { mergeAttributes, fleshOutAttributes } from "./Attributes";
 
 export function generateRace(){
@@ -328,8 +328,85 @@ const races: Partial<Character>[] = [
         ageRange: [20, 180],
         speed: 30,
         traits: new Set(["Darkvision", "Fey Ancestry", "Skill Versatility"]),
-        skillProficiencies: sumSkills([{wis: {perception: 2}}]),
+        skillProficiencies: sumSkills(util.choices(allSkillPartialProfs, 2)),
+        languages: new Set(["Common", "Elvish"].concat(util.choice(util.arrayDelete(util.arrayDelete(languages, "Common"), "Elvish"))))
+    },
+    {
+        raceName: "Half-Orc",
+        name: util.choice(halfOrcNames),
+        attributes: {
+            str: 2,
+            dex: 0,
+            con: 1,
+            int: 0,
+            wis: 0,
+            cha: 0
+        },
+        ageRange: [14,75],
+        speed: 30,
+        traits: new Set(["Darkvision", "Relentless Endurance", "Savage Attacks"]),
+        skillProficiencies: sumSkills([{cha: {intimidation: 2}}]),
+        languages: new Set(["Common", "Orc"])
+    },
+    {
+        raceName: "LightFoot Halfling",
+        name: util.choice(halflingNames),
+        attributes: {
+            str: 0,
+            dex: 2,
+            con: 0,
+            int: 0,
+            wis: 0,
+            cha: 1
+        },
+        ageRange: [20,150],
+        speed: 25,
+        traits: new Set(["Lucky", "Brave", "Nimble", "Naturally Stealthy"]),
+        languages: new Set(["Common", "Halfling"])
+    },
+    {
+        raceName: "Stout Halfling",
+        name: util.choice(halflingNames),
+        attributes: {
+            str: 0,
+            dex: 2,
+            con: 1,
+            int: 0,
+            wis: 0,
+            cha: 0
+        },
+        ageRange: [20,150],
+        speed: 25,
+        traits: new Set(["Lucky", "Brave", "Nimble", "Stout Resilience"]),
+        languages: new Set(["Common", "Halfling"])
+    },
+    {
+        raceName: "Human",
+        name: util.choice(humanNames),
+        attributes: {
+            str: 1,
+            dex: 1,
+            con: 1,
+            int: 1,
+            wis: 1,
+            cha: 1
+        },
+        ageRange: [18, 80],
+        speed: 30,
+        languages: new Set(["Common"].concat(util.choice(util.arrayDelete(languages, "Common"))))
+    },
+    {
+        raceName: "Tiefling",
+        name: util.choice(tieflingNames),
+        attributes:
+                mergeAttributes([
+                fleshOutAttributes({int:1}),
+                util.choice([fleshOutAttributes({dex:2}),fleshOutAttributes({cha:2})])
+                ]),
+        ageRange: [18,100],
+        speed: 30,
+        traits: new Set(["Darkvision", "Hellish Resistance", "Infernal Legacy"]),
+        languages: new Set(["Common", "Infernal"]),
+        spells: [["Thaumaturgy"],[]]
     }
     ];
-
-    // {str: 1}, {dex: 1}, {con: 1}, {int: 1}, {wis: 1}
