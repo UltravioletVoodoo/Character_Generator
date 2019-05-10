@@ -15,10 +15,13 @@ import { generateRace } from "./GenerateRace";
 import { generateCharacterClass } from "./GenerateCharacterClass";
 import { sex } from "./Sex";
 import { chooseSpells } from "./Spells";
+import { chooseName } from "./NameSets";
 
 
 export function generatePlayer(): Partial<Character>{
+
     const race = generateRace();
+    const playerSex = util.choice(sex)
     
     const characterClass = generateCharacterClass();
 
@@ -97,8 +100,8 @@ export function generatePlayer(): Partial<Character>{
         );
 
     return {
-        name: race.name,
-        sex: util.choice(sex),
+        name: chooseName(race.nameSet ? race.nameSet : [[],[],[]], playerSex),
+        sex: playerSex,
         raceName: race.raceName,
         className: characterClass.className,
         alignment: util.choice(alignment),

@@ -28,6 +28,26 @@ export const baseSkills = {
         persuasion: 0
     }
 };
+export const allSkillPartialProfs = [
+    { str: { athletics: 2 } },
+    { dex: { acrobatics: 2 } },
+    { dex: { sleightOfHand: 2 } },
+    { dex: { stealth: 2 } },
+    { int: { arcana: 2 } },
+    { int: { history: 2 } },
+    { int: { investigation: 2 } },
+    { int: { nature: 2 } },
+    { int: { religion: 2 } },
+    { wis: { animalHandling: 2 } },
+    { wis: { insight: 2 } },
+    { wis: { medicine: 2 } },
+    { wis: { perception: 2 } },
+    { wis: { survival: 2 } },
+    { cha: { deception: 2 } },
+    { cha: { intimidation: 2 } },
+    { cha: { performance: 2 } },
+    { cha: { persuasion: 2 } },
+];
 //take 2 DeepPartial<Skills>, return them combined into 1 DeepPartial<Skills>
 function addSkills(item1, item2) {
     //implementation

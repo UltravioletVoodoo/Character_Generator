@@ -14,10 +14,12 @@ import { generateRace } from "./GenerateRace";
 import { generateCharacterClass } from "./GenerateCharacterClass";
 import { sex } from "./Sex";
 import { chooseSpells } from "./Spells";
+import { chooseName } from "./NameSets";
 export function generatePlayer() {
     const race = generateRace();
+    const playerSex = util.choice(sex);
     const characterClass = generateCharacterClass();
-    const attr = mergeAttributes(pointBuy(), race.attributes);
+    const attr = mergeAttributes([pointBuy(), race.attributes ? race.attributes : zeroAttributes]);
     const mods = generateMods(attr);
     let money = characterClass.startingGold ? characterClass.startingGold : 0;
     const weaponProfs = new Set([
@@ -60,12 +62,11 @@ export function generatePlayer() {
         race.skillProficiencies ? race.skillProficiencies : baseSkills,
         characterClass.skillProficiencies ? characterClass.skillProficiencies : baseSkills
     ]);
-    console.log("GeneratePlayer Call");
     let spells = race.spells ? race.spells : [[], []];
     spells = chooseSpells(characterClass.spells ? characterClass.spells : [[], []], characterClass.spellsKnown ? characterClass.spellsKnown : [0, 0], spells);
     return {
-        name: race.name,
-        sex: util.choice(sex),
+        name: chooseName(race.nameSet ? race.nameSet : [[], [], []], playerSex),
+        sex: playerSex,
         raceName: race.raceName,
         className: characterClass.className,
         alignment: util.choice(alignment),
@@ -92,7 +93,7 @@ export function generatePlayer() {
         toolProficiencies: toolProfs,
         tool: tool,
         savingThrowProficiencies: characterClass.savingThrowProficiencies,
-        savingThrow: mergeAttributes(characterClass.savingThrowProficiencies ? characterClass.savingThrowProficiencies : zeroAttributes, mods),
+        savingThrow: mergeAttributes([characterClass.savingThrowProficiencies ? characterClass.savingThrowProficiencies : zeroAttributes, mods]),
         startingGold: money,
         personalityTrait: util.choice(personalityTraits),
         ideal: util.choice(ideals),

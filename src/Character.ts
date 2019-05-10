@@ -9,6 +9,7 @@ import { Tool } from "./ToolSets";
 
 export interface Character {
     name: string;
+    nameSet: string[][];
     sex: string;
     raceName: string;
     className: string;
