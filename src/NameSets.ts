@@ -11,328 +11,118 @@ export function chooseName(nameSet: string[][], sex: string): (string){
     return util.choice(firstNames) + " " + util.choice(nameSet[2])
 }
 
+
 export const dragonBornNames: string[][] = [
     [
-    "Nakul",
-    "Wulwunax",
-    "Otiythas",
-    "Morvarax",
-    "Faerxan",
-    "Krivjhan",
-    "Eragrax",
-    "Krivroth",
-    "Wuvarax",
-    "Docrath",
-    "Ravoroth",
-    "Wraseth",
-    "Worqiroth",
-    "Balxan",
-    "Xarvarax",
-    "Faerjurn",
-    "Tazlin",
-    "Sulprax",
-    "Wralin",
-    "Gherash",
-    "Zrarinn",
-    "Iorfarn",
-    "Lumiskan",
-    "Durbarum",
-    "Yorzavur",
-    "Rasqiroth",
-    "Greyax",
-    "Goraxan",
-    "Zragar",
-    "Rasmorn",
-    "Wrakris",
-    "Ravobroth",
-    "Paqull",
-    "Caerfras",
-    "Zrafarn",
-    "Otivull",
-    "Beljhan",
-    "Jaryax",
-    "Vorjurn",
-    "Narghull",
-    "Belziros",
-    "Qelnaar",
-    "Hetrin",
-    "Frokris",
-    "Kilskan",
-    "Lorqiroth",
-    "Yorkax",
-    "Arkul",
-    "Hiskan",
-    "Goralin",
-    "Rhogar",
-    "Yorkris",
-    "Jinwunax",
-    "Nargrax",
-    "Medmorn",
-    "Tazwunax",
-    "Jinrash",
-    "Dolin",
-    "Neslasar",
-    "Kilyax",
-    "Naqrin",
-    "Worciar",
-    "Drakax",
-    "Pazire",
-    "Hixan",
-    "Orlaskan",
-    "Calugar",
-    "Paskan",
-    "Belcrath",
-    "Troudorim",
-    "Ravofarn",
-    "Caerlin",
-    "Durwarum",
-    "Wulcrath",
-    "Faerqiroth",
-    "Nakax",
-    "Trouqiroth",
-    "Qelqull",
-    "Kilziros",
-    "Faersashi",
-    "Marsashi",
-    "Suljhan",
-    "Alidorim",
-    "Lumisashi",
-    "Brensashi",
-    "Xarxan",
-    "Wulvarax",
-    "Balvull",
-    "Alixan",
-    "Belkax",
-    "Gorahadur",
-    "Zraziros",
-    "Shaciar",
-    "Zorfras",
-    "Narjhan",
-    "Zraqiroth",
-    "Uroxan",
-    "Drazavur",
-    "Xargrax",
-    "Worzavur"
+    "m-Dragon-Fn"
     ],
     [
-    "Nysyassa",
-    "Sosira",
-    "Erlipatys",
-    "Valqorel",
-    "Lilofyire",
-    "Therbis",
-    "Cristhyra",
-    "Kanorae",
-    "Valmeila",
-    "Lorarinn",
-    "Zofshann",
-    "Eshsira",
-    "Jovyre",
-    "Arihime",
-    "Malzys",
-    "Crismyse",
-    "Nagil",
-    "Suwophyl",
-    "Kahymm",
-    "Orinorae",
-    "Grigil",
-    "Rashifyire",
-    "Zofsira",
-    "Liloxiris",
-    "Erlivyre",
-    "Yavyre",
-    "Qicys",
-    "Perthibra",
-    "Drysthibra",
-    "Qimeila",
-    "Drysshann",
-    "Grisira",
-    "Nysmeila",
-    "Wrawophyl",
-    "Eshriel",
-    "Qifyire",
-    "Komeila",
-    "Belbirith",
-    "Darina",
-    "Kohime",
-    "Valpatys",
-    "Mibirith",
-    "Uriqorel",
-    "Irlyvys",
-    "Kelshann",
-    "Fennys",
-    "Irlyrish",
-    "Koxora",
-    "Xywophyl",
-    "Lilorann",
-    "Sufyire",
-    "Zofgwen",
-    "Halyassa",
-    "Arizys",
-    "Gurgwen",
-    "Aqwen",
-    "Zenbis",
-    "Quilthibra",
-    "Therdalynn",
-    "Naliann",
-    "Theryassa",
-    "Quilshann",
-    "Erlirinn",
-    "Caliann",
-    "Yrqwen",
-    "Neszys",
-    "Nesgwen",
-    "Erlisira",
-    "Sobith",
-    "Eshshann",
-    "Zenbis",
-    "Wrarina",
-    "Vyrabith",
-    "Thagwen",
-    "Loralarys",
-    "Sogwen",
-    "Belnorae",
-    "Cabirith",
-    "Xiszys",
-    "Xyriel",
-    "Yrliann",
-    "Vyrafyire",
-    "Zofthibra",
-    "Ushibith",
-    "Faelarys",
-    "Zenpora",
-    "Wrathibra",
-    "Obis",
-    "Lorariel",
-    "Orinorae",
-    "Keldrish",
-    "Nesbis",
-    "Jocoria",
-    "Belvyre",
-    "Criswophyl",
-    "Liloyassa",
-    "Suliann",
-    "Iriezys",
-    "Orishann",
-    "Faepatys"
+    "f-Dragon-Fn"
     ],
     [
-    "Crincacmir",
-    "Yalduash",
-    "Uaxal",
-    "Kruamrith",
-    "Kloldrindead",
-    "Creastatorrun",
-    "Clerrhon",
-    "Nyuuldus",
-    "Axor",
-    "Thacodimin",
-    "Voccith",
-    "Numbucmid",
-    "Folmac",
-    "Lualrur",
-    "Amruajad",
-    "Klealkiar",
-    "Klichuuth",
-    "Cralthud",
-    "Temmudak",
-    "Amreashtur",
-    "Foldraankonid",
-    "Krephuarid",
-    "Carek",
-    "Narnajir",
-    "Karrhish",
-    "Certhejaal",
-    "Cechikel",
-    "Ucer",
-    "Yumputhorguun",
-    "Tuaphek",
-    "Dimpeadulus",
-    "Shornash",
-    "Ernanthijar",
-    "Myemrik",
-    "Yelxidak",
-    "Gaarthar",
-    "Myimrin",
-    "Gilxekilluc",
-    "Onxidelith",
-    "Kiphir",
-    "Crancar",
-    "Iccuuc",
-    "Krialras",
-    "Yorthus",
-    "Urrhaan",
-    "Shaammasijic",
-    "Drarnok",
-    "Malxaan",
-    "Kluapor",
-    "Nyombukmul",
-    "Faaldintharrun",
-    "Uuxirirgek",
-    "Maccal",
-    "Mempal",
-    "Unxas",
-    "Tirdunkundak",
-    "Diltheth",
-    "Merdijad",
-    "Kliphith",
-    "Delmokmidoc",
-    "Gamticosh",
-    "Embiacnirgir",
-    "Cemtun",
-    "Nemmiashkmek",
-    "Enxendrek",
-    "Tialtetar",
-    "Axic",
-    "Narjun",
-    "Gearthashkmec",
-    "Dialruc",
-    "Yichojek",
-    "Cloldrajur",
-    "Uardin",
-    "Clecanendek",
-    "Pruncenshtor",
-    "Shuanxur",
-    "Tarrhunthergesh",
-    "Klasteash",
-    "Fildoker",
-    "Ildad",
-    "Irnealas",
-    "Klampad",
-    "Shimpiduk",
-    "Klinxankiar",
-    "Taarrhileallac",
-    "Althadin",
-    "Enkenthuad",
-    "Erostumak",
-    "Sheccac",
-    "Oldak",
-    "Kambun",
-    "Tacaad",
-    "Thaamtekelud",
-    "Dompin",
-    "Tharrhushkmenir",
-    "Claammedamuur",
-    "Craldesuudul",
-    "Dustec",
-    "Kricetol",
-    "Liltutes"
+    "Dragon-Ln"
     ],
-]
+];
+
 
 export const dwarfNames: string[][] = [
     [
-
+        "m-Dwarf-Fn"
     ],
     [
-
+        "f-Dwarf-Fn"
     ],
     [
-        
+        "Dwarf-Ln"
     ]
-]
+];
 
-export const elfNames: string[] = [
-    "elf test1",
-    "elf test2"
-]
+
+export const elfNames: string[][] = [
+    [
+        "m-Elf-Fn"
+    ],
+    [
+        "f-Elf-Fn"
+    ],
+    [
+        "Elf-Ln"
+    ]
+];
+
+export const gnomeNames: string[][] = [
+    [
+        "m-gnome-Fn"
+    ],
+    [
+        "f-gnome-Fn"
+    ],
+    [
+        "gnome-Ln"
+    ]
+];
+
+
+export const halfElfNames: string[][] = [
+    [
+        "m-halfElf-Fn"
+    ],
+    [
+        "f-halfElf-Fn"
+    ],
+    [
+        "halfElf-Ln"
+    ]
+];
+
+
+export const halfOrcNames: string[][] = [
+    [
+        "m-halfOrc-Fn"
+    ],
+    [
+        "f-halfOrc-Fn"
+    ],
+    [
+        "halfOrc-Ln"
+    ]
+];
+
+
+export const halflingNames: string[][] = [
+    [
+        "m-halfling-Fn"
+    ],
+    [
+        "f-halfling-Fn"
+    ],
+    [
+        "halfling-Ln"
+    ]
+];
+
+
+export const humanNames: string[][] = [
+    [
+        "m-human-Fn"
+    ],
+    [
+        "f-human-Fn"
+    ],
+    [
+        "human-Ln"
+    ]
+];
+
+
+export const tieflingNames: string[][] = [
+    [
+        "m-tiefling-Fn"
+    ],
+    [
+        "f-tiefling-Fn"
+    ],
+    [
+        "tiefling-Ln"
+    ]
+];
