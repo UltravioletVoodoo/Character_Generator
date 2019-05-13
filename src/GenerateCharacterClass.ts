@@ -88,5 +88,35 @@ const characterClass: Partial<Character>[] = [
         traits: new Set(["Bardic inspiration (d6)"]),
         spells: bardSpells,
         spellsKnown: [2,4]
-    }
+    }//,
+    // {
+    //     className: "Cleric",
+    // },
+    // {
+    //     className: "Druid"
+    // },
+    // {
+    //     className: "Fighter"
+    // },
+    // {
+    //     className: "Monk"
+    // },
+    // {
+    //     className: "Paladin"
+    // },
+    // {
+    //     className: "Ranger"
+    // },
+    // {
+    //     className: "Rogue"
+    // },
+    // {
+    //     className: "Sorcerer"
+    // },
+    // {
+    //     className: "Warlock"
+    // },
+    // {
+    //     className: "Wizard"
+    // }
 ];
