@@ -2,7 +2,6 @@ import { util } from "./Util";
 
 export function chooseName(nameSet: string[][], sex: string): (string){
     let firstNames: string[] = []
-    console.log(sex);
     if (sex === "Male"){
         firstNames = nameSet[0];
     } else{

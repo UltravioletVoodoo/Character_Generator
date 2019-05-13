@@ -7,7 +7,7 @@ export const zeroAttributes = {
     cha: 0
 };
 export function mergeAttributes(aList) {
-    let result = zeroAttributes;
+    let result = { ...zeroAttributes };
     for (let x of aList) {
         result.str += x.str;
         result.dex += x.dex;

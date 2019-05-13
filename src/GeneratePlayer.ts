@@ -27,6 +27,7 @@ export function generatePlayer(): Partial<Character>{
 
     const attr = mergeAttributes([pointBuy(), race.attributes ? race.attributes : zeroAttributes]);
     const mods = generateMods(attr);
+    
     let money = characterClass.startingGold ? characterClass.startingGold : 0;
 
     const weaponProfs = new Set([

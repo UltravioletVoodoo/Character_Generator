@@ -1,7 +1,6 @@
 import { util } from "./Util";
 export function chooseName(nameSet, sex) {
     let firstNames = [];
-    console.log(sex);
     if (sex === "Male") {
         firstNames = nameSet[0];
     }
