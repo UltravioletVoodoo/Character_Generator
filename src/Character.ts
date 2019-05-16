@@ -1,50 +1,91 @@
-import { Attributes } from "./Attributes";
-import { Skills } from "./Skills";
-import { Range } from "./Range";
-import { Colors } from "./Colors";
-import { ArtAssets } from "./ArtAssets";
-import { Weapon } from "./WeaponSets"
-import { Armor } from "./ArmorSets";
+import { Attributes, zeroAttributes } from "./Attributes";
+import { Skills, zeroSkills } from "./Skills";
 import { Tool } from "./ToolSets";
+import { Weapon } from "./WeaponSets";
+import { Armor, blankArmor } from "./ArmorSets";
+import { addCharacterClassFeatures } from "./CharacterClass"
+import { addRaceFeatures } from "./Race";
 
 export interface Character {
     name: string;
-    nameSet: string[][];
-    sex: string;
-    raceName: string;
     className: string;
+    level: 1;
+    raceName: string;
     alignment: string;
+    sex: string;
     attributes: Attributes;
     attrMods: Attributes;
-    proficiencyBonus: number;
+    savingThrows: Attributes;
+    savingThrowProfs: Attributes;
     skills: Skills;
-    skillProficiencies: Skills;
-    armorProficiencies: Set<Armor>;
-    shieldProficiencies: Set<Armor>;
-    armor: Armor;
-    shield: Armor;
+    skillProfs: Skills;
+    proficiencyBonus: 2;
+    languages: string[];
+    toolProfs: Tool[];
     ac: number;
-    weaponProficiencies: Set<Weapon>;
-    weapons: Weapon[];
     initiative: number;
     speed: number;
     hitDice: number;
-    hitPoints: number;
-    languages: Set<string>;
-    toolProficiencies: Set<Tool>;
-    tool: Tool;
-    savingThrowProficiencies: Attributes;
-    savingThrow: Attributes;
+    hp: number;
+    weapons: Weapon[];
+    armor: Armor;
     startingGold: number;
+    tools: Tool[];
     personalityTrait: string;
     ideal: string;
     bond: string;
     flaw: string;
-    traits: Set<string>;
-    ageRange: Range;
-    age: number;
-    colors: Colors;
-    artAssets: ArtAssets;
-    spells: String[][];
-    spellsKnown: number[];
+    traits: string[];
+    level0Spells: string[];
+    level1Spells: string[];
+}
+
+export const blankCharacter: Character = {
+    name: "",
+    className: "",
+    level: 1,
+    raceName: "",
+    alignment: "",
+    sex: "",
+    attributes: zeroAttributes,
+    attrMods: zeroAttributes,
+    savingThrows: zeroAttributes,
+    savingThrowProfs: zeroAttributes,
+    skills: zeroSkills,
+    skillProfs: zeroSkills,
+    proficiencyBonus: 2,
+    languages: [],
+    toolProfs: [],
+    ac: 0,
+    initiative: 0,
+    speed: 0,
+    hitDice: 0,
+    hp: 0,
+    weapons: [],
+    armor: blankArmor,
+    startingGold: 0,
+    tools: [],
+    personalityTrait: "",
+    ideal: "",
+    bond: "",
+    flaw: "",
+    traits: [],
+    level0Spells: [],
+    level1Spells: [],
+}
+
+
+// Generate the character in its entirety
+export function generateCharacter() {
+
+    // Start with a blank slate in the correct format
+    let character = blankCharacter;
+
+    // Add class features
+    character = addCharacterClassFeatures(character);
+
+    // Add race features
+    character = addRaceFeatures(character);
+
+    return character;
 }

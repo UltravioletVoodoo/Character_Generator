@@ -33,7 +33,7 @@ export interface Skills {
     }
 }
 
-export const baseSkills: Skills = {
+export const zeroSkills: Skills = {
     str: {
         athletics: 0,
     },
@@ -98,7 +98,7 @@ export type DeepPartial<T> = {
 //take 2 DeepPartial<Skills>, return them combined into 1 DeepPartial<Skills>
 function addSkills(item1: DeepPartial<Skills>, item2: DeepPartial<Skills>): Skills{
     //implementation
-    const skills: any = { ...baseSkills };
+    const skills: any = { ...zeroSkills };
     if (!item1) {
         throw 'item1 is null!';
     }
@@ -126,7 +126,7 @@ function addSkills(item1: DeepPartial<Skills>, item2: DeepPartial<Skills>): Skil
 
 //take an array of DeepPartial<Skills>, return them all combined
 export function sumSkills(array: DeepPartial<Skills>[]){
-    let sum = baseSkills;
+    let sum = zeroSkills;
     while (array.length > 0){
         sum = addSkills(sum, array.pop() as DeepPartial<Skills>);
     }

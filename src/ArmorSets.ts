@@ -9,7 +9,7 @@ export function findArmor(name: string): Armor{
             }
         }
     }
-    return none
+    return blankArmor
 }
 
 export function chooseArmor(list: Armor[], money: number): Armor{
@@ -22,7 +22,7 @@ export function chooseArmor(list: Armor[], money: number): Armor{
     if(newList.length > 0){
         return util.choice(newList);
     }
-    return none;
+    return blankArmor;
 }
 
 function statBonus(a: Armor, mods: Attributes){
@@ -53,7 +53,7 @@ export interface Armor {
     weight: number;
 }
 
-export const none: Armor = {
+export const blankArmor: Armor = {
     name: "",
     cost: 0,
     ac: {

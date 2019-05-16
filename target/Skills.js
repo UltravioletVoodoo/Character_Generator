@@ -1,4 +1,4 @@
-export const baseSkills = {
+export const zeroSkills = {
     str: {
         athletics: 0,
     },
@@ -51,7 +51,7 @@ export const allSkillPartialProfs = [
 //take 2 DeepPartial<Skills>, return them combined into 1 DeepPartial<Skills>
 function addSkills(item1, item2) {
     //implementation
-    const skills = { ...baseSkills };
+    const skills = { ...zeroSkills };
     if (!item1) {
         throw 'item1 is null!';
     }
@@ -78,7 +78,7 @@ function addSkills(item1, item2) {
 }
 //take an array of DeepPartial<Skills>, return them all combined
 export function sumSkills(array) {
-    let sum = baseSkills;
+    let sum = zeroSkills;
     while (array.length > 0) {
         sum = addSkills(sum, array.pop());
     }

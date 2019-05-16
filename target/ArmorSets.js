@@ -8,7 +8,7 @@ export function findArmor(name) {
             }
         }
     }
-    return none;
+    return blankArmor;
 }
 export function chooseArmor(list, money) {
     let newList = [];
@@ -20,7 +20,7 @@ export function chooseArmor(list, money) {
     if (newList.length > 0) {
         return util.choice(newList);
     }
-    return none;
+    return blankArmor;
 }
 function statBonus(a, mods) {
     let caps = fleshOutAttributes(a.ac.caps);
@@ -34,7 +34,7 @@ function statBonus(a, mods) {
 export function calculateAc(a, s, mods) {
     return a.ac.base + statBonus(a, mods) + s.ac.base;
 }
-export const none = {
+export const blankArmor = {
     name: "",
     cost: 0,
     ac: {
