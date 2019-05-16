@@ -201,4 +201,9 @@ export const miscTools: Tool[] = [
         cost: 25,
         weight: 1
     },
+    {
+        name: "Herbalism kit",
+        cost: 5,
+        weight: 3
+    }
 ];

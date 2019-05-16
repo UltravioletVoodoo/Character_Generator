@@ -2,8 +2,8 @@ import { util } from "./Util";
 import { Character } from "./Character"
 import { simpleMelee, martialMelee, simpleRanged, martialRanged, findWeapon, bareFist } from "./WeaponSets"
 import { light, medium, findArmor } from "./ArmorSets"
-import { musical } from "./ToolSets";
-import { bardSpells } from "./Spells";
+import { findTool, musical } from "./ToolSets";
+import { bardSpells, clericSpells, druidSpells } from "./Spells";
 import { sumSkills } from "./Skills"
 import { fleshOutAttributes } from "./Attributes";
 
@@ -88,35 +88,99 @@ const characterClass: Partial<Character>[] = [
         traits: new Set(["Bardic inspiration (d6)"]),
         spells: bardSpells,
         spellsKnown: [2,4]
-    }//,
+    },
     // {
     //     className: "Cleric",
+    //     hitDice: 8,
+    //     armorProficiencies: new Set(light.concat(medium)),
+    //     shieldProficiencies: new Set([
+    //         findArmor("Buckler")]
+    //         .concat(findArmor("Medium Shield"))
+    //         ),
+    //     weaponProficiencies: new Set(simpleMelee),
+    //     savingThrowProficiencies: fleshOutAttributes({
+    //         wis: 2,
+    //         cha: 2
+    //     }),
+    //     skillProficiencies: sumSkills(util.choices([
+    //         {int: {history: 2}},
+    //         {int: {religion: 2}},
+    //         {wis: {insight: 2}},
+    //         {wis: {medicine: 2}},
+    //         {cha: {persuasion: 2}}
+    //     ], 2)),
+    //     startingGold: 200,
+    //     spells: clericSpells,
+    //     spellsKnown: [3,2]
+    //     //STILL NEEDS TO DEAL WITH CLERIC DOMAINS SOMEHOW
     // },
-    // {
-    //     className: "Druid"
-    // },
-    // {
-    //     className: "Fighter"
-    // },
-    // {
-    //     className: "Monk"
-    // },
-    // {
-    //     className: "Paladin"
-    // },
-    // {
-    //     className: "Ranger"
-    // },
-    // {
-    //     className: "Rogue"
-    // },
-    // {
-    //     className: "Sorcerer"
-    // },
-    // {
-    //     className: "Warlock"
-    // },
-    // {
-    //     className: "Wizard"
-    // }
+    {
+        className: "Druid",
+        hitDice: 8,
+        armorProficiencies: new Set(light.concat(medium)),
+        shieldProficiencies: new Set([findArmor("Buckler")].concat(findArmor("Medium shield"))),
+        weaponProficiencies: new Set(
+            [findWeapon("Club")]
+            .concat(findWeapon("Dagger"))
+            .concat(findWeapon("Dart"))
+            .concat(findWeapon("Javelin"))
+            .concat(findWeapon("Mace"))
+            .concat(findWeapon("Quarterstaff"))
+            .concat(findWeapon("Scimitar"))
+            .concat(findWeapon("Sickle"))
+            .concat(findWeapon("Sling"))
+            .concat(findWeapon("Spear"))
+            ),
+        toolProficiencies: new Set([findTool("Herbalism kit")]),
+        savingThrowProficiencies: fleshOutAttributes({
+            int: 2,
+            wis: 2
+        }),
+        skillProficiencies: sumSkills(util.choices([
+            {int: {arcana: 2}},
+            {int: {nature: 2}},
+            {int: {religion: 2}},
+            {wis: {animalHandling: 2}},
+            {wis: {insight: 2}},
+            {wis: {medicine: 2}},
+            {wis: {perception: 2}},
+            {wis: {survival: 2}}
+        ], 2)),
+        traits: new Set(["Druidic"]),
+        spells: druidSpells,
+        spellsKnown: [2,2],
+        startingGold: 80,
+    },
+    {
+        className: "Fighter",
+        startingGold: 200,
+    },
+    {
+        className: "Monk",
+        startingGold: 20,
+    },
+    {
+        className: "Paladin",
+        startingGold: 200,
+    },
+    {
+        className: "Ranger",
+        startingGold: 200,
+    },
+    {
+        className: "Rogue",
+        startingGold: 160,
+    },
+    {
+        className: "Sorcerer",
+        startingGold: 120,
+    },
+    {
+        className: "Warlock",
+        startingGold: 160,
+    },
+    {
+        className: "Wizard",
+        startingGold: 160,
+    }
 ];
