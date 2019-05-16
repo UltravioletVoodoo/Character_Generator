@@ -73,5 +73,6 @@ export function generateCharacter() {
     character = addRaceFeatures(character);
     // Add class features
     character = addCharacterClassFeatures(character);
+    // Return the finalized character
     return character;
 }

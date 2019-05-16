@@ -1,15 +1,17 @@
 export var util;
 (function (util) {
-    function choice(collection) {
+    function choice(collection, exemptions = []) {
+        collection = arrayDelete(collection, exemptions);
         const index = Math.floor(Math.random() * collection.length);
         return collection[index];
     }
     util.choice = choice;
-    function choices(collection, n) {
+    function choices(collection, n, exemptions = []) {
+        collection = arrayDelete(collection, exemptions);
         let results = [];
         for (let x of range(n)) {
             let Choice = choice(collection);
-            collection = arrayDelete(collection, Choice);
+            collection = arrayDelete(collection, [Choice]);
             results = results.concat(Choice);
         }
         return results;
@@ -45,9 +47,11 @@ export var util;
         return array;
     }
     util.range = range;
-    function arrayDelete(collection, value) {
+    function arrayDelete(collection, values) {
         return collection.filter(function (item) {
-            return item !== value;
+            return !values.some(function (value) {
+                return item === value;
+            });
         });
     }
     util.arrayDelete = arrayDelete;

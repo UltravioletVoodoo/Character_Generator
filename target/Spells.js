@@ -2,7 +2,7 @@ import { util } from "./Util";
 export function chooseSpells(spellList, spellsToPick, filter = [[], []]) {
     for (let x in spellList) {
         for (let y in filter[x]) {
-            util.arrayDelete(spellList[x], filter[x][y]);
+            util.arrayDelete(spellList[x], [filter[x][y]]);
         }
     }
     let result = filter;

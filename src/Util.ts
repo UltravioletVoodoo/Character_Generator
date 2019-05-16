@@ -1,14 +1,16 @@
 export namespace util{
-    export function choice<T>(collection: T[]){
+    export function choice<T>(collection: T[], exemptions: T[] = []){
+        collection = arrayDelete(collection, exemptions);
         const index = Math.floor(Math.random() * collection.length);
         return collection[index];
     }
 
-    export function choices<T>(collection: T[], n: number){
+    export function choices<T>(collection: T[], n: number, exemptions: T[] = []){
+        collection = arrayDelete(collection, exemptions);
         let results: T[] = [];
         for(let x of range(n)){
             let Choice = choice(collection);
-            collection = arrayDelete(collection, Choice);
+            collection = arrayDelete(collection, [Choice]);
             results = results.concat(Choice);
         }
         return results;
@@ -44,9 +46,11 @@ export namespace util{
         return array;
     }
 
-    export function arrayDelete<T>(collection: T[], value: T){
+    export function arrayDelete<T>(collection: T[], values: T[]){
         return collection.filter(function(item){
-            return item !== value
+            return !values.some(function(value) {
+                return item === value;
+            });
         });
     }
 

@@ -1,13 +1,13 @@
 import { util } from "./Util";
 
 
-export function chooseSpells(spellList: String[][], spellsToPick: number[], filter: String[][] = [[],[]]): String[][]{
+export function chooseSpells(spellList: string[][], spellsToPick: number[], filter: string[][] = [[],[]]): string[][]{
     for (let x in spellList){
         for (let y in filter[x]){
-            util.arrayDelete(spellList[x], filter[x][y]);
+            util.arrayDelete(spellList[x], [filter[x][y]]);
         }
     }
-    let result: String[][] = filter;
+    let result: string[][] = filter;
     for (let x in spellList){
         result[x] = result[x].concat(util.choices(spellList[x], spellsToPick[x]));
     }
@@ -15,7 +15,7 @@ export function chooseSpells(spellList: String[][], spellsToPick: number[], filt
 }
 
 
-export const bardSpells: String[][] = [
+export const bardSpells: string[][] = [
     [
         "Blade ward",
         "Dancing lights",
@@ -56,7 +56,7 @@ export const bardSpells: String[][] = [
     ]
 ];
 
-export const clericSpells: String[][] = [
+export const clericSpells: string[][] = [
     [
         "Guidance",
         "Light",
@@ -88,7 +88,7 @@ export const clericSpells: String[][] = [
     ]
 ];
 
-export const druidSpells: String[][] = [
+export const druidSpells: string[][] = [
     [
         "Control flames",
         "Create bonfire",
@@ -134,7 +134,7 @@ export const druidSpells: String[][] = [
     ]
 ];
 
-export const sorcererSpells: String[][] = [
+export const sorcererSpells: string[][] = [
     [
         "Acid splash",
         "Blade ward",
@@ -194,7 +194,7 @@ export const sorcererSpells: String[][] = [
     ]
 ];
 
-export const warlockSpells: String[][] = [
+export const warlockSpells: string[][] = [
     [
         "Blade ward",
         "Booming blade",
@@ -232,7 +232,7 @@ export const warlockSpells: String[][] = [
     ]
 ];
 
-export const wizardSpells: String[][] = [
+export const wizardSpells: string[][] = [
     [
         "Acid splash",
         "Blade ward",
