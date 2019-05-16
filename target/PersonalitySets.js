@@ -1,4 +1,4 @@
-export const personalityTraits: string[] = [
+export const personality = [
     "I idolize a particular hero of my faith and constantly refer to that person's deeds and example.",
     "I can find common ground between the fiercest enemies, empathizing with them and always working toward peace.",
     "I see omens in every event and action. The gods try to speak to us, we just need to listen.",
@@ -104,6 +104,3 @@ export const personalityTraits: string[] = [
     "I don't like to bathe.",
     "I bluntly say what other people are hinting or hiding."
 ];
-
-
-

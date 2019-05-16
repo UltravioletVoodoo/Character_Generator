@@ -1,6 +1,5 @@
 import { util } from "./Util"
 import { generateCharacter } from "./Character";
-import { isFinesse } from "./WeaponSets";
 
 const character = generateCharacter();
 console.log(character);
@@ -124,7 +123,7 @@ util.getElement("hp").value = character.hp.toString();
 // }
 // util.getElement("tool").value = character.tool.name;
 
-util.getElement("personalityTraits").value = character.personalityTrait;
+util.getElement("personality").value = character.personality;
 util.getElement("ideals").value = character.ideal;
 util.getElement("bonds").value = character.bond;
 util.getElement("flaws").value = character.flaw;

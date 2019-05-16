@@ -1,10 +1,18 @@
-import { Attributes, zeroAttributes } from "./Attributes";
+import { Attributes, zeroAttributes, mergeAttributes } from "./Attributes";
 import { Skills, zeroSkills } from "./Skills";
 import { Tool } from "./ToolSets";
 import { Weapon } from "./WeaponSets";
 import { Armor, blankArmor } from "./ArmorSets";
 import { addCharacterClassFeatures } from "./CharacterClass"
 import { addRaceFeatures } from "./Race";
+import { pointBuy } from "./PointBuy";
+import { sex } from "./Sex";
+import { util } from "./Util";
+import { alignment } from "./Alignment";
+import { personality } from "./PersonalitySets";
+import { ideals } from "./IdealSets";
+import { bonds } from "./BondSets";
+import { flaws } from "./FlawSets";
 
 export interface Character {
     name: string;
@@ -31,7 +39,7 @@ export interface Character {
     armor: Armor;
     startingGold: number;
     tools: Tool[];
-    personalityTrait: string;
+    personality: string;
     ideal: string;
     bond: string;
     flaw: string;
@@ -65,7 +73,7 @@ export const blankCharacter: Character = {
     armor: blankArmor,
     startingGold: 0,
     tools: [],
-    personalityTrait: "",
+    personality: "",
     ideal: "",
     bond: "",
     flaw: "",
@@ -75,11 +83,37 @@ export const blankCharacter: Character = {
 }
 
 
+// Adds the base features that every character needs that are not related to race or class
+export function addBaseFeatures(character: Character): Character {
+    
+    // Choose the character gender
+    character.sex = util.choice(sex);
+
+    // Choose the character alignment
+    character.alignment = util.choice(alignment);
+
+    // Modify the base attributes using pointbuy
+    character.attributes = mergeAttributes([character.attributes, pointBuy()]);
+
+    // Pick the personality, ideals, bonds, and flaws for the character
+    character.personality = util.choice(personality);
+    character.ideal = util.choice(ideals);
+    character.bond = util.choice(bonds);
+    character.flaw = util.choice(flaws);
+
+    // Return the modified character
+    return character;
+}
+
+
 // Generate the character in its entirety
 export function generateCharacter() {
 
     // Start with a blank slate in the correct format
     let character = blankCharacter;
+
+    // Add miscelaneous features not related to class or race
+    character = addBaseFeatures(character);
 
     // Add class features
     character = addCharacterClassFeatures(character);
