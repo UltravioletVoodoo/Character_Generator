@@ -1,10 +1,11 @@
 import { Character } from "./Character";
 import { util } from "./Util";
 import { mergeAttributes, fleshOutAttributes } from "./Attributes";
-import { addDragonBornSubRaceFeatures, addDwarfSubRaceFeatures, addElfSubRaceFeatures, addGnomeSubRaceFeatures } from "./SubRace";
+import { addDragonBornSubRaceFeatures, addDwarfSubRaceFeatures, addElfSubRaceFeatures, addGnomeSubRaceFeatures, addHalfElfSubRaceFeatures } from "./SubRace";
 import { findWeapon } from "./WeaponSets";
 import { findTool } from "./ToolSets";
 import { sumSkills } from "./Skills";
+import { languages } from "./Languages";
 
 export function addRaceFeatures(character: Character): Character {
 
@@ -83,7 +84,12 @@ function addGnomeFeatures(character: Character): Character {
 }
 
 function addHalfElfFeatures(character: Character): Character {
-    character.raceName = "Half-Elf"
+    character.raceName = "Half-Elf";
+    character.age = util.randomNumberFromRange([20, 180]);
+    character.speed = 30;
+    character.languages = ["Common, Elven"].concat(util.choice(languages, ["Common, Elven"]));
+    character.traits = ["Darkvision", "Fey Ancestry"];
+    character = addHalfElfSubRaceFeatures(character);
     return character;
 }
 

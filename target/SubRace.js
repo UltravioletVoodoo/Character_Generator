@@ -16,6 +16,10 @@ export function addElfSubRaceFeatures(character) {
     character = util.choice(elfSubRaceFunctionList)(character);
     return character;
 }
+export function addGnomeSubRaceFeatures(character) {
+    character = util.choice(gnomeSubRaceFunctionList)(character);
+    return character;
+}
 const dragonBornSubRaceFunctionList = [
     addBlackDragonBornFeatures,
     addBlueDragonBornFeatures,
@@ -36,6 +40,11 @@ const elfSubRaceFunctionList = [
     addHighElfFeatures,
     addWoodElfFeatures,
     addDrowElfFeatures
+];
+const gnomeSubRaceFunctionList = [
+    addForestGnomeFeatures,
+    addRockGnomeFeatures,
+    addDeepGnomeFeatures
 ];
 function addBlackDragonBornFeatures(character) {
     character.raceName = "Black Dragonborn";
@@ -134,5 +143,26 @@ function addDrowElfFeatures(character) {
         .concat(findWeapon("Hand crossbow"));
     character.traits = util.arrayDelete(character.traits, ["Darkvision"]).concat("Superior Darkvision");
     character.level0Spells = character.level0Spells.concat("Dancing lights");
+    return character;
+}
+function addForestGnomeFeatures(character) {
+    character.raceName = "Forest Gnome";
+    character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ dex: 1 })]);
+    character.level0Spells = character.level0Spells.concat("Minor illusion");
+    character.traits = character.traits.concat("Speak with Small Beasts");
+    return character;
+}
+function addRockGnomeFeatures(character) {
+    character.raceName = "Rock Gnome";
+    character.attributes = mergeAttributes([character.attrMods, fleshOutAttributes({ con: 1 })]);
+    character.traits = character.traits.concat(["Artificer's Lore", "Tinker"]);
+    return character;
+}
+function addDeepGnomeFeatures(character) {
+    character.raceName = "Svirfneblin";
+    character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ dex: 1 })]);
+    character.age = util.randomNumberFromRange([25, 225]);
+    character.traits = util.arrayDelete(character.traits, ["Darkvision"]).concat(["Superior Darkvision", "Stone Camouflage"]);
+    character.languages = character.languages.concat("Undercommon");
     return character;
 }

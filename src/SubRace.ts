@@ -5,6 +5,7 @@ import { light, medium } from "./ArmorSets";
 import { findWeapon } from "./WeaponSets";
 import { wizardSpells } from "./Spells";
 import { languages } from "./Languages";
+import { Skills, sumSkills, allSkillPartialProfs, DeepPartial } from "./Skills";
 
 export function addDragonBornSubRaceFeatures(character: Character): Character {
     character = util.choice(dragonBornSubRaceFunctionList)(character);
@@ -23,6 +24,11 @@ export function addElfSubRaceFeatures(character: Character): Character {
 
 export function addGnomeSubRaceFeatures(character: Character): Character {
     character = util.choice(gnomeSubRaceFunctionList)(character);
+    return character;
+}
+
+export function addHalfElfSubRaceFeatures(character: Character): Character {
+    character = util.choice(halfElfSubRaceFunctionList)(character);
     return character;
 }
 
@@ -55,6 +61,14 @@ const gnomeSubRaceFunctionList: ((character: Character) => Character)[] = [
     addRockGnomeFeatures,
     addDeepGnomeFeatures
 ];
+
+const halfElfSubRaceFunctionList: ((character: Character) => Character)[] = [
+    addHalfElfV1Features,
+    addHalfElfV2Features,
+    addHalfElfV3Features,
+    addHalfElfV4Features,
+    addHalfElfV5Features
+]
 
 function addBlackDragonBornFeatures(character: Character): Character { 
     character.raceName = "Black Dragonborn";
@@ -166,7 +180,7 @@ function addDrowElfFeatures(character: Character): Character {
         .concat(findWeapon("Rapier"))
         .concat(findWeapon("Shortsword"))
         .concat(findWeapon("Hand crossbow"));
-    character.traits = util.arrayDelete(character.traits, ["Darkvision"]).concat("Superior Darkvision");
+    character.traits = util.arrayDelete(character.traits, ["Darkvision"]).concat(["Superior Darkvision", "Sunlight Sensitivity"]);
     character.level0Spells = character.level0Spells.concat("Dancing lights");
     return character;
 }
@@ -192,5 +206,34 @@ function addDeepGnomeFeatures(character: Character): Character {
     character.age = util.randomNumberFromRange([25, 225]);
     character.traits = util.arrayDelete(character.traits, ["Darkvision"]).concat(["Superior Darkvision", "Stone Camouflage"]);
     character.languages = character.languages.concat("Undercommon");
+    return character;
+}
+
+function addHalfElfV1Features(character: Character): Character {
+    character.traits = character.traits.concat("Skill Versatility");
+    character.skillProfs = sumSkills([character.skillProfs as DeepPartial<Skills>].concat(util.choices(allSkillPartialProfs, 2)));
+    return character;
+}
+
+function addHalfElfV2Features(character: Character): Character {
+    character.traits = character.traits.concat("High Elf Cantrip");
+    character.level0Spells = character.level0Spells.concat(util.choice(wizardSpells[0]));
+    return character;
+}
+
+function addHalfElfV3Features(character: Character): Character {
+    character.traits = character.traits.concat("Fleet of Foot");
+    character.speed = character.speed + 5;
+    return character;
+}
+
+function addHalfElfV4Features(character: Character): Character {
+    character.traits = character.traits.concat("Mask of the Wild");
+    return character;
+}
+
+function addHalfElfV5Features(character: Character): Character {
+    character.traits = character.traits.concat("Drow Magic");
+    character.level0Spells = character.level0Spells.concat("Dancing lights");
     return character;
 }

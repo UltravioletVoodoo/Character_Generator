@@ -1,6 +1,6 @@
 import { util } from "./Util";
 import { mergeAttributes, fleshOutAttributes } from "./Attributes";
-import { addDragonBornSubRaceFeatures, addDwarfSubRaceFeatures, addElfSubRaceFeatures } from "./SubRace";
+import { addDragonBornSubRaceFeatures, addDwarfSubRaceFeatures, addElfSubRaceFeatures, addGnomeSubRaceFeatures } from "./SubRace";
 import { findWeapon } from "./WeaponSets";
 import { findTool } from "./ToolSets";
 import { sumSkills } from "./Skills";
@@ -60,7 +60,12 @@ function addElfFeatures(character) {
     return character;
 }
 function addGnomeFeatures(character) {
-    character.raceName = "Gnome";
+    character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ int: 2 })]);
+    character.age = util.randomNumberFromRange([40, 400]);
+    character.speed = 25;
+    character.languages = ["Common", "Gnomish"];
+    character.traits = ["Darkvision", "Gnome Cunning"];
+    character = addGnomeSubRaceFeatures(character);
     return character;
 }
 function addHalfElfFeatures(character) {
