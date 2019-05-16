@@ -1,6 +1,12 @@
 import { util } from "./Util";
+import { mergeAttributes, fleshOutAttributes } from "./Attributes";
+import { light, medium } from "./ArmorSets";
 export function addDragonBornSubRaceFeatures(character) {
     character = util.choice(dragonBornSubRaceFunctionList)(character);
+    return character;
+}
+export function addDwarfSubRaceFeatures(character) {
+    character = util.choice(dwarfSubRaceFunctionList)(character);
     return character;
 }
 const dragonBornSubRaceFunctionList = [
@@ -14,6 +20,10 @@ const dragonBornSubRaceFunctionList = [
     addRedDragonBornFeatures,
     addSilverDragonBornFeatures,
     addWhiteDragonBornFeatures
+];
+const dwarfSubRaceFunctionList = [
+    addHillDwarfFeatures,
+    addMountainDwarfFeatures
 ];
 function addBlackDragonBornFeatures(character) {
     character.raceName = "Black Dragonborn";
@@ -72,6 +82,22 @@ function addSilverDragonBornFeatures(character) {
 function addWhiteDragonBornFeatures(character) {
     character.raceName = "White Dragonborn";
     character.traits = character.traits.concat("Cold Breath").concat("Cold Resistance");
+    // Return the modified character
+    return character;
+}
+function addHillDwarfFeatures(character) {
+    character.raceName = "Hill Dwarf";
+    character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ wis: 1 })]);
+    character.hp = character.hp + 1;
+    // Return the modified character
+    return character;
+}
+function addMountainDwarfFeatures(character) {
+    character.raceName = "Mountain Dwarf";
+    character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ str: 2 })]);
+    character.armorProfs = character.armorProfs
+        .concat(light)
+        .concat(medium);
     // Return the modified character
     return character;
 }

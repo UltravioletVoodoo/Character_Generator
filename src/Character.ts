@@ -37,7 +37,9 @@ export interface Character {
     hitDice: number;
     hp: number;
     weapons: Weapon[];
+    weaponProfs: Weapon[];
     armor: Armor;
+    armorProfs: Armor[]
     startingGold: number;
     tools: Tool[];
     personality: string;
@@ -72,7 +74,9 @@ export const blankCharacter: Character = {
     hitDice: 0,
     hp: 0,
     weapons: [],
+    weaponProfs: [],
     armor: blankArmor,
+    armorProfs: [],
     startingGold: 0,
     tools: [],
     personality: "",
@@ -122,6 +126,7 @@ export function generateCharacter() {
 
     // Add class features
     character = addCharacterClassFeatures(character);
-
+    
+    // Return the finalized character
     return character;
 }

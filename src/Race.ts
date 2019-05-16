@@ -1,7 +1,9 @@
 import { Character } from "./Character";
 import { util } from "./Util";
 import { mergeAttributes, fleshOutAttributes } from "./Attributes";
-import { addDragonBornSubRaceFeatures } from "./SubRace";
+import { addDragonBornSubRaceFeatures, addDwarfSubRaceFeatures } from "./SubRace";
+import { findWeapon } from "./WeaponSets";
+import { findTool } from "./ToolSets";
 
 export function addRaceFeatures(character: Character): Character {
 
@@ -43,7 +45,36 @@ function addDragonBornFeatures(character: Character): Character {
 }
 
 function addDwarfFeatures(character: Character): Character {
-    character.raceName = "Dwarf"
+    
+    // Add race attribute bonus
+    character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({con: 2})]);
+
+    // Add simple general race features
+    character.age = util.randomNumberFromRange([50,350]);
+    character.speed = 25;
+    character.languages = ["Common", "Dwarvish"];
+
+    // Add race traits
+    character.traits = ["Darkvision", "Dwarven Resilience", "Stonecunning"]
+
+    // Add weapon/tool proficiencies
+    character.weaponProfs = character.weaponProfs
+        .concat(findWeapon("Battleaxe"))
+        .concat(findWeapon("Handaxe"))
+        .concat(findWeapon("Throwing Hammer"))
+        .concat(findWeapon("Warhammer"));
+
+    character.toolProfs = character.toolProfs
+        .concat(util.choice([
+            findTool("Smith's tools"),
+            findTool("Brewer's supplies"),
+            findTool("Mason's tools")
+        ]));
+    
+    // Add character features added by subrace
+    character = addDwarfSubRaceFeatures(character);
+
+    // Return the modified character
     return character;
 }
 
