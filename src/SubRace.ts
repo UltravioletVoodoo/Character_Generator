@@ -32,6 +32,11 @@ export function addHalfElfSubRaceFeatures(character: Character): Character {
     return character;
 }
 
+export function addHalflingSubRaceFeatures(character: Character): Character {
+    character = util.choice(halflingSubRaceFunctionList)(character);
+    return character;
+}
+
 const dragonBornSubRaceFunctionList: ((character: Character) => Character)[] = [
     addBlackDragonBornFeatures,
     addBlueDragonBornFeatures,
@@ -68,7 +73,12 @@ const halfElfSubRaceFunctionList: ((character: Character) => Character)[] = [
     addHalfElfV3Features,
     addHalfElfV4Features,
     addHalfElfV5Features
-]
+];
+
+const halflingSubRaceFunctionList: ((character: Character) => Character)[] = [
+    addLightFootHalflingFeatures,
+    addStoutHalflingFeatures
+];
 
 function addBlackDragonBornFeatures(character: Character): Character { 
     character.raceName = "Black Dragonborn";
@@ -235,5 +245,17 @@ function addHalfElfV4Features(character: Character): Character {
 function addHalfElfV5Features(character: Character): Character {
     character.traits = character.traits.concat("Drow Magic");
     character.level0Spells = character.level0Spells.concat("Dancing lights");
+    return character;
+}
+
+function addLightFootHalflingFeatures(character: Character): Character {
+    character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({cha: 1})]);
+    character.traits = character.traits.concat("Naturally Stealthy");
+    return character;
+}
+
+function addStoutHalflingFeatures(character: Character): Character {
+    character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({con: 1})]);
+    character.traits = character.traits.concat("Stout Resilience");
     return character;
 }

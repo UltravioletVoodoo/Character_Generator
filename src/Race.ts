@@ -1,7 +1,7 @@
 import { Character } from "./Character";
 import { util } from "./Util";
 import { mergeAttributes, fleshOutAttributes } from "./Attributes";
-import { addDragonBornSubRaceFeatures, addDwarfSubRaceFeatures, addElfSubRaceFeatures, addGnomeSubRaceFeatures, addHalfElfSubRaceFeatures } from "./SubRace";
+import { addDragonBornSubRaceFeatures, addDwarfSubRaceFeatures, addElfSubRaceFeatures, addGnomeSubRaceFeatures, addHalfElfSubRaceFeatures, addHalflingSubRaceFeatures } from "./SubRace";
 import { findWeapon } from "./WeaponSets";
 import { findTool } from "./ToolSets";
 import { sumSkills } from "./Skills";
@@ -95,11 +95,20 @@ function addHalfElfFeatures(character: Character): Character {
 
 function addHalfOrcFeatures(character: Character): Character {
     character.raceName = "Half-Orc"
+    character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({str: 2, con: 1})]);
+    character.age = util.randomNumberFromRange([14, 75]);
+    character.speed = 30;
+    character.skillProfs = sumSkills([character.skillProfs, {cha: {intimidation: 2}}]);
+    character.traits = ["Darkvision", "Relentless Endurance", "Savage Endurance"];
     return character;
 }
 
 function addHalflingFeatures(character: Character): Character {
-    character.raceName = "Halfling"
+    character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({dex: 2})]);
+    character.speed = 25;
+    character.languages = ["Common", "Halfling"];
+    character.traits = ["Lucky", "Brave", "Nimble"];
+    character = addHalflingSubRaceFeatures(character);
     return character;
 }
 
