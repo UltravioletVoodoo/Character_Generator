@@ -1,7 +1,7 @@
 import { util } from "./Util";
 import { Character } from "./Character"
 import { simpleMelee, martialMelee, simpleRanged, martialRanged, findWeapon, bareFist } from "./WeaponSets"
-import { light, medium, findArmor } from "./ArmorSets"
+import { light, medium, heavy, findArmor } from "./ArmorSets"
 import { findTool, musical } from "./ToolSets";
 import { bardSpells, clericSpells, druidSpells } from "./Spells";
 import { sumSkills } from "./Skills"
@@ -10,6 +10,30 @@ import { fleshOutAttributes } from "./Attributes";
 
 export function generateCharacterClass(){
     return util.choice(characterClass);
+    
+}
+
+function generateCleric(){
+    switch(util.choice(clericDomains)){
+        case "Arcana":
+            
+        case "Death":
+        case "Forge":
+        case "Grave":
+        case "Knowledge":
+        case "Life":
+        case "Light":
+        case "Madness":
+        case "Nature":
+        case "Protection":
+        case "Tempest":
+        case "Trickery":
+        case "War":
+    }
+    
+    return {
+        
+    }
 }
 
 const characterClass: Partial<Character>[] = [
@@ -153,6 +177,33 @@ const characterClass: Partial<Character>[] = [
     },
     {
         className: "Fighter",
+        hitDice: 10,
+        armorProficiencies: new Set(
+            light
+            .concat(medium)
+            .concat(heavy)
+            ),
+        weaponProficiencies: new Set(
+            simpleMelee
+            .concat(simpleRanged)
+            .concat(martialMelee)
+            .concat(martialRanged)
+        ),
+        savingThrowProficiencies: fleshOutAttributes({
+            str: 2,
+            con: 2
+        }),
+        skillProficiencies: sumSkills(util.choices([
+            {str: {athletics: 2}},
+            {dex: {acrobatics: 2}},
+            {int: {history: 2}},
+            {wis: {animalHandling: 2}},
+            {wis: {insight: 2}},
+            {wis: {perception: 2}},
+            {wis: {survival: 2}},
+            {cha: {intimidation: 2}}
+        ], 2)),
+
         startingGold: 200,
     },
     {
