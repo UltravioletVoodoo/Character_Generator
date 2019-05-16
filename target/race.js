@@ -1,4 +1,6 @@
 import { util } from "./Util";
+import { mergeAttributes, fleshOutAttributes } from "./Attributes";
+import { addDragonBornSubRaceFeatures } from "./SubRace";
 export function addRaceFeatures(character) {
     // Choose a race
     character = util.choice(raceFunctionList)(character);
@@ -17,7 +19,15 @@ const raceFunctionList = [
     addTieflingFeatures
 ];
 function addDragonBornFeatures(character) {
-    character.raceName = "DragonBorn";
+    // Add race attribute bonus
+    character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ str: 2, cha: 1 })]);
+    // Add simple general race features
+    character.age = util.randomNumberFromRange([15, 80]);
+    character.speed = 30;
+    character.languages = ["Common", "Draconic"];
+    // Add race features added by the subrace
+    character = addDragonBornSubRaceFeatures(character);
+    // Return Modified character
     return character;
 }
 function addDwarfFeatures(character) {
@@ -37,7 +47,7 @@ function addHalfElfFeatures(character) {
     return character;
 }
 function addHalfOrcFeatures(character) {
-    character.raceName = "HalfOrc";
+    character.raceName = "Half-Orc";
     return character;
 }
 function addHalflingFeatures(character) {

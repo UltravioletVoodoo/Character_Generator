@@ -18,6 +18,7 @@ export const blankCharacter = {
     raceName: "",
     alignment: "",
     sex: "",
+    age: 0,
     attributes: zeroAttributes,
     attrMods: zeroAttributes,
     savingThrows: zeroAttributes,
@@ -66,9 +67,9 @@ export function generateCharacter() {
     let character = blankCharacter;
     // Add miscelaneous features not related to class or race
     character = addBaseFeatures(character);
-    // Add class features
-    character = addCharacterClassFeatures(character);
     // Add race features
     character = addRaceFeatures(character);
+    // Add class features
+    character = addCharacterClassFeatures(character);
     return character;
 }

@@ -24,7 +24,7 @@ const classFunctionList: ((character: Character) => Character)[] = [
     addSorcererFeatures,
     addWarlockFeatures,
     addWizardFeatures
-]
+];
 
 function addBarbarianFeatures(character: Character): Character {
     character.className = "Barbarian";

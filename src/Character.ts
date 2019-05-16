@@ -21,6 +21,7 @@ export interface Character {
     raceName: string;
     alignment: string;
     sex: string;
+    age: number;
     attributes: Attributes;
     attrMods: Attributes;
     savingThrows: Attributes;
@@ -55,6 +56,7 @@ export const blankCharacter: Character = {
     raceName: "",
     alignment: "",
     sex: "",
+    age: 0,
     attributes: zeroAttributes,
     attrMods: zeroAttributes,
     savingThrows: zeroAttributes,
@@ -115,11 +117,11 @@ export function generateCharacter() {
     // Add miscelaneous features not related to class or race
     character = addBaseFeatures(character);
 
-    // Add class features
-    character = addCharacterClassFeatures(character);
-
     // Add race features
     character = addRaceFeatures(character);
+
+    // Add class features
+    character = addCharacterClassFeatures(character);
 
     return character;
 }

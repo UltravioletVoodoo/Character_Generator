@@ -8,6 +8,7 @@ util.getElement("level").value = "1";
 util.getElement("raceName").value = character.raceName;
 util.getElement("alignment").value = character.alignment;
 util.getElement("sex").value = character.sex;
+util.getElement("age").value = character.age.toString();
 util.getElement("str").value = character.attributes.str.toString();
 util.getElement("dex").value = character.attributes.dex.toString();
 util.getElement("con").value = character.attributes.con.toString();

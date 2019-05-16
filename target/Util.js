@@ -70,4 +70,8 @@ export var util;
         return document.getElementById(id);
     }
     util.getElement = getElement;
+    function randomNumberFromRange(range) {
+        return Math.floor(Math.random() * (range[1] - range[0] + 1) + range[0]);
+    }
+    util.randomNumberFromRange = randomNumberFromRange;
 })(util || (util = {}));
