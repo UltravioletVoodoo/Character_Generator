@@ -21,6 +21,11 @@ export function addElfSubRaceFeatures(character: Character): Character {
     return character;
 }
 
+export function addGnomeSubRaceFeatures(character: Character): Character {
+    character = util.choice(gnomeSubRaceFunctionList)(character);
+    return character;
+}
+
 const dragonBornSubRaceFunctionList: ((character: Character) => Character)[] = [
     addBlackDragonBornFeatures,
     addBlueDragonBornFeatures,
@@ -43,6 +48,12 @@ const elfSubRaceFunctionList: ((character: Character) => Character)[] = [
     addHighElfFeatures,
     addWoodElfFeatures,
     addDrowElfFeatures
+];
+
+const gnomeSubRaceFunctionList: ((character: Character) => Character)[] = [
+    addForestGnomeFeatures,
+    addRockGnomeFeatures,
+    addDeepGnomeFeatures
 ];
 
 function addBlackDragonBornFeatures(character: Character): Character { 
@@ -157,5 +168,29 @@ function addDrowElfFeatures(character: Character): Character {
         .concat(findWeapon("Hand crossbow"));
     character.traits = util.arrayDelete(character.traits, ["Darkvision"]).concat("Superior Darkvision");
     character.level0Spells = character.level0Spells.concat("Dancing lights");
+    return character;
+}
+
+function addForestGnomeFeatures(character: Character): Character {
+    character.raceName = "Forest Gnome";
+    character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({dex: 1})]);
+    character.level0Spells = character.level0Spells.concat("Minor illusion");
+    character.traits = character.traits.concat("Speak with Small Beasts");
+    return character;
+}
+
+function addRockGnomeFeatures(character: Character): Character {
+    character.raceName = "Rock Gnome";
+    character.attributes = mergeAttributes([character.attrMods, fleshOutAttributes({con: 1})]);
+    character.traits = character.traits.concat(["Artificer's Lore", "Tinker"]);
+    return character;
+}
+
+function addDeepGnomeFeatures(character: Character): Character {
+    character.raceName = "Svirfneblin";
+    character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({dex: 1})]);
+    character.age = util.randomNumberFromRange([25, 225]);
+    character.traits = util.arrayDelete(character.traits, ["Darkvision"]).concat(["Superior Darkvision", "Stone Camouflage"]);
+    character.languages = character.languages.concat("Undercommon");
     return character;
 }
