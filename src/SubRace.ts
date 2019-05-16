@@ -164,7 +164,6 @@ function addHighElfFeatures(character: Character): Character {
         .concat(findWeapon("Shortsword"))
         .concat(findWeapon("Shortbow"))
         .concat(findWeapon("Longbow"));
-    
     character.level0Spells = character.level0Spells.concat(util.choice(wizardSpells[0]));
     character.languages = character.languages.concat(util.choice(languages, character.languages))
     return character;
@@ -249,12 +248,14 @@ function addHalfElfV5Features(character: Character): Character {
 }
 
 function addLightFootHalflingFeatures(character: Character): Character {
+    character.raceName = "Lightfoot Halfling";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({cha: 1})]);
     character.traits = character.traits.concat("Naturally Stealthy");
     return character;
 }
 
 function addStoutHalflingFeatures(character: Character): Character {
+    character.raceName = "Stout Halfling";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({con: 1})]);
     character.traits = character.traits.concat("Stout Resilience");
     return character;
