@@ -1,5 +1,5 @@
-import { zeroAttributes, mergeAttributes } from "./Attributes";
-import { zeroSkills, sumSkills } from "./Skills";
+import { zeroAttributes, mergeAttributes, generateMods } from "./Attributes";
+import { zeroSkills, sumSkills, convertAttrToSkills } from "./Skills";
 import { blankArmor } from "./ArmorSets";
 import { addCharacterClassFeatures } from "./CharacterClass";
 import { addRaceFeatures } from "./Race";
@@ -66,6 +66,9 @@ export function addBaseFeatures(character) {
 }
 function finalizeCharacterFeatures(character) {
     character.skillProfsFlat = sumSkills(character.skillProfs);
+    character.attrMods = generateMods(character.attributes);
+    character.skills = sumSkills([character.skillProfsFlat].concat(convertAttrToSkills(character.attrMods)));
+    character.savingThrows = mergeAttributes([character.savingThrowProfs, character.attrMods]);
     return character;
 }
 // Generate the character in its entirety

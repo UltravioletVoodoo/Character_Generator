@@ -83,6 +83,17 @@ function addGnomeFeatures(character: Character): Character {
 
 function addHalfElfFeatures(character: Character): Character {
     character.raceName = "Half-Elf";
+    character.attributes = mergeAttributes([
+        character.attributes,
+        fleshOutAttributes({cha: 2})]
+        .concat(util.choices([
+            {str: 1},
+            {con: 1},
+            {dex: 1},
+            {int: 1},
+            {wis: 1}
+        ], 2).map(item => fleshOutAttributes(item)))
+    );
     character.age = util.randomNumberFromRange([20, 180]);
     character.speed = 30;
     character.languages = ["Common, Elven"].concat(util.choice(languages, ["Common, Elven"]));
