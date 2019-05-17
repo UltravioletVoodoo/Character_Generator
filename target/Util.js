@@ -50,7 +50,7 @@ export var util;
     function arrayDelete(collection, values) {
         return collection.filter(function (item) {
             return !values.some(function (value) {
-                return item === value;
+                return JSON.stringify(item) === JSON.stringify(value);
             });
         });
     }

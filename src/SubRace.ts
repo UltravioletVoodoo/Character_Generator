@@ -150,9 +150,7 @@ function addHillDwarfFeatures(character: Character): Character {
 function addMountainDwarfFeatures(character: Character): Character {
     character.raceName = "Mountain Dwarf";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({str: 2})]);
-    character.armorProfs = character.armorProfs
-        .concat(light)
-        .concat(medium)
+    character.armorProfs = character.armorProfs.concat(light, medium);
     return character;
 }
 
@@ -160,10 +158,12 @@ function addHighElfFeatures(character: Character): Character {
     character.raceName = "High Elf";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({int: 1})]);
     character.weaponProfs = character.weaponProfs
-        .concat(findWeapon("Longsword"))
-        .concat(findWeapon("Shortsword"))
-        .concat(findWeapon("Shortbow"))
-        .concat(findWeapon("Longbow"));
+        .concat(
+            findWeapon("Longsword"),
+            findWeapon("Shortsword"),
+            findWeapon("Shortbow"),
+            findWeapon("Longbow")
+        );
     character.level0Spells = character.level0Spells.concat(util.choice(wizardSpells[0]));
     character.languages = character.languages.concat(util.choice(languages, character.languages))
     return character;
@@ -173,10 +173,12 @@ function addWoodElfFeatures(character: Character): Character {
     character.raceName = "Wood Elf";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({wis: 1})]);
     character.weaponProfs = character.weaponProfs
-        .concat(findWeapon("Longsword"))
-        .concat(findWeapon("Shortsword"))
-        .concat(findWeapon("ShortBow"))
-        .concat(findWeapon("Longbow"));
+        .concat(
+            findWeapon("Longsword"),
+            findWeapon("Shortsword"),
+            findWeapon("ShortBow"),
+            findWeapon("Longbow")
+            );
     character.speed = character.speed + 5;
     character.traits = character.traits.concat(["Fleet of Foot", "Mask of the Wild"]);
     return character;
@@ -204,7 +206,7 @@ function addForestGnomeFeatures(character: Character): Character {
 
 function addRockGnomeFeatures(character: Character): Character {
     character.raceName = "Rock Gnome";
-    character.attributes = mergeAttributes([character.attrMods, fleshOutAttributes({con: 1})]);
+    character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({con: 1})]);
     character.traits = character.traits.concat(["Artificer's Lore", "Tinker"]);
     return character;
 }
@@ -220,7 +222,7 @@ function addDeepGnomeFeatures(character: Character): Character {
 
 function addHalfElfV1Features(character: Character): Character {
     character.traits = character.traits.concat("Skill Versatility");
-    character.skillProfs = sumSkills([character.skillProfs as DeepPartial<Skills>].concat(util.choices(allSkillPartialProfs, 2)));
+    character.skillProfs = character.skillProfs.concat(util.choices(allSkillPartialProfs, 2));
     return character;
 }
 

@@ -1,8 +1,9 @@
 import { util } from "./Util";
+import { light, medium, findArmor } from "./ArmorSets";
+import { simpleMelee, simpleRanged, martialMelee, martialRanged } from "./WeaponSets";
+import { mergeAttributes, fleshOutAttributes } from "./Attributes";
 export function addCharacterClassFeatures(character) {
-    // Choose a class
     character = util.choice(classFunctionList)(character);
-    // Return The modified character
     return character;
 }
 const classFunctionList = [
@@ -21,6 +22,26 @@ const classFunctionList = [
 ];
 function addBarbarianFeatures(character) {
     character.className = "Barbarian";
+    character.hitDice = 12;
+    character.armorProfs = character.armorProfs
+        .concat(light, medium, findArmor("Unarmored defence con"));
+    character.weaponProfs = character.weaponProfs
+        .concat(simpleMelee, simpleRanged, martialMelee, martialRanged);
+    character.savingThrowProfs = mergeAttributes([
+        character.savingThrowProfs,
+        fleshOutAttributes({ str: 2, con: 2 })
+    ]);
+    character.skillProfs = character.skillProfs
+        .concat(util.choices([
+        { str: { athletics: 2 } },
+        { int: { nature: 2 } },
+        { wis: { animalHandling: 2 } },
+        { wis: { perception: 2 } },
+        { wis: { survival: 2 } },
+        { cha: { intimidation: 2 } }
+    ], 2, character.skillProfs));
+    character.startingGold = 80;
+    character.traits = character.traits.concat("Rage");
     return character;
 }
 function addBardFeatures(character) {

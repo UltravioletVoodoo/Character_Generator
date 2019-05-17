@@ -1,5 +1,5 @@
 import { Attributes, zeroAttributes, mergeAttributes } from "./Attributes";
-import { Skills, zeroSkills } from "./Skills";
+import { Skills, zeroSkills, DeepPartial, sumSkills } from "./Skills";
 import { Tool } from "./ToolSets";
 import { Weapon } from "./WeaponSets";
 import { Armor, blankArmor } from "./ArmorSets";
@@ -27,7 +27,8 @@ export interface Character {
     savingThrows: Attributes;
     savingThrowProfs: Attributes;
     skills: Skills;
-    skillProfs: Skills;
+    skillProfs: DeepPartial<Skills>[];
+    skillProfsFlat: Skills;
     proficiencyBonus: 2;
     languages: string[];
     toolProfs: Tool[];
@@ -64,7 +65,8 @@ export const blankCharacter: Character = {
     savingThrows: zeroAttributes,
     savingThrowProfs: zeroAttributes,
     skills: zeroSkills,
-    skillProfs: zeroSkills,
+    skillProfs: [],
+    skillProfsFlat: zeroSkills,
     proficiencyBonus: 2,
     languages: [],
     toolProfs: [],
@@ -111,6 +113,10 @@ export function addBaseFeatures(character: Character): Character {
     return character;
 }
 
+function finalizeCharacterFeatures(character: Character): Character {
+    character.skillProfsFlat = sumSkills(character.skillProfs);
+    return character;
+}
 
 // Generate the character in its entirety
 export function generateCharacter() {
@@ -126,6 +132,9 @@ export function generateCharacter() {
 
     // Add class features
     character = addCharacterClassFeatures(character);
+
+    // Apply the final touches and compute the values that required class/race
+    character = finalizeCharacterFeatures(character);
     
     // Return the finalized character
     return character;

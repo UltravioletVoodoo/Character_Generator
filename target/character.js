@@ -1,5 +1,5 @@
 import { zeroAttributes, mergeAttributes } from "./Attributes";
-import { zeroSkills } from "./Skills";
+import { zeroSkills, sumSkills } from "./Skills";
 import { blankArmor } from "./ArmorSets";
 import { addCharacterClassFeatures } from "./CharacterClass";
 import { addRaceFeatures } from "./Race";
@@ -24,7 +24,8 @@ export const blankCharacter = {
     savingThrows: zeroAttributes,
     savingThrowProfs: zeroAttributes,
     skills: zeroSkills,
-    skillProfs: zeroSkills,
+    skillProfs: [],
+    skillProfsFlat: zeroSkills,
     proficiencyBonus: 2,
     languages: [],
     toolProfs: [],
@@ -63,6 +64,10 @@ export function addBaseFeatures(character) {
     // Return the modified character
     return character;
 }
+function finalizeCharacterFeatures(character) {
+    character.skillProfsFlat = sumSkills(character.skillProfs);
+    return character;
+}
 // Generate the character in its entirety
 export function generateCharacter() {
     // Start with a blank slate in the correct format
@@ -73,6 +78,8 @@ export function generateCharacter() {
     character = addRaceFeatures(character);
     // Add class features
     character = addCharacterClassFeatures(character);
+    // Apply the final touches and compute the values that required class/race
+    character = finalizeCharacterFeatures(character);
     // Return the finalized character
     return character;
 }

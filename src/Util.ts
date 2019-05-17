@@ -49,7 +49,7 @@ export namespace util{
     export function arrayDelete<T>(collection: T[], values: T[]){
         return collection.filter(function(item){
             return !values.some(function(value) {
-                return item === value;
+                return JSON.stringify(item) === JSON.stringify(value);
             });
         });
     }

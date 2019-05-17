@@ -8,11 +8,7 @@ import { sumSkills, DeepPartial, allSkillPartialProfs } from "./Skills";
 import { languages } from "./Languages";
 
 export function addRaceFeatures(character: Character): Character {
-
-    // Choose a race
     character = util.choice(raceFunctionList)(character);
-
-    // Return the modified character
     return character;
 }
 
@@ -46,10 +42,12 @@ function addDwarfFeatures(character: Character): Character {
     character.traits = ["Darkvision", "Dwarven Resilience", "Stonecunning"];
 
     character.weaponProfs = character.weaponProfs
-        .concat(findWeapon("Battleaxe"))
-        .concat(findWeapon("Handaxe"))
-        .concat(findWeapon("Throwing Hammer"))
-        .concat(findWeapon("Warhammer"));
+        .concat(
+            findWeapon("Battleaxe"),
+            findWeapon("Handaxe"),
+            findWeapon("Throwing Hammer"),
+            findWeapon("Warhammer")
+            );
 
     character.toolProfs = character.toolProfs
         .concat(util.choice([
@@ -68,7 +66,7 @@ function addElfFeatures(character: Character): Character {
     character.speed = 30;
     character.languages = ["Common", "Elven"];
     character.traits = ["Darkvision", "Fey Ancestry", "Trance", "Keen Senses"];
-    character.skillProfs = sumSkills([character.skillProfs, {wis: {perception: 2}}]);
+    character.skillProfs = character.skillProfs.concat({wis: {perception: 2}});
     character = addElfSubRaceFeatures(character);
     return character;
 }
@@ -98,7 +96,7 @@ function addHalfOrcFeatures(character: Character): Character {
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({str: 2, con: 1})]);
     character.age = util.randomNumberFromRange([14, 75]);
     character.speed = 30;
-    character.skillProfs = sumSkills([character.skillProfs, {cha: {intimidation: 2}}]);
+    character.skillProfs = character.skillProfs.concat({cha: {intimidation: 2}});
     character.traits = ["Darkvision", "Relentless Endurance", "Savage Endurance"];
     return character;
 }
