@@ -5,7 +5,7 @@ import { light, medium } from "./ArmorSets";
 import { findWeapon } from "./WeaponSets";
 import { wizardSpells } from "./Spells";
 import { languages } from "./Languages";
-import { Skills, sumSkills, allSkillPartialProfs, DeepPartial } from "./Skills";
+import { allSkillPartialProfs } from "./Skills";
 
 export function addDragonBornSubRaceFeatures(character: Character): Character {
     character = util.choice(dragonBornSubRaceFunctionList)(character);

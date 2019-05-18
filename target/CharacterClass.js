@@ -1,7 +1,10 @@
 import { util } from "./Util";
 import { light, medium, findArmor } from "./ArmorSets";
-import { simpleMelee, simpleRanged, martialMelee, martialRanged } from "./WeaponSets";
+import { simpleMelee, simpleRanged, martialMelee, martialRanged, findWeapon } from "./WeaponSets";
 import { mergeAttributes, fleshOutAttributes } from "./Attributes";
+import { allSkillPartialProfs } from "./Skills";
+import { musical } from "./ToolSets";
+import { bardSpells } from "./Spells";
 export function addCharacterClassFeatures(character) {
     character = util.choice(classFunctionList)(character);
     return character;
@@ -46,6 +49,16 @@ function addBarbarianFeatures(character) {
 }
 function addBardFeatures(character) {
     character.className = "Bard";
+    character.hitDice = 8;
+    character.armorProfs = character.armorProfs.concat(light);
+    character.weaponProfs = character.weaponProfs
+        .concat(simpleMelee, simpleRanged, findWeapon("Hand Crossbow"), findWeapon("Longsword"), findWeapon("Shortword"));
+    character.toolProfs = character.toolProfs.concat(util.choices(musical, 3));
+    character.skillProfs = character.skillProfs.concat(util.choices(allSkillPartialProfs, 3, character.skillProfs));
+    character.startingGold = 200;
+    character.level0Spells = character.level0Spells.concat(util.choices(bardSpells[0], 2, character.level0Spells));
+    character.level1Spells = character.level1Spells.concat(util.choices(bardSpells[1], 4, character.level1Spells));
+    character.traits = character.traits.concat("Bardic Inspiration (d6)");
     return character;
 }
 function addClericFeatures(character) {
