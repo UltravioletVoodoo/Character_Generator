@@ -304,3 +304,16 @@ export const wizardSpells: string[][] = [
         "Witch bolt"
     ]
 ];
+
+export const necromancySpells: string[][] = [
+    [
+        "Chill touch",
+        "Spare the dying",
+        "Toll the dead"
+    ],
+    [
+        "False life",
+        "Inflict wounds",
+        "Ray of sickness"
+    ]
+];

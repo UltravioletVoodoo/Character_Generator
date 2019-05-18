@@ -5,7 +5,8 @@ import { simpleMelee, simpleRanged, martialMelee, martialRanged, findWeapon } fr
 import { mergeAttributes, fleshOutAttributes } from "./Attributes";
 import { DeepPartial, Skills, allSkillPartialProfs } from "./Skills";
 import { musical } from "./ToolSets";
-import { bardSpells } from "./Spells";
+import { bardSpells, clericSpells } from "./Spells";
+import { addClericSubClassFeatures } from "./CharacterSubClass";
 
 export function addCharacterClassFeatures(character: Character): Character {
     character = util.choice(classFunctionList)(character);
@@ -85,6 +86,32 @@ function addBardFeatures(character: Character): Character {
 
 function addClericFeatures(character: Character): Character {
     character.className = "Cleric";
+    addClericSubClassFeatures(character);
+    character.hitDice = 8;
+    character.armorProfs = character.armorProfs.concat(
+        light,
+        medium
+    );
+    character.savingThrowProfs = mergeAttributes([
+        character.savingThrowProfs,
+        fleshOutAttributes({wis: 2, cha: 2})
+    ]);
+    character.skillProfs = character.skillProfs.concat(
+        util.choices<DeepPartial<Skills>>([
+            {int: {history: 2}},
+            {int: {religion: 2}},
+            {wis: {insight: 2}},
+            {wis: {medicine: 2}},
+            {cha: {persuasion: 2}}    
+        ], 2)
+    );
+    character.startingGold = 200;
+    character.level0Spells = character.level0Spells.concat(
+        util.choices(clericSpells[0], 3, character.level0Spells)
+    );
+    character.level1Spells = character.level1Spells.concat(
+        util.choices(clericSpells[1], 2, character.level1Spells)
+    );
     return character;
 }
 
