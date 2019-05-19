@@ -4,7 +4,7 @@ import { light, medium, findArmor, heavy } from "./ArmorSets";
 import { simpleMelee, simpleRanged, martialMelee, martialRanged, findWeapon } from "./WeaponSets";
 import { mergeAttributes, fleshOutAttributes } from "./Attributes";
 import { DeepPartial, Skills, allSkillPartialProfs } from "./Skills";
-import { findTool, musical } from "./ToolSets";
+import { findTool, musical, artisan } from "./ToolSets";
 import { bardSpells, clericSpells, druidSpells } from "./Spells";
 import { addClericSubClassFeatures } from "./CharacterSubClass";
 
@@ -185,8 +185,8 @@ function addFighterFeatures(character: Character): Character {
         ], 2, character.skillProfs)
     );
     character.startingGold = 200;
-    character.traits = character.traits.concat("Second Wind");
     character.traits = character.traits.concat(
+        "Second Wind",
         util.choice([
             "Archery Fighting Style(*)",
             "Defender Fighting Style(*)",
@@ -201,6 +201,36 @@ function addFighterFeatures(character: Character): Character {
 
 function addMonkFeatures(character: Character): Character {
     character.className = "Monk";
+    character.hitDice = 8;
+    character.armorProfs = character.armorProfs.concat(
+        findArmor("Unarmored defence wis")
+    );
+    character.weaponProfs = character.weaponProfs.concat(
+        simpleMelee,
+        simpleRanged,
+        findWeapon("Shortsword")
+    );
+    character.toolProfs = character.toolProfs.concat(
+        util.choice(artisan.concat(musical), character.toolProfs)
+    );
+    character.savingThrowProfs = character.savingThrowProfs.concat(
+        [{str: 2}, {dex: 2}].map(fleshOutAttributes)
+    );
+    character.skillProfs = character.skillProfs.concat(
+        util.choices<DeepPartial<Skills>>([
+            {str: {athletics: 2}},
+            {dex: {acrobatics: 2}},
+            {dex: {stealth: 2}},
+            {int: {history: 2}},
+            {int: {religion: 2}},
+            {wis: {insight: 2}}
+        ], 2, character.skillProfs)
+    );
+    character.startingGold = 20;
+    character.traits = character.traits.concat(
+        "Unarmored Defence",
+        "Martial Arts"
+    );
     return character;
 }
 
