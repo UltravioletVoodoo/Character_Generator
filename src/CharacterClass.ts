@@ -236,6 +236,32 @@ function addMonkFeatures(character: Character): Character {
 
 function addPaladinFeatures(character: Character): Character {
     character.className = "Paladin";
+    character.hitDice = 10;
+    character.armorProfs = character.armorProfs.concat(
+        light,
+        medium,
+        heavy
+    );
+    character.weaponProfs = character.weaponProfs.concat(
+        simpleMelee,
+        simpleRanged,
+        martialMelee,
+        martialRanged
+    );
+    character.savingThrowProfs = character.savingThrowProfs.concat(
+        [{wis: 2}, {cha: 2}].map(fleshOutAttributes)
+    );
+    character.skillProfs = character.skillProfs.concat(
+        util.choices<DeepPartial<Skills>>([
+            {str: {athletics: 2}},
+            {int: {religion: 2}},
+            {wis: {insight: 2}},
+            {wis: {medicine: 2}},
+            {cha: {intimidation: 2}},
+            {cha: {persuasion: 2}}
+        ], 2, character.skillProfs)
+    );
+    character.traits = character.traits.concat("Divine Sense", "Lay on Hands");
     return character;
 }
 
