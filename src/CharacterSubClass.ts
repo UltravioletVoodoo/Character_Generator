@@ -1,23 +1,38 @@
 import { Character } from "./Character";
-import { wizardSpells, necromancySpells } from "./Spells";
+import { wizardSpells, necromancySpells, druidSpells } from "./Spells";
 import { util } from "./Util";
 import { martialMelee, martialRanged } from "./WeaponSets";
+import { heavy } from "./ArmorSets";
+import { languages } from "./Languages";
+import { DeepPartial, Skills } from "./Skills";
 
 export function addClericSubClassFeatures(character: Character){
-
+    util.choice(clericSubClassFunctionList)(character);
 }
+
+const clericSubClassFunctionList: ((character: Character) => void)[] = [
+    addArcanaDomainFeatures,
+    addDeathDomainFeatures,
+    addForgeDomainFeatures,
+    addGraveDomainFeatures,
+    addKnowledgeDomainFeatures,
+    addLifeDomainFeatures,
+    addLightDomainFeatures,
+    addNatureDomainFeatures,
+    addTempestDomainFeatures,
+    addTrickeryDomainFeatures,
+    addWarDomainFeatures
+];
 
 function addArcanaDomainFeatures(character: Character){
     character.level1Spells = character.level1Spells.concat(
         "Detect magic",
-        "Magic missile"
-    );
-    character.skillProfs = character.skillProfs.concat(
-        {int: {arcana: 2}}
+        "Magic missle"
     );
     character.level0Spells = character.level0Spells.concat(
         util.choices(wizardSpells[0], 2, character.level0Spells)
     );
+    character.skillProfs = character.skillProfs.concat({int: {arcana: 2}});
     character.traits = character.traits.concat("Arcana Domain");
 }
 
@@ -33,145 +48,104 @@ function addDeathDomainFeatures(character: Character){
     character.traits = character.traits.concat("Death Domain","Reaper");
 }
 
-function addArcanaDomainFeatures(character: Character){
+function addForgeDomainFeatures(character: Character){
     character.level1Spells = character.level1Spells.concat(
-        "Detect magic",
-        "Magic missile"
+        "Searing smite",
+        "Shield"
     );
-    character.skillProfs = character.skillProfs.concat(
-        {int: {arcana: 2}}
-    );
-    character.level0Spells = character.level0Spells.concat(
-        util.choices(wizardSpells[0], 2, character.level0Spells)
-    );
+    character.armorProfs = character.armorProfs.concat(heavy);
+    character.traits = character.traits.concat("Forge Domain", "Blessing of the Forge");
 }
 
-function addArcanaDomainFeatures(character: Character){
+function addGraveDomainFeatures(character: Character){
     character.level1Spells = character.level1Spells.concat(
-        "Detect magic",
-        "Magic missile"
+        "Bane",
+        "False life"
     );
-    character.skillProfs = character.skillProfs.concat(
-        {int: {arcana: 2}}
-    );
-    character.level0Spells = character.level0Spells.concat(
-        util.choices(wizardSpells[0], 2, character.level0Spells)
-    );
+    character.armorProfs = character.armorProfs.concat(heavy);
+    character.traits = character.traits.concat("Grave Domain", "Circle of Mortality", "Eyes of the Grave");
 }
 
-function addArcanaDomainFeatures(character: Character){
+function addKnowledgeDomainFeatures(character: Character){
     character.level1Spells = character.level1Spells.concat(
-        "Detect magic",
-        "Magic missile"
+        "Command",
+        "Identify"
     );
-    character.skillProfs = character.skillProfs.concat(
-        {int: {arcana: 2}}
+    character.languages = character.languages.concat(
+        util.choices(languages, 2, character.languages)
     );
-    character.level0Spells = character.level0Spells.concat(
-        util.choices(wizardSpells[0], 2, character.level0Spells)
-    );
+    const blessingOfKnowledge = util.choices<DeepPartial<Skills>>([
+        {int: {arcana: 2}},
+        {int: {history: 2}},
+        {int: {nature: 2}},
+        {int: {religion: 2}}
+    ], 2, character.skillProfs);
+    character.skillProfs = character.skillProfs.concat(blessingOfKnowledge);
+    character.expertise = character.expertise.concat(blessingOfKnowledge);
+    character.traits = character.traits.concat("Knowledge Domain");
 }
 
-function addArcanaDomainFeatures(character: Character){
+function addLifeDomainFeatures(character: Character){
     character.level1Spells = character.level1Spells.concat(
-        "Detect magic",
-        "Magic missile"
+        "Bless",
+        "Cure wounds"
     );
-    character.skillProfs = character.skillProfs.concat(
-        {int: {arcana: 2}}
-    );
-    character.level0Spells = character.level0Spells.concat(
-        util.choices(wizardSpells[0], 2, character.level0Spells)
-    );
+    character.armorProfs = character.armorProfs.concat(heavy);
+    character.traits = character.traits.concat("Life Domain", "Disciple of Life");
 }
 
-function addArcanaDomainFeatures(character: Character){
+function addLightDomainFeatures(character: Character){
     character.level1Spells = character.level1Spells.concat(
-        "Detect magic",
-        "Magic missile"
+        "Burning hands",
+        "Faerie fire"
     );
-    character.skillProfs = character.skillProfs.concat(
-        {int: {arcana: 2}}
-    );
-    character.level0Spells = character.level0Spells.concat(
-        util.choices(wizardSpells[0], 2, character.level0Spells)
-    );
+    character.level0Spells = character.level0Spells.concat("Light");
+    character.traits = character.traits.concat("Light Domain", "Warding Flare");
 }
 
-function addArcanaDomainFeatures(character: Character){
+function addNatureDomainFeatures(character: Character){
     character.level1Spells = character.level1Spells.concat(
-        "Detect magic",
-        "Magic missile"
+        "Animal friendship",
+        "Speak with animals"
     );
     character.skillProfs = character.skillProfs.concat(
-        {int: {arcana: 2}}
+        util.choice<DeepPartial<Skills>>([
+            {int: {nature: 2}},
+            {wis: {animalHandling: 2}},
+            {wis: {survival: 2}}
+        ], character.skillProfs)
     );
     character.level0Spells = character.level0Spells.concat(
-        util.choices(wizardSpells[0], 2, character.level0Spells)
+        util.choice(druidSpells[0], character.level0Spells)
     );
+    character.armorProfs = character.armorProfs.concat(heavy);
+    character.traits = character.traits.concat("Nature Domain");
 }
 
-function addArcanaDomainFeatures(character: Character){
+function addTempestDomainFeatures(character: Character){
     character.level1Spells = character.level1Spells.concat(
-        "Detect magic",
-        "Magic missile"
+        "Fog cloud",
+        "Thunderwave"
     );
-    character.skillProfs = character.skillProfs.concat(
-        {int: {arcana: 2}}
-    );
-    character.level0Spells = character.level0Spells.concat(
-        util.choices(wizardSpells[0], 2, character.level0Spells)
-    );
+    character.weaponProfs = character.weaponProfs.concat(martialMelee, martialRanged);
+    character.armorProfs = character.armorProfs.concat(heavy);
+    character.traits = character.traits.concat("Tempest Domain", "Wrath of the Storm");
 }
 
-function addArcanaDomainFeatures(character: Character){
+function addTrickeryDomainFeatures(character: Character){
     character.level1Spells = character.level1Spells.concat(
-        "Detect magic",
-        "Magic missile"
+        "Charm person",
+        "Disguise self"
     );
-    character.skillProfs = character.skillProfs.concat(
-        {int: {arcana: 2}}
-    );
-    character.level0Spells = character.level0Spells.concat(
-        util.choices(wizardSpells[0], 2, character.level0Spells)
-    );
+    character.traits = character.traits.concat("Trickery Domain", "Blessing of the Trickster");
 }
 
-function addArcanaDomainFeatures(character: Character){
+function addWarDomainFeatures(character: Character){
     character.level1Spells = character.level1Spells.concat(
-        "Detect magic",
-        "Magic missile"
+        "Divine favor",
+        "Shield of faith"
     );
-    character.skillProfs = character.skillProfs.concat(
-        {int: {arcana: 2}}
-    );
-    character.level0Spells = character.level0Spells.concat(
-        util.choices(wizardSpells[0], 2, character.level0Spells)
-    );
-}
-
-function addArcanaDomainFeatures(character: Character){
-    character.level1Spells = character.level1Spells.concat(
-        "Detect magic",
-        "Magic missile"
-    );
-    character.skillProfs = character.skillProfs.concat(
-        {int: {arcana: 2}}
-    );
-    character.level0Spells = character.level0Spells.concat(
-        util.choices(wizardSpells[0], 2, character.level0Spells)
-    );
-}
-
-function addArcanaDomainFeatures(character: Character){
-    character.level1Spells = character.level1Spells.concat(
-        "Detect magic",
-        "Magic missile"
-    );
-    character.skillProfs = character.skillProfs.concat(
-        {int: {arcana: 2}}
-    );
-    character.level0Spells = character.level0Spells.concat(
-        util.choices(wizardSpells[0], 2, character.level0Spells)
-    );
+    character.weaponProfs = character.weaponProfs.concat(martialMelee, martialRanged);
+    character.armorProfs = character.armorProfs.concat(heavy);
+    character.traits = character.traits.concat("War Domain", "War Priest");
 }

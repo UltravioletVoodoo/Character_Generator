@@ -25,6 +25,7 @@ export const blankCharacter = {
     savingThrowProfs: zeroAttributes,
     skills: zeroSkills,
     skillProfs: [],
+    expertise: [],
     skillProfsFlat: zeroSkills,
     proficiencyBonus: 2,
     languages: [],
@@ -67,7 +68,9 @@ export function addBaseFeatures(character) {
 function finalizeCharacterFeatures(character) {
     character.skillProfsFlat = sumSkills(character.skillProfs);
     character.attrMods = generateMods(character.attributes);
-    character.skills = sumSkills([character.skillProfsFlat].concat(convertAttrToSkills(character.attrMods)));
+    character.skills = sumSkills([character.skillProfsFlat]
+        .concat(convertAttrToSkills(character.attrMods))
+        .concat(sumSkills(character.expertise)));
     character.savingThrows = mergeAttributes([character.savingThrowProfs, character.attrMods]);
     return character;
 }

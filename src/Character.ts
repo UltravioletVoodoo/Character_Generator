@@ -28,6 +28,7 @@ export interface Character {
     savingThrowProfs: Attributes;
     skills: Skills;
     skillProfs: DeepPartial<Skills>[];
+    expertise: DeepPartial<Skills>[];
     skillProfsFlat: Skills;
     proficiencyBonus: 2;
     languages: string[];
@@ -66,6 +67,7 @@ export const blankCharacter: Character = {
     savingThrowProfs: zeroAttributes,
     skills: zeroSkills,
     skillProfs: [],
+    expertise: [],
     skillProfsFlat: zeroSkills,
     proficiencyBonus: 2,
     languages: [],
@@ -116,7 +118,10 @@ export function addBaseFeatures(character: Character): Character {
 function finalizeCharacterFeatures(character: Character): Character {
     character.skillProfsFlat = sumSkills(character.skillProfs);
     character.attrMods = generateMods(character.attributes);
-    character.skills = sumSkills([character.skillProfsFlat].concat(convertAttrToSkills(character.attrMods)));
+    character.skills = sumSkills([character.skillProfsFlat]
+        .concat(convertAttrToSkills(character.attrMods))
+        .concat(sumSkills(character.expertise))
+        );
     character.savingThrows = mergeAttributes([character.savingThrowProfs, character.attrMods]);
     return character;
 }

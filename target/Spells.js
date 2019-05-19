@@ -295,3 +295,15 @@ export const wizardSpells = [
         "Witch bolt"
     ]
 ];
+export const necromancySpells = [
+    [
+        "Chill touch",
+        "Spare the dying",
+        "Toll the dead"
+    ],
+    [
+        "False life",
+        "Inflict wounds",
+        "Ray of sickness"
+    ]
+];
