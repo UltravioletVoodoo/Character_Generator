@@ -65,7 +65,18 @@ export function addBaseFeatures(character) {
     // Return the modified character
     return character;
 }
+function removeDuplicatesFromLists(character) {
+    character.skillProfs = [...new Set(character.skillProfs)];
+    character.expertise = [...new Set(character.expertise)];
+    character.languages = [...new Set(character.languages)];
+    character.toolProfs = [...new Set(character.toolProfs)];
+    character.weaponProfs = [...new Set(character.weaponProfs)];
+    character.traits = [...new Set(character.traits)];
+    character.level0Spells = [...new Set(character.level0Spells)];
+    character.level1Spells = [...new Set(character.level1Spells)];
+}
 function finalizeCharacterFeatures(character) {
+    removeDuplicatesFromLists(character);
     character.skillProfsFlat = sumSkills(character.skillProfs);
     character.attrMods = generateMods(character.attributes);
     character.skills = sumSkills([character.skillProfsFlat]
