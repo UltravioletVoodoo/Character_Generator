@@ -192,6 +192,26 @@ function addRangerFeatures(character) {
 }
 function addRogueFeatures(character) {
     character.className = "Rogue";
+    character.hitDice = 8;
+    character.armorProfs = character.armorProfs.concat(light);
+    character.weaponProfs = character.weaponProfs.concat(simpleMelee, simpleRanged, findWeapon("Hand crossbow"), findWeapon("Longsword"), findWeapon("Rapier"), findWeapon("Shortsword"));
+    character.toolProfs = character.toolProfs.concat(findTool("Theive's tools"));
+    character.savingThrowProfs = character.savingThrowProfs.concat([{ dex: 2 }, { int: 2 }].map(fleshOutAttributes));
+    character.skillProfs = character.skillProfs.concat(util.choices([
+        { str: { athletics: 2 } },
+        { dex: { acrobatics: 2 } },
+        { dex: { stealth: 2 } },
+        { dex: { sleightOfHand: 2 } },
+        { int: { investigation: 2 } },
+        { wis: { insight: 2 } },
+        { wis: { perception: 2 } },
+        { cha: { deception: 2 } },
+        { cha: { intimidation: 2 } },
+        { cha: { persuasion: 2 } },
+        { cha: { performance: 2 } }
+    ], 4, character.skillProfs));
+    character.expertise = character.expertise.concat(util.choices(character.skillProfs, 2, character.expertise));
+    character.traits = character.traits.concat("Sneak Attack");
     return character;
 }
 function addSorcererFeatures(character) {
