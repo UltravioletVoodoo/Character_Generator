@@ -1,6 +1,6 @@
 import { Character } from "./Character";
 import { util } from "./Util";
-import { light, medium, findArmor } from "./ArmorSets";
+import { light, medium, findArmor, heavy } from "./ArmorSets";
 import { simpleMelee, simpleRanged, martialMelee, martialRanged, findWeapon } from "./WeaponSets";
 import { mergeAttributes, fleshOutAttributes } from "./Attributes";
 import { DeepPartial, Skills, allSkillPartialProfs } from "./Skills";
@@ -157,6 +157,45 @@ function addDruidFeatures(character: Character): Character {
 
 function addFighterFeatures(character: Character): Character {
     character.className = "Fighter";
+    character.hitDice = 10;
+    character.armorProfs = character.armorProfs.concat(
+        light,
+        medium,
+        heavy
+    );
+    character.weaponProfs = character.weaponProfs.concat(
+        simpleMelee,
+        simpleRanged,
+        martialMelee,
+        martialRanged
+    );
+    character.savingThrowProfs = character.savingThrowProfs.concat(
+        [{str: 2}, {con: 2}].map(fleshOutAttributes)
+    );
+    character.skillProfs = character.skillProfs.concat(
+        util.choices<DeepPartial<Skills>>([
+            {str: {athletics: 2}},
+            {dex: {acrobatics: 2}},
+            {int: {history: 2}},
+            {wis: {animalHandling: 2}},
+            {wis: {insight: 2}},
+            {wis: {perception: 2}},
+            {wis: {survival: 2}},
+            {cha: {intimidation: 2}}
+        ], 2, character.skillProfs)
+    );
+    character.startingGold = 200;
+    character.traits = character.traits.concat("Second Wind");
+    character.traits = character.traits.concat(
+        util.choice([
+            "Archery Fighting Style(*)",
+            "Defender Fighting Style(*)",
+            "Dueling Fighting Style(*)",
+            "Great Weapon Fighting Style(*)",
+            "Protection Fighting Style(*)",
+            "Two Weapon Fighting Style(*)"
+        ])
+    );
     return character;
 }
 
