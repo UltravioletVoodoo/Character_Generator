@@ -166,6 +166,28 @@ function addPaladinFeatures(character) {
 }
 function addRangerFeatures(character) {
     character.className = "Ranger";
+    character.hitDice = 10;
+    character.armorProfs = character.armorProfs.concat(light, medium);
+    character.weaponProfs = character.weaponProfs.concat(simpleMelee, simpleRanged, martialMelee, martialRanged);
+    character.savingThrowProfs = character.savingThrowProfs.concat([{ str: 2 }, { dex: 2 }].map(fleshOutAttributes));
+    character.skillProfs = character.skillProfs.concat(util.choices([
+        { str: { athletics: 2 } },
+        { dex: { stealth: 2 } },
+        { int: { nature: 2 } },
+        { int: { investigation: 2 } },
+        { wis: { animalHandling: 2 } },
+        { wis: { insight: 2 } },
+        { wis: { perception: 2 } },
+        { wis: { survival: 2 } }
+    ], 3, character.skillProfs));
+    character.startingGold = 200;
+    character.traits = character.traits.concat(util.choice([
+        "Favored Enemy: Beasts(*)",
+        "Favored Enemy: Fey(*)",
+        "Favored Enemy: Humanoids(*)",
+        "Favored Enemy: Monstrosities(*)",
+        "Favored Enemy: Undead(*)"
+    ]), "Natural Explorer");
     return character;
 }
 function addRogueFeatures(character) {
