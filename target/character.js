@@ -1,4 +1,4 @@
-import { zeroAttributes, mergeAttributes, generateMods } from "./Attributes";
+import { zeroAttributes, mergeAttributes, generateMods, fleshOutAttributes } from "./Attributes";
 import { zeroSkills, sumSkills, convertAttrToSkills } from "./Skills";
 import { blankArmor } from "./ArmorSets";
 import { addCharacterClassFeatures } from "./CharacterClass";
@@ -22,7 +22,8 @@ export const blankCharacter = {
     attributes: zeroAttributes,
     attrMods: zeroAttributes,
     savingThrows: zeroAttributes,
-    savingThrowProfs: zeroAttributes,
+    savingThrowProfs: [],
+    savingThrowProfsFlat: zeroAttributes,
     skills: zeroSkills,
     skillProfs: [],
     expertise: [],
@@ -67,6 +68,7 @@ export function addBaseFeatures(character) {
 }
 function removeDuplicatesFromLists(character) {
     character.skillProfs = [...new Set(character.skillProfs)];
+    character.savingThrowProfs = [...new Set(character.savingThrowProfs)];
     character.expertise = [...new Set(character.expertise)];
     character.languages = [...new Set(character.languages)];
     character.toolProfs = [...new Set(character.toolProfs)];
@@ -78,11 +80,12 @@ function removeDuplicatesFromLists(character) {
 function finalizeCharacterFeatures(character) {
     removeDuplicatesFromLists(character);
     character.skillProfsFlat = sumSkills(character.skillProfs);
+    character.savingThrowProfsFlat = mergeAttributes(character.savingThrowProfs.map(fleshOutAttributes));
     character.attrMods = generateMods(character.attributes);
     character.skills = sumSkills([character.skillProfsFlat]
         .concat(convertAttrToSkills(character.attrMods))
         .concat(sumSkills(character.expertise)));
-    character.savingThrows = mergeAttributes([character.savingThrowProfs, character.attrMods]);
+    character.savingThrows = mergeAttributes([character.savingThrowProfsFlat, character.attrMods]);
     return character;
 }
 // Generate the character in its entirety

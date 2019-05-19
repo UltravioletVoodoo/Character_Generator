@@ -1,4 +1,4 @@
-import { Attributes, zeroAttributes, mergeAttributes, generateMods } from "./Attributes";
+import { Attributes, zeroAttributes, mergeAttributes, generateMods, fleshOutAttributes } from "./Attributes";
 import { Skills, zeroSkills, DeepPartial, sumSkills, convertAttrToSkills } from "./Skills";
 import { Tool } from "./ToolSets";
 import { Weapon } from "./WeaponSets";
@@ -25,7 +25,8 @@ export interface Character {
     attributes: Attributes;
     attrMods: Attributes;
     savingThrows: Attributes;
-    savingThrowProfs: Attributes;
+    savingThrowProfs: Partial<Attributes>[];
+    savingThrowProfsFlat: Attributes;
     skills: Skills;
     skillProfs: DeepPartial<Skills>[];
     expertise: DeepPartial<Skills>[];
@@ -64,7 +65,8 @@ export const blankCharacter: Character = {
     attributes: zeroAttributes,
     attrMods: zeroAttributes,
     savingThrows: zeroAttributes,
-    savingThrowProfs: zeroAttributes,
+    savingThrowProfs: [],
+    savingThrowProfsFlat: zeroAttributes,
     skills: zeroSkills,
     skillProfs: [],
     expertise: [],
@@ -117,6 +119,7 @@ export function addBaseFeatures(character: Character): Character {
 
 function removeDuplicatesFromLists(character: Character){
     character.skillProfs = [...new Set(character.skillProfs)];
+    character.savingThrowProfs = [...new Set(character.savingThrowProfs)];
     character.expertise = [...new Set(character.expertise)];
     character.languages = [...new Set(character.languages)];
     character.toolProfs = [...new Set(character.toolProfs)];
@@ -129,12 +132,13 @@ function removeDuplicatesFromLists(character: Character){
 function finalizeCharacterFeatures(character: Character): Character {
     removeDuplicatesFromLists(character);
     character.skillProfsFlat = sumSkills(character.skillProfs);
+    character.savingThrowProfsFlat = mergeAttributes(character.savingThrowProfs.map(fleshOutAttributes));
     character.attrMods = generateMods(character.attributes);
     character.skills = sumSkills([character.skillProfsFlat]
         .concat(convertAttrToSkills(character.attrMods))
         .concat(sumSkills(character.expertise))
         );
-    character.savingThrows = mergeAttributes([character.savingThrowProfs, character.attrMods]);
+    character.savingThrows = mergeAttributes([character.savingThrowProfsFlat, character.attrMods]);
     return character;
 }
 

@@ -34,12 +34,12 @@ util.getElement("intSaving").value = character.savingThrows.int.toString();
 util.getElement("wisSaving").value = character.savingThrows.wis.toString();
 util.getElement("chaSaving").value = character.savingThrows.cha.toString();
 
-util.getElement("strSaveProf").checked = character.savingThrowProfs.str > 0 ? true : false;
-util.getElement("dexSaveProf").checked = character.savingThrowProfs.dex > 0 ? true : false;
-util.getElement("conSaveProf").checked = character.savingThrowProfs.con > 0 ? true : false;
-util.getElement("intSaveProf").checked = character.savingThrowProfs.int > 0 ? true : false;
-util.getElement("wisSaveProf").checked = character.savingThrowProfs.wis > 0 ? true : false;
-util.getElement("chaSaveProf").checked = character.savingThrowProfs.cha > 0 ? true : false;
+util.getElement("strSaveProf").checked = character.savingThrowProfsFlat.str > 0 ? true : false;
+util.getElement("dexSaveProf").checked = character.savingThrowProfsFlat.dex > 0 ? true : false;
+util.getElement("conSaveProf").checked = character.savingThrowProfsFlat.con > 0 ? true : false;
+util.getElement("intSaveProf").checked = character.savingThrowProfsFlat.int > 0 ? true : false;
+util.getElement("wisSaveProf").checked = character.savingThrowProfsFlat.wis > 0 ? true : false;
+util.getElement("chaSaveProf").checked = character.savingThrowProfsFlat.cha > 0 ? true : false;
 
 util.getElement("athletics").value = character.skills.str.athletics.toString();
 util.getElement("acrobatics").value = character.skills.dex.acrobatics.toString();
