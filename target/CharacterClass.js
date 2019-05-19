@@ -4,8 +4,8 @@ import { simpleMelee, simpleRanged, martialMelee, martialRanged, findWeapon } fr
 import { fleshOutAttributes } from "./Attributes";
 import { allSkillPartialProfs } from "./Skills";
 import { findTool, musical, artisan } from "./ToolSets";
-import { bardSpells, clericSpells, druidSpells } from "./Spells";
-import { addClericSubClassFeatures } from "./CharacterSubClass";
+import { bardSpells, clericSpells, druidSpells, sorcererSpells, warlockSpells } from "./Spells";
+import { addClericSubClassFeatures, addSorcererSubClassFeatures, addWarlockSubClassFeatures } from "./CharacterSubClass";
 export function addCharacterClassFeatures(character) {
     character = util.choice(classFunctionList)(character);
     return character;
@@ -216,13 +216,45 @@ function addRogueFeatures(character) {
 }
 function addSorcererFeatures(character) {
     character.className = "Sorcerer";
+    addSorcererSubClassFeatures(character);
+    character.hitDice = 6;
+    character.weaponProfs = character.weaponProfs.concat(findWeapon("Dagger"), findWeapon("Dart"), findWeapon("Sling"), findWeapon("Quarterstaff"), findWeapon("Light crossbow"));
+    character.savingThrowProfs = character.savingThrowProfs.concat([{ con: 2 }, { cha: 2 }].map(fleshOutAttributes));
+    character.skillProfs = character.skillProfs.concat(util.choices([
+        { int: { arcana: 2 } },
+        { int: { religion: 2 } },
+        { wis: { insight: 2 } },
+        { wis: { perception: 2 } },
+        { cha: { deception: 2 } },
+        { cha: { persuasion: 2 } }
+    ], 2, character.skillProfs));
+    character.startingGold = 120;
+    character.level0Spells = character.level0Spells.concat(util.choices(sorcererSpells[0], 4, character.level0Spells));
+    character.level1Spells = character.level1Spells.concat(util.choices(sorcererSpells[1], 2, character.level1Spells));
     return character;
 }
 function addWarlockFeatures(character) {
     character.className = "Warlock";
+    addWarlockSubClassFeatures(character);
+    character.hitDice = 8;
+    character.armorProfs = character.armorProfs.concat(light);
+    character.weaponProfs = character.weaponProfs.concat(simpleMelee, simpleRanged);
+    character.savingThrowProfs = character.savingThrowProfs.concat([{ wis: 2 }, { cha: 2 }].map(fleshOutAttributes));
+    character.skillProfs = character.skillProfs.concat(util.choices([
+        { int: { arcana: 2 } },
+        { cha: { deception: 2 } },
+        { int: { history: 2 } },
+        { cha: { intimidation: 2 } },
+        { int: { investigation: 2 } },
+        { int: { nature: 2 } },
+        { int: { religion: 2 } }
+    ], 2, character.skillProfs));
+    character.level0Spells = character.level0Spells.concat(util.choices(warlockSpells[0], 2, character.level0Spells));
+    character.startingGold = 160;
     return character;
 }
 function addWizardFeatures(character) {
     character.className = "Wizard";
+    character.startingGold = 160;
     return character;
 }

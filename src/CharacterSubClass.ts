@@ -1,13 +1,21 @@
 import { Character } from "./Character";
-import { wizardSpells, necromancySpells, druidSpells } from "./Spells";
+import { wizardSpells, necromancySpells, druidSpells, warlockSpells } from "./Spells";
 import { util } from "./Util";
 import { martialMelee, martialRanged } from "./WeaponSets";
-import { heavy } from "./ArmorSets";
+import { findArmor, heavy } from "./ArmorSets";
 import { languages } from "./Languages";
 import { DeepPartial, Skills } from "./Skills";
 
 export function addClericSubClassFeatures(character: Character){
     util.choice(clericSubClassFunctionList)(character);
+}
+
+export function addSorcererSubClassFeatures(character: Character){
+    util.choice(sorcererSubClassFunctionList)(character);
+}
+
+export function addWarlockSubClassFeatures(character: Character){
+    util.choice(warlockSubClassFunctionsList)(character);
 }
 
 const clericSubClassFunctionList: ((character: Character) => void)[] = [
@@ -23,6 +31,22 @@ const clericSubClassFunctionList: ((character: Character) => void)[] = [
     addTrickeryDomainFeatures,
     addWarDomainFeatures
 ];
+
+const sorcererSubClassFunctionList: ((character: Character) => void)[] = [
+    addDraconicAncestryOriginFeatures,
+    addWildMagicOriginFeatures,
+    addFavoredSoulOriginFeatures,
+    addShadowMagicOriginFeatures,
+    addStormSorceryOriginFeatures
+];
+
+const warlockSubClassFunctionsList: ((character: Character) => void)[] = [
+    addArchfeyPatronFeatures,
+    addFiendPatronFeatures,
+    addGreatOldOnePatronFeatures,
+    addCelestialPatronFeatures,
+    addHexBladePatronFeatures
+]
 
 function addArcanaDomainFeatures(character: Character){
     character.level1Spells = character.level1Spells.concat(
@@ -148,4 +172,125 @@ function addWarDomainFeatures(character: Character){
     character.weaponProfs = character.weaponProfs.concat(martialMelee, martialRanged);
     character.armorProfs = character.armorProfs.concat(heavy);
     character.traits = character.traits.concat("War Domain", "War Priest");
+}
+
+function addDraconicAncestryOriginFeatures(character: Character) {
+    character.armorProfs = character.armorProfs.concat(findArmor("Unarmored defence draconic"));
+    character.hp = character.hp + 1;
+    character.traits = character.traits.concat(
+        "Draconic Bloodline",
+        util.choice([
+            "Black Draconic Ancestry",
+            "Blue Draconic Ancestry",
+            "Brass Draconic Ancestry",
+            "Bronze Draconic Ancestry",
+            "Copper Draconic Ancestry",
+            "Gold Draconic Ancestry",
+            "Green Draconic Ancestry",
+            "Red Draconic Ancestry",
+            "Silver Draconic Ancestry",
+            "White Draconic Ancestry"
+        ], character.traits)
+    );
+}
+
+function addGoodAffinityFeatures(character: Character){
+    character.traits = character.traits.concat("Good Divine Magic");
+    character.level1Spells = character.level1Spells.concat("Cure wounds");
+}
+
+function addEvilAffinityFeatures(character: Character){
+    character.traits = character.traits.concat("Evil Divine Magic");
+    character.level1Spells = character.level1Spells.concat("Inflict wounds");
+}
+
+function addLawAffinityFeatures(character: Character){
+    character.traits = character.traits.concat("Lawful Divine Magic");
+    character.level1Spells = character.level1Spells.concat("Bless");
+}
+
+function addChaosAffinityFeatures(character: Character){
+    character.traits = character.traits.concat("Chaotic Divine Magic");
+    character.level1Spells = character.level1Spells.concat("Bane");
+}
+
+function addNeutralityAffinityFeatures(character: Character){
+    character.traits = character.traits.concat("Neutral Divine Magic");
+    character.level1Spells = character.level1Spells.concat("Protection from good and evil");
+}
+
+function addFavoredSoulOriginFeatures(character: Character) {
+    util.choice([
+        addGoodAffinityFeatures,
+        addEvilAffinityFeatures,
+        addLawAffinityFeatures,
+        addChaosAffinityFeatures,
+        addNeutralityAffinityFeatures
+    ])(character);
+    character.traits = character.traits.concat("Favored by the Gods");
+}
+
+function addShadowMagicOriginFeatures(character: Character) {
+    character.traits = character.traits.concat("Shadow Magic", "Superior Darkvision", "Strength of the Grave");
+}
+
+function addStormSorceryOriginFeatures(character: Character) {
+    character.traits = character.traits.concat("Storm Sorcery", "Tempestuous Magic");
+    character.languages = character.languages.concat("Primordial");
+}
+
+function addWildMagicOriginFeatures(character: Character){
+    character.traits = character.traits.concat("Wild Magic", "Wild Magic Surge", "Tides of Chaos");
+}
+
+function addArchfeyPatronFeatures(character: Character) {
+    character.level1Spells = character.level1Spells.concat(
+        util.choices(warlockSpells[1].concat("Faerie fire", "Sleep"), 2, character.level1Spells)
+    );
+    character.traits = character.traits.concat(
+        "Archefey Patron",
+        "Fey Presence"
+    );
+}
+
+function addFiendPatronFeatures(character: Character) {
+    character.level1Spells = character.level1Spells.concat(
+        util.choices(warlockSpells[1].concat("Burning hands", "Command"), 2, character.level1Spells)
+    );
+    character.traits = character.traits.concat(
+        "Fiend Patron",
+        "Dark One's Blessing"
+    );
+}
+
+function addGreatOldOnePatronFeatures(character: Character) {
+    character.level1Spells = character.level1Spells.concat(
+        util.choices(warlockSpells[1].concat("Dissonant whispers", "Tasha's hideous laughter"), 2, character.level1Spells)
+    );
+    character.traits = character.traits.concat(
+        "Great Old One Patron",
+        "Awakened Mind"
+    );
+}
+
+function addCelestialPatronFeatures(character: Character) {
+    character.level1Spells = character.level1Spells.concat(
+        util.choices(warlockSpells[1].concat("Cure wounds", "Guiding bolt"), 2, character.level1Spells)
+    );
+    character.level0Spells = character.level0Spells.concat("Light", "Sacred flame");
+    character.traits = character.traits.concat(
+        "Celestial Patron",
+        "Healing Light"
+    );
+}
+
+function addHexBladePatronFeatures(character: Character) {
+    character.level1Spells = character.level1Spells.concat(
+        util.choices(warlockSpells[1].concat("Shield", "Wrathful smite"), 2, character.level1Spells)
+    );
+    character.traits = character.traits.concat(
+        "Hexblade",
+        "Hexblade's Curse",
+        "Hex Warrior"
+    );
 }

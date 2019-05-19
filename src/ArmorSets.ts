@@ -267,5 +267,18 @@ export const misc: Armor[] = [
         strReq: 0,
         stealthDis: false,
         weight: 0
+    },
+    {
+        name: "Unarmored defence draconic",
+        cost: 0,
+        ac: {
+            base: 13,
+            caps: {
+                dex: 5
+            }
+        },
+        strReq: 0,
+        stealthDis: false,
+        weight: 0
     }
 ];

@@ -89,7 +89,7 @@ function addHalfOrcFeatures(character) {
     character.age = util.randomNumberFromRange([14, 75]);
     character.speed = 30;
     character.skillProfs = character.skillProfs.concat({ cha: { intimidation: 2 } });
-    character.traits = ["Darkvision", "Relentless Endurance", "Savage Endurance"];
+    character.traits = ["Darkvision", "Relentless Endurance", "Savage Attacks"];
     return character;
 }
 function addHalflingFeatures(character) {
