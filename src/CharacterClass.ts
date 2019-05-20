@@ -5,7 +5,7 @@ import { simpleMelee, simpleRanged, martialMelee, martialRanged, findWeapon } fr
 import { fleshOutAttributes } from "./Attributes";
 import { DeepPartial, Skills, allSkillPartialProfs } from "./Skills";
 import { findTool, musical, artisan } from "./ToolSets";
-import { bardSpells, clericSpells, druidSpells, sorcererSpells, warlockSpells } from "./Spells";
+import { bardSpells, clericSpells, druidSpells, sorcererSpells, warlockSpells, wizardSpells } from "./Spells";
 import { addClericSubClassFeatures, addSorcererSubClassFeatures, addWarlockSubClassFeatures } from "./CharacterSubClass";
 
 export function addCharacterClassFeatures(character: Character): Character {
@@ -408,6 +408,34 @@ function addWarlockFeatures(character: Character): Character {
 
 function addWizardFeatures(character: Character): Character {
     character.className = "Wizard";
+    character.hitDice = 6;
+    character.weaponProfs = character.weaponProfs.concat(
+        findWeapon("Dagger"),
+        findWeapon("Dart"),
+        findWeapon("Sling"),
+        findWeapon("Quarterstaff"),
+        findWeapon("Light crossbow")
+    );
+    character.savingThrowProfs = character.savingThrowProfs.concat(
+        [{int: 2}, {wis: 2}].map(fleshOutAttributes)
+    );
+    character.skillProfs = character.skillProfs.concat(
+        util.choices<DeepPartial<Skills>>([
+            {int: {arcana: 2}},
+            {int: {history: 2}},
+            {wis: {insight: 2}},
+            {int: {investigation: 2}},
+            {wis: {medicine: 2}},
+            {int: {religion: 2}}
+        ], 2, character.skillProfs)
+    );
     character.startingGold = 160;
+    character.level0Spells = character.level0Spells.concat(
+        util.choices(wizardSpells[0], 3, character.level0Spells)
+    );
+    character.level1Spells = character.level1Spells.concat(
+        util.choices(wizardSpells[1], 2, character.level0Spells)
+    );
+    character.traits = character.traits.concat("Arcane Recovery");
     return character;
 }
