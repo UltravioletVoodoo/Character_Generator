@@ -663,20 +663,21 @@ form.charsheet main section.features div textarea {
 }
 .generateButton .btn {
   position: absolute;
-  top: 30%;
+  top: 95%;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  background-color: #ff6600; 
-  color: black;
+  background-color: #313131; 
+  color: white;
   font-size: 16px;
   padding: 16px 30px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
   text-align: center;
+  width: 75%;
 }
 .generateButton .btn:hover {
-  background-color: #aa0000;
+  background-color: #575757;
   color: white;
 }
