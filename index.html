@@ -8,404 +8,416 @@
 <body>
   <link rel="stylesheet" href="./style.css">
 
-  <form class="charsheet">
-  <header>
-    <section class="charname">
-      <label for="charname">Character Name</label>
-      <input name="charname" id="name" readonly/>
-    </section>
-    <section class="misc">
-      <ul>
-        <li>
-          <label for="className">Class</label><input name="className" id="className" readonly/>
-        </li>
-        <li>
-          <label for="level">Level</label><input name="level" id="level" readonly />
-        </li>
-        <li>
-          <label for="playername">Player Name</label><input name="playername" placeholder="Player McPlayerface">
-        </li>
-        <li>
-          <label for="race">Race</label><input name="race" id="raceName" readonly/>
-        </li>
-        <li>
-          <label for="alignment">Alignment</label><input name="alignment" id="alignment" readonly/>
-        </li>
-        <li>
-          <label for="sex">Sex</label><input name="sex" id="sex" readonly />
-          <label for="age">Age</label><input name="age" id="age" readonly />
-        </li>
-      </ul>
-    </section>
-  </header>
-  <main>
-    <section>
-      <section class="attributes">
-        <div class="scores">
-          <ul>
-            <li>
-              <div class="score">
-                <label for="Strengthscore">Strength</label><input name="Strengthscore" id="str" readonly/>
-              </div>
-              <div class="modifier">
-                <input name="Strengthmod" id="strMod" readonly/>
-              </div>
-            </li>
-            <li>
-              <div class="score">
-                <label for="Dexterityscore">Dexterity</label><input name="Dexterityscore" id="dex" readOnly/>
-              </div>
-              <div class="modifier">
-                <input name="Dexteritymod" id="dexMod" readonly/>
-              </div>
-            </li>
-            <li>
-              <div class="score">
-                <label for="Constitutionscore">Constitution</label><input name="Constitutionscore" id="con" readonly />
-              </div>
-              <div class="modifier">
-                <input name="Constitutionmod" id="conMod" readonly />
-              </div>
-            </li>
-            <li>
-              <div class="score">
-                <label for="Intelligencescore">Intelligence</label><input name="Intelligencescore" id="int" readonly />
-              </div>
-              <div class="modifier">
-                <input name="Intelligencemod" id="intMod" readonly />
-              </div>
-            </li>
-            <li>
-              <div class="score">
-                <label for="Wisdomscore">Wisdom</label><input name="Wisdomscore" id="wis" readonly />
-              </div>
-              <div class="modifier">
-                <input name="Wisdommod" id="wisMod" readonly />
-              </div>
-            </li>
-            <li>
-              <div class="score">
-                <label for="Charismascore">Charisma</label><input name="Charismascore" id="cha" readonly/>
-              </div>
-              <div class="modifier">
-                <input name="Charismamod" id="chaMod" readonly />
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="attr-applications">
-          <div class="proficiencybonus box">
-            <div class="label-container">
-              <label for="proficiencybonus">Proficiency Bonus</label>
-            </div>
-            <input name="proficiencybonus" id="proficiencyBonus" readonly />
-          </div>
-          <div class="saves list-section box">
+  <div class="example-screen">
+    <div class="generateButton">
+      <img src="./img/9.jpg">
+      <button class="btn" onclick="printPage()">Generate</button>
+    </div>
+  </div>
+  <div class="example-print">
+    <form class="charsheet">
+    <header>
+      <section class="charname">
+        <label for="charname">Character Name</label>
+        <input name="charname" id="name" readonly/>
+      </section>
+      <section class="misc">
+        <ul>
+          <li>
+            <label for="className">Class</label><input name="className" id="className" readonly/>
+          </li>
+          <li>
+            <label for="level">Level</label><input name="level" id="level" readonly />
+          </li>
+          <li>
+            <label for="playername">Player Name</label><input name="playername" placeholder="Player McPlayerface">
+          </li>
+          <li>
+            <label for="race">Race</label><input name="race" id="raceName" readonly/>
+          </li>
+          <li>
+            <label for="alignment">Alignment</label><input name="alignment" id="alignment" readonly/>
+          </li>
+          <li>
+            <label for="sex">Sex</label><input name="sex" id="sex" readonly />
+            <label for="age">Age</label><input name="age" id="age" readonly />
+          </li>
+        </ul>
+      </section>
+    </header>
+    <main>
+      <section>
+        <section class="attributes">
+          <div class="scores">
             <ul>
               <li>
-                <label for="Strength-save">Strength</label><input name="Strength-save" id="strSaving" type="text" readonly /><input id="strSaveProf" name="Strength-save-prof" type="checkbox" disabled/>
+                <div class="score">
+                  <label for="Strengthscore">Strength</label><input name="Strengthscore" id="str" readonly/>
+                </div>
+                <div class="modifier">
+                  <input name="Strengthmod" id="strMod" readonly/>
+                </div>
               </li>
               <li>
-                <label for="Dexterity-save">Dexterity</label><input name="Dexterity-save" id="dexSaving" type="text" readonly /><input id="dexSaveProf" name="Dexterity-save-prof" type="checkbox" disabled />
+                <div class="score">
+                  <label for="Dexterityscore">Dexterity</label><input name="Dexterityscore" id="dex" readOnly/>
+                </div>
+                <div class="modifier">
+                  <input name="Dexteritymod" id="dexMod" readonly/>
+                </div>
               </li>
               <li>
-                <label for="Constitution-save">Constitution</label><input name="Constitution-save" id="conSaving" type="text" readonly /><input id="conSaveProf" name="Constitution-save-prof" type="checkbox" disabled />
+                <div class="score">
+                  <label for="Constitutionscore">Constitution</label><input name="Constitutionscore" id="con" readonly />
+                </div>
+                <div class="modifier">
+                  <input name="Constitutionmod" id="conMod" readonly />
+                </div>
               </li>
               <li>
-                <label for="Intelligence-save">Intelligence</label><input name="Intelligence-save" id="intSaving" type="text" readonly /><input id="intSaveProf" name="Intelligence-save-prof" type="checkbox" disabled />
+                <div class="score">
+                  <label for="Intelligencescore">Intelligence</label><input name="Intelligencescore" id="int" readonly />
+                </div>
+                <div class="modifier">
+                  <input name="Intelligencemod" id="intMod" readonly />
+                </div>
               </li>
               <li>
-                <label for="Wisdom-save">Wisdom</label><input name="Wisdom-save" id="wisSaving" type="text" readonly /><input id="wisSaveProf" name="Wisdom-save-prof" type="checkbox" disabled />
+                <div class="score">
+                  <label for="Wisdomscore">Wisdom</label><input name="Wisdomscore" id="wis" readonly />
+                </div>
+                <div class="modifier">
+                  <input name="Wisdommod" id="wisMod" readonly />
+                </div>
               </li>
               <li>
-                <label for="Charisma-save">Charisma</label><input name="Charisma-save" id="chaSaving" type="text" readonly /><input id="chaSaveProf" name="Charisma-save-prof" type="checkbox" disabled />
-              </li>
-            </ul>
-            <div class="label">
-              Saving Throws
-            </div>
-          </div>
-          <div class="skills list-section box">
-            <ul>
-              <li>
-                <label for="Athletics">Athletics <span class="skill">(Str)</span></label><input name="Athletics" id="athletics" type="text" readonly /><input id="athleticsProf" name="Athletics-prof" type="checkbox" disabled />
-              </li>
-              <li>
-                <label for="Acrobatics">Acrobatics <span class="skill">(Dex)</span></label><input name="Acrobatics" id="acrobatics" type="text" readonly /><input id="acrobaticsProf" name="Acrobatics-prof" type="checkbox" disabled />
-              </li>
-              <li>
-                <label for="Sleight of Hand">Sleight of Hand <span class="skill">(Dex)</span></label><input name="Sleight of Hand" id="sleightOfHand" type="text" readonly /><input id="sleightOfHandProf" name="Sleight of Hand-prof" type="checkbox" disabled />
-              </li>
-              <li>
-                <label for="Stealth">Stealth <span class="skill">(Dex)</span></label><input name="Stealth" id="stealth" type="text" readonly /><input id="stealthProf" name="Stealth-prof" type="checkbox" disabled />
-              </li>
-              <li>
-                <label for="Arcana">Arcana <span class="skill">(Int)</span></label><input name="Arcana" id="arcana" type="text" readonly /><input id="arcanaProf" name="Arcana-prof" type="checkbox" disabled />
-              </li>
-              <li>
-                <label for="History">History <span class="skill">(Int)</span></label><input name="History" id="history" type="text" readonly /><input id="historyProf" name="History-prof" type="checkbox" disabled />
-              </li>
-              <li>
-                <label for="Investigation">Investigation <span class="skill">(Int)</span></label><input name="Investigation" id="investigation" type="text" readonly /><input id="investigationProf" name="Investigation-prof" type="checkbox" disabled />
-              </li>
-              <li>
-                <label for="Nature">Nature <span class="skill">(Int)</span></label><input name="Nature" id="nature" type="text" readonly /><input id="natureProf" name="Nature-prof" type="checkbox" disabled />
-              </li>
-              <li>
-                <label for="Religion">Religion <span class="skill">(Int)</span></label><input name="Religion" id="religion" type="text" readonly /><input id="religionProf" name="Religion-prof" type="checkbox" disabled />
-              </li>
-              <li>
-                <label for="Animal Handling">Animal Handling <span class="skill">(Wis)</span></label><input name="Animal Handling" id="animalHandling" type="text" readonly /><input id="animalHandlingProf" name="Animal Handling-prof" type="checkbox" disabled />
-              </li>
-              <li>
-                <label for="Insight">Insight <span class="skill">(Wis)</span></label><input name="Insight" id="insight" type="text" readonly /><input id="insightProf" name="Insight-prof" type="checkbox" disabled />
-              </li>
-              <li>
-                <label for="Medicine">Medicine <span class="skill">(Wis)</span></label><input name="Medicine" id="medicine" type="text" readonly /><input id="medicineProf" name="Medicine-prof" type="checkbox" disabled />
-              </li>
-              <li>
-                <label for="Perception">Perception <span class="skill">(Wis)</span></label><input name="Perception" id="perception" type="text" readonly /><input id="perceptionProf" name="Perception-prof" type="checkbox" disabled />
-              </li>
-              <li>
-                <label for="Survival">Survival <span class="skill">(Wis)</span></label><input name="Survival" id="survival" type="text" readonly /><input id="survivalProf" name="Survival-prof" type="checkbox" disabled />
-              </li>
-              <li>
-                <label for="Deception">Deception <span class="skill">(Cha)</span></label><input name="Deception" id="deception" type="text" readonly /><input id="deceptionProf" name="Deception-prof" type="checkbox" disabled />
-              </li>
-              <li>
-                <label for="Intimidation">Intimidation <span class="skill">(Cha)</span></label><input name="Intimidation" id="intimidation" type="text" readonly /><input id="intimidationProf" name="Intimidation-prof" type="checkbox" disabled />
-              </li>
-              <li>
-                <label for="Performance">Performance <span class="skill">(Cha)</span></label><input name="Performance" id="performance" type="text" readonly /><input id="performanceProf" name="Performance-prof" type="checkbox" disabled />
-              </li>
-              <li>
-                <label for="Persuasion">Persuasion <span class="skill">(Cha)</span></label><input name="Persuasion" id="persuasion" type="text" readonly /><input id="persuasionProf" name="Persuasion-prof" type="checkbox" disabled />
-              </li>
-            </ul>
-            <div class="label">
-              Skills
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="flavor">
-        <div class="personality">
-          <label for="toolProfs">Tool Proficiencies</label><textarea name="toolProfs" id="toolProfs" readonly></textarea>
-        </div>
-        <div class="flaws">
-          <label for="languages">Languages</label><textarea name="languages" id="languages" readonly></textarea>
-        </div>
-      </section>
-    </section>
-    <section>
-      <section class="combat">
-        <div class="armorclass">
-          <div>
-            <label for="ac">Armor Class</label><input name="ac" id="ac" type="text" readonly />
-          </div>
-        </div>
-        <div class="initiative">
-          <div>
-            <label for="initiative">Initiative</label><input name="initiative" id="initiative" type="text" readonly />
-          </div>
-        </div>
-        <div class="speed">
-          <div>
-            <label for="speed">Speed</label><input name="speed" id="speed" type="text" readonly />
-          </div>
-        </div>
-        <div class="hp">
-          <div class="regular">
-            <div class="max">
-              <label for="maxhp">Hit Point Maximum</label><input name="maxhp" id="hp" type="text" readonly />
-            </div>
-            <div class="current">
-              <label for="currenthp">Current Hit Points</label><input name="currenthp" type="text" readonly />
-            </div>
-          </div>
-          <div class="temporary">
-            <label for="temphp">Temporary Hit Points</label><input name="temphp" type="text" readonly />
-          </div>
-        </div>
-        <div class="hitdice">
-          <div>
-            <div class="total">
-              <label for="totalhd">Total</label><input name="totalhd" id="hitDice" type="text" readonly />
-            </div>
-            <div class="remaining">
-              <label for="remaininghd">Hit Dice</label>
-            </div>
-          </div>
-        </div>
-        <div class="deathsaves">
-          <div>
-            <div class="label">
-              <label>Death Saves</label>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="attacksandspellcasting">
-        <div>
-          <label>Weapons</label>
-          <table>
-            <thead>
-              <tr>
-                <th>
-                  Name
-                </th>
-                <th>
-                  Atk Bonus
-                </th>
-                <th>
-                  Damage
-                </th>
-                <th>
-                  Type
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <input name="atkname1" type="text" id="weapon1Name" readonly />
-                </td>
-                <td>
-                  <input name="atkbonus1" type="text" id="weapon1AtkBonus" readonly />
-                </td>
-                <td>
-                  <input name="atkdamage1" type="text" id="weapon1Damage" readonly />
-                </td>
-                <td>
-                  <input name="atkdamagetype1" type="text" id="weapon1DamageType" readonly />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input name="atkname2" type="text" id="weapon2Name" readonly />
-                </td>
-                <td>
-                  <input name="atkbonus2" type="text" id="weapon2AtkBonus" readonly />
-                </td>
-                <td>
-                  <input name="atkdamage2" type="text" id="weapon2Damage" readonly />
-                </td>
-                <td>
-                  <input name="atkdamagetype2" type="text" id="weapon2DamageType" readonly />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-      <section class="equipment">
-        <div>
-          <label>Money</label>
-          <div class="money">
-            <ul>
-              <li>
-                <label for="startingGold">Starting Gold</label><input name="startingGold" id="startingGold" readonly/>
-              </li>
-              <li>
-                <label for="currentGold">Current Gold</label><input name="currentGold" readonly/>
+                <div class="score">
+                  <label for="Charismascore">Charisma</label><input name="Charismascore" id="cha" readonly/>
+                </div>
+                <div class="modifier">
+                  <input name="Charismamod" id="chaMod" readonly />
+                </div>
               </li>
             </ul>
           </div>
-        </div>
+          <div class="attr-applications">
+            <div class="proficiencybonus box">
+              <div class="label-container">
+                <label for="proficiencybonus">Proficiency Bonus</label>
+              </div>
+              <input name="proficiencybonus" id="proficiencyBonus" readonly />
+            </div>
+            <div class="saves list-section box">
+              <ul>
+                <li>
+                  <label for="Strength-save">Strength</label><input name="Strength-save" id="strSaving" type="text" readonly /><input id="strSaveProf" name="Strength-save-prof" type="checkbox" disabled/>
+                </li>
+                <li>
+                  <label for="Dexterity-save">Dexterity</label><input name="Dexterity-save" id="dexSaving" type="text" readonly /><input id="dexSaveProf" name="Dexterity-save-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Constitution-save">Constitution</label><input name="Constitution-save" id="conSaving" type="text" readonly /><input id="conSaveProf" name="Constitution-save-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Intelligence-save">Intelligence</label><input name="Intelligence-save" id="intSaving" type="text" readonly /><input id="intSaveProf" name="Intelligence-save-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Wisdom-save">Wisdom</label><input name="Wisdom-save" id="wisSaving" type="text" readonly /><input id="wisSaveProf" name="Wisdom-save-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Charisma-save">Charisma</label><input name="Charisma-save" id="chaSaving" type="text" readonly /><input id="chaSaveProf" name="Charisma-save-prof" type="checkbox" disabled />
+                </li>
+              </ul>
+              <div class="label">
+                Saving Throws
+              </div>
+            </div>
+            <div class="skills list-section box">
+              <ul>
+                <li>
+                  <label for="Athletics">Athletics <span class="skill">(Str)</span></label><input name="Athletics" id="athletics" type="text" readonly /><input id="athleticsProf" name="Athletics-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Acrobatics">Acrobatics <span class="skill">(Dex)</span></label><input name="Acrobatics" id="acrobatics" type="text" readonly /><input id="acrobaticsProf" name="Acrobatics-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Sleight of Hand">Sleight of Hand <span class="skill">(Dex)</span></label><input name="Sleight of Hand" id="sleightOfHand" type="text" readonly /><input id="sleightOfHandProf" name="Sleight of Hand-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Stealth">Stealth <span class="skill">(Dex)</span></label><input name="Stealth" id="stealth" type="text" readonly /><input id="stealthProf" name="Stealth-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Arcana">Arcana <span class="skill">(Int)</span></label><input name="Arcana" id="arcana" type="text" readonly /><input id="arcanaProf" name="Arcana-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="History">History <span class="skill">(Int)</span></label><input name="History" id="history" type="text" readonly /><input id="historyProf" name="History-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Investigation">Investigation <span class="skill">(Int)</span></label><input name="Investigation" id="investigation" type="text" readonly /><input id="investigationProf" name="Investigation-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Nature">Nature <span class="skill">(Int)</span></label><input name="Nature" id="nature" type="text" readonly /><input id="natureProf" name="Nature-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Religion">Religion <span class="skill">(Int)</span></label><input name="Religion" id="religion" type="text" readonly /><input id="religionProf" name="Religion-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Animal Handling">Animal Handling <span class="skill">(Wis)</span></label><input name="Animal Handling" id="animalHandling" type="text" readonly /><input id="animalHandlingProf" name="Animal Handling-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Insight">Insight <span class="skill">(Wis)</span></label><input name="Insight" id="insight" type="text" readonly /><input id="insightProf" name="Insight-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Medicine">Medicine <span class="skill">(Wis)</span></label><input name="Medicine" id="medicine" type="text" readonly /><input id="medicineProf" name="Medicine-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Perception">Perception <span class="skill">(Wis)</span></label><input name="Perception" id="perception" type="text" readonly /><input id="perceptionProf" name="Perception-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Survival">Survival <span class="skill">(Wis)</span></label><input name="Survival" id="survival" type="text" readonly /><input id="survivalProf" name="Survival-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Deception">Deception <span class="skill">(Cha)</span></label><input name="Deception" id="deception" type="text" readonly /><input id="deceptionProf" name="Deception-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Intimidation">Intimidation <span class="skill">(Cha)</span></label><input name="Intimidation" id="intimidation" type="text" readonly /><input id="intimidationProf" name="Intimidation-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Performance">Performance <span class="skill">(Cha)</span></label><input name="Performance" id="performance" type="text" readonly /><input id="performanceProf" name="Performance-prof" type="checkbox" disabled />
+                </li>
+                <li>
+                  <label for="Persuasion">Persuasion <span class="skill">(Cha)</span></label><input name="Persuasion" id="persuasion" type="text" readonly /><input id="persuasionProf" name="Persuasion-prof" type="checkbox" disabled />
+                </li>
+              </ul>
+              <div class="label">
+                Skills
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="flavor">
+          <div class="personality">
+            <label for="toolProfs">Tool Proficiencies</label><textarea name="toolProfs" id="toolProfs" readonly></textarea>
+          </div>
+          <div class="flaws">
+            <label for="languages">Languages</label><textarea name="languages" id="languages" readonly></textarea>
+          </div>
+        </section>
       </section>
-      <section class="attacksandspellcasting">
-        <div>
-          <label>Equipment</label>
-          <table>
-            <thead>
-              <tr>
-                <th>
-                  AC
-                </th>
-                <th>
-                  Name
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <input name="armorAC" type="text" id="armorAC" readonly />
-                </td>
-                <td>
-                  <input name="armorName" type="text" id="armorName" readonly />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input name="shieldAC" type="text" id="shieldAC" readonly />
-                </td>
-                <td>
-                  <input name="shieldName" type="text" id="shieldName" readonly />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <section>
+        <section class="combat">
+          <div class="armorclass">
+            <div>
+              <label for="ac">Armor Class</label><input name="ac" id="ac" type="text" readonly />
+            </div>
+          </div>
+          <div class="initiative">
+            <div>
+              <label for="initiative">Initiative</label><input name="initiative" id="initiative" type="text" readonly />
+            </div>
+          </div>
+          <div class="speed">
+            <div>
+              <label for="speed">Speed</label><input name="speed" id="speed" type="text" readonly />
+            </div>
+          </div>
+          <div class="hp">
+            <div class="regular">
+              <div class="max">
+                <label for="maxhp">Hit Point Maximum</label><input name="maxhp" id="hp" type="text" readonly />
+              </div>
+              <div class="current">
+                <label for="currenthp">Current Hit Points</label><input name="currenthp" type="text" readonly />
+              </div>
+            </div>
+            <div class="temporary">
+              <label for="temphp">Temporary Hit Points</label><input name="temphp" type="text" readonly />
+            </div>
+          </div>
+          <div class="hitdice">
+            <div>
+              <div class="total">
+                <label for="totalhd">Total</label><input name="totalhd" id="hitDice" type="text" readonly />
+              </div>
+              <div class="remaining">
+                <label for="remaininghd">Hit Dice</label>
+              </div>
+            </div>
+          </div>
+          <div class="deathsaves">
+            <div>
+              <div class="label">
+                <label>Death Saves</label>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="attacksandspellcasting">
+          <div>
+            <label>Weapons</label>
+            <table>
+              <thead>
+                <tr>
+                  <th>
+                    Name
+                  </th>
+                  <th>
+                    Atk Bonus
+                  </th>
+                  <th>
+                    Damage
+                  </th>
+                  <th>
+                    Type
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <input name="atkname1" type="text" id="weapon1Name" readonly />
+                  </td>
+                  <td>
+                    <input name="atkbonus1" type="text" id="weapon1AtkBonus" readonly />
+                  </td>
+                  <td>
+                    <input name="atkdamage1" type="text" id="weapon1Damage" readonly />
+                  </td>
+                  <td>
+                    <input name="atkdamagetype1" type="text" id="weapon1DamageType" readonly />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input name="atkname2" type="text" id="weapon2Name" readonly />
+                  </td>
+                  <td>
+                    <input name="atkbonus2" type="text" id="weapon2AtkBonus" readonly />
+                  </td>
+                  <td>
+                    <input name="atkdamage2" type="text" id="weapon2Damage" readonly />
+                  </td>
+                  <td>
+                    <input name="atkdamagetype2" type="text" id="weapon2DamageType" readonly />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="equipment">
+          <div>
+            <label>Money</label>
+            <div class="money">
+              <ul>
+                <li>
+                  <label for="startingGold">Starting Gold</label><input name="startingGold" id="startingGold" readonly/>
+                </li>
+                <li>
+                  <label for="currentGold">Current Gold</label><input name="currentGold" readonly/>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="attacksandspellcasting">
+          <div>
+            <label>Equipment</label>
+            <table>
+              <thead>
+                <tr>
+                  <th>
+                    AC
+                  </th>
+                  <th>
+                    Name
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <input name="armorAC" type="text" id="armorAC" readonly />
+                  </td>
+                  <td>
+                    <input name="armorName" type="text" id="armorName" readonly />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input name="shieldAC" type="text" id="shieldAC" readonly />
+                  </td>
+                  <td>
+                    <input name="shieldName" type="text" id="shieldName" readonly />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="attacksandspellcasting">
+          <div>
+            <label>Tools</label>
+            <table>
+              <thead>
+                <tr>
+                  <th>
+                    Name
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <input name="tool" type="text" id="tool" readonly />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
       </section>
-      <section class="attacksandspellcasting">
-        <div>
-          <label>Tools</label>
-          <table>
-            <thead>
-              <tr>
-                <th>
-                  Name
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <input name="tool" type="text" id="tool" readonly />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <section>
+        <section class="flavor">
+          <div class="personality">
+            <label for="personality">Personality</label><textarea name="personality" id="personality" readonly></textarea>
+          </div>
+          <div class="ideals">
+            <label for="ideals">Ideals</label><textarea name="ideals" id="ideals" readonly></textarea>
+          </div>
+          <div class="bonds">
+            <label for="bonds">Bonds</label><textarea name="bonds" id="bonds" readonly></textarea>
+          </div>
+          <div class="flaws">
+            <label for="flaws">Flaws</label><textarea name="flaws" id="flaws" readonly></textarea>
+          </div>
+        </section>
+        <section class="features">
+          <div>
+            <label for="features">Features & Traits</label><textarea name="features" id="traits" readonly></textarea>
+          </div>
+        </section>
       </section>
-    </section>
-    <section>
-      <section class="flavor">
-        <div class="personality">
-          <label for="personality">Personality</label><textarea name="personality" id="personality" readonly></textarea>
-        </div>
-        <div class="ideals">
-          <label for="ideals">Ideals</label><textarea name="ideals" id="ideals" readonly></textarea>
-        </div>
-        <div class="bonds">
-          <label for="bonds">Bonds</label><textarea name="bonds" id="bonds" readonly></textarea>
-        </div>
-        <div class="flaws">
-          <label for="flaws">Flaws</label><textarea name="flaws" id="flaws" readonly></textarea>
-        </div>
-      </section>
-      <section class="features">
-        <div>
-          <label for="features">Features & Traits</label><textarea name="features" id="traits" readonly></textarea>
-        </div>
-      </section>
-    </section>
-  </main>
-  <footer>
-    <div class="spellList">
-        <label for="cantrips">Cantrips</label><textarea name="cantrips" id="cantrips" readonly></textarea>
-    </div>
-    <div class="spellList">
-      <label for="Level1Spells">Level 1 Spells</label><textarea name="levelOneSpells" id="levelOneSpells" readonly></textarea>
-    </div>
-    <div class="blankArea">
-      <label for="blankArea">Doodles & Notes Area</label><textarea name="blankArea" id="blankArea" readonly></textarea>
-    </div>
-  </footer>
-</form>
-
+    </main>
+    <footer>
+      <div class="spellList">
+          <label for="cantrips">Cantrips</label><textarea name="cantrips" id="cantrips" readonly></textarea>
+      </div>
+      <div class="spellList">
+        <label for="Level1Spells">Level 1 Spells</label><textarea name="levelOneSpells" id="levelOneSpells" readonly></textarea>
+      </div>
+      <div class="blankArea">
+        <label for="blankArea">Doodles & Notes Area</label><textarea name="blankArea" id="blankArea" readonly></textarea>
+      </div>
+    </footer>
+  </form>
+  </div>
 
 <script src="dist/bundle.js"></script>
+<script>
+  function printPage(){
+    window.print();
+  }
+</script>
 </body>
 </html>
