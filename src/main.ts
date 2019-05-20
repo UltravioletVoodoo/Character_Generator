@@ -80,8 +80,8 @@ util.getElement("performanceProf").checked = character.skillProfsFlat.cha.perfor
 util.getElement("persuasionProf").checked = character.skillProfsFlat.cha.persuasion > 0 ? true : false;
 
 util.getElement("proficiencyBonus").value = character.proficiencyBonus.toString();
-util.getElement("languages").innerHTML = Array.from(character.languages).toString();
-util.getElement("toolProfs").innerHTML = Array.from(character.toolProfs).map(tool => tool.name).toString();
+util.getElement("languages").innerHTML = Array.from(character.languages).join("\n");
+util.getElement("toolProfs").innerHTML = Array.from(character.toolProfs).map(tool => tool.name).join("\n");
 
 util.getElement("ac").value = character.ac.toString();
 util.getElement("initiative").value = character.initiative.toString();
@@ -128,4 +128,7 @@ util.getElement("personality").value = character.personality;
 util.getElement("ideals").value = character.ideal;
 util.getElement("bonds").value = character.bond;
 util.getElement("flaws").value = character.flaw;
-util.getElement("traits").value = Array.from(character.traits).toString();
+util.getElement("traits").value = Array.from(character.traits).join("\n");
+
+util.getElement("cantrips").value = character.level0Spells.join("\n");
+util.getElement("levelOneSpells").value = character.level1Spells.join("\n");

@@ -1,12 +1,10 @@
 Grey backgrounds dont show up in print
 Boxes slightly cover up sections of border
-Death saves section ugly
-Hack Clerics
-Data Data Data Data
-	Classes
-	Names
-		For each race RIP
-Ranged/Finesse weapons should use proper stats for toHit/Damage
+Names
+	For each race RIP
+ Ranged/Finesse weapons should use proper stats for toHit/Damage
+	Honestly lets just redo weapons
+	And redo armor
 Spell Lists (show on page)
 Home page with generate character button
 	Lots of nice D&D art

@@ -624,3 +624,17 @@ form.charsheet main section.features div textarea {
   padding: 5px;
   height: 30em;
 }
+.spellList {
+  width: calc(50% - 2px);
+  display: inline-block;
+}
+.blankArea {
+  height: 750px;
+}
+.blankArea textarea {
+  height: 100%;
+}
+@page {
+  size: auto;
+  margin: 0mm;
+}

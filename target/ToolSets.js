@@ -1,6 +1,6 @@
 import { util } from "./Util";
 export function findTool(name) {
-    for (const toolList of [artisan, gaming, musical]) {
+    for (const toolList of [artisan, gaming, musical, miscTools]) {
         for (const tool of toolList) {
             if (tool.name == name) {
                 return tool;
