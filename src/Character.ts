@@ -146,7 +146,7 @@ function finalizeCharacterFeatures(character: Character): Character {
 export function generateCharacter() {
 
     // Start with a blank slate in the correct format
-    let character = blankCharacter;
+    let character = {...blankCharacter};
 
     // Add miscelaneous features not related to class or race
     character = addBaseFeatures(character);

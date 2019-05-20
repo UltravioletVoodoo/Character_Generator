@@ -91,7 +91,7 @@ function finalizeCharacterFeatures(character) {
 // Generate the character in its entirety
 export function generateCharacter() {
     // Start with a blank slate in the correct format
-    let character = blankCharacter;
+    let character = { ...blankCharacter };
     // Add miscelaneous features not related to class or race
     character = addBaseFeatures(character);
     // Add race features
