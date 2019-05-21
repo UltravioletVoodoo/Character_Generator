@@ -634,12 +634,16 @@ form.charsheet main section.features div textarea {
 .blankArea textarea {
   height: 100%;
 }
+
 @page {
   size: auto;
   margin: 0mm;
 }
 .example-print {
   display: none;
+}
+body {
+  background-color: rgb(250, 209, 130);
 }
 @media print {
   .example-screen {
@@ -648,6 +652,20 @@ form.charsheet main section.features div textarea {
   .example-print {
     display: block;
   }
+  body {
+    background-color: white;
+  }
+}
+.vignette {
+  position: fixed;
+  overflow: hidden;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  box-shadow: inset 0 0 7vw black;
+  /* background: radial-gradient(transparent 70%, black), transparent; */
 }
 .generateButton {
   height: 100%;
@@ -656,18 +674,30 @@ form.charsheet main section.features div textarea {
   top: 0;
   overflow: hidden;
   position: fixed;
+  z-index: 2000;
 }
-.generateButton img {
-  width: 100%;
+.backgroundArt {
   height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  position: fixed;
+}
+.backgroundArt img {
+  height: 95%;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
 }
 .generateButton .btn {
   position: absolute;
-  top: 95%;
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  background-color: #313131; 
+  background-color: #cc0000;
   color: white;
   font-size: 16px;
   padding: 16px 30px;
@@ -678,6 +708,6 @@ form.charsheet main section.features div textarea {
   width: 75%;
 }
 .generateButton .btn:hover {
-  background-color: #575757;
+  background-color: #ff5e00;
   color: white;
 }

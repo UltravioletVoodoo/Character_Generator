@@ -14,7 +14,6 @@ import { bonds } from "./BondSets";
 import { flaws } from "./FlawSets";
 import { chooseEquipment } from "./Equipment";
 export const blankCharacter = {
-    name: "",
     className: "",
     level: 1,
     raceName: "",

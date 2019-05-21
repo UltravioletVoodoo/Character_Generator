@@ -13,18 +13,21 @@ export function findWeapon(name: string): Weapon{
 }
 
 function chooseWeapon(list: Weapon[], money: number, cantBeTwoHanded: boolean): Weapon{
-    let newList: Weapon[] = []
+    let newList: Weapon[] = [];
     for(let x of list){
         if(x.cost <= money && !cantBeTwoHanded){
-            newList = newList.concat(x)
+            newList = newList.concat(x);
         }
         if(x.cost <= money && cantBeTwoHanded){
             if(x.twoHanded === false){
-                newList = newList.concat(x)
+                newList = newList.concat(x);
             }
         }
     }
-    return util.choice(newList)
+    if (newList.length === 0){
+        return bareFist;
+    }
+    return util.choice(newList);
 }
 
 function isTwoHanded(w: Weapon){
@@ -69,10 +72,10 @@ export interface Weapon {
 }
     
 export const bareFist: Weapon = {
-    name: "Fist",
+    name: "",
     cost: 0,
-    damage: "1",
-    damageType: "Bludgeoning",
+    damage: "",
+    damageType: "",
     weight: 0,
     properties: [],
     twoHanded: false

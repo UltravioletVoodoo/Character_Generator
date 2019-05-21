@@ -21,6 +21,9 @@ function chooseWeapon(list, money, cantBeTwoHanded) {
             }
         }
     }
+    if (newList.length === 0) {
+        return bareFist;
+    }
     return util.choice(newList);
 }
 function isTwoHanded(w) {
@@ -50,10 +53,10 @@ function isRanged(w) {
     return false;
 }
 export const bareFist = {
-    name: "Fist",
+    name: "",
     cost: 0,
-    damage: "1",
-    damageType: "Bludgeoning",
+    damage: "",
+    damageType: "",
     weight: 0,
     properties: [],
     twoHanded: false

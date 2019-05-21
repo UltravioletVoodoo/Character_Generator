@@ -7,8 +7,6 @@ function generateSheet(){
     const character = generateCharacter();
     console.log(character);
 
-    util.getElement("name").value = character.name;
-
     util.getElement("className").value = character.className;
     util.getElement("level").value = "1";
 
