@@ -1,11 +1,7 @@
 Grey backgrounds dont show up in print
 Boxes slightly cover up sections of border
 would really prefer if it just made a pdf in a new tab instead of opening a print dialogue
-Names
-	For each race RIP
- Ranged/Finesse weapons should use proper stats for toHit/Damage
-	Honestly lets just redo weapons
-	And redo armor
+
 Age should be alongside sex: not above it awkwardly
 Home page with generate character button
 	Lots of nice D&D art

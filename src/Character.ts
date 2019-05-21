@@ -16,7 +16,6 @@ import { flaws } from "./FlawSets";
 import { chooseEquipment } from "./Equipment";
 
 export interface Character {
-    name: string;
     className: string;
     level: 1;
     raceName: string;
@@ -57,7 +56,6 @@ export interface Character {
 }
 
 export const blankCharacter: Character = {
-    name: "",
     className: "",
     level: 1,
     raceName: "",
