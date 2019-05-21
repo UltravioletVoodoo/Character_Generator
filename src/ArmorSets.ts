@@ -1,5 +1,6 @@
 import { Attributes, fleshOutAttributes } from "./Attributes";
 import { util } from "./Util";
+import { Character } from "./Character";
 
 export function findArmor(name: string): Armor{
     for (const armorList of [light, medium, heavy, misc]){
@@ -12,17 +13,19 @@ export function findArmor(name: string): Armor{
     return blankArmor
 }
 
-export function chooseArmor(list: Armor[], money: number): Armor{
+export function chooseArmor(character: Character){
     let newList: Armor[] = []
-    for(let x of list){
-        if (x.cost <= money){
+    for(let x of character.armorProfs){
+        if (x.cost <= character.startingGold){
             newList = newList.concat(x)
         }
     }
+    let armorChoice = blankArmor;
     if(newList.length > 0){
-        return util.choice(newList);
+        armorChoice = util.choice(newList);
     }
-    return blankArmor;
+    character.armor = armorChoice;
+    character.startingGold -= armorChoice.cost;
 }
 
 function statBonus(a: Armor, mods: Attributes){
@@ -35,8 +38,11 @@ function statBonus(a: Armor, mods: Attributes){
         util.min([caps.cha, mods.cha], true) 
 }
 
-export function calculateAc(a: Armor, s: Armor, mods: Attributes): number{
-    return a.ac.base + statBonus(a, mods) + s.ac.base
+export function calculateAc(character: Character): number{
+    console.log(character.armor.ac.base);
+    console.log(statBonus(character.armor, character.attrMods));
+    console.log(character.shield.ac.base);
+    return character.armor.ac.base + statBonus(character.armor, character.attrMods) + character.shield.ac.base;
 }
 
 export interface armorClass {
@@ -54,7 +60,19 @@ export interface Armor {
 }
 
 export const blankArmor: Armor = {
-    name: "",
+    name: "Unarmored",
+    cost: 0,
+    ac: {
+        base: 10,
+        caps: {}
+    },
+    strReq: 0,
+    stealthDis: false,
+    weight: 0
+}
+
+export const blankShield: Armor = {
+    name: "BlankShield",
     cost: 0,
     ac: {
         base: 0,

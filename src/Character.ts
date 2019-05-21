@@ -1,8 +1,8 @@
 import { Attributes, zeroAttributes, mergeAttributes, generateMods, fleshOutAttributes } from "./Attributes";
 import { Skills, zeroSkills, DeepPartial, sumSkills, convertAttrToSkills } from "./Skills";
-import { Tool } from "./ToolSets";
+import { Tool, blankTool } from "./ToolSets";
 import { Weapon } from "./WeaponSets";
-import { Armor, blankArmor } from "./ArmorSets";
+import { Armor, blankArmor, chooseArmor, calculateAc } from "./ArmorSets";
 import { addCharacterClassFeatures } from "./CharacterClass"
 import { addRaceFeatures } from "./Race";
 import { pointBuy } from "./PointBuy";
@@ -13,6 +13,7 @@ import { personality } from "./PersonalitySets";
 import { ideals } from "./IdealSets";
 import { bonds } from "./BondSets";
 import { flaws } from "./FlawSets";
+import { chooseEquipment } from "./Equipment";
 
 export interface Character {
     name: string;
@@ -42,9 +43,10 @@ export interface Character {
     weapons: Weapon[];
     weaponProfs: Weapon[];
     armor: Armor;
-    armorProfs: Armor[]
+    armorProfs: Armor[];
+    shield: Armor;
     startingGold: number;
-    tools: Tool[];
+    tool: Tool;
     personality: string;
     ideal: string;
     bond: string;
@@ -83,8 +85,9 @@ export const blankCharacter: Character = {
     weaponProfs: [],
     armor: blankArmor,
     armorProfs: [],
+    shield: blankArmor,
     startingGold: 0,
-    tools: [],
+    tool: blankTool,
     personality: "",
     ideal: "",
     bond: "",
@@ -139,6 +142,13 @@ function finalizeCharacterFeatures(character: Character): Character {
         .concat(sumSkills(character.expertise))
         );
     character.savingThrows = mergeAttributes([character.savingThrowProfsFlat, character.attrMods]);
+
+    // equipment
+    chooseEquipment(character);
+
+    character.ac = calculateAc(character);
+    character.initiative = character.attrMods.dex;
+    character.hp = character.hp + character.attrMods.con + character.hitDice;
     return character;
 }
 

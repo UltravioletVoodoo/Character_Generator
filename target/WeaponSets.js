@@ -26,17 +26,26 @@ function chooseWeapon(list, money, cantBeTwoHanded) {
 function isTwoHanded(w) {
     return w.twoHanded ? true : false;
 }
-export function chooseWeapons(list, money) {
-    let x = [chooseWeapon(list, money, false)];
-    money -= x[0].cost;
+export function chooseWeapons(character) {
+    let x = [chooseWeapon(character.weaponProfs, character.startingGold, false)];
+    character.startingGold -= x[0].cost;
     if (util.choice([1, 2, 3]) === 1 && !isTwoHanded(x[0])) {
-        x = x.concat(chooseWeapon(list, money, true));
+        x = x.concat(chooseWeapon(character.weaponProfs, character.startingGold, true));
+        character.startingGold -= x[1].cost;
     }
-    return x;
+    character.weapons = x;
 }
 export function isFinesse(w) {
-    if (w.properties.includes("Finesse")) {
+    if (w.properties.includes("Finesse") || isRanged(w)) {
         return true;
+    }
+    return false;
+}
+function isRanged(w) {
+    for (let x of simpleRanged.concat(martialRanged)) {
+        if (x.name === w.name) {
+            return true;
+        }
     }
     return false;
 }

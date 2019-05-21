@@ -261,6 +261,7 @@ function addPaladinFeatures(character: Character): Character {
             {cha: {persuasion: 2}}
         ], 2, character.skillProfs)
     );
+    character.startingGold = 200;
     character.traits = character.traits.concat("Divine Sense", "Lay on Hands");
     return character;
 }
@@ -338,6 +339,7 @@ function addRogueFeatures(character: Character): Character {
             {cha: {performance: 2}}
         ], 4, character.skillProfs)
     );
+    character.startingGold = 160;
     character.expertise = character.expertise.concat(
         util.choices(character.skillProfs, 2, character.expertise)
     );

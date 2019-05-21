@@ -14,17 +14,19 @@ export const blankTool = {
     cost: 0,
     weight: 0
 };
-export function chooseTool(list, money) {
+export function chooseTool(character) {
     let newList = [];
-    for (let x of list) {
-        if (x.cost <= money) {
+    for (let x of character.toolProfs) {
+        if (x.cost <= character.startingGold) {
             newList = newList.concat(x);
         }
     }
-    if (newList.length === 0) {
-        return blankTool;
+    let choice = blankTool;
+    if (newList.length > 0) {
+        choice = util.choice(newList);
     }
-    return util.choice(newList);
+    character.tool = choice;
+    character.startingGold -= choice.cost;
 }
 export const artisan = [
     {

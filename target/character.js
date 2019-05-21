@@ -1,6 +1,7 @@
 import { zeroAttributes, mergeAttributes, generateMods, fleshOutAttributes } from "./Attributes";
 import { zeroSkills, sumSkills, convertAttrToSkills } from "./Skills";
-import { blankArmor } from "./ArmorSets";
+import { blankTool } from "./ToolSets";
+import { blankArmor, calculateAc } from "./ArmorSets";
 import { addCharacterClassFeatures } from "./CharacterClass";
 import { addRaceFeatures } from "./Race";
 import { pointBuy } from "./PointBuy";
@@ -11,6 +12,7 @@ import { personality } from "./PersonalitySets";
 import { ideals } from "./IdealSets";
 import { bonds } from "./BondSets";
 import { flaws } from "./FlawSets";
+import { chooseEquipment } from "./Equipment";
 export const blankCharacter = {
     name: "",
     className: "",
@@ -40,8 +42,9 @@ export const blankCharacter = {
     weaponProfs: [],
     armor: blankArmor,
     armorProfs: [],
+    shield: blankArmor,
     startingGold: 0,
-    tools: [],
+    tool: blankTool,
     personality: "",
     ideal: "",
     bond: "",
@@ -86,6 +89,11 @@ function finalizeCharacterFeatures(character) {
         .concat(convertAttrToSkills(character.attrMods))
         .concat(sumSkills(character.expertise)));
     character.savingThrows = mergeAttributes([character.savingThrowProfsFlat, character.attrMods]);
+    // equipment
+    chooseEquipment(character);
+    character.ac = calculateAc(character);
+    character.initiative = character.attrMods.dex;
+    character.hp = character.hp + character.attrMods.con + character.hitDice;
     return character;
 }
 // Generate the character in its entirety

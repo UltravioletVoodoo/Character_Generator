@@ -1,4 +1,5 @@
 import { util } from "./Util";
+import { Character } from "./Character";
 
 export function findTool(name: string): Tool{
     for(const toolList of [artisan, gaming, musical, miscTools]){
@@ -23,17 +24,19 @@ export const blankTool: Tool = {
     weight: 0
 }
 
-export function chooseTool(list : Tool[], money: number): Tool{
-    let newList: Tool[] = []
-    for (let x of list){
-        if(x.cost <= money){
-            newList = newList.concat(x)
+export function chooseTool(character: Character){
+    let newList: Tool[] = [];
+    for (let x of character.toolProfs){
+        if(x.cost <= character.startingGold){
+            newList = newList.concat(x);
         }
     }
-    if(newList.length === 0){
-        return blankTool
+    let choice = blankTool;
+    if(newList.length > 0){
+        choice = util.choice(newList);
     }
-    return util.choice(newList)
+    character.tool = choice
+    character.startingGold -= choice.cost;
 }
 
 export const artisan: Tool[] = [

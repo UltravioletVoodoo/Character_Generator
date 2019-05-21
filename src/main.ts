@@ -1,5 +1,6 @@
 import { util } from "./Util"
 import { generateCharacter } from "./Character";
+import { isFinesse } from "./WeaponSets";
 
 
 function generateSheet(){
@@ -90,41 +91,41 @@ function generateSheet(){
     util.getElement("speed").value = character.speed.toString();
     util.getElement("hitDice").value = character.hitDice.toString();
     util.getElement("hp").value = character.hp.toString();
-    // util.getElement("weapon1Name").value = character.weapons[0].name;
-    // let weaponMod = character.attrMods.str;
-    // if(isFinesse(character.weapons[0])){
-    //     weaponMod = character.attrMods.dex;
-    // }
-    // util.getElement("weapon1AtkBonus").value = "+ " + (weaponMod + character.proficiencyBonus).toString();
-    // util.getElement("weapon1DamageType").value = character.weapons[0].damageType;
-    // util.getElement("weapon1Damage").value = character.weapons[0].damage + " + " + weaponMod.toString();
-    // weaponMod = 0;
-    // let weaponName = "";
-    // let weaponAtkBonus = "";
-    // let weaponDamageType = "";
-    // let weaponDamage = "";
-    // if(character.weapons[1]){
-    //     weaponMod = character.attrMods.str;
-    //     if(isFinesse(character.weapons[1])){
-    //         weaponMod = character.attrMods.dex;
-    //     }
-    //     weaponName = character.weapons[1].name;
-    //     weaponAtkBonus = "+ " + (weaponMod + character.proficiencyBonus).toString();
-    //     weaponDamageType = character.weapons[1].damageType;
-    //     weaponDamage = character.weapons[1].damage + " + " + weaponMod.toString();
-    // }
-    // util.getElement("weapon2Name").value = weaponName;
-    // util.getElement("weapon2AtkBonus").value = weaponAtkBonus;
-    // util.getElement("weapon2DamageType").value = weaponDamageType;
-    // util.getElement("weapon2Damage").value = weaponDamage;
-    // util.getElement("armorAC").value = character.armor.ac.base.toString();
-    // util.getElement("armorName").value = character.armor.name;
-    // util.getElement("startingGold").value = character.startingGold.toString();
-    // if(character.shield.cost != 0){
-    //     util.getElement("shieldAC").value = character.shield.ac.base.toString();
-    //     util.getElement("shieldName").value = character.shield.name;
-    // }
-    // util.getElement("tool").value = character.tool.name;
+    util.getElement("weapon1Name").value = character.weapons[0].name;
+    let weaponMod = character.attrMods.str;
+    if(isFinesse(character.weapons[0])){
+        weaponMod = character.attrMods.dex;
+    }
+    util.getElement("weapon1AtkBonus").value = "+ " + (weaponMod + character.proficiencyBonus).toString();
+    util.getElement("weapon1DamageType").value = character.weapons[0].damageType;
+    util.getElement("weapon1Damage").value = character.weapons[0].damage + " + " + weaponMod.toString();
+    weaponMod = 0;
+    let weaponName = "";
+    let weaponAtkBonus = "";
+    let weaponDamageType = "";
+    let weaponDamage = "";
+    if(character.weapons[1]){
+        weaponMod = character.attrMods.str;
+        if(isFinesse(character.weapons[1])){
+            weaponMod = character.attrMods.dex;
+        }
+        weaponName = character.weapons[1].name;
+        weaponAtkBonus = "+ " + (weaponMod + character.proficiencyBonus).toString();
+        weaponDamageType = character.weapons[1].damageType;
+        weaponDamage = character.weapons[1].damage + " + " + weaponMod.toString();
+    }
+    util.getElement("weapon2Name").value = weaponName;
+    util.getElement("weapon2AtkBonus").value = weaponAtkBonus;
+    util.getElement("weapon2DamageType").value = weaponDamageType;
+    util.getElement("weapon2Damage").value = weaponDamage;
+    util.getElement("armorAC").value = character.armor.ac.base.toString();
+    util.getElement("armorName").value = character.armor.name;
+    util.getElement("startingGold").value = character.startingGold.toString();
+    if(character.shield.cost != 0){
+        util.getElement("shieldAC").value = character.shield.ac.base.toString();
+        util.getElement("shieldName").value = character.shield.name;
+    }
+    util.getElement("tool").value = character.tool.name;
 
     util.getElement("personality").value = character.personality;
     util.getElement("ideals").value = character.ideal;

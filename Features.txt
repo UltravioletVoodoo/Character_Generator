@@ -6,5 +6,6 @@ Names
  Ranged/Finesse weapons should use proper stats for toHit/Damage
 	Honestly lets just redo weapons
 	And redo armor
+Age should be alongside sex: not above it awkwardly
 Home page with generate character button
 	Lots of nice D&D art
