@@ -665,7 +665,7 @@ body {
   top: 0;
   left: 0;
   box-shadow: inset 0 0 7vw black;
-  /* background: radial-gradient(transparent 70%, black), transparent; */
+  pointer-events: none;
 }
 .generateButton {
   height: 100%;
@@ -674,9 +674,10 @@ body {
   top: 0;
   overflow: hidden;
   position: fixed;
-  z-index: 2000;
+  z-index: 500;
 }
 .backgroundArt {
+  z-index: 0;
   height: 100%;
   width: 100%;
   left: 0;
@@ -685,7 +686,7 @@ body {
   position: fixed;
 }
 .backgroundArt img {
-  height: 95%;
+  height: 90%;
   position: absolute;
   left: 50%;
   top: 40%;
@@ -693,21 +694,36 @@ body {
 }
 .generateButton .btn {
   position: absolute;
-  top: 90%;
+  bottom: 9vh;
   left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
+  transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
   background-color: #cc0000;
-  color: white;
-  font-size: 16px;
+  color: #754F44;
+  font-size: 1em;
   padding: 16px 30px;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 3em;
+  background: #fad182;
+  border: 1px solid #754F44;
+  font-weight: 200;
   text-align: center;
-  width: 75%;
+  outline: none !important;
+  transition: all 0.1s ease;
 }
 .generateButton .btn:hover {
-  background-color: #ff5e00;
-  color: white;
+  background: #f8c35d;
+  color: #624239;
+}
+.border {
+  z-index: 250;
+  position: absolute;
+  overflow: hidden;
+  width: 90%;
+  height: 0;
+  left: 5%;
+  bottom: calc(9vh + 1.6em);
+  border-bottom: 1.2px solid #754F44;
+  pointer-events: none;  
 }
