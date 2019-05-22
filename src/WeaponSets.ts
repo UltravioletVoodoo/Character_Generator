@@ -72,7 +72,7 @@ export interface Weapon {
 }
     
 export const bareFist: Weapon = {
-    name: "",
+    name: "Fist",
     cost: 0,
     damage: "",
     damageType: "",
@@ -86,7 +86,7 @@ export const simpleMelee: Weapon[] = [
         name: "Club",
         cost: 0.1,
         damage: "1d4",
-        damageType: "Bludgeoning",
+        damageType: "Bludge",
         weight: 2,
         properties: ["Light"],
         twoHanded: false
@@ -104,7 +104,7 @@ export const simpleMelee: Weapon[] = [
         name: "Greatclub",
         cost: 0.2,
         damage: "1d8",
-        damageType: "Bludgeoning",
+        damageType: "Bludge",
         weight: 10,
         properties: [],
         twoHanded: true
@@ -131,7 +131,7 @@ export const simpleMelee: Weapon[] = [
         name: "Light Hammer",
         cost: 0.2,
         damage: "1d4",
-        damageType: "Bludgeoning",
+        damageType: "Bludge",
         weight: 2,
         properties: ["Light", "Thrown"],
         twoHanded: false
@@ -140,7 +140,7 @@ export const simpleMelee: Weapon[] = [
         name: "Mace",
         cost: 5,
         damage: "1d6",
-        damageType: "Bludgeoning",
+        damageType: "Bludge",
         weight: 4,
         properties: [],
         twoHanded: false
@@ -149,7 +149,7 @@ export const simpleMelee: Weapon[] = [
         name: "Quarterstaff",
         cost: 0.2,
         damage: "1d6",
-        damageType: "Bludgeoning",
+        damageType: "Bludge",
         weight: 4,
         properties: ["Versatile"],
         twoHanded: false
@@ -206,7 +206,7 @@ export const simpleRanged: Weapon[] = [
         name: "Sling",
         cost: 0.1,
         damage: "1d4",
-        damageType: "Bludgeoning",
+        damageType: "Bludge",
         weight: 0,
         properties: ["Ammunition"],
         twoHanded: false
@@ -227,7 +227,7 @@ export const martialMelee: Weapon[] = [
         name: "Flail",
         cost: 10,
         damage: "1d8",
-        damageType: "Bludgeoning",
+        damageType: "Bludge",
         weight: 2,
         properties: [],
         twoHanded: false
@@ -290,7 +290,7 @@ export const martialMelee: Weapon[] = [
         name: "Maul",
         cost: 10,
         damage: "2d6",
-        damageType: "Bludgeoning",
+        damageType: "Bludge",
         weight: 10,
         properties: ["Heavy"],
         twoHanded: true
@@ -362,7 +362,7 @@ export const martialMelee: Weapon[] = [
         name: "Warhammer",
         cost: 15,
         damage: "1d8",
-        damageType: "Bludgeoning",
+        damageType: "Bludge",
         weight: 2,
         properties: ["Versatile"],
         twoHanded: false

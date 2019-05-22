@@ -39,9 +39,6 @@ function statBonus(a: Armor, mods: Attributes){
 }
 
 export function calculateAc(character: Character): number{
-    console.log(character.armor.ac.base);
-    console.log(statBonus(character.armor, character.attrMods));
-    console.log(character.shield.ac.base);
     return character.armor.ac.base + statBonus(character.armor, character.attrMods) + character.shield.ac.base;
 }
 

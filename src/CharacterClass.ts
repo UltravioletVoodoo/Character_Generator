@@ -315,12 +315,12 @@ function addRogueFeatures(character: Character): Character {
     character.weaponProfs = character.weaponProfs.concat(
         simpleMelee,
         simpleRanged,
-        findWeapon("Hand crossbow"),
+        findWeapon("Hand Crossbow"),
         findWeapon("Longsword"),
         findWeapon("Rapier"),
         findWeapon("Shortsword")
     );
-    character.toolProfs = character.toolProfs.concat(findTool("Theive's tools"));
+    character.toolProfs = character.toolProfs.concat(findTool("Thieve's tools"));
     character.savingThrowProfs = character.savingThrowProfs.concat(
         [{dex: 2}, {int: 2}].map(fleshOutAttributes)
     );
@@ -356,7 +356,7 @@ function addSorcererFeatures(character: Character): Character {
         findWeapon("Dart"),
         findWeapon("Sling"),
         findWeapon("Quarterstaff"),
-        findWeapon("Light crossbow")
+        findWeapon("Light Crossbow")
     );
     character.savingThrowProfs = character.savingThrowProfs.concat(
         [{con: 2}, {cha: 2}].map(fleshOutAttributes)
@@ -416,7 +416,7 @@ function addWizardFeatures(character: Character): Character {
         findWeapon("Dart"),
         findWeapon("Sling"),
         findWeapon("Quarterstaff"),
-        findWeapon("Light crossbow")
+        findWeapon("Light Crossbow")
     );
     character.savingThrowProfs = character.savingThrowProfs.concat(
         [{int: 2}, {wis: 2}].map(fleshOutAttributes)

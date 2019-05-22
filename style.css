@@ -727,3 +727,9 @@ body {
   border-bottom: 1.2px solid #754F44;
   pointer-events: none;  
 }
+.score input, .hp input{
+  background: transparent !important;
+}
+input, textarea {
+  font-family: sans-serif;
+}

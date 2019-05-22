@@ -152,7 +152,7 @@ function addDrowElfFeatures(character) {
     character.weaponProfs = character.weaponProfs
         .concat(findWeapon("Rapier"))
         .concat(findWeapon("Shortsword"))
-        .concat(findWeapon("Hand crossbow"));
+        .concat(findWeapon("Hand Crossbow"));
     character.traits = util.arrayDelete(character.traits, ["Darkvision"]).concat(["Superior Darkvision", "Sunlight Sensitivity"]);
     character.level0Spells = character.level0Spells.concat("Dancing lights");
     return character;

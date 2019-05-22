@@ -34,7 +34,7 @@
             <label for="level">Level</label><input name="level" id="level" readonly />
           </li>
           <li>
-            <label for="playername">Player Name</label><input name="playername" placeholder="Player McPlayerface">
+            <label for="playername">Player Name</label><input name="playername">
           </li>
           <li>
             <label for="race">Race</label><input name="race" id="raceName" readonly/>
@@ -42,9 +42,13 @@
           <li>
             <label for="alignment">Alignment</label><input name="alignment" id="alignment" readonly/>
           </li>
-          <li>
-            <label for="sex">Sex</label><input name="sex" id="sex" readonly />
-            <label for="age">Age</label><input name="age" id="age" readonly />
+          <li class="ageSex">
+              <label for="age">Age&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sex</label><input name="age" id="age" readonly />
+              <div style="display:none;">
+                <label for="sex">Sex</label><input name="sex" id="sex" readonly />
+              </div>
+          </li>
+          <li class="ageSex">
           </li>
         </ul>
       </section>
@@ -262,11 +266,11 @@
             <table>
               <thead>
                 <tr>
-                  <th>
+                  <th width="40%">
                     Name
                   </th>
-                  <th>
-                    Atk Bonus
+                  <th width="10%">
+                    Atk
                   </th>
                   <th>
                     Damage

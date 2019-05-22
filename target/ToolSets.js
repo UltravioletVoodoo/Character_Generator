@@ -186,7 +186,7 @@ export const miscTools = [
         weight: 2
     },
     {
-        name: "Theive's tools",
+        name: "Thieve's tools",
         cost: 25,
         weight: 1
     },

@@ -13,7 +13,7 @@ function generateSheet(){
     util.getElement("raceName").value = character.raceName;
     util.getElement("alignment").value = character.alignment;
     util.getElement("sex").value = character.sex;
-    util.getElement("age").value = character.age.toString();
+    util.getElement("age").value = character.age.toString() + '\t\t' + character.sex;
 
     util.getElement("str").value = character.attributes.str.toString();
     util.getElement("dex").value = character.attributes.dex.toString();
@@ -118,7 +118,7 @@ function generateSheet(){
     util.getElement("weapon2Damage").value = weaponDamage;
     util.getElement("armorAC").value = character.armor.ac.base.toString();
     util.getElement("armorName").value = character.armor.name;
-    util.getElement("startingGold").value = character.startingGold.toString();
+    util.getElement("startingGold").value = character.startingGold.toFixed(2).toString();
     if(character.shield.cost != 0){
         util.getElement("shieldAC").value = character.shield.ac.base.toString();
         util.getElement("shieldName").value = character.shield.name;

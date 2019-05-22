@@ -34,9 +34,6 @@ function statBonus(a, mods) {
         util.min([caps.cha, mods.cha], true);
 }
 export function calculateAc(character) {
-    console.log(character.armor.ac.base);
-    console.log(statBonus(character.armor, character.attrMods));
-    console.log(character.shield.ac.base);
     return character.armor.ac.base + statBonus(character.armor, character.attrMods) + character.shield.ac.base;
 }
 export const blankArmor = {
