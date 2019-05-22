@@ -735,7 +735,47 @@ input, textarea {
 }
 .gitHub {
   z-index: 2000;
-  top: 8px;
-  left: 8px;
+  top: 12px;
+  left: 12px;
   position: absolute;
+  opacity: 0.3;
+}
+.gitHub:hover{
+  opacity: 1;
+}
+.appTitle{
+  z-index: 3000;
+  top: 10%;
+  position: absolute;
+  left: calc(50% - 180px); 
+  transform: translateY(-50%);
+}
+.appTitle h1{
+  font-family: serif;
+  color: #754F44;
+  border-bottom: 1px solid #754F44;
+  border-top: 1px solid #754F44;
+}
+.artCredit{
+  z-index: 3500;
+  right: 0;
+  margin-right: 5%;
+  bottom: 4.5vh;
+  position: absolute;
+}
+.artCredit a,
+.artCredit a:visited,
+.artCredit a:focus {
+  font-family: sans-serif;
+  font-size: 12px;
+  color: #754F44;
+  text-decoration: none;
+  opacity: 0.4;
+}
+.artCredit a:hover{
+  font-family: sans-serif;
+  font-size: 12px;
+  color: #754F44;
+  text-decoration: none;
+  opacity: 1;
 }
