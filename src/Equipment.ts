@@ -1,5 +1,5 @@
 import { Character } from "./Character";
-import { Armor, chooseArmor, findArmor, light, medium, heavy, blankArmor, blankShield } from "./ArmorSets";
+import { Armor, chooseArmor, findArmor, light, medium, heavy, blankShield } from "./ArmorSets";
 import { chooseWeapons } from "./WeaponSets";
 import { util } from "./Util";
 import { chooseTool } from "./ToolSets";
@@ -13,12 +13,13 @@ export function chooseEquipment(character: Character){
 
 function chooseShields(character: Character){
     let shieldProfs = [blankShield];
-    let Buckler = findArmor("Buckler");
+    let Light = findArmor("Light shield");
     let Medium = findArmor("Medium shield");
-    let Tower = findArmor("Tower shield");
+    let Heavy= findArmor("Heavy shield");
+
     if(containsArmorSet(character.armorProfs, light)){
-        if(Buckler.cost <= character.startingGold){
-            shieldProfs.push(Buckler);
+        if(Light.cost <= character.startingGold){
+            shieldProfs.push(Light);
         }
     }
     if(containsArmorSet(character.armorProfs, medium)){
@@ -27,8 +28,8 @@ function chooseShields(character: Character){
         }
     }
     if(containsArmorSet(character.armorProfs, heavy)){
-        if(Tower.cost <= character.startingGold){
-            shieldProfs.push(Tower);
+        if(Heavy.cost <= character.startingGold){
+            shieldProfs.push(Heavy);
         }
     }
     let shieldChoice = util.choice(shieldProfs);

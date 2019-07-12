@@ -35,12 +35,12 @@ function generateSheet(){
     util.getElement("wisSaving").value = character.savingThrows.wis.toString();
     util.getElement("chaSaving").value = character.savingThrows.cha.toString();
 
-    util.getElement("strSaveProf").checked = character.savingThrowProfsFlat.str > 0 ? true : false;
-    util.getElement("dexSaveProf").checked = character.savingThrowProfsFlat.dex > 0 ? true : false;
-    util.getElement("conSaveProf").checked = character.savingThrowProfsFlat.con > 0 ? true : false;
-    util.getElement("intSaveProf").checked = character.savingThrowProfsFlat.int > 0 ? true : false;
-    util.getElement("wisSaveProf").checked = character.savingThrowProfsFlat.wis > 0 ? true : false;
-    util.getElement("chaSaveProf").checked = character.savingThrowProfsFlat.cha > 0 ? true : false;
+    util.getElement("strSaveProf").checked = character.savingThrowProfsFlat.str > 0;
+    util.getElement("dexSaveProf").checked = character.savingThrowProfsFlat.dex > 0;
+    util.getElement("conSaveProf").checked = character.savingThrowProfsFlat.con > 0;
+    util.getElement("intSaveProf").checked = character.savingThrowProfsFlat.int > 0;
+    util.getElement("wisSaveProf").checked = character.savingThrowProfsFlat.wis > 0;
+    util.getElement("chaSaveProf").checked = character.savingThrowProfsFlat.cha > 0;
 
     util.getElement("athletics").value = character.skills.str.athletics.toString();
     util.getElement("acrobatics").value = character.skills.dex.acrobatics.toString();
@@ -61,24 +61,24 @@ function generateSheet(){
     util.getElement("performance").value = character.skills.cha.performance.toString();
     util.getElement("persuasion").value = character.skills.cha.persuasion.toString();
 
-    util.getElement("athleticsProf").checked = character.skillProfsFlat.str.athletics > 0 ? true : false;
-    util.getElement("acrobaticsProf").checked = character.skillProfsFlat.dex.acrobatics > 0 ? true : false;
-    util.getElement("sleightOfHandProf").checked = character.skillProfsFlat.dex.sleightOfHand > 0 ? true : false;
-    util.getElement("stealthProf").checked = character.skillProfsFlat.dex.stealth > 0 ? true : false;
-    util.getElement("arcanaProf").checked = character.skillProfsFlat.int.arcana > 0 ? true : false;
-    util.getElement("historyProf").checked = character.skillProfsFlat.int.history > 0 ? true : false;
-    util.getElement("investigationProf").checked = character.skillProfsFlat.int.investigation > 0 ? true : false;
-    util.getElement("natureProf").checked = character.skillProfsFlat.int.nature > 0 ? true : false;
-    util.getElement("religionProf").checked = character.skillProfsFlat.int.religion > 0 ? true : false;
-    util.getElement("animalHandlingProf").checked = character.skillProfsFlat.wis.animalHandling > 0 ? true : false;
-    util.getElement("insightProf").checked = character.skillProfsFlat.wis.insight > 0 ? true : false;
-    util.getElement("medicineProf").checked = character.skillProfsFlat.wis.medicine > 0 ? true : false;
-    util.getElement("perceptionProf").checked = character.skillProfsFlat.wis.perception > 0 ? true : false;
-    util.getElement("survivalProf").checked = character.skillProfsFlat.wis.survival > 0 ? true : false;
-    util.getElement("deceptionProf").checked = character.skillProfsFlat.cha.deception > 0 ? true : false;
-    util.getElement("intimidationProf").checked = character.skillProfsFlat.cha.intimidation > 0 ? true : false;
-    util.getElement("performanceProf").checked = character.skillProfsFlat.cha.performance > 0 ? true : false;
-    util.getElement("persuasionProf").checked = character.skillProfsFlat.cha.persuasion > 0 ? true : false;
+    util.getElement("athleticsProf").checked = character.skillProfsFlat.str.athletics > 0;
+    util.getElement("acrobaticsProf").checked = character.skillProfsFlat.dex.acrobatics > 0;
+    util.getElement("sleightOfHandProf").checked = character.skillProfsFlat.dex.sleightOfHand > 0;
+    util.getElement("stealthProf").checked = character.skillProfsFlat.dex.stealth > 0;
+    util.getElement("arcanaProf").checked = character.skillProfsFlat.int.arcana > 0;
+    util.getElement("historyProf").checked = character.skillProfsFlat.int.history > 0;
+    util.getElement("investigationProf").checked = character.skillProfsFlat.int.investigation > 0;
+    util.getElement("natureProf").checked = character.skillProfsFlat.int.nature > 0;
+    util.getElement("religionProf").checked = character.skillProfsFlat.int.religion > 0;
+    util.getElement("animalHandlingProf").checked = character.skillProfsFlat.wis.animalHandling > 0;
+    util.getElement("insightProf").checked = character.skillProfsFlat.wis.insight > 0;
+    util.getElement("medicineProf").checked = character.skillProfsFlat.wis.medicine > 0;
+    util.getElement("perceptionProf").checked = character.skillProfsFlat.wis.perception > 0;
+    util.getElement("survivalProf").checked = character.skillProfsFlat.wis.survival > 0;
+    util.getElement("deceptionProf").checked = character.skillProfsFlat.cha.deception > 0;
+    util.getElement("intimidationProf").checked = character.skillProfsFlat.cha.intimidation > 0;
+    util.getElement("performanceProf").checked = character.skillProfsFlat.cha.performance > 0;
+    util.getElement("persuasionProf").checked = character.skillProfsFlat.cha.persuasion > 0;
 
     util.getElement("proficiencyBonus").value = character.proficiencyBonus.toString();
     util.getElement("languages").innerHTML = Array.from(character.languages).join("\n");
@@ -120,8 +120,12 @@ function generateSheet(){
     util.getElement("armorName").value = character.armor.name;
     util.getElement("startingGold").value = character.startingGold.toFixed(2).toString();
     if(character.shield.cost != 0){
+        console.log(character.shield)
         util.getElement("shieldAC").value = character.shield.ac.base.toString();
         util.getElement("shieldName").value = character.shield.name;
+    } else {
+        util.getElement("shieldAC").value = "";
+        util.getElement("shieldName").value = "";
     }
     util.getElement("tool").value = character.tool.name;
 

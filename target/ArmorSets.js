@@ -198,7 +198,7 @@ export const heavy = [
 ];
 export const misc = [
     {
-        name: "Buckler",
+        name: "Light shield",
         cost: 10,
         ac: {
             base: 1,
@@ -220,7 +220,7 @@ export const misc = [
         weight: 6
     },
     {
-        name: "Tower shield",
+        name: "Heavy shield",
         cost: 35,
         ac: {
             base: 2,

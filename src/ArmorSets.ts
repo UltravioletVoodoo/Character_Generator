@@ -223,7 +223,7 @@ export const heavy: Armor[] = [
 
 export const misc: Armor[] = [
     {
-        name: "Buckler",
+        name: "Light shield",
         cost: 10,
         ac: {
             base: 1,
@@ -245,7 +245,7 @@ export const misc: Armor[] = [
         weight: 6
     },
     {
-        name: "Tower shield",
+        name: "Heavy shield",
         cost: 35,
         ac: {
             base: 2,
