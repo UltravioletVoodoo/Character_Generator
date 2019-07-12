@@ -120,7 +120,6 @@ function generateSheet(){
     util.getElement("armorName").value = character.armor.name;
     util.getElement("startingGold").value = character.startingGold.toFixed(2).toString();
     if(character.shield.cost != 0){
-        console.log(character.shield)
         util.getElement("shieldAC").value = character.shield.ac.base.toString();
         util.getElement("shieldName").value = character.shield.name;
     } else {
