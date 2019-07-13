@@ -38,8 +38,12 @@ function statBonus(a: Armor, mods: Attributes){
         util.min([caps.cha, mods.cha], true) 
 }
 
-export function calculateAc(character: Character): number{
-    return character.armor.ac.base + statBonus(character.armor, character.attrMods) + character.shield.acBonus;
+export function calculateAcWithShield(character: Character): number{
+    return calculateAcWithoutShield(character) + character.shield.acBonus;
+}
+
+export function calculateAcWithoutShield(character: Character): number{
+    return character.armor.ac.base + statBonus(character.armor, character.attrMods);
 }
 
 export interface armorClass {

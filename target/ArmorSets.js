@@ -33,8 +33,11 @@ function statBonus(a, mods) {
         util.min([caps.wis, mods.wis], true) +
         util.min([caps.cha, mods.cha], true);
 }
-export function calculateAc(character) {
-    return character.armor.ac.base + statBonus(character.armor, character.attrMods) + character.shield.acBonus;
+export function calculateAcWithShield(character) {
+    return calculateAcWithoutShield(character) + character.shield.acBonus;
+}
+export function calculateAcWithoutShield(character) {
+    return character.armor.ac.base + statBonus(character.armor, character.attrMods);
 }
 export const blankArmor = {
     name: "Unarmored",

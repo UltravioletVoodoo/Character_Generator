@@ -1,11 +1,20 @@
 import { util } from "./Util"
 import { generateCharacter } from "./Character";
-import { isFinesse } from "./WeaponSets";
+import { isFinesse, isRanged } from "./WeaponSets";
 
 
 function generateSheet(){
-    const character = generateCharacter();
+    // Get the level of the character to be generated from the page
+    let levelElement = document.getElementById("levelChoice") as HTMLSelectElement
+    let level = levelElement.options[levelElement.selectedIndex].value;
+
+    const character = generateCharacter(parseInt(level));
     console.log(character);
+
+
+
+    // Take the character elements and manipulate the DOM to place them on the sheet
+
 
     util.getElement("className").value = character.className;
     util.getElement("level").value = "1";
@@ -83,15 +92,19 @@ function generateSheet(){
     util.getElement("languages").innerHTML = Array.from(character.languages).join("\n");
     util.getElement("toolProfs").innerHTML = Array.from(character.toolProfs).map(tool => tool.name).join("\n");
 
-    util.getElement("ac").value = character.ac.toString();
+    util.getElement("acWithShield").value = character.acWithShield.toString();
+    util.getElement("acWithoutShield").value = character.acWithoutShield.toString();
     util.getElement("initiative").value = character.initiative.toString();
     util.getElement("speed").value = character.speed.toString();
-    util.getElement("hitDice").value = character.hitDice.toString();
+    util.getElement("hitDice").value = character.level.toString();
+    util.getElement("hdType").value = "D" + character.hitDice.toString();
     util.getElement("hp").value = character.hp.toString();
     util.getElement("weapon1Name").value = character.weapons[0].name;
     let weaponMod = character.attrMods.str;
-    if(isFinesse(character.weapons[0])){
+    if(isRanged(character.weapons[0])){
         weaponMod = character.attrMods.dex;
+    } else if (isFinesse(character.weapons[0])) {
+        weaponMod = Math.max(character.attrMods.dex, character.attrMods.str);
     }
     util.getElement("weapon1AtkBonus").value = "+ " + (weaponMod + character.proficiencyBonus).toString();
     util.getElement("weapon1DamageType").value = character.weapons[0].damageType;
@@ -103,8 +116,10 @@ function generateSheet(){
     let weaponDamage = "";
     if(character.weapons[1]){
         weaponMod = character.attrMods.str;
-        if(isFinesse(character.weapons[1])){
+        if(isRanged(character.weapons[1])){
             weaponMod = character.attrMods.dex;
+        } else if (isFinesse(character.weapons[1])) {
+            weaponMod = Math.max(character.attrMods.dex, character.attrMods.str);
         }
         weaponName = character.weapons[1].name;
         weaponAtkBonus = "+ " + (weaponMod + character.proficiencyBonus).toString();

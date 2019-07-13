@@ -315,7 +315,7 @@ form.charsheet main section.combat > div.armorclass > div, form.charsheet main s
   align-items: center;
   margin-top: 10px;
 }
-form.charsheet main section.combat > div.armorclass > div label, form.charsheet main section.combat > div.initiative > div label, form.charsheet main section.combat > div.speed > div label {
+form.charsheet main section.combat > div.initiative > div label, form.charsheet main section.combat > div.speed > div label {
   font-size: 8px;
   width: 50px;
   border: 1px solid black;
@@ -326,11 +326,54 @@ form.charsheet main section.combat > div.armorclass > div label, form.charsheet 
   padding-bottom: 5px;
   border-radius: 0 0 10px 10px;
 }
-form.charsheet main section.combat > div.armorclass > div input, form.charsheet main section.combat > div.initiative > div input, form.charsheet main section.combat > div.speed > div input {
-  height: 70px;
+form.charsheet main section.combat > div.armorclass > div label#acWithShieldLbl {
+  font-size: 8px;
+  width: 50px;
+  border: 1px solid black;
+  border-top: 0;
+  background-color: white;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 0 0 10px 10px;
+}
+form.charsheet main section.combat > div.armorclass > div label#acWithoutShieldLbl {
+  font-size: 8px;
+  color: #444;
+  width: 70px;
+  border-width: 0px 1px 0px 1px;
+  border-style: solid;
+  border-color: black;
+  background-color: white;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+form.charsheet main section.combat > div.initiative > div input, form.charsheet main section.combat > div.speed > div input {
+  height: 110px;
   width: 70px;
   border-radius: 10px;
   border: 1px solid black;
+  text-align: center;
+  font-size: 30px;
+}
+form.charsheet main section.combat > div.armorclass > div input#acWithShield {
+  height: 35px;
+  width: 70px;
+  border-radius: 0px 0px 10px 10px;
+  border-style: solid;
+  border-color: black;
+  border-width: 0px 1px 1px 1px;
+  text-align: center;
+  font-size: 30px;
+}
+form.charsheet main section.combat > div.armorclass > div input#acWithoutShield {
+  height: 35px;
+  width: 70px;
+  border-radius: 10px 10px 0px 0px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px 1px 0px 1px;
   text-align: center;
   font-size: 30px;
 }
@@ -778,4 +821,13 @@ input, textarea {
   color: #754F44;
   text-decoration: none;
   opacity: 1;
+}
+.levelChoice {
+  left: 50%;
+  top: 50%;
+  z-index: 4000;
+  position: absolute;
+}
+#hitDice {
+  background: transparent !important;
 }

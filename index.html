@@ -18,6 +18,11 @@
     <div class="generateButton">
       <button class="btn" id="generateSheetBtn">Generate Character</button>
     </div>
+    <select class="levelChoice" id="levelChoice">
+      <option value="1">Level 1</option>
+      <option value="2">Level 2</option>
+      <option value="3">Level 3</option>
+    </select>
     <div class="border"></div>
     <div class="gitHub">
       <a href='https://github.com/UltravioletVoodoo/Character_Generator'" target="_blank">
@@ -226,7 +231,12 @@
         <section class="combat">
           <div class="armorclass">
             <div>
-              <label for="ac">Armor Class</label><input name="ac" id="ac" type="text" readonly />
+              <label id="acWithShieldLbl" for="acWithShield">AC</label><input id="acWithShield" name="acWithShield" type="text" readonly />
+              <label id="acWithoutShieldLbl" for="acWithoutShield">
+                No Shield
+                <hr>
+                Shield
+              </label><input id="acWithoutShield" name="acWithoutShield" type="text" readonly />
             </div>
           </div>
           <div class="initiative">
@@ -258,7 +268,7 @@
                 <label for="totalhd">Total</label><input name="totalhd" id="hitDice" type="text" readonly />
               </div>
               <div class="remaining">
-                <label for="remaininghd">Hit Dice</label>
+                <label for="remaininghd">Hit Dice</label><input name="hdType" id="hdType" type="text" readonly />
               </div>
             </div>
           </div>

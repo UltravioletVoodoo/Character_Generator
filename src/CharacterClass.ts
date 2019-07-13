@@ -13,18 +13,18 @@ export function addCharacterClassFeatures(character: Character){
 }
 
 const classFunctionList: ((character: Character) => void)[] = [
-    addBarbarianFeatures,
-    addBardFeatures,
-    addClericFeatures,
-    addDruidFeatures,
-    addFighterFeatures,
-    addMonkFeatures,
-    addPaladinFeatures,
-    addRangerFeatures,
-    addRogueFeatures,
-    addSorcererFeatures,
-    addWarlockFeatures,
-    addWizardFeatures
+    // addBarbarianFeatures,
+    // addBardFeatures,
+    addClericFeatures//,
+    // addDruidFeatures,
+    // addFighterFeatures,
+    // addMonkFeatures,
+    // addPaladinFeatures,
+    // addRangerFeatures,
+    // addRogueFeatures,
+    // addSorcererFeatures,
+    // addWarlockFeatures,
+    // addWizardFeatures
 ];
 
 function addBarbarianFeatures(character: Character){
@@ -83,6 +83,7 @@ function addClericFeatures(character: Character){
     character.className = "Cleric";
     addClericSubClassFeatures(character);
     character.hitDice = 8;
+    character.weaponProfs = character.weaponProfs.concat(simpleMelee, simpleRanged);
     character.armorProfs = character.armorProfs.concat(
         light,
         medium

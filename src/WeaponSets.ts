@@ -46,13 +46,13 @@ export function chooseWeapons(character: Character){
 }
 
 export function isFinesse(w: Weapon): boolean{
-    if(w.properties.includes("Finesse") || isRanged(w)){
+    if(w.properties.includes("Finesse")){
         return true;
     }
     return false;
 }
 
-function isRanged(w: Weapon){
+export function isRanged(w: Weapon): boolean{
     for (let x of simpleRanged.concat(martialRanged)){
         if (x.name === w.name){
             return true;

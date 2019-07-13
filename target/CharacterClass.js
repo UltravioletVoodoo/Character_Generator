@@ -10,18 +10,18 @@ export function addCharacterClassFeatures(character) {
     util.choice(classFunctionList)(character);
 }
 const classFunctionList = [
-    addBarbarianFeatures,
-    addBardFeatures,
-    addClericFeatures,
-    addDruidFeatures,
-    addFighterFeatures,
-    addMonkFeatures,
-    addPaladinFeatures,
-    addRangerFeatures,
-    addRogueFeatures,
-    addSorcererFeatures,
-    addWarlockFeatures,
-    addWizardFeatures
+    // addBarbarianFeatures,
+    // addBardFeatures,
+    addClericFeatures //,
+    // addDruidFeatures,
+    // addFighterFeatures,
+    // addMonkFeatures,
+    // addPaladinFeatures,
+    // addRangerFeatures,
+    // addRogueFeatures,
+    // addSorcererFeatures,
+    // addWarlockFeatures,
+    // addWizardFeatures
 ];
 function addBarbarianFeatures(character) {
     character.className = "Barbarian";
@@ -61,6 +61,7 @@ function addClericFeatures(character) {
     character.className = "Cleric";
     addClericSubClassFeatures(character);
     character.hitDice = 8;
+    character.weaponProfs = character.weaponProfs.concat(simpleMelee, simpleRanged);
     character.armorProfs = character.armorProfs.concat(light, medium);
     character.savingThrowProfs = character.savingThrowProfs.concat([{ wis: 2 }, { cha: 2 }].map(fleshOutAttributes));
     character.skillProfs = character.skillProfs.concat(util.choices([

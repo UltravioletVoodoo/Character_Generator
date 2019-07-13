@@ -1,7 +1,7 @@
 import { zeroAttributes, mergeAttributes, generateMods, fleshOutAttributes } from "./Attributes";
 import { zeroSkills, sumSkills, convertAttrToSkills } from "./Skills";
 import { blankTool } from "./ToolSets";
-import { blankArmor, calculateAc } from "./ArmorSets";
+import { blankArmor, calculateAcWithoutShield, calculateAcWithShield } from "./ArmorSets";
 import { addCharacterClassFeatures } from "./CharacterClass";
 import { addRaceFeatures } from "./Race";
 import { pointBuy } from "./PointBuy";
@@ -33,7 +33,8 @@ export const blankCharacter = {
     proficiencyBonus: 2,
     languages: [],
     toolProfs: [],
-    ac: 0,
+    acWithShield: 0,
+    acWithoutShield: 0,
     initiative: 0,
     speed: 0,
     hitDice: 0,
@@ -89,13 +90,14 @@ function finalizeCharacterFeatures(character) {
     character.savingThrows = mergeAttributes([character.savingThrowProfsFlat, character.attrMods]);
     // equipment
     chooseEquipment(character);
-    character.ac = calculateAc(character);
+    character.acWithShield = calculateAcWithShield(character);
+    character.acWithoutShield = calculateAcWithoutShield(character);
     character.initiative = character.attrMods.dex;
     character.hp = character.hp + character.attrMods.con + character.hitDice;
     return character;
 }
 // Generate the character in its entirety
-export function generateCharacter() {
+export function generateCharacter(level) {
     // Start with a blank slate in the correct format
     let character = { ...blankCharacter };
     // Add miscelaneous features not related to class or race
@@ -106,6 +108,26 @@ export function generateCharacter() {
     addCharacterClassFeatures(character);
     // Apply the final touches and compute the values that required class/race
     finalizeCharacterFeatures(character);
+    // Handle potential level-ups
+    if (level > 1) {
+        // Level up to level 2
+        addLevel2Features(character);
+    }
+    if (level > 2) {
+        // Level up to level 3
+        addLevel3Features(character);
+    }
     // Return the finalized character
     return character;
+}
+function addLevel2Features(character) {
+    console.log("Leveling up to level 2...");
+}
+function addLevel3Features(character) {
+    console.log("Leveling up to level 3...");
+}
+function addBasicLevelUpFeatures(character) {
+    // increment level
+    // increment hp -- careful about stuff like hill dwarf / draconic sorcerer
+    // increment hit dice number
 }
