@@ -1,7 +1,8 @@
-import { chooseArmor, findArmor, light, medium, heavy, blankShield } from "./ArmorSets";
+import { chooseArmor, light, medium, heavy } from "./ArmorSets";
 import { chooseWeapons } from "./WeaponSets";
 import { util } from "./Util";
 import { chooseTool } from "./ToolSets";
+import { noShield, lightShield, mediumShield, heavyShield } from "./ShieldSets";
 export function chooseEquipment(character) {
     chooseArmor(character);
     chooseWeapons(character);
@@ -9,24 +10,15 @@ export function chooseEquipment(character) {
     chooseTool(character);
 }
 function chooseShields(character) {
-    let shieldProfs = [blankShield];
-    let LightShield = findArmor("Light shield");
-    let MediumShield = findArmor("Medium shield");
-    let HeavyShield = findArmor("Heavy shield");
-    if (containsArmorSet(character.armorProfs, light)) {
-        if (LightShield.cost <= character.startingGold) {
-            shieldProfs.push(LightShield);
-        }
+    let shieldProfs = [noShield];
+    if (containsArmorSet(character.armorProfs, light) && lightShield.cost <= character.startingGold) {
+        shieldProfs.push(lightShield);
     }
-    if (containsArmorSet(character.armorProfs, medium)) {
-        if (MediumShield.cost <= character.startingGold) {
-            shieldProfs.push(MediumShield);
-        }
+    if (containsArmorSet(character.armorProfs, medium) && mediumShield.cost <= character.startingGold) {
+        shieldProfs.push(mediumShield);
     }
-    if (containsArmorSet(character.armorProfs, heavy)) {
-        if (HeavyShield.cost <= character.startingGold) {
-            shieldProfs.push(HeavyShield);
-        }
+    if (containsArmorSet(character.armorProfs, heavy) && heavyShield.cost <= character.startingGold) {
+        shieldProfs.push(heavyShield);
     }
     let shieldChoice = util.choice(shieldProfs);
     character.shield = shieldChoice;

@@ -39,7 +39,7 @@ function statBonus(a: Armor, mods: Attributes){
 }
 
 export function calculateAc(character: Character): number{
-    return character.armor.ac.base + statBonus(character.armor, character.attrMods) + character.shield.ac.base;
+    return character.armor.ac.base + statBonus(character.armor, character.attrMods) + character.shield.acBonus;
 }
 
 export interface armorClass {
@@ -52,8 +52,6 @@ export interface Armor {
     cost: number;
     ac: armorClass;
     strReq: number;
-    stealthDis: boolean;
-    weight: number;
 }
 
 export const blankArmor: Armor = {
@@ -63,9 +61,7 @@ export const blankArmor: Armor = {
         base: 10,
         caps: {}
     },
-    strReq: 0,
-    stealthDis: false,
-    weight: 0
+    strReq: 0
 }
 
 export const blankShield: Armor = {
@@ -75,9 +71,7 @@ export const blankShield: Armor = {
         base: 0,
         caps: {}
     },
-    strReq: 0,
-    stealthDis: false,
-    weight: 0
+    strReq: 0
 }
 
 export const light: Armor[] = [
@@ -88,9 +82,7 @@ export const light: Armor[] = [
             base: 11,
             caps: {dex: 5}
         },
-        strReq: 0,
-        stealthDis: true,
-        weight: 8
+        strReq: 0
     },
     {
         name: "Leather",
@@ -99,9 +91,7 @@ export const light: Armor[] = [
             base: 11,
             caps: {dex: 5}
         },
-        strReq: 0,
-        stealthDis: false,
-        weight: 10
+        strReq: 0
     },
     {
         name: "Studded leather",
@@ -110,9 +100,7 @@ export const light: Armor[] = [
             base: 12,
             caps: {dex: 5}
         },
-        strReq: 0,
-        stealthDis: false,
-        weight: 13
+        strReq: 0
     }
 ];
 
@@ -124,9 +112,7 @@ export const medium: Armor[] = [
             base: 12,
             caps: {dex: 2}
         },
-        strReq: 0,
-        stealthDis: false,
-        weight: 12
+        strReq: 0
     },
     {
         name: "Chain shirt",
@@ -135,9 +121,7 @@ export const medium: Armor[] = [
             base: 13,
             caps: {dex: 2}
         },
-        strReq: 0,
-        stealthDis: false,
-        weight: 20
+        strReq: 0
     },
     {
         name: "Scale mail",
@@ -146,9 +130,7 @@ export const medium: Armor[] = [
             base: 14,
             caps: {dex: 2}
         },
-        strReq: 0,
-        stealthDis: true,
-        weight: 45
+        strReq: 0
     },
     {
         name: "Breastplate",
@@ -157,9 +139,7 @@ export const medium: Armor[] = [
             base: 14,
             caps: {dex: 2}
         },
-        strReq: 0,
-        stealthDis: false,
-        weight: 20
+        strReq: 0
     },
     {
         name: "Half plate",
@@ -168,9 +148,7 @@ export const medium: Armor[] = [
             base: 15,
             caps: {dex: 2}
         },
-        strReq: 0,
-        stealthDis: true,
-        weight: 40
+        strReq: 0
     },
 ];
 
@@ -182,9 +160,7 @@ export const heavy: Armor[] = [
             base: 14,
             caps: {}
         },
-        strReq: 0,
-        stealthDis: true,
-        weight: 40
+        strReq: 0
     },
     {
         name: "Chain mail",
@@ -193,9 +169,7 @@ export const heavy: Armor[] = [
             base: 16,
             caps: {}
         },
-        strReq: 13,
-        stealthDis: true,
-        weight: 55
+        strReq: 13
     },
     {
         name: "Splint",
@@ -204,9 +178,7 @@ export const heavy: Armor[] = [
             base: 17,
             caps: {}
         },
-        strReq: 15,
-        stealthDis: true,
-        weight: 60
+        strReq: 15
     },
     {
         name: "Plate",
@@ -215,46 +187,11 @@ export const heavy: Armor[] = [
             base: 18,
             caps: {}
         },
-        strReq: 15,
-        stealthDis: true,
-        weight: 65
+        strReq: 15
     },
 ];
 
 export const misc: Armor[] = [
-    {
-        name: "Light shield",
-        cost: 10,
-        ac: {
-            base: 1,
-            caps: {}
-        },
-        strReq: 0,
-        stealthDis: false,
-        weight: 2
-    },
-    {
-        name: "Medium shield",
-        cost: 10,
-        ac: {
-            base: 2,
-            caps: {}
-        },
-        strReq: 0,
-        stealthDis: false,
-        weight: 6
-    },
-    {
-        name: "Heavy shield",
-        cost: 35,
-        ac: {
-            base: 2,
-            caps: {}
-        },
-        strReq: 15,
-        stealthDis: true,
-        weight: 30
-    },
     {
         name: "Unarmored defence con",
         cost: 0,
@@ -265,9 +202,7 @@ export const misc: Armor[] = [
                 con: 5
             }
         },
-        strReq: 0,
-        stealthDis: false,
-        weight: 0
+        strReq: 0
     },
     {
         name: "Unarmored defence wis",
@@ -279,9 +214,7 @@ export const misc: Armor[] = [
                 wis: 5
             }
         },
-        strReq: 0,
-        stealthDis: false,
-        weight: 0
+        strReq: 0
     },
     {
         name: "Unarmored defence draconic",
@@ -292,8 +225,6 @@ export const misc: Armor[] = [
                 dex: 5
             }
         },
-        strReq: 0,
-        stealthDis: false,
-        weight: 0
+        strReq: 0
     }
 ];

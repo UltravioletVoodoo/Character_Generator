@@ -13,6 +13,7 @@ import { ideals } from "./IdealSets";
 import { bonds } from "./BondSets";
 import { flaws } from "./FlawSets";
 import { chooseEquipment } from "./Equipment";
+import { noShield } from "./ShieldSets";
 export const blankCharacter = {
     className: "",
     level: 1,
@@ -41,7 +42,7 @@ export const blankCharacter = {
     weaponProfs: [],
     armor: blankArmor,
     armorProfs: [],
-    shield: blankArmor,
+    shield: noShield,
     startingGold: 0,
     tool: blankTool,
     personality: "",

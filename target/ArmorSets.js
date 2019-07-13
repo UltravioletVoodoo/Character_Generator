@@ -34,7 +34,7 @@ function statBonus(a, mods) {
         util.min([caps.cha, mods.cha], true);
 }
 export function calculateAc(character) {
-    return character.armor.ac.base + statBonus(character.armor, character.attrMods) + character.shield.ac.base;
+    return character.armor.ac.base + statBonus(character.armor, character.attrMods) + character.shield.acBonus;
 }
 export const blankArmor = {
     name: "Unarmored",
@@ -43,9 +43,7 @@ export const blankArmor = {
         base: 10,
         caps: {}
     },
-    strReq: 0,
-    stealthDis: false,
-    weight: 0
+    strReq: 0
 };
 export const blankShield = {
     name: "BlankShield",
@@ -54,9 +52,7 @@ export const blankShield = {
         base: 0,
         caps: {}
     },
-    strReq: 0,
-    stealthDis: false,
-    weight: 0
+    strReq: 0
 };
 export const light = [
     {
@@ -66,9 +62,7 @@ export const light = [
             base: 11,
             caps: { dex: 5 }
         },
-        strReq: 0,
-        stealthDis: true,
-        weight: 8
+        strReq: 0
     },
     {
         name: "Leather",
@@ -77,9 +71,7 @@ export const light = [
             base: 11,
             caps: { dex: 5 }
         },
-        strReq: 0,
-        stealthDis: false,
-        weight: 10
+        strReq: 0
     },
     {
         name: "Studded leather",
@@ -88,9 +80,7 @@ export const light = [
             base: 12,
             caps: { dex: 5 }
         },
-        strReq: 0,
-        stealthDis: false,
-        weight: 13
+        strReq: 0
     }
 ];
 export const medium = [
@@ -101,9 +91,7 @@ export const medium = [
             base: 12,
             caps: { dex: 2 }
         },
-        strReq: 0,
-        stealthDis: false,
-        weight: 12
+        strReq: 0
     },
     {
         name: "Chain shirt",
@@ -112,9 +100,7 @@ export const medium = [
             base: 13,
             caps: { dex: 2 }
         },
-        strReq: 0,
-        stealthDis: false,
-        weight: 20
+        strReq: 0
     },
     {
         name: "Scale mail",
@@ -123,9 +109,7 @@ export const medium = [
             base: 14,
             caps: { dex: 2 }
         },
-        strReq: 0,
-        stealthDis: true,
-        weight: 45
+        strReq: 0
     },
     {
         name: "Breastplate",
@@ -134,9 +118,7 @@ export const medium = [
             base: 14,
             caps: { dex: 2 }
         },
-        strReq: 0,
-        stealthDis: false,
-        weight: 20
+        strReq: 0
     },
     {
         name: "Half plate",
@@ -145,9 +127,7 @@ export const medium = [
             base: 15,
             caps: { dex: 2 }
         },
-        strReq: 0,
-        stealthDis: true,
-        weight: 40
+        strReq: 0
     },
 ];
 export const heavy = [
@@ -158,9 +138,7 @@ export const heavy = [
             base: 14,
             caps: {}
         },
-        strReq: 0,
-        stealthDis: true,
-        weight: 40
+        strReq: 0
     },
     {
         name: "Chain mail",
@@ -169,9 +147,7 @@ export const heavy = [
             base: 16,
             caps: {}
         },
-        strReq: 13,
-        stealthDis: true,
-        weight: 55
+        strReq: 13
     },
     {
         name: "Splint",
@@ -180,9 +156,7 @@ export const heavy = [
             base: 17,
             caps: {}
         },
-        strReq: 15,
-        stealthDis: true,
-        weight: 60
+        strReq: 15
     },
     {
         name: "Plate",
@@ -191,45 +165,10 @@ export const heavy = [
             base: 18,
             caps: {}
         },
-        strReq: 15,
-        stealthDis: true,
-        weight: 65
+        strReq: 15
     },
 ];
 export const misc = [
-    {
-        name: "Light shield",
-        cost: 10,
-        ac: {
-            base: 1,
-            caps: {}
-        },
-        strReq: 0,
-        stealthDis: false,
-        weight: 2
-    },
-    {
-        name: "Medium shield",
-        cost: 10,
-        ac: {
-            base: 2,
-            caps: {}
-        },
-        strReq: 0,
-        stealthDis: false,
-        weight: 6
-    },
-    {
-        name: "Heavy shield",
-        cost: 35,
-        ac: {
-            base: 2,
-            caps: {}
-        },
-        strReq: 15,
-        stealthDis: true,
-        weight: 30
-    },
     {
         name: "Unarmored defence con",
         cost: 0,
@@ -240,9 +179,7 @@ export const misc = [
                 con: 5
             }
         },
-        strReq: 0,
-        stealthDis: false,
-        weight: 0
+        strReq: 0
     },
     {
         name: "Unarmored defence wis",
@@ -254,9 +191,7 @@ export const misc = [
                 wis: 5
             }
         },
-        strReq: 0,
-        stealthDis: false,
-        weight: 0
+        strReq: 0
     },
     {
         name: "Unarmored defence draconic",
@@ -267,8 +202,6 @@ export const misc = [
                 dex: 5
             }
         },
-        strReq: 0,
-        stealthDis: false,
-        weight: 0
+        strReq: 0
     }
 ];

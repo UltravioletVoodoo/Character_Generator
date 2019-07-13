@@ -14,6 +14,7 @@ import { ideals } from "./IdealSets";
 import { bonds } from "./BondSets";
 import { flaws } from "./FlawSets";
 import { chooseEquipment } from "./Equipment";
+import { Shield, noShield } from "./ShieldSets";
 
 export interface Character {
     className: string;
@@ -43,7 +44,7 @@ export interface Character {
     weaponProfs: Weapon[];
     armor: Armor;
     armorProfs: Armor[];
-    shield: Armor;
+    shield: Shield;
     startingGold: number;
     tool: Tool;
     personality: string;
@@ -83,7 +84,7 @@ export const blankCharacter: Character = {
     weaponProfs: [],
     armor: blankArmor,
     armorProfs: [],
-    shield: blankArmor,
+    shield: noShield,
     startingGold: 0,
     tool: blankTool,
     personality: "",
