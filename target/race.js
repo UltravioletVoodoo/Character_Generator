@@ -5,7 +5,7 @@ import { findWeapon } from "./WeaponSets";
 import { findTool } from "./ToolSets";
 import { languages } from "./Languages";
 export function addRaceFeatures(character) {
-    character = util.choice(raceFunctionList)(character);
+    util.choice(raceFunctionList)(character);
     return character;
 }
 const raceFunctionList = [
@@ -24,8 +24,7 @@ function addDragonBornFeatures(character) {
     character.age = util.randomNumberFromRange([15, 80]);
     character.speed = 30;
     character.languages = ["Common", "Draconic"];
-    character = addDragonBornSubRaceFeatures(character);
-    return character;
+    addDragonBornSubRaceFeatures(character);
 }
 function addDwarfFeatures(character) {
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ con: 2 })]);
@@ -41,8 +40,7 @@ function addDwarfFeatures(character) {
         findTool("Brewer's supplies"),
         findTool("Mason's tools")
     ]));
-    character = addDwarfSubRaceFeatures(character);
-    return character;
+    addDwarfSubRaceFeatures(character);
 }
 function addElfFeatures(character) {
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ dex: 2 })]);
@@ -51,8 +49,7 @@ function addElfFeatures(character) {
     character.languages = ["Common", "Elven"];
     character.traits = ["Darkvision", "Fey Ancestry", "Trance", "Keen Senses"];
     character.skillProfs = character.skillProfs.concat({ wis: { perception: 2 } });
-    character = addElfSubRaceFeatures(character);
-    return character;
+    addElfSubRaceFeatures(character);
 }
 function addGnomeFeatures(character) {
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ int: 2 })]);
@@ -60,8 +57,7 @@ function addGnomeFeatures(character) {
     character.speed = 25;
     character.languages = ["Common", "Gnomish"];
     character.traits = ["Darkvision", "Gnome Cunning"];
-    character = addGnomeSubRaceFeatures(character);
-    return character;
+    addGnomeSubRaceFeatures(character);
 }
 function addHalfElfFeatures(character) {
     character.raceName = "Half-Elf";
@@ -80,8 +76,7 @@ function addHalfElfFeatures(character) {
     character.speed = 30;
     character.languages = ["Common, Elven"].concat(util.choice(languages, ["Common, Elven"]));
     character.traits = ["Darkvision", "Fey Ancestry"];
-    character = addHalfElfSubRaceFeatures(character);
-    return character;
+    addHalfElfSubRaceFeatures(character);
 }
 function addHalfOrcFeatures(character) {
     character.raceName = "Half-Orc";
@@ -90,7 +85,6 @@ function addHalfOrcFeatures(character) {
     character.speed = 30;
     character.skillProfs = character.skillProfs.concat({ cha: { intimidation: 2 } });
     character.traits = ["Darkvision", "Relentless Endurance", "Savage Attacks"];
-    return character;
 }
 function addHalflingFeatures(character) {
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ dex: 2 })]);
@@ -98,8 +92,7 @@ function addHalflingFeatures(character) {
     character.speed = 25;
     character.languages = ["Common", "Halfling"];
     character.traits = ["Lucky", "Brave", "Nimble"];
-    character = addHalflingSubRaceFeatures(character);
-    return character;
+    addHalflingSubRaceFeatures(character);
 }
 function addHumanFeatures(character) {
     character.raceName = "Human";
@@ -117,7 +110,6 @@ function addHumanFeatures(character) {
     character.age = util.randomNumberFromRange([18, 80]);
     character.speed = 30;
     character.languages = ["Common"].concat(util.choice(languages, ["Common"]));
-    return character;
 }
 function addTieflingFeatures(character) {
     character.raceName = "Tiefling";
@@ -134,5 +126,4 @@ function addTieflingFeatures(character) {
     character.traits = ["Darkvision", "Hellish Resistance", "Infernal Legacy"];
     character.languages = ["Common", "Infernal"];
     character.level0Spells = character.level0Spells.concat("Thaumaturgy");
-    return character;
 }

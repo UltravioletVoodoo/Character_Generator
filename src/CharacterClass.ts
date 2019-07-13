@@ -8,12 +8,11 @@ import { findTool, musical, artisan } from "./ToolSets";
 import { bardSpells, clericSpells, druidSpells, sorcererSpells, warlockSpells, wizardSpells } from "./Spells";
 import { addClericSubClassFeatures, addSorcererSubClassFeatures, addWarlockSubClassFeatures } from "./CharacterSubClass";
 
-export function addCharacterClassFeatures(character: Character): Character {
-    character = util.choice(classFunctionList)(character);
-    return character
+export function addCharacterClassFeatures(character: Character){
+    util.choice(classFunctionList)(character);
 }
 
-const classFunctionList: ((character: Character) => Character)[] = [
+const classFunctionList: ((character: Character) => void)[] = [
     addBarbarianFeatures,
     addBardFeatures,
     addClericFeatures,
@@ -28,7 +27,7 @@ const classFunctionList: ((character: Character) => Character)[] = [
     addWizardFeatures
 ];
 
-function addBarbarianFeatures(character: Character): Character {
+function addBarbarianFeatures(character: Character){
     character.className = "Barbarian";
     character.hitDice = 12;
     character.armorProfs = character.armorProfs
@@ -49,10 +48,9 @@ function addBarbarianFeatures(character: Character): Character {
         ],2, character.skillProfs));
     character.startingGold = 80;
     character.traits = character.traits.concat("Rage");
-    return character;
 }
 
-function addBardFeatures(character: Character): Character {
+function addBardFeatures(character: Character){
     character.className = "Bard";
     character.hitDice = 8;
     character.armorProfs = character.armorProfs.concat(light);
@@ -79,10 +77,9 @@ function addBardFeatures(character: Character): Character {
         util.choices(bardSpells[1], 4, character.level1Spells)
     );
     character.traits = character.traits.concat("Bardic Inspiration (d6)");
-    return character;
 }
 
-function addClericFeatures(character: Character): Character {
+function addClericFeatures(character: Character){
     character.className = "Cleric";
     addClericSubClassFeatures(character);
     character.hitDice = 8;
@@ -109,10 +106,9 @@ function addClericFeatures(character: Character): Character {
     character.level1Spells = character.level1Spells.concat(
         util.choices(clericSpells[1], 2, character.level1Spells)
     );
-    return character;
 }
 
-function addDruidFeatures(character: Character): Character {
+function addDruidFeatures(character: Character){
     character.className = "Druid";
     character.hitDice = 8;
     character.armorProfs = character.armorProfs.concat(light,medium);
@@ -152,10 +148,9 @@ function addDruidFeatures(character: Character): Character {
     character.level1Spells = character.level1Spells.concat(
         util.choices(druidSpells[1], 2, character.level1Spells)
     );
-    return character;
 }
 
-function addFighterFeatures(character: Character): Character {
+function addFighterFeatures(character: Character){
     character.className = "Fighter";
     character.hitDice = 10;
     character.armorProfs = character.armorProfs.concat(
@@ -196,10 +191,9 @@ function addFighterFeatures(character: Character): Character {
             "Two Weapon Fighting Style(*)"
         ])
     );
-    return character;
 }
 
-function addMonkFeatures(character: Character): Character {
+function addMonkFeatures(character: Character){
     character.className = "Monk";
     character.hitDice = 8;
     character.armorProfs = character.armorProfs.concat(
@@ -231,10 +225,9 @@ function addMonkFeatures(character: Character): Character {
         "Unarmored Defence",
         "Martial Arts"
     );
-    return character;
 }
 
-function addPaladinFeatures(character: Character): Character {
+function addPaladinFeatures(character: Character){
     character.className = "Paladin";
     character.hitDice = 10;
     character.armorProfs = character.armorProfs.concat(
@@ -263,10 +256,9 @@ function addPaladinFeatures(character: Character): Character {
     );
     character.startingGold = 200;
     character.traits = character.traits.concat("Divine Sense", "Lay on Hands");
-    return character;
 }
 
-function addRangerFeatures(character: Character): Character {
+function addRangerFeatures(character: Character){
     character.className = "Ranger";
     character.hitDice = 10;
     character.armorProfs = character.armorProfs.concat(
@@ -305,10 +297,9 @@ function addRangerFeatures(character: Character): Character {
         ]),
         "Natural Explorer"
     );
-    return character;
 }
 
-function addRogueFeatures(character: Character): Character {
+function addRogueFeatures(character: Character){
     character.className = "Rogue";
     character.hitDice = 8;
     character.armorProfs = character.armorProfs.concat(light);
@@ -344,10 +335,9 @@ function addRogueFeatures(character: Character): Character {
         util.choices(character.skillProfs, 2, character.expertise)
     );
     character.traits = character.traits.concat("Sneak Attack");
-    return character;
 }
 
-function addSorcererFeatures(character: Character): Character {
+function addSorcererFeatures(character: Character){
     character.className = "Sorcerer";
     addSorcererSubClassFeatures(character);
     character.hitDice = 6;
@@ -378,10 +368,9 @@ function addSorcererFeatures(character: Character): Character {
     character.level1Spells = character.level1Spells.concat(
         util.choices(sorcererSpells[1], 2, character.level1Spells)
     );
-    return character;
 }
 
-function addWarlockFeatures(character: Character): Character {
+function addWarlockFeatures(character: Character){
     character.className = "Warlock";
     addWarlockSubClassFeatures(character);
     character.hitDice = 8;
@@ -405,10 +394,9 @@ function addWarlockFeatures(character: Character): Character {
         util.choices(warlockSpells[0], 2, character.level0Spells)
     );
     character.startingGold = 160;
-    return character;
 }
 
-function addWizardFeatures(character: Character): Character {
+function addWizardFeatures(character: Character){
     character.className = "Wizard";
     character.hitDice = 6;
     character.weaponProfs = character.weaponProfs.concat(
@@ -439,5 +427,4 @@ function addWizardFeatures(character: Character): Character {
         util.choices(wizardSpells[1], 2, character.level0Spells)
     );
     character.traits = character.traits.concat("Arcane Recovery");
-    return character;
 }

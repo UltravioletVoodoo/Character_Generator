@@ -10,22 +10,22 @@ export function chooseEquipment(character) {
 }
 function chooseShields(character) {
     let shieldProfs = [blankShield];
-    let Light = findArmor("Light shield");
-    let Medium = findArmor("Medium shield");
-    let Heavy = findArmor("Heavy shield");
+    let LightShield = findArmor("Light shield");
+    let MediumShield = findArmor("Medium shield");
+    let HeavyShield = findArmor("Heavy shield");
     if (containsArmorSet(character.armorProfs, light)) {
-        if (Light.cost <= character.startingGold) {
-            shieldProfs.push(Light);
+        if (LightShield.cost <= character.startingGold) {
+            shieldProfs.push(LightShield);
         }
     }
     if (containsArmorSet(character.armorProfs, medium)) {
-        if (Medium.cost <= character.startingGold) {
-            shieldProfs.push(Medium);
+        if (MediumShield.cost <= character.startingGold) {
+            shieldProfs.push(MediumShield);
         }
     }
     if (containsArmorSet(character.armorProfs, heavy)) {
-        if (Heavy.cost <= character.startingGold) {
-            shieldProfs.push(Heavy);
+        if (HeavyShield.cost <= character.startingGold) {
+            shieldProfs.push(HeavyShield);
         }
     }
     let shieldChoice = util.choice(shieldProfs);

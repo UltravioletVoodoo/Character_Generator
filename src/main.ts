@@ -12,8 +12,7 @@ function generateSheet(){
 
     util.getElement("raceName").value = character.raceName;
     util.getElement("alignment").value = character.alignment;
-    util.getElement("sex").value = character.sex;
-    util.getElement("age").value = character.age.toString() + '\t\t' + character.sex;
+    util.getElement("ageAndSex").value = character.age.toString() + '\t\t' + character.sex;
 
     util.getElement("str").value = character.attributes.str.toString();
     util.getElement("dex").value = character.attributes.dex.toString();

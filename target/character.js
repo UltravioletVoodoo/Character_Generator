@@ -65,8 +65,6 @@ export function addBaseFeatures(character) {
     character.ideal = util.choice(ideals);
     character.bond = util.choice(bonds);
     character.flaw = util.choice(flaws);
-    // Return the modified character
-    return character;
 }
 function removeDuplicatesFromLists(character) {
     character.skillProfs = [...new Set(character.skillProfs)];
@@ -100,13 +98,13 @@ export function generateCharacter() {
     // Start with a blank slate in the correct format
     let character = { ...blankCharacter };
     // Add miscelaneous features not related to class or race
-    character = addBaseFeatures(character);
+    addBaseFeatures(character);
     // Add race features
-    character = addRaceFeatures(character);
+    addRaceFeatures(character);
     // Add class features
-    character = addCharacterClassFeatures(character);
+    addCharacterClassFeatures(character);
     // Apply the final touches and compute the values that required class/race
-    character = finalizeCharacterFeatures(character);
+    finalizeCharacterFeatures(character);
     // Return the finalized character
     return character;
 }

@@ -7,37 +7,31 @@ import { wizardSpells } from "./Spells";
 import { languages } from "./Languages";
 import { allSkillPartialProfs } from "./Skills";
 
-export function addDragonBornSubRaceFeatures(character: Character): Character {
-    character = util.choice(dragonBornSubRaceFunctionList)(character);
-    return character;
+export function addDragonBornSubRaceFeatures(character: Character){
+    util.choice(dragonBornSubRaceFunctionList)(character);
 }
 
-export function addDwarfSubRaceFeatures(character: Character): Character {
-    character = util.choice(dwarfSubRaceFunctionList)(character);
-    return character;
+export function addDwarfSubRaceFeatures(character: Character){
+    util.choice(dwarfSubRaceFunctionList)(character);
 }
 
-export function addElfSubRaceFeatures(character: Character): Character {
-    character = util.choice(elfSubRaceFunctionList)(character);
-    return character;
+export function addElfSubRaceFeatures(character: Character){
+    util.choice(elfSubRaceFunctionList)(character);
 }
 
-export function addGnomeSubRaceFeatures(character: Character): Character {
-    character = util.choice(gnomeSubRaceFunctionList)(character);
-    return character;
+export function addGnomeSubRaceFeatures(character: Character){
+    util.choice(gnomeSubRaceFunctionList)(character);
 }
 
-export function addHalfElfSubRaceFeatures(character: Character): Character {
-    character = util.choice(halfElfSubRaceFunctionList)(character);
-    return character;
+export function addHalfElfSubRaceFeatures(character: Character){
+    util.choice(halfElfSubRaceFunctionList)(character);
 }
 
-export function addHalflingSubRaceFeatures(character: Character): Character {
-    character = util.choice(halflingSubRaceFunctionList)(character);
-    return character;
+export function addHalflingSubRaceFeatures(character: Character){
+    util.choice(halflingSubRaceFunctionList)(character);
 }
 
-const dragonBornSubRaceFunctionList: ((character: Character) => Character)[] = [
+const dragonBornSubRaceFunctionList: ((character: Character) => void)[] = [
     addBlackDragonBornFeatures,
     addBlueDragonBornFeatures,
     addBrassDragonBornFeatures,
@@ -50,24 +44,24 @@ const dragonBornSubRaceFunctionList: ((character: Character) => Character)[] = [
     addWhiteDragonBornFeatures
 ];
 
-const dwarfSubRaceFunctionList: ((character: Character) => Character)[] = [
+const dwarfSubRaceFunctionList: ((character: Character) => void)[] = [
     addHillDwarfFeatures,
     addMountainDwarfFeatures
 ];
 
-const elfSubRaceFunctionList: ((character: Character) => Character)[] = [
+const elfSubRaceFunctionList: ((character: Character) => void)[] = [
     addHighElfFeatures,
     addWoodElfFeatures,
     addDrowElfFeatures
 ];
 
-const gnomeSubRaceFunctionList: ((character: Character) => Character)[] = [
+const gnomeSubRaceFunctionList: ((character: Character) => void)[] = [
     addForestGnomeFeatures,
     addRockGnomeFeatures,
     addDeepGnomeFeatures
 ];
 
-const halfElfSubRaceFunctionList: ((character: Character) => Character)[] = [
+const halfElfSubRaceFunctionList: ((character: Character) => void)[] = [
     addHalfElfV1Features,
     addHalfElfV2Features,
     addHalfElfV3Features,
@@ -75,86 +69,74 @@ const halfElfSubRaceFunctionList: ((character: Character) => Character)[] = [
     addHalfElfV5Features
 ];
 
-const halflingSubRaceFunctionList: ((character: Character) => Character)[] = [
+const halflingSubRaceFunctionList: ((character: Character) => void)[] = [
     addLightFootHalflingFeatures,
     addStoutHalflingFeatures
 ];
 
-function addBlackDragonBornFeatures(character: Character): Character { 
+function addBlackDragonBornFeatures(character: Character){ 
     character.raceName = "Black Dragonborn";
     character.traits = character.traits.concat("Acid Breath").concat("Acid Resistance");
-    return character;
 }
 
-function addBlueDragonBornFeatures(character: Character): Character { 
+function addBlueDragonBornFeatures(character: Character){ 
     character.raceName = "Blue Dragonborn";
     character.traits = character.traits.concat("Lightning Breath").concat("Lightning Resistance");
-    return character;
 }
 
-function addBrassDragonBornFeatures(character: Character): Character { 
+function addBrassDragonBornFeatures(character: Character){ 
     character.raceName = "Brass Dragonborn";
     character.traits = character.traits.concat("Fire Breath").concat("Fire Resistance");
-    return character;
 }
 
-function addBronzeDragonBornFeatures(character: Character): Character { 
+function addBronzeDragonBornFeatures(character: Character){ 
     character.raceName = "Bronze Dragonborn";
     character.traits = character.traits.concat("Lightning Breath").concat("Lightning Resistance");
-    return character;
 }
 
-function addCopperDragonBornFeatures(character: Character): Character { 
+function addCopperDragonBornFeatures(character: Character){ 
     character.raceName = "Copper Dragonborn";
     character.traits = character.traits.concat("Acid Breath").concat("Acid Resistance");
-    return character;
 }
 
-function addGoldDragonBornFeatures(character: Character): Character { 
+function addGoldDragonBornFeatures(character: Character){ 
     character.raceName = "Gold Dragonborn";
     character.traits = character.traits.concat("Fire Breath").concat("Fire Resistance");
-    return character;
 }
 
-function addGreenDragonBornFeatures(character: Character): Character { 
+function addGreenDragonBornFeatures(character: Character){ 
     character.raceName = "Green Dragonborn";
     character.traits = character.traits.concat("Poison Breath").concat("Poison Resistance");
-    return character;
 }
 
-function addRedDragonBornFeatures(character: Character): Character { 
+function addRedDragonBornFeatures(character: Character){ 
     character.raceName = "Red Dragonborn";
     character.traits = character.traits.concat("Fire Breath").concat("Fire Resistance");
-    return character;
 }
 
-function addSilverDragonBornFeatures(character: Character): Character { 
+function addSilverDragonBornFeatures(character: Character){ 
     character.raceName = "Silver Dragonborn";
     character.traits = character.traits.concat("Cold Breath").concat("Cold Resistance");
-    return character;
 }
 
-function addWhiteDragonBornFeatures(character: Character): Character { 
+function addWhiteDragonBornFeatures(character: Character){ 
     character.raceName = "White Dragonborn";
     character.traits = character.traits.concat("Cold Breath").concat("Cold Resistance");
-    return character;
 }
 
-function addHillDwarfFeatures(character: Character): Character {
+function addHillDwarfFeatures(character: Character){
     character.raceName = "Hill Dwarf";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({wis: 1})]);
     character.hp = character.hp + 1;
-    return character;
 }
 
-function addMountainDwarfFeatures(character: Character): Character {
+function addMountainDwarfFeatures(character: Character){
     character.raceName = "Mountain Dwarf";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({str: 2})]);
     character.armorProfs = character.armorProfs.concat(light, medium);
-    return character;
 }
 
-function addHighElfFeatures(character: Character): Character {
+function addHighElfFeatures(character: Character){
     character.raceName = "High Elf";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({int: 1})]);
     character.weaponProfs = character.weaponProfs
@@ -165,11 +147,10 @@ function addHighElfFeatures(character: Character): Character {
             findWeapon("Longbow")
         );
     character.level0Spells = character.level0Spells.concat(util.choice(wizardSpells[0]));
-    character.languages = character.languages.concat(util.choice(languages, character.languages))
-    return character;
+    character.languages = character.languages.concat(util.choice(languages, character.languages));
 }
 
-function addWoodElfFeatures(character: Character): Character {
+function addWoodElfFeatures(character: Character){
     character.raceName = "Wood Elf";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({wis: 1})]);
     character.weaponProfs = character.weaponProfs
@@ -181,10 +162,9 @@ function addWoodElfFeatures(character: Character): Character {
             );
     character.speed = character.speed + 5;
     character.traits = character.traits.concat(["Fleet of Foot", "Mask of the Wild"]);
-    return character;
 }
 
-function addDrowElfFeatures(character: Character): Character {
+function addDrowElfFeatures(character: Character){
     character.raceName = "Drow Elf";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({cha: 1})]);
     character.weaponProfs = character.weaponProfs
@@ -193,72 +173,61 @@ function addDrowElfFeatures(character: Character): Character {
         .concat(findWeapon("Hand Crossbow"));
     character.traits = util.arrayDelete(character.traits, ["Darkvision"]).concat(["Superior Darkvision", "Sunlight Sensitivity"]);
     character.level0Spells = character.level0Spells.concat("Dancing lights");
-    return character;
 }
 
-function addForestGnomeFeatures(character: Character): Character {
+function addForestGnomeFeatures(character: Character){
     character.raceName = "Forest Gnome";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({dex: 1})]);
     character.level0Spells = character.level0Spells.concat("Minor illusion");
     character.traits = character.traits.concat("Speak with Small Beasts");
-    return character;
 }
 
-function addRockGnomeFeatures(character: Character): Character {
+function addRockGnomeFeatures(character: Character){
     character.raceName = "Rock Gnome";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({con: 1})]);
     character.traits = character.traits.concat(["Artificer's Lore", "Tinker"]);
-    return character;
 }
 
-function addDeepGnomeFeatures(character: Character): Character {
+function addDeepGnomeFeatures(character: Character){
     character.raceName = "Svirfneblin";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({dex: 1})]);
     character.age = util.randomNumberFromRange([25, 225]);
     character.traits = util.arrayDelete(character.traits, ["Darkvision"]).concat(["Superior Darkvision", "Stone Camouflage"]);
     character.languages = character.languages.concat("Undercommon");
-    return character;
 }
 
-function addHalfElfV1Features(character: Character): Character {
+function addHalfElfV1Features(character: Character){
     character.traits = character.traits.concat("Skill Versatility");
     character.skillProfs = character.skillProfs.concat(util.choices(allSkillPartialProfs, 2));
-    return character;
 }
 
-function addHalfElfV2Features(character: Character): Character {
+function addHalfElfV2Features(character: Character){
     character.traits = character.traits.concat("High Elf Cantrip");
     character.level0Spells = character.level0Spells.concat(util.choice(wizardSpells[0]));
-    return character;
 }
 
-function addHalfElfV3Features(character: Character): Character {
+function addHalfElfV3Features(character: Character){
     character.traits = character.traits.concat("Fleet of Foot");
     character.speed = character.speed + 5;
-    return character;
 }
 
-function addHalfElfV4Features(character: Character): Character {
+function addHalfElfV4Features(character: Character){
     character.traits = character.traits.concat("Mask of the Wild");
-    return character;
 }
 
-function addHalfElfV5Features(character: Character): Character {
+function addHalfElfV5Features(character: Character){
     character.traits = character.traits.concat("Drow Magic");
     character.level0Spells = character.level0Spells.concat("Dancing lights");
-    return character;
 }
 
-function addLightFootHalflingFeatures(character: Character): Character {
+function addLightFootHalflingFeatures(character: Character){
     character.raceName = "Lightfoot Halfling";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({cha: 1})]);
     character.traits = character.traits.concat("Naturally Stealthy");
-    return character;
 }
 
-function addStoutHalflingFeatures(character: Character): Character {
+function addStoutHalflingFeatures(character: Character){
     character.raceName = "Stout Halfling";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({con: 1})]);
     character.traits = character.traits.concat("Stout Resilience");
-    return character;
 }

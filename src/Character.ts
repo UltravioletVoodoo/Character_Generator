@@ -17,7 +17,7 @@ import { chooseEquipment } from "./Equipment";
 
 export interface Character {
     className: string;
-    level: 1;
+    level: number;
     raceName: string;
     alignment: string;
     sex: string;
@@ -31,7 +31,7 @@ export interface Character {
     skillProfs: DeepPartial<Skills>[];
     expertise: DeepPartial<Skills>[];
     skillProfsFlat: Skills;
-    proficiencyBonus: 2;
+    proficiencyBonus: number;
     languages: string[];
     toolProfs: Tool[];
     ac: number;
@@ -97,8 +97,7 @@ export const blankCharacter: Character = {
 
 
 // Adds the base features that every character needs that are not related to race or class
-export function addBaseFeatures(character: Character): Character {
-    
+export function addBaseFeatures(character: Character){
     // Choose the character gender
     character.sex = util.choice(sex);
 
@@ -113,9 +112,6 @@ export function addBaseFeatures(character: Character): Character {
     character.ideal = util.choice(ideals);
     character.bond = util.choice(bonds);
     character.flaw = util.choice(flaws);
-
-    // Return the modified character
-    return character;
 }
 
 function removeDuplicatesFromLists(character: Character){
@@ -151,22 +147,22 @@ function finalizeCharacterFeatures(character: Character): Character {
 }
 
 // Generate the character in its entirety
-export function generateCharacter() {
+export function generateCharacter(): Character {
 
     // Start with a blank slate in the correct format
     let character = {...blankCharacter};
 
     // Add miscelaneous features not related to class or race
-    character = addBaseFeatures(character);
+    addBaseFeatures(character);
 
     // Add race features
-    character = addRaceFeatures(character);
+    addRaceFeatures(character);
 
     // Add class features
-    character = addCharacterClassFeatures(character);
+    addCharacterClassFeatures(character);
 
     // Apply the final touches and compute the values that required class/race
-    character = finalizeCharacterFeatures(character);
+    finalizeCharacterFeatures(character);
     
     // Return the finalized character
     return character;
