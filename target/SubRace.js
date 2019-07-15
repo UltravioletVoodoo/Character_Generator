@@ -122,7 +122,7 @@ function addWoodElfFeatures(character) {
     character.raceName = "Wood Elf";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ wis: 1 })]);
     character.weaponProfs = character.weaponProfs
-        .concat(findWeapon("Longsword"), findWeapon("Shortsword"), findWeapon("ShortBow"), findWeapon("Longbow"));
+        .concat(findWeapon("Longsword"), findWeapon("Shortsword"), findWeapon("Shortbow"), findWeapon("Longbow"));
     character.speed = character.speed + 5;
     character.traits = character.traits.concat(["Fleet of Foot", "Mask of the Wild"]);
 }

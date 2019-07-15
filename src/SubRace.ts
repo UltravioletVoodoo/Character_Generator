@@ -157,7 +157,7 @@ function addWoodElfFeatures(character: Character){
         .concat(
             findWeapon("Longsword"),
             findWeapon("Shortsword"),
-            findWeapon("ShortBow"),
+            findWeapon("Shortbow"),
             findWeapon("Longbow")
             );
     character.speed = character.speed + 5;

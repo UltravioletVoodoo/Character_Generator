@@ -10,13 +10,13 @@ export function findArmor(name: string): Armor{
             }
         }
     }
-    return blankArmor
+    throw new Error("No armor '" + name + "' found...");
 }
 
 export function chooseArmor(character: Character){
     let newList: Armor[] = []
     for(let x of character.armorProfs){
-        if (x.cost <= character.startingGold){
+        if (x.cost <= character.gold && character.attributes.str >= x.strReq){
             newList = newList.concat(x)
         }
     }
@@ -25,7 +25,7 @@ export function chooseArmor(character: Character){
         armorChoice = util.choice(newList);
     }
     character.armor = armorChoice;
-    character.startingGold -= armorChoice.cost;
+    character.gold -= armorChoice.cost;
 }
 
 function statBonus(a: Armor, mods: Attributes){

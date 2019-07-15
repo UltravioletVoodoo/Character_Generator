@@ -1,6 +1,5 @@
 import { zeroAttributes, mergeAttributes, generateMods, fleshOutAttributes } from "./Attributes";
 import { zeroSkills, sumSkills, convertAttrToSkills } from "./Skills";
-import { blankTool } from "./ToolSets";
 import { blankArmor, calculateAcWithoutShield, calculateAcWithShield } from "./ArmorSets";
 import { addCharacterClassFeatures } from "./CharacterClass";
 import { addRaceFeatures } from "./Race";
@@ -14,46 +13,48 @@ import { bonds } from "./BondSets";
 import { flaws } from "./FlawSets";
 import { chooseEquipment } from "./Equipment";
 import { noShield } from "./ShieldSets";
-export const blankCharacter = {
-    className: "",
-    level: 1,
-    raceName: "",
-    alignment: "",
-    sex: "",
-    age: 0,
-    attributes: zeroAttributes,
-    attrMods: zeroAttributes,
-    savingThrows: zeroAttributes,
-    savingThrowProfs: [],
-    savingThrowProfsFlat: zeroAttributes,
-    skills: zeroSkills,
-    skillProfs: [],
-    expertise: [],
-    skillProfsFlat: zeroSkills,
-    proficiencyBonus: 2,
-    languages: [],
-    toolProfs: [],
-    acWithShield: 0,
-    acWithoutShield: 0,
-    initiative: 0,
-    speed: 0,
-    hitDice: 0,
-    hp: 0,
-    weapons: [],
-    weaponProfs: [],
-    armor: blankArmor,
-    armorProfs: [],
-    shield: noShield,
-    startingGold: 0,
-    tool: blankTool,
-    personality: "",
-    ideal: "",
-    bond: "",
-    flaw: "",
-    traits: [],
-    level0Spells: [],
-    level1Spells: [],
-};
+export function blankCharacter() {
+    return {
+        className: "",
+        level: 1,
+        raceName: "",
+        alignment: "",
+        sex: "",
+        age: 0,
+        attributes: zeroAttributes,
+        attrMods: zeroAttributes,
+        savingThrows: zeroAttributes,
+        savingThrowProfs: [],
+        savingThrowProfsFlat: zeroAttributes,
+        skills: zeroSkills,
+        skillProfs: [],
+        expertise: [],
+        skillProfsFlat: zeroSkills,
+        proficiencyBonus: 2,
+        languages: [],
+        toolProfs: [],
+        acWithShield: 0,
+        acWithoutShield: 0,
+        initiative: 0,
+        speed: 0,
+        hitDice: 0,
+        hp: 0,
+        weapons: [],
+        weaponProfs: [],
+        armor: blankArmor,
+        armorProfs: [],
+        shield: noShield,
+        gold: 0,
+        tools: [],
+        personality: "",
+        ideal: "",
+        bond: "",
+        flaw: "",
+        traits: [],
+        level0Spells: [],
+        level1Spells: []
+    };
+}
 // Adds the base features that every character needs that are not related to race or class
 export function addBaseFeatures(character) {
     // Choose the character gender
@@ -99,7 +100,7 @@ function finalizeCharacterFeatures(character) {
 // Generate the character in its entirety
 export function generateCharacter(level) {
     // Start with a blank slate in the correct format
-    let character = { ...blankCharacter };
+    let character = blankCharacter();
     // Add miscelaneous features not related to class or race
     addBaseFeatures(character);
     // Add race features

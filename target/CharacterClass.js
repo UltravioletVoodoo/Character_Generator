@@ -10,18 +10,18 @@ export function addCharacterClassFeatures(character) {
     util.choice(classFunctionList)(character);
 }
 const classFunctionList = [
-    // addBarbarianFeatures,
-    // addBardFeatures,
-    addClericFeatures //,
-    // addDruidFeatures,
-    // addFighterFeatures,
-    // addMonkFeatures,
-    // addPaladinFeatures,
-    // addRangerFeatures,
-    // addRogueFeatures,
-    // addSorcererFeatures,
-    // addWarlockFeatures,
-    // addWizardFeatures
+    addBarbarianFeatures,
+    addBardFeatures,
+    addClericFeatures,
+    addDruidFeatures,
+    addFighterFeatures,
+    addMonkFeatures,
+    addPaladinFeatures,
+    addRangerFeatures,
+    addRogueFeatures,
+    addSorcererFeatures,
+    addWarlockFeatures,
+    addWizardFeatures
 ];
 function addBarbarianFeatures(character) {
     character.className = "Barbarian";
@@ -40,7 +40,7 @@ function addBarbarianFeatures(character) {
         { wis: { survival: 2 } },
         { cha: { intimidation: 2 } }
     ], 2, character.skillProfs));
-    character.startingGold = 80;
+    character.gold = 80;
     character.traits = character.traits.concat("Rage");
 }
 function addBardFeatures(character) {
@@ -48,11 +48,11 @@ function addBardFeatures(character) {
     character.hitDice = 8;
     character.armorProfs = character.armorProfs.concat(light);
     character.weaponProfs = character.weaponProfs
-        .concat(simpleMelee, simpleRanged, findWeapon("Hand Crossbow"), findWeapon("Longsword"), findWeapon("Shortword"));
+        .concat(simpleMelee, simpleRanged, findWeapon("Hand Crossbow"), findWeapon("Longsword"), findWeapon("Shortsword"));
     character.toolProfs = character.toolProfs.concat(util.choices(musical, 3));
     character.savingThrowProfs = character.savingThrowProfs.concat([{ dex: 2 }, { cha: 2 }].map(fleshOutAttributes));
     character.skillProfs = character.skillProfs.concat(util.choices(allSkillPartialProfs, 3, character.skillProfs));
-    character.startingGold = 200;
+    character.gold = 200;
     character.level0Spells = character.level0Spells.concat(util.choices(bardSpells[0], 2, character.level0Spells));
     character.level1Spells = character.level1Spells.concat(util.choices(bardSpells[1], 4, character.level1Spells));
     character.traits = character.traits.concat("Bardic Inspiration (d6)");
@@ -71,7 +71,7 @@ function addClericFeatures(character) {
         { wis: { medicine: 2 } },
         { cha: { persuasion: 2 } }
     ], 2));
-    character.startingGold = 200;
+    character.gold = 200;
     character.level0Spells = character.level0Spells.concat(util.choices(clericSpells[0], 3, character.level0Spells));
     character.level1Spells = character.level1Spells.concat(util.choices(clericSpells[1], 2, character.level1Spells));
 }
@@ -92,7 +92,7 @@ function addDruidFeatures(character) {
         { wis: { perception: 2 } },
         { wis: { survival: 2 } }
     ], 2, character.skillProfs));
-    character.startingGold = 200;
+    character.gold = 200;
     character.languages = character.languages.concat("Druidic");
     character.level0Spells = character.level0Spells.concat(util.choices(druidSpells[0], 2, character.level0Spells));
     character.level1Spells = character.level1Spells.concat(util.choices(druidSpells[1], 2, character.level1Spells));
@@ -113,7 +113,7 @@ function addFighterFeatures(character) {
         { wis: { survival: 2 } },
         { cha: { intimidation: 2 } }
     ], 2, character.skillProfs));
-    character.startingGold = 200;
+    character.gold = 200;
     character.traits = character.traits.concat("Second Wind", util.choice([
         "Archery Fighting Style(*)",
         "Defender Fighting Style(*)",
@@ -138,7 +138,7 @@ function addMonkFeatures(character) {
         { int: { religion: 2 } },
         { wis: { insight: 2 } }
     ], 2, character.skillProfs));
-    character.startingGold = 20;
+    character.gold = 20;
     character.traits = character.traits.concat("Unarmored Defence", "Martial Arts");
 }
 function addPaladinFeatures(character) {
@@ -155,7 +155,7 @@ function addPaladinFeatures(character) {
         { cha: { intimidation: 2 } },
         { cha: { persuasion: 2 } }
     ], 2, character.skillProfs));
-    character.startingGold = 200;
+    character.gold = 200;
     character.traits = character.traits.concat("Divine Sense", "Lay on Hands");
 }
 function addRangerFeatures(character) {
@@ -174,7 +174,7 @@ function addRangerFeatures(character) {
         { wis: { perception: 2 } },
         { wis: { survival: 2 } }
     ], 3, character.skillProfs));
-    character.startingGold = 200;
+    character.gold = 200;
     character.traits = character.traits.concat(util.choice([
         "Favored Enemy: Beasts(*)",
         "Favored Enemy: Fey(*)",
@@ -203,7 +203,7 @@ function addRogueFeatures(character) {
         { cha: { persuasion: 2 } },
         { cha: { performance: 2 } }
     ], 4, character.skillProfs));
-    character.startingGold = 160;
+    character.gold = 160;
     character.expertise = character.expertise.concat(util.choices(character.skillProfs, 2, character.expertise));
     character.traits = character.traits.concat("Sneak Attack");
 }
@@ -221,7 +221,7 @@ function addSorcererFeatures(character) {
         { cha: { deception: 2 } },
         { cha: { persuasion: 2 } }
     ], 2, character.skillProfs));
-    character.startingGold = 120;
+    character.gold = 120;
     character.level0Spells = character.level0Spells.concat(util.choices(sorcererSpells[0], 4, character.level0Spells));
     character.level1Spells = character.level1Spells.concat(util.choices(sorcererSpells[1], 2, character.level1Spells));
 }
@@ -242,7 +242,7 @@ function addWarlockFeatures(character) {
         { int: { religion: 2 } }
     ], 2, character.skillProfs));
     character.level0Spells = character.level0Spells.concat(util.choices(warlockSpells[0], 2, character.level0Spells));
-    character.startingGold = 160;
+    character.gold = 160;
 }
 function addWizardFeatures(character) {
     character.className = "Wizard";
@@ -257,7 +257,7 @@ function addWizardFeatures(character) {
         { wis: { medicine: 2 } },
         { int: { religion: 2 } }
     ], 2, character.skillProfs));
-    character.startingGold = 160;
+    character.gold = 160;
     character.level0Spells = character.level0Spells.concat(util.choices(wizardSpells[0], 3, character.level0Spells));
     character.level1Spells = character.level1Spells.concat(util.choices(wizardSpells[1], 2, character.level0Spells));
     character.traits = character.traits.concat("Arcane Recovery");

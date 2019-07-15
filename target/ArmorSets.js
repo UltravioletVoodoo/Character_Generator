@@ -8,12 +8,12 @@ export function findArmor(name) {
             }
         }
     }
-    return blankArmor;
+    throw new Error("No armor '" + name + "' found...");
 }
 export function chooseArmor(character) {
     let newList = [];
     for (let x of character.armorProfs) {
-        if (x.cost <= character.startingGold) {
+        if (x.cost <= character.gold && character.attributes.str >= x.strReq) {
             newList = newList.concat(x);
         }
     }
@@ -22,7 +22,7 @@ export function chooseArmor(character) {
         armorChoice = util.choice(newList);
     }
     character.armor = armorChoice;
-    character.startingGold -= armorChoice.cost;
+    character.gold -= armorChoice.cost;
 }
 function statBonus(a, mods) {
     let caps = fleshOutAttributes(a.ac.caps);

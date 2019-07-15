@@ -7,150 +7,98 @@ export function findWeapon(name) {
             }
         }
     }
-    return bareFist;
-}
-function chooseWeapon(list, money, cantBeTwoHanded) {
-    let newList = [];
-    for (let x of list) {
-        if (x.cost <= money && !cantBeTwoHanded) {
-            newList = newList.concat(x);
-        }
-        if (x.cost <= money && cantBeTwoHanded) {
-            if (x.twoHanded === false) {
-                newList = newList.concat(x);
-            }
-        }
-    }
-    if (newList.length === 0) {
-        return bareFist;
-    }
-    return util.choice(newList);
-}
-function isTwoHanded(w) {
-    return w.twoHanded ? true : false;
+    throw new Error("No weapon '" + name + "' found...");
 }
 export function chooseWeapons(character) {
-    let x = [chooseWeapon(character.weaponProfs, character.startingGold, false)];
-    character.startingGold -= x[0].cost;
-    if (util.choice([1, 2, 3]) === 1 && !isTwoHanded(x[0])) {
-        x = x.concat(chooseWeapon(character.weaponProfs, character.startingGold, true));
-        character.startingGold -= x[1].cost;
-    }
-    character.weapons = x;
-}
-export function isFinesse(w) {
-    if (w.properties.includes("Finesse")) {
-        return true;
-    }
-    return false;
-}
-export function isRanged(w) {
-    for (let x of simpleRanged.concat(martialRanged)) {
-        if (x.name === w.name) {
-            return true;
+    function getWeaponOptions() {
+        let options = [];
+        for (let x of character.weaponProfs) {
+            if (x.cost <= character.gold)
+                options.push(x);
         }
+        return options;
     }
-    return false;
+    let weaponCap = util.choice([1, 2, 3]);
+    while (character.weapons.length < weaponCap) {
+        let weapons = getWeaponOptions();
+        if (weapons.length == 0) {
+            break;
+        }
+        let weaponChoice = util.choice(weapons);
+        character.weapons.push(weaponChoice);
+        character.gold -= weaponChoice.cost;
+    }
 }
-export const bareFist = {
-    name: "Fist",
-    cost: 0,
-    damage: "",
-    damageType: "",
-    weight: 0,
-    properties: [],
-    twoHanded: false
-};
 export const simpleMelee = [
     {
         name: "Club",
         cost: 0.1,
         damage: "1d4",
         damageType: "Bludge",
-        weight: 2,
-        properties: ["Light"],
-        twoHanded: false
+        properties: ["Light"]
     },
     {
         name: "Dagger",
         cost: 2,
         damage: "1d4",
         damageType: "piercing",
-        weight: 1,
-        properties: ["Finesse", "Light", "Thrown"],
-        twoHanded: false
+        properties: ["Finesse", "Light", "Thrown"]
     },
     {
         name: "Greatclub",
         cost: 0.2,
         damage: "1d8",
         damageType: "Bludge",
-        weight: 10,
-        properties: [],
-        twoHanded: true
+        properties: ["Two-handed"]
     },
     {
         name: "Handaxe",
         cost: 5,
         damage: "1d6",
         damageType: "Slashing",
-        weight: 2,
-        properties: ["Light", "Thrown"],
-        twoHanded: false
+        properties: ["Light", "Thrown"]
     },
     {
         name: "Javelin",
         cost: 0.5,
         damage: "1d6",
         damageType: "Piercing",
-        weight: 2,
-        properties: ["Thrown"],
-        twoHanded: false
+        properties: ["Thrown"]
     },
     {
         name: "Light Hammer",
         cost: 0.2,
         damage: "1d4",
         damageType: "Bludge",
-        weight: 2,
-        properties: ["Light", "Thrown"],
-        twoHanded: false
+        properties: ["Light", "Thrown"]
     },
     {
         name: "Mace",
         cost: 5,
         damage: "1d6",
         damageType: "Bludge",
-        weight: 4,
-        properties: [],
-        twoHanded: false
+        properties: []
     },
     {
         name: "Quarterstaff",
         cost: 0.2,
         damage: "1d6",
         damageType: "Bludge",
-        weight: 4,
-        properties: ["Versatile"],
-        twoHanded: false
+        properties: ["Versatile"]
     },
     {
         name: "Sickle",
         cost: 1,
         damage: "1d4",
         damageType: "Slashing",
-        weight: 2,
-        properties: ["Light"],
-        twoHanded: false
+        properties: ["Light"]
     },
     {
         name: "Spear",
         cost: 1,
         damage: "1d6",
         damageType: "Piercing",
-        weight: 3,
-        properties: ["Thrown", "Versatile"],
-        twoHanded: false
+        properties: ["Thrown", "Versatile"]
     }
 ];
 export const simpleRanged = [
@@ -159,36 +107,28 @@ export const simpleRanged = [
         cost: 25,
         damage: "1d8",
         damageType: "Piercing",
-        weight: 5,
-        properties: ["Ammunition", "Loading"],
-        twoHanded: true
+        properties: ["Ammunition", "Loading", "Two-handed"]
     },
     {
         name: "Dart",
         cost: 0.05,
         damage: "1d4",
         damageType: "Piercing",
-        weight: 0.25,
-        properties: ["Finesse", "Thrown"],
-        twoHanded: false
+        properties: ["Finesse", "Thrown"]
     },
     {
         name: "Shortbow",
         cost: 25,
         damage: "1d6",
         damageType: "Piercing",
-        weight: 2,
-        properties: ["Ammunition"],
-        twoHanded: true
+        properties: ["Ammunition", "Two-handed"]
     },
     {
         name: "Sling",
         cost: 0.1,
         damage: "1d4",
         damageType: "Bludge",
-        weight: 0,
-        properties: ["Ammunition"],
-        twoHanded: false
+        properties: ["Ammunition"]
     },
 ];
 export const martialMelee = [
@@ -197,162 +137,126 @@ export const martialMelee = [
         cost: 10,
         damage: "1d8",
         damageType: "Slashing",
-        weight: 4,
-        properties: ["Versatile"],
-        twoHanded: false
+        properties: ["Versatile"]
     },
     {
         name: "Flail",
         cost: 10,
         damage: "1d8",
         damageType: "Bludge",
-        weight: 2,
-        properties: [],
-        twoHanded: false
+        properties: []
     },
     {
         name: "Glaive",
         cost: 20,
         damage: "1d10",
         damageType: "Slashing",
-        weight: 6,
-        properties: ["Heavy", "Reach"],
-        twoHanded: true
+        properties: ["Heavy", "Reach", "Two-Handed"]
     },
     {
         name: "Greataxe",
         cost: 30,
         damage: "1d12",
         damageType: "Slashing",
-        weight: 7,
-        properties: ["Heavy"],
-        twoHanded: true
+        properties: ["Heavy", "Two-handed"]
     },
     {
         name: "Greatsword",
         cost: 50,
         damage: "2d6",
         damageType: "Slashing",
-        weight: 6,
-        properties: ["Heavy"],
-        twoHanded: true
+        properties: ["Heavy", "Two-handed"]
     },
     {
         name: "Halberd",
         cost: 20,
         damage: "1d10",
         damageType: "Slashing",
-        weight: 6,
-        properties: ["Heavy", "Reach"],
-        twoHanded: true
+        properties: ["Heavy", "Reach", "Two-handed"]
     },
     {
         name: "Lance",
         cost: 10,
         damage: "1d12",
         damageType: "Piercing",
-        weight: 6,
-        properties: ["Reach", "Special"],
-        twoHanded: false
+        properties: ["Reach", "Special"]
     },
     {
         name: "Longsword",
         cost: 15,
         damage: "1d8",
         damageType: "Slashing",
-        weight: 3,
-        properties: ["Versatile"],
-        twoHanded: false
+        properties: ["Versatile"]
     },
     {
         name: "Maul",
         cost: 10,
         damage: "2d6",
         damageType: "Bludge",
-        weight: 10,
-        properties: ["Heavy"],
-        twoHanded: true
+        properties: ["Heavy", "Two-handed"]
     },
     {
         name: "Morningstar",
         cost: 15,
         damage: "1d8",
         damageType: "Piercing",
-        weight: 4,
-        properties: [],
-        twoHanded: false
+        properties: []
     },
     {
         name: "Pike",
         cost: 5,
         damage: "1d10",
         damageType: "Piercing",
-        weight: 18,
-        properties: ["Heavy", "Reach"],
-        twoHanded: true
+        properties: ["Heavy", "Reach", "Two-handed"]
     },
     {
         name: "Rapier",
         cost: 25,
         damage: "1d8",
         damageType: "Piercing",
-        weight: 2,
-        properties: ["Finesse"],
-        twoHanded: false
+        properties: ["Finesse"]
     },
     {
         name: "Scimitar",
         cost: 25,
         damage: "1d6",
         damageType: "Slashing",
-        weight: 3,
-        properties: ["Finesse", "Light"],
-        twoHanded: false
+        properties: ["Finesse", "Light"]
     },
     {
         name: "Shortsword",
         cost: 10,
         damage: "1d6",
         damageType: "Piercing",
-        weight: 2,
-        properties: ["Finesse", "Light"],
-        twoHanded: false
+        properties: ["Finesse", "Light"]
     },
     {
         name: "Trident",
         cost: 5,
         damage: "1d6",
         damageType: "Piercing",
-        weight: 4,
-        properties: ["Thrown", "Versatile"],
-        twoHanded: false
+        properties: ["Thrown", "Versatile"]
     },
     {
         name: "War Pick",
         cost: 5,
         damage: "1d8",
         damageType: "Piercing",
-        weight: 2,
-        properties: [],
-        twoHanded: false
+        properties: []
     },
     {
         name: "Warhammer",
         cost: 15,
         damage: "1d8",
         damageType: "Bludge",
-        weight: 2,
-        properties: ["Versatile"],
-        twoHanded: false
+        properties: ["Versatile"]
     },
     {
         name: "Whip",
         cost: 2,
         damage: "1d4",
         damageType: "Slashing",
-        weight: 3,
-        properties: ["Finesse", "Reach"],
-        twoHanded: false
+        properties: ["Finesse", "Reach"]
     }
 ];
 export const martialRanged = [
@@ -361,44 +265,34 @@ export const martialRanged = [
         cost: 10,
         damage: "1",
         damageType: "Piercing",
-        weight: 1,
-        properties: ["Ammunition", "Loading"],
-        twoHanded: false
+        properties: ["Ammunition", "Loading"]
     },
     {
         name: "Hand Crossbow",
         cost: 75,
         damage: "1d6",
         damageType: "Piercing",
-        weight: 3,
-        properties: ["Ammunition", "Light", "Loading"],
-        twoHanded: false
+        properties: ["Ammunition", "Light", "Loading"]
     },
     {
         name: "Heavy Crossbow",
         cost: 50,
         damage: "1d10",
         damageType: "Piercing",
-        weight: 18,
-        properties: ["Ammunition", "Heavy", "Loading"],
-        twoHanded: true
+        properties: ["Ammunition", "Heavy", "Loading", "Two-handed"]
     },
     {
         name: "Longbow",
         cost: 50,
         damage: "1d8",
         damageType: "Piercing",
-        weight: 2,
-        properties: ["Ammunition", "Heavy"],
-        twoHanded: true
+        properties: ["Ammunition", "Heavy", "Two-handed"]
     },
     {
         name: "Net",
         cost: 1,
         damage: "0",
         damageType: "",
-        weight: 3,
-        properties: ["Special", "Thrown"],
-        twoHanded: false
+        properties: ["Special", "Thrown"]
     }
 ];

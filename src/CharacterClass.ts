@@ -13,18 +13,18 @@ export function addCharacterClassFeatures(character: Character){
 }
 
 const classFunctionList: ((character: Character) => void)[] = [
-    // addBarbarianFeatures,
-    // addBardFeatures,
-    addClericFeatures//,
-    // addDruidFeatures,
-    // addFighterFeatures,
-    // addMonkFeatures,
-    // addPaladinFeatures,
-    // addRangerFeatures,
-    // addRogueFeatures,
-    // addSorcererFeatures,
-    // addWarlockFeatures,
-    // addWizardFeatures
+    addBarbarianFeatures,
+    addBardFeatures,
+    addClericFeatures,
+    addDruidFeatures,
+    addFighterFeatures,
+    addMonkFeatures,
+    addPaladinFeatures,
+    addRangerFeatures,
+    addRogueFeatures,
+    addSorcererFeatures,
+    addWarlockFeatures,
+    addWizardFeatures
 ];
 
 function addBarbarianFeatures(character: Character){
@@ -46,7 +46,7 @@ function addBarbarianFeatures(character: Character){
             {wis: {survival: 2}},
             {cha: {intimidation: 2}}
         ],2, character.skillProfs));
-    character.startingGold = 80;
+    character.gold = 80;
     character.traits = character.traits.concat("Rage");
 }
 
@@ -60,7 +60,7 @@ function addBardFeatures(character: Character){
             simpleRanged,
             findWeapon("Hand Crossbow"),
             findWeapon("Longsword"),
-            findWeapon("Shortword")
+            findWeapon("Shortsword")
             );
     character.toolProfs = character.toolProfs.concat(util.choices(musical, 3));
     character.savingThrowProfs = character.savingThrowProfs.concat(
@@ -69,7 +69,7 @@ function addBardFeatures(character: Character){
     character.skillProfs = character.skillProfs.concat(
         util.choices(allSkillPartialProfs, 3, character.skillProfs)
     );
-    character.startingGold = 200;
+    character.gold = 200;
     character.level0Spells = character.level0Spells.concat(
         util.choices(bardSpells[0], 2, character.level0Spells)
     );
@@ -100,7 +100,7 @@ function addClericFeatures(character: Character){
             {cha: {persuasion: 2}}    
         ], 2)
     );
-    character.startingGold = 200;
+    character.gold = 200;
     character.level0Spells = character.level0Spells.concat(
         util.choices(clericSpells[0], 3, character.level0Spells)
     );
@@ -141,7 +141,7 @@ function addDruidFeatures(character: Character){
             {wis: {survival: 2}}
         ], 2, character.skillProfs)
     );
-    character.startingGold = 200;
+    character.gold = 200;
     character.languages = character.languages.concat("Druidic");
     character.level0Spells = character.level0Spells.concat(
         util.choices(druidSpells[0], 2, character.level0Spells)
@@ -180,7 +180,7 @@ function addFighterFeatures(character: Character){
             {cha: {intimidation: 2}}
         ], 2, character.skillProfs)
     );
-    character.startingGold = 200;
+    character.gold = 200;
     character.traits = character.traits.concat(
         "Second Wind",
         util.choice([
@@ -221,7 +221,7 @@ function addMonkFeatures(character: Character){
             {wis: {insight: 2}}
         ], 2, character.skillProfs)
     );
-    character.startingGold = 20;
+    character.gold = 20;
     character.traits = character.traits.concat(
         "Unarmored Defence",
         "Martial Arts"
@@ -255,7 +255,7 @@ function addPaladinFeatures(character: Character){
             {cha: {persuasion: 2}}
         ], 2, character.skillProfs)
     );
-    character.startingGold = 200;
+    character.gold = 200;
     character.traits = character.traits.concat("Divine Sense", "Lay on Hands");
 }
 
@@ -287,7 +287,7 @@ function addRangerFeatures(character: Character){
             {wis: {survival: 2}}
         ], 3, character.skillProfs)
     );
-    character.startingGold = 200;
+    character.gold = 200;
     character.traits = character.traits.concat(
         util.choice([
             "Favored Enemy: Beasts(*)",
@@ -331,7 +331,7 @@ function addRogueFeatures(character: Character){
             {cha: {performance: 2}}
         ], 4, character.skillProfs)
     );
-    character.startingGold = 160;
+    character.gold = 160;
     character.expertise = character.expertise.concat(
         util.choices(character.skillProfs, 2, character.expertise)
     );
@@ -362,7 +362,7 @@ function addSorcererFeatures(character: Character){
             {cha: {persuasion: 2}}
         ], 2, character.skillProfs)
     );
-    character.startingGold = 120;
+    character.gold = 120;
     character.level0Spells = character.level0Spells.concat(
         util.choices(sorcererSpells[0], 4, character.level0Spells)
     );
@@ -394,7 +394,7 @@ function addWarlockFeatures(character: Character){
     character.level0Spells = character.level0Spells.concat(
         util.choices(warlockSpells[0], 2, character.level0Spells)
     );
-    character.startingGold = 160;
+    character.gold = 160;
 }
 
 function addWizardFeatures(character: Character){
@@ -420,7 +420,7 @@ function addWizardFeatures(character: Character){
             {int: {religion: 2}}
         ], 2, character.skillProfs)
     );
-    character.startingGold = 160;
+    character.gold = 160;
     character.level0Spells = character.level0Spells.concat(
         util.choices(wizardSpells[0], 3, character.level0Spells)
     );

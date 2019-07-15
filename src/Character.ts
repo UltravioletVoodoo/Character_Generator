@@ -1,6 +1,6 @@
 import { Attributes, zeroAttributes, mergeAttributes, generateMods, fleshOutAttributes } from "./Attributes";
 import { Skills, zeroSkills, DeepPartial, sumSkills, convertAttrToSkills } from "./Skills";
-import { Tool, blankTool } from "./ToolSets";
+import { Tool } from "./ToolSets";
 import { Weapon } from "./WeaponSets";
 import { Armor, blankArmor, calculateAcWithoutShield, calculateAcWithShield } from "./ArmorSets";
 import { addCharacterClassFeatures } from "./CharacterClass"
@@ -46,8 +46,8 @@ export interface Character {
     armor: Armor;
     armorProfs: Armor[];
     shield: Shield;
-    startingGold: number;
-    tool: Tool;
+    gold: number;
+    tools: Tool[];
     personality: string;
     ideal: string;
     bond: string;
@@ -57,45 +57,47 @@ export interface Character {
     level1Spells: string[];
 }
 
-export const blankCharacter: Character = {
-    className: "",
-    level: 1,
-    raceName: "",
-    alignment: "",
-    sex: "",
-    age: 0,
-    attributes: zeroAttributes,
-    attrMods: zeroAttributes,
-    savingThrows: zeroAttributes,
-    savingThrowProfs: [],
-    savingThrowProfsFlat: zeroAttributes,
-    skills: zeroSkills,
-    skillProfs: [],
-    expertise: [],
-    skillProfsFlat: zeroSkills,
-    proficiencyBonus: 2,
-    languages: [],
-    toolProfs: [],
-    acWithShield: 0,
-    acWithoutShield: 0,
-    initiative: 0,
-    speed: 0,
-    hitDice: 0,
-    hp: 0,
-    weapons: [],
-    weaponProfs: [],
-    armor: blankArmor,
-    armorProfs: [],
-    shield: noShield,
-    startingGold: 0,
-    tool: blankTool,
-    personality: "",
-    ideal: "",
-    bond: "",
-    flaw: "",
-    traits: [],
-    level0Spells: [],
-    level1Spells: [],
+export function blankCharacter(): Character {
+    return {
+        className: "",
+        level: 1,
+        raceName: "",
+        alignment: "",
+        sex: "",
+        age: 0,
+        attributes: zeroAttributes,
+        attrMods: zeroAttributes,
+        savingThrows: zeroAttributes,
+        savingThrowProfs: [],
+        savingThrowProfsFlat: zeroAttributes,
+        skills: zeroSkills,
+        skillProfs: [],
+        expertise: [],
+        skillProfsFlat: zeroSkills,
+        proficiencyBonus: 2,
+        languages: [],
+        toolProfs: [],
+        acWithShield: 0,
+        acWithoutShield: 0,
+        initiative: 0,
+        speed: 0,
+        hitDice: 0,
+        hp: 0,
+        weapons: [],
+        weaponProfs: [],
+        armor: blankArmor,
+        armorProfs: [],
+        shield: noShield,
+        gold: 0,
+        tools: [],
+        personality: "",
+        ideal: "",
+        bond: "",
+        flaw: "",
+        traits: [],
+        level0Spells: [],
+        level1Spells: []
+    }
 }
 
 
@@ -154,7 +156,7 @@ function finalizeCharacterFeatures(character: Character): Character {
 export function generateCharacter(level: number): Character {
 
     // Start with a blank slate in the correct format
-    let character = {...blankCharacter};
+    let character = blankCharacter();
 
     // Add miscelaneous features not related to class or race
     addBaseFeatures(character);

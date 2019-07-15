@@ -1,6 +1,5 @@
 import { util } from "./Util"
 import { generateCharacter } from "./Character";
-import { isFinesse, isRanged } from "./WeaponSets";
 
 
 function generateSheet(){
@@ -12,7 +11,12 @@ function generateSheet(){
     console.log(character);
 
 
-
+    let shieldName = character.shield.name;
+    let shieldAc = character.shield.acBonus.toString();
+    if (character.shield.name == "No shield") {
+        shieldName = ""
+        shieldAc = ""
+    }
     // Take the character elements and manipulate the DOM to place them on the sheet
 
 
@@ -99,54 +103,22 @@ function generateSheet(){
     util.getElement("hitDice").value = character.level.toString();
     util.getElement("hdType").value = "D" + character.hitDice.toString();
     util.getElement("hp").value = character.hp.toString();
-    util.getElement("weapon1Name").value = character.weapons[0].name;
-    let weaponMod = character.attrMods.str;
-    if(isRanged(character.weapons[0])){
-        weaponMod = character.attrMods.dex;
-    } else if (isFinesse(character.weapons[0])) {
-        weaponMod = Math.max(character.attrMods.dex, character.attrMods.str);
-    }
-    util.getElement("weapon1AtkBonus").value = "+ " + (weaponMod + character.proficiencyBonus).toString();
-    util.getElement("weapon1DamageType").value = character.weapons[0].damageType;
-    util.getElement("weapon1Damage").value = character.weapons[0].damage + " + " + weaponMod.toString();
-    weaponMod = 0;
-    let weaponName = "";
-    let weaponAtkBonus = "";
-    let weaponDamageType = "";
-    let weaponDamage = "";
-    if(character.weapons[1]){
-        weaponMod = character.attrMods.str;
-        if(isRanged(character.weapons[1])){
-            weaponMod = character.attrMods.dex;
-        } else if (isFinesse(character.weapons[1])) {
-            weaponMod = Math.max(character.attrMods.dex, character.attrMods.str);
-        }
-        weaponName = character.weapons[1].name;
-        weaponAtkBonus = "+ " + (weaponMod + character.proficiencyBonus).toString();
-        weaponDamageType = character.weapons[1].damageType;
-        weaponDamage = character.weapons[1].damage + " + " + weaponMod.toString();
-    }
-    util.getElement("weapon2Name").value = weaponName;
-    util.getElement("weapon2AtkBonus").value = weaponAtkBonus;
-    util.getElement("weapon2DamageType").value = weaponDamageType;
-    util.getElement("weapon2Damage").value = weaponDamage;
+
     util.getElement("armorAC").value = character.armor.ac.base.toString();
     util.getElement("armorName").value = character.armor.name;
-    util.getElement("startingGold").value = character.startingGold.toFixed(2).toString();
-    if(character.shield.cost != 0){
-        util.getElement("shieldAC").value = character.shield.acBonus.toString();
-        util.getElement("shieldName").value = character.shield.name;
-    } else {
-        util.getElement("shieldAC").value = "";
-        util.getElement("shieldName").value = "";
-    }
-    util.getElement("tool").value = character.tool.name;
+    util.getElement("gold").value = character.gold.toFixed(2).toString();
+
+    util.getElement("shieldAC").value = shieldAc;
+    util.getElement("shieldName").value = shieldName;
 
     util.getElement("personality").value = character.personality;
     util.getElement("ideals").value = character.ideal;
     util.getElement("bonds").value = character.bond;
     util.getElement("flaws").value = character.flaw;
     util.getElement("traits").value = Array.from(character.traits).join("\n");
+
+    util.getElement("weapons").value = Array.from(character.weapons).map(weapon => weapon.name).join("\n");
+    util.getElement("tools").value = Array.from(character.tools).map(tool => tool.name).join("\n");
 
     util.getElement("cantrips").value = character.level0Spells.join("\n");
     util.getElement("levelOneSpells").value = character.level1Spells.join("\n");

@@ -7,192 +7,161 @@ export function findTool(name) {
             }
         }
     }
-    return blankTool;
+    throw new Error("No tool '" + name + "' found...");
 }
-export const blankTool = {
-    name: "",
-    cost: 0,
-    weight: 0
-};
-export function chooseTool(character) {
-    let newList = [];
-    for (let x of character.toolProfs) {
-        if (x.cost <= character.startingGold) {
-            newList = newList.concat(x);
+export function chooseTools(character) {
+    function getToolOptions() {
+        let options = [];
+        for (let x of character.toolProfs) {
+            if (x.cost <= character.gold && !character.tools.includes(x)) {
+                options.push(x);
+            }
         }
+        return options;
     }
-    let choice = blankTool;
-    if (newList.length > 0) {
-        choice = util.choice(newList);
+    while (true) {
+        let toolOptions = getToolOptions();
+        if (toolOptions.length == 0) {
+            break;
+        }
+        let toolChoice = util.choice(toolOptions);
+        character.tools.push(toolChoice);
+        character.gold -= toolChoice.cost;
     }
-    character.tool = choice;
-    character.startingGold -= choice.cost;
 }
 export const artisan = [
     {
         name: "Alchemist's supplies",
-        cost: 50,
-        weight: 8
+        cost: 50
     },
     {
         name: "Brewer's supplies",
-        cost: 20,
-        weight: 9
+        cost: 20
     },
     {
         name: "Calligrapher's supplies",
-        cost: 10,
-        weight: 5
+        cost: 10
     },
     {
         name: "Carpenter's tools",
-        cost: 8,
-        weight: 6
+        cost: 8
     },
     {
         name: "Cartographer's tools",
-        cost: 15,
-        weight: 6
+        cost: 15
     },
     {
         name: "Cobbler's tools",
-        cost: 5,
-        weight: 5
+        cost: 5
     },
     {
         name: "Cook's utensils",
-        cost: 1,
-        weight: 8
+        cost: 1
     },
     {
         name: "Glassblower's tools",
-        cost: 30,
-        weight: 5
+        cost: 30
     },
     {
         name: "Jeweler's tools",
-        cost: 25,
-        weight: 2
+        cost: 25
     },
     {
         name: "Leatherworker's tools",
-        cost: 5,
-        weight: 5
+        cost: 5
     },
     {
         name: "Mason's tools",
-        cost: 10,
-        weight: 8
+        cost: 10
     },
     {
         name: "Painter's supplies",
-        cost: 10,
-        weight: 5
+        cost: 10
     },
     {
         name: "Potter's tools",
-        cost: 10,
-        weight: 3
+        cost: 10
     },
     {
         name: "Smith's tools",
-        cost: 20,
-        weight: 8
+        cost: 20
     },
     {
         name: "Tinker's tools",
-        cost: 50,
-        weight: 10
+        cost: 50
     },
     {
         name: "Weaver's tools",
-        cost: 1,
-        weight: 5
+        cost: 1
     },
     {
         name: "Woodcarver's tools",
-        cost: 1,
-        weight: 5
+        cost: 1
     }
 ];
 export const gaming = [
     {
         name: "Dice set",
-        cost: 0.1,
-        weight: 0
+        cost: 0.1
     },
     {
         name: "Playing Card Set",
-        cost: 0.5,
-        weight: 0
+        cost: 0.5
     }
 ];
 export const musical = [
     {
         name: "Bagpipes",
-        cost: 30,
-        weight: 6
+        cost: 30
     },
     {
         name: "Drum",
-        cost: 6,
-        weight: 3
+        cost: 6
     },
     {
         name: "Dulcimer",
-        cost: 25,
-        weight: 10
+        cost: 25
     },
     {
         name: "Flute",
-        cost: 2,
-        weight: 1
+        cost: 2
     },
     {
         name: "Lute",
-        cost: 35,
-        weight: 2
+        cost: 35
     },
     {
         name: "Lyre",
-        cost: 30,
-        weight: 2
+        cost: 30
     },
     {
         name: "Horn",
-        cost: 3,
-        weight: 2
+        cost: 3
     },
     {
         name: "Pan flute",
-        cost: 12,
-        weight: 2
+        cost: 12
     },
     {
         name: "Shawm",
-        cost: 2,
-        weight: 1
+        cost: 2
     },
     {
         name: "Viol",
-        cost: 30,
-        weight: 1
+        cost: 30
     }
 ];
 export const miscTools = [
     {
         name: "Navigator's tools",
-        cost: 25,
-        weight: 2
+        cost: 25
     },
     {
         name: "Thieve's tools",
-        cost: 25,
-        weight: 1
+        cost: 25
     },
     {
         name: "Herbalism kit",
-        cost: 5,
-        weight: 3
+        cost: 5
     }
 ];
