@@ -667,10 +667,6 @@ form.charsheet main section.features div textarea {
   padding: 5px;
   height: 30em;
 }
-.spellList {
-  width: calc(50% - 2px);
-  display: inline-block;
-}
 .blankArea {
   height: 750px;
 }
@@ -694,6 +690,9 @@ body {
   }
   .example-print {
     display: block;
+  }
+  .pagebreak {
+     page-break-before: always;
   }
   body {
     background-color: white;
@@ -830,4 +829,25 @@ input, textarea {
 }
 #hitDice {
   background: transparent !important;
+}
+.inventory {
+  background-color: #cc0000;
+}
+.inventory > .inventorySection {
+  display: flex;
+  flex-direction: row;
+}
+.inventory > .inventorySection > label{
+  flex-basis: 33.3333%;
+}
+.inventory > .inventorySection > label.portrait {
+  flex-basis: 66.6666%;
+}
+.spells {
+  background-color: #444;
+  display: flex;
+  flex-direction: row;
+}
+.spells > label {
+  flex-basis: 33.3333%
 }

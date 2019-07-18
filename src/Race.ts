@@ -4,7 +4,6 @@ import { mergeAttributes, fleshOutAttributes } from "./Attributes";
 import { addDragonBornSubRaceFeatures, addDwarfSubRaceFeatures, addElfSubRaceFeatures, addGnomeSubRaceFeatures, addHalfElfSubRaceFeatures, addHalflingSubRaceFeatures } from "./SubRace";
 import { findWeapon } from "./WeaponSets";
 import { findTool } from "./ToolSets";
-import { sumSkills, DeepPartial, allSkillPartialProfs } from "./Skills";
 import { languages } from "./Languages";
 
 export function addRaceFeatures(character: Character){
@@ -44,7 +43,7 @@ function addDwarfFeatures(character: Character){
         .concat(
             findWeapon("Battleaxe"),
             findWeapon("Handaxe"),
-            findWeapon("Throwing Hammer"),
+            findWeapon("Light hammer"),
             findWeapon("Warhammer")
             );
 

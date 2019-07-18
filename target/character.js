@@ -52,7 +52,8 @@ export function blankCharacter() {
         flaw: "",
         traits: [],
         level0Spells: [],
-        level1Spells: []
+        level1Spells: [],
+        miscItems: []
     };
 }
 // Adds the base features that every character needs that are not related to race or class

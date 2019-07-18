@@ -66,7 +66,7 @@ export const simpleMelee = [
         properties: ["Thrown"]
     },
     {
-        name: "Light Hammer",
+        name: "Light hammer",
         cost: 0.2,
         damage: "1d4",
         damageType: "Bludge",

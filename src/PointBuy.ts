@@ -14,6 +14,7 @@ export function pointBuy(){
 
     let points = 27;
     while(canBuy(attrs, points)) {
+        console.log('fuck')
         const attr = util.choice(Object.keys(attrs));
         const cost = getCost(attrs, attr);
         if (cost && cost <= points){

@@ -33,7 +33,7 @@ function addDwarfFeatures(character) {
     character.languages = ["Common", "Dwarvish"];
     character.traits = ["Darkvision", "Dwarven Resilience", "Stonecunning"];
     character.weaponProfs = character.weaponProfs
-        .concat(findWeapon("Battleaxe"), findWeapon("Handaxe"), findWeapon("Throwing Hammer"), findWeapon("Warhammer"));
+        .concat(findWeapon("Battleaxe"), findWeapon("Handaxe"), findWeapon("Light hammer"), findWeapon("Warhammer"));
     character.toolProfs = character.toolProfs
         .concat(util.choice([
         findTool("Smith's tools"),

@@ -15,6 +15,7 @@ import { bonds } from "./BondSets";
 import { flaws } from "./FlawSets";
 import { chooseEquipment } from "./Equipment";
 import { Shield, noShield } from "./ShieldSets";
+import { miscItem } from "./MiscSet";
 
 export interface Character {
     className: string;
@@ -55,6 +56,7 @@ export interface Character {
     traits: string[];
     level0Spells: string[];
     level1Spells: string[];
+    miscItems: miscItem[];
 }
 
 export function blankCharacter(): Character {
@@ -96,7 +98,8 @@ export function blankCharacter(): Character {
         flaw: "",
         traits: [],
         level0Spells: [],
-        level1Spells: []
+        level1Spells: [],
+        miscItems: []
     }
 }
 

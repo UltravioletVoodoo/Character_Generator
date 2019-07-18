@@ -14,7 +14,7 @@ function generateSheet() {
     }
     // Take the character elements and manipulate the DOM to place them on the sheet
     util.getElement("className").value = character.className;
-    util.getElement("level").value = "1";
+    util.getElement("level").value = character.level.toString();
     util.getElement("raceName").value = character.raceName;
     util.getElement("alignment").value = character.alignment;
     util.getElement("ageAndSex").value = character.age.toString() + '\t\t' + character.sex;
@@ -90,7 +90,6 @@ function generateSheet() {
     util.getElement("hp").value = character.hp.toString();
     util.getElement("armorAC").value = character.armor.ac.base.toString();
     util.getElement("armorName").value = character.armor.name;
-    util.getElement("gold").value = character.gold.toFixed(2).toString();
     util.getElement("shieldAC").value = shieldAc;
     util.getElement("shieldName").value = shieldName;
     util.getElement("personality").value = character.personality;
@@ -100,6 +99,8 @@ function generateSheet() {
     util.getElement("traits").value = Array.from(character.traits).join("\n");
     util.getElement("weapons").value = Array.from(character.weapons).map(weapon => weapon.name).join("\n");
     util.getElement("tools").value = Array.from(character.tools).map(tool => tool.name).join("\n");
+    util.getElement("misc").value = Array.from(character.miscItems).map(miscItem => miscItem.name).join("\n");
+    util.getElement("gold").value = character.gold.toFixed(2).toString();
     util.getElement("cantrips").value = character.level0Spells.join("\n");
     util.getElement("levelOneSpells").value = character.level1Spells.join("\n");
     //print the page

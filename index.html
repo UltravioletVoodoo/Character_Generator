@@ -347,21 +347,6 @@
             </table>
           </div>
         </section>
-        <section class="equipment">
-          <div>
-            <label>Money</label>
-            <div class="money">
-              <ul>
-                <li>
-                  <label for="gold">Starting Gold</label><input name="gold" id="gold" readonly/>
-                </li>
-                <li>
-                  <label for="currentGold">Current Gold</label><input name="currentGold" readonly/>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
         <section class="attacksandspellcasting">
           <div>
             <label>Armor Items</label>
@@ -397,27 +382,6 @@
             </table>
           </div>
         </section>
-        <section class="attacksandspellcasting">
-          <div>
-            <label>Tools</label>
-            <table>
-              <thead>
-                <tr>
-                  <th>
-                    Name
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <input name="tool" type="text" id="tool" readonly />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
       </section>
       <section>
         <section class="flavor">
@@ -441,19 +405,22 @@
         </section>
       </section>
     </main>
-    <footer>
-      <div class="spellList">
-          <label for="cantrips">Cantrips</label><textarea name="cantrips" id="cantrips" readonly></textarea>
-      </div>
-      <div class="spellList">
+    <footer class="pagebreak">
+      <div class="spells">
+        <label for="cantrips">Cantrips</label><textarea name="cantrips" id="cantrips" readonly></textarea>
         <label for="Level1Spells">Level 1 Spells</label><textarea name="levelOneSpells" id="levelOneSpells" readonly></textarea>
+        <label for="Level2Spells">Level 2 Spells</label><textarea name="levelTwoSpells" id="levelTwoSpells" readonly></textarea>
       </div>
       <div class="inventory">
-        <label for="Weapons">Weapons</label><textarea name="weapons" id="weapons" readonly></textarea>
-        <label for="Tools">Tools</label><textarea name="tools" id="tools" readonly></textarea>
-      </div>
-      <div class="blankArea">
-        <label for="blankArea">Doodles & Notes Area</label><textarea name="blankArea" id="blankArea" readonly></textarea>
+        <div class="inventorySection">
+          <label for="Weapons">Weapons</label><textarea name="weapons" id="weapons" readonly></textarea>
+          <label for="Tools">Tools</label><textarea name="tools" id="tools" readonly></textarea>
+          <label for="Misc">Misc Items</label><textarea name="misc" id="misc" readonly></textarea>
+        </div>
+        <div class="inventorySection">
+          <label class="portrait" for="Portrait">Portrait</label><textarea name="portrait" id="portrait" readonly></textarea>
+          <label for="Gold">Treasure</label><textarea name="gold" id="gold" readonly></textarea>
+        </div>
       </div>
     </footer>
   </form>
