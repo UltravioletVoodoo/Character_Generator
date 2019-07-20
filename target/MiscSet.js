@@ -16,7 +16,6 @@ export function chooseMiscItems(character) {
             break;
         }
         let itemChoice = util.choice(options);
-        console.log("Choosing misc item: " + itemChoice.name);
         character.miscItems.push(itemChoice);
         character.gold -= itemChoice.cost;
     }

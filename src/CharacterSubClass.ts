@@ -18,6 +18,14 @@ export function addWarlockSubClassFeatures(character: Character){
     util.choice(warlockSubClassFunctionsList)(character);
 }
 
+export function addDruidSubClassFeatures(character: Character) {
+    util.choice(druidSubClassFunctionList)(character);
+}
+
+export function addWizardSubClassFeatures(character: Character) {
+    util.choice(wizardSubClassFunctionList)(character);
+}
+
 const clericSubClassFunctionList: ((character: Character) => void)[] = [
     addArcanaDomainFeatures,
     addDeathDomainFeatures,
@@ -46,7 +54,26 @@ const warlockSubClassFunctionsList: ((character: Character) => void)[] = [
     addGreatOldOnePatronFeatures,
     addCelestialPatronFeatures,
     addHexBladePatronFeatures
-]
+];
+
+const druidSubClassFunctionList: ((character: Character) => void)[] = [
+    addCircleOfTheLandFeatures,
+    addCircleOfTheMoonFeatures,
+    addCircleOfDreamsFeatures,
+    addCircleOfTheShepherdFeatures
+];
+
+const wizardSubClassFunctionList: ((character: Character) => void)[] = [
+    addSchoolOfAbjuration,
+    addSchoolOfConjuration,
+    addSchoolOfDiviniation,
+    addSchoolOfEnchantment,
+    addSchoolOfEvocation,
+    addSchoolOfIllusion,
+    addSchoolOfNecromancy,
+    addSchoolOfTransmutation,
+    addSchoolOfWarMagic
+];
 
 function addArcanaDomainFeatures(character: Character){
     character.level1Spells = character.level1Spells.concat(
@@ -293,4 +320,115 @@ function addHexBladePatronFeatures(character: Character) {
         "Hexblade's Curse",
         "Hex Warrior"
     );
+}
+
+function addCircleOfTheLandFeatures(character: Character) {
+    character.level0Spells = character.level0Spells.concat(
+        util.choice(druidSpells[0], character.level0Spells)
+    );
+    character.traits = character.traits.concat([
+        "Circle of the Land",
+        "Natural Recovery"
+    ]);
+}
+
+function addCircleOfTheMoonFeatures(character: Character) {
+    character.traits = character.traits.concat([
+        "Circle of the Moon",
+        "Combat wild shape",
+        "Circle forms"
+    ]);
+}
+
+function addCircleOfDreamsFeatures(character: Character) {
+    character.traits = character.traits.concat([
+        "Circle of Dreams",
+        "Balm of the Summer Court"
+    ]);
+}
+
+function addCircleOfTheShepherdFeatures(character: Character) {
+    character.traits = character.traits.concat([
+        "Circle of the Shepherd",
+        "Speech of the Woods",
+        "Spirit Totem"
+    ]);
+    character.languages.concat("Sylvan");
+}
+
+function  addSchoolOfAbjuration(character: Character) {
+    character.traits = character.traits.concat([
+        "School of Abjuration",
+        "Abjuration Savant",
+        "Arcane Ward"
+    ]);
+}
+
+function addSchoolOfConjuration(character: Character) {
+    character.traits = character.traits.concat([
+        "School of Conjuration",
+        "Conjuration Savant",
+        "Minor Conjuration"
+    ]);
+}
+
+function addSchoolOfDiviniation(character: Character) {
+    character.traits = character.traits.concat([
+        "School of Divination",
+        "Divination Savant",
+        "Portent"
+    ]);
+}
+
+function addSchoolOfEnchantment(character: Character) {
+    character.traits = character.traits.concat([
+        "School of Enchantment",
+        "Enchantment Savant",
+        "Hypnotic Gaze"
+    ]);
+}
+
+function addSchoolOfEvocation(character: Character) {
+    character.traits = character.traits.concat([
+        "School of Evocation",
+        "Evocation Savant",
+        "Sculpt Spells"
+    ]);
+}
+
+function addSchoolOfIllusion(character: Character) {
+    character.traits = character.traits.concat([
+        "School of Illusion",
+        "Illusion Savant",
+        "Improved Minor Illusion"
+    ]);
+    if (character.level0Spells.includes("Minor illusion")) {
+        character.level0Spells.push(util.choice(wizardSpells[0], character.level0Spells));
+    } else {
+        character.level0Spells.push("Minor illusion");
+    }
+}
+
+function addSchoolOfNecromancy(character: Character) {
+    character.traits = character.traits.concat([
+        "School of Necromancy",
+        "Necromancy Savant",
+        "Grim Harvest"
+    ]);
+}
+
+function addSchoolOfTransmutation(character: Character) {
+    character.traits = character.traits.concat([
+        "School of Transmutation",
+        "Transmutation Savant",
+        "Minor Alchemy"
+    ]);
+}
+
+function addSchoolOfWarMagic(character: Character) {
+    character.traits = character.traits.concat([
+        "Arcane Tradition: War Magic",
+        "Arcane Deflection",
+        "Tactical Wit"
+    ]);
 }

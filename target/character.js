@@ -13,6 +13,7 @@ import { bonds } from "./BondSets";
 import { flaws } from "./FlawSets";
 import { chooseEquipment } from "./Equipment";
 import { noShield } from "./ShieldSets";
+import { addLevelUpFeatures } from "./LevelUp";
 export function blankCharacter() {
     return {
         className: "",
@@ -111,25 +112,7 @@ export function generateCharacter(level) {
     // Apply the final touches and compute the values that required class/race
     finalizeCharacterFeatures(character);
     // Handle potential level-ups
-    if (level > 1) {
-        // Level up to level 2
-        addLevel2Features(character);
-    }
-    if (level > 2) {
-        // Level up to level 3
-        addLevel3Features(character);
-    }
+    addLevelUpFeatures(character, level);
     // Return the finalized character
     return character;
-}
-function addLevel2Features(character) {
-    console.log("Leveling up to level 2...");
-}
-function addLevel3Features(character) {
-    console.log("Leveling up to level 3...");
-}
-function addBasicLevelUpFeatures(character) {
-    // increment level
-    // increment hp -- careful about stuff like hill dwarf / draconic sorcerer
-    // increment hit dice number
 }

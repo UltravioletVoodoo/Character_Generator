@@ -115,13 +115,18 @@ function addFighterFeatures(character) {
     ], 2, character.skillProfs));
     character.gold = 200;
     character.traits = character.traits.concat("Second Wind", util.choice([
-        "Archery Fighting Style(*)",
-        "Defender Fighting Style(*)",
-        "Dueling Fighting Style(*)",
-        "Great Weapon Fighting Style(*)",
-        "Protection Fighting Style(*)",
-        "Two Weapon Fighting Style(*)"
+        "Fighting Style: Archery",
+        addDefenceFightingStyle(character),
+        "Fighting Style: Dueling",
+        "Fighting Style: Great Weapon Fighting",
+        "Fighting Style: Protection",
+        "Fighting Style: Two-Weapon Fighting"
     ]));
+}
+function addDefenceFightingStyle(character) {
+    character.acWithShield++;
+    character.acWithShield++;
+    return "Fighting Style: Defense";
 }
 function addMonkFeatures(character) {
     character.className = "Monk";
@@ -206,6 +211,7 @@ function addRogueFeatures(character) {
     character.gold = 160;
     character.expertise = character.expertise.concat(util.choices(character.skillProfs, 2, character.expertise));
     character.traits = character.traits.concat("Sneak Attack");
+    character.languages.push("Thieve's cant");
 }
 function addSorcererFeatures(character) {
     character.className = "Sorcerer";
