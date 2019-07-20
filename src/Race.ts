@@ -69,7 +69,7 @@ function addElfFeatures(character: Character){
 
 function addGnomeFeatures(character: Character){
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({int: 2})]);
-    character.age = util.randomNumberFromRange([40, 400]);
+    character.age = util.randomNumberFromRange([40, 425]);
     character.speed = 25;
     character.languages = ["Common", "Gnomish"];
     character.traits = ["Darkvision", "Gnome Cunning"];
@@ -110,7 +110,7 @@ function addHalflingFeatures(character: Character){
     character.age = util.randomNumberFromRange([20,150]);
     character.speed = 25;
     character.languages = ["Common", "Halfling"];
-    character.traits = ["Lucky", "Brave", "Nimble"];
+    character.traits = ["Lucky", "Brave", "Halfling Nimbleness"];
     addHalflingSubRaceFeatures(character);
 }
 
@@ -134,14 +134,7 @@ function addHumanFeatures(character: Character){
 
 function addTieflingFeatures(character: Character){
     character.raceName = "Tiefling";
-    character.attributes = mergeAttributes([
-        character.attributes,
-        fleshOutAttributes({int: 1}),
-        util.choice([
-            fleshOutAttributes({cha: 2}),
-            fleshOutAttributes({dex: 2})
-        ])
-    ]);
+    character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({cha: 2, int: 1})]);
     character.speed = 30;
     character.age = util.randomNumberFromRange([18,100]);
     character.traits = ["Darkvision", "Hellish Resistance", "Infernal Legacy"];

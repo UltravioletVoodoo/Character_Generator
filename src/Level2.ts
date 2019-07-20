@@ -10,7 +10,6 @@ export function addLevel2Features(character: Character) {
 }
 
 function addLevel2ClassFeatures(character : Character) {
-    console.log(character.className);
     switch(character.className) {
         case "Barbarian": 
             addBarbarianLevel2Features(character);

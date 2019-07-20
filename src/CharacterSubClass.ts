@@ -26,6 +26,10 @@ export function addWizardSubClassFeatures(character: Character) {
     util.choice(wizardSubClassFunctionList)(character);
 }
 
+export function addBarbarionSubClassFeatures(character: Character) {
+    util.choice(barbarianSubClassFunctionList)(character);
+}
+
 const clericSubClassFunctionList: ((character: Character) => void)[] = [
     addArcanaDomainFeatures,
     addDeathDomainFeatures,
@@ -73,6 +77,14 @@ const wizardSubClassFunctionList: ((character: Character) => void)[] = [
     addSchoolOfNecromancy,
     addSchoolOfTransmutation,
     addSchoolOfWarMagic
+];
+
+const barbarianSubClassFunctionList: ((character: Character) => void) = [
+    addPathOfTheBeserker,
+    addPathOfTheTotemWarrior,
+    addPathOfTheAncestralGuardian,
+    addPathOfTheStormHerald,
+    addPathOfTheZealot
 ];
 
 function addArcanaDomainFeatures(character: Character){
@@ -431,4 +443,25 @@ function addSchoolOfWarMagic(character: Character) {
         "Arcane Deflection",
         "Tactical Wit"
     ]);
+}
+
+function addPathOfTheBeserker(character: Character) {
+    character.traits = character.traits.concat([
+        "Path of the Beserker",
+        "Frenzy"
+    ]);
+}
+
+function addPathOfTheTotemWarrior(character: Character) {
+    character.traits = character.traits.concat([
+        "Path of the Totem Warrior",
+        "Spirit Seeker",
+        "Totem Spirit: " + util.choice([
+            "Bear",
+            "Eagle",
+            "Wolf"
+        ])
+    ]);
+    character.level1Spells.push("Speak with animals (Ritual Only)");
+    character.level2Spells.push("Beast sense (Ritual Only)");
 }

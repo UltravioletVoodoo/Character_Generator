@@ -57,6 +57,7 @@ export interface Character {
     traits: string[];
     level0Spells: string[];
     level1Spells: string[];
+    level2Spells: string[];
     miscItems: miscItem[];
 }
 
@@ -100,6 +101,7 @@ export function blankCharacter(): Character {
         traits: [],
         level0Spells: [],
         level1Spells: [],
+        level2Spells: [],
         miscItems: []
     }
 }
@@ -133,6 +135,7 @@ function removeDuplicatesFromLists(character: Character){
     character.traits = [...new Set(character.traits)];
     character.level0Spells = [...new Set(character.level0Spells)];
     character.level1Spells = [...new Set(character.level1Spells)];
+    character.level2Spells = [...new Set(character.level2Spells)];
 }
 
 function finalizeCharacterFeatures(character: Character): Character {

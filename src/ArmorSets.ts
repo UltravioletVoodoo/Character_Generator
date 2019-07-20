@@ -68,16 +68,6 @@ export const blankArmor: Armor = {
     strReq: 0
 }
 
-export const blankShield: Armor = {
-    name: "BlankShield",
-    cost: 0,
-    ac: {
-        base: 0,
-        caps: {}
-    },
-    strReq: 0
-}
-
 export const light: Armor[] = [
     {
         name: "Padded",
