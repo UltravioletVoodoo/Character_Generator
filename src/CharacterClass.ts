@@ -60,6 +60,7 @@ function addBardFeatures(character: Character){
             simpleRanged,
             findWeapon("Hand Crossbow"),
             findWeapon("Longsword"),
+            findWeapon("Rapier"),
             findWeapon("Shortsword")
             );
     character.toolProfs = character.toolProfs.concat(util.choices(musical, 3));

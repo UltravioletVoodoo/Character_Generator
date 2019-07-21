@@ -5,6 +5,7 @@ import { addDragonBornSubRaceFeatures, addDwarfSubRaceFeatures, addElfSubRaceFea
 import { findWeapon } from "./WeaponSets";
 import { findTool } from "./ToolSets";
 import { languages } from "./Languages";
+import { allSkillPartialProfs } from "./Skills";
 
 export function addRaceFeatures(character: Character){
     util.choice(raceFunctionList)(character);
@@ -92,8 +93,12 @@ function addHalfElfFeatures(character: Character){
     character.age = util.randomNumberFromRange([20, 180]);
     character.speed = 30;
     character.languages = ["Common, Elven"].concat(util.choice(languages, ["Common, Elven"]));
-    character.traits = ["Darkvision", "Fey Ancestry"];
-    addHalfElfSubRaceFeatures(character);
+    character.traits = [
+        "Darkvision",
+        "Fey Ancestry",
+        "Skill Versatility"
+    ];
+    character.skillProfs = character.skillProfs.concat(util.choices(allSkillPartialProfs, 2));
 }
 
 function addHalfOrcFeatures(character: Character){

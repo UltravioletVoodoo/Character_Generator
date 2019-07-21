@@ -31,8 +31,6 @@ export function addBarbarionSubClassFeatures(character: Character) {
 }
 
 const clericSubClassFunctionList: ((character: Character) => void)[] = [
-    addArcanaDomainFeatures,
-    addDeathDomainFeatures,
     addForgeDomainFeatures,
     addGraveDomainFeatures,
     addKnowledgeDomainFeatures,
@@ -86,30 +84,6 @@ const barbarianSubClassFunctionList: ((character: Character) => void) = [
     addPathOfTheStormHerald,
     addPathOfTheZealot
 ];
-
-function addArcanaDomainFeatures(character: Character){
-    character.level1Spells = character.level1Spells.concat(
-        "Detect magic",
-        "Magic missle"
-    );
-    character.level0Spells = character.level0Spells.concat(
-        util.choices(wizardSpells[0], 2, character.level0Spells)
-    );
-    character.skillProfs = character.skillProfs.concat({int: {arcana: 2}});
-    character.traits = character.traits.concat("Arcana Domain");
-}
-
-function addDeathDomainFeatures(character: Character){
-    character.level1Spells = character.level1Spells.concat(
-        "False life",
-        "Ray of sickness"
-    );
-    character.weaponProfs = character.weaponProfs.concat(martialMelee, martialRanged);
-    character.level0Spells = character.level0Spells.concat(
-        util.choice(necromancySpells[0], character.level0Spells)
-    );
-    character.traits = character.traits.concat("Death Domain","Reaper");
-}
 
 function addForgeDomainFeatures(character: Character){
     character.level1Spells = character.level1Spells.concat(

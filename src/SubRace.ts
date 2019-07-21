@@ -23,10 +23,6 @@ export function addGnomeSubRaceFeatures(character: Character){
     util.choice(gnomeSubRaceFunctionList)(character);
 }
 
-export function addHalfElfSubRaceFeatures(character: Character){
-    util.choice(halfElfSubRaceFunctionList)(character);
-}
-
 export function addHalflingSubRaceFeatures(character: Character){
     util.choice(halflingSubRaceFunctionList)(character);
 }
@@ -59,14 +55,6 @@ const gnomeSubRaceFunctionList: ((character: Character) => void)[] = [
     addForestGnomeFeatures,
     addRockGnomeFeatures,
     addDeepGnomeFeatures
-];
-
-const halfElfSubRaceFunctionList: ((character: Character) => void)[] = [
-    addHalfElfV1Features,
-    addHalfElfV2Features,
-    addHalfElfV3Features,
-    addHalfElfV4Features,
-    addHalfElfV5Features
 ];
 
 const halflingSubRaceFunctionList: ((character: Character) => void)[] = [
@@ -194,30 +182,6 @@ function addDeepGnomeFeatures(character: Character){
     character.age = util.randomNumberFromRange([25, 225]);
     character.traits = util.arrayDelete(character.traits, ["Darkvision"]).concat(["Superior Darkvision", "Stone Camouflage"]);
     character.languages = character.languages.concat("Undercommon");
-}
-
-function addHalfElfV1Features(character: Character){
-    character.traits = character.traits.concat("Skill Versatility");
-    character.skillProfs = character.skillProfs.concat(util.choices(allSkillPartialProfs, 2));
-}
-
-function addHalfElfV2Features(character: Character){
-    character.traits = character.traits.concat("High Elf Cantrip");
-    character.level0Spells = character.level0Spells.concat(util.choice(wizardSpells[0]));
-}
-
-function addHalfElfV3Features(character: Character){
-    character.traits = character.traits.concat("Fleet of Foot");
-    character.speed = character.speed + 5;
-}
-
-function addHalfElfV4Features(character: Character){
-    character.traits = character.traits.concat("Mask of the Wild");
-}
-
-function addHalfElfV5Features(character: Character){
-    character.traits = character.traits.concat("Drow Magic");
-    character.level0Spells = character.level0Spells.concat("Dancing lights");
 }
 
 function addLightFootHalflingFeatures(character: Character){
