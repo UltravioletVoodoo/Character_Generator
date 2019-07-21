@@ -14,7 +14,7 @@ export const bardSpells: string[][] = [
         "Vicious mockery"
     ],
     [
-        "Animal friendship",
+        "Animal friendship", 
         "Bane",
         "Charm person",
         "Comprehend languages",
@@ -22,7 +22,6 @@ export const bardSpells: string[][] = [
         "Detect magic",
         "Disguise self",
         "Dissonant whispers",
-        "Earth tremor",
         "Faerie fire",
         "Feather fall",
         "Healing word",
@@ -33,9 +32,10 @@ export const bardSpells: string[][] = [
         "Silent image",
         "Sleep",
         "Speak with animals",
-        "Tasha's hideous laughter",
+        "Tasha’s hideous laughter",
         "Thunderwave",
-        "Unseen servant"
+        "Unseen servant",
+        "Earth tremor"
     ]
 ];
 
@@ -45,8 +45,8 @@ export const clericSpells: string[][] = [
         "Light",
         "Mending",
         "Resistance",
-        "Sacred flame",
-        "Spare the dying",
+        "Sacred Flame",
+        "Spare the Dying",
         "Thaumaturgy",
         "Toll the dead",
         "Word of radiance"
@@ -88,7 +88,8 @@ export const paladinSpells: string[][] = [
         "Searing smite",
         "Shield of faith",
         "Thunderous smite",
-        "Wrathful smite"
+        "Wrathful smite",
+        "Ceremony"
     ]
 ];
 
@@ -107,7 +108,11 @@ export const rangerSpells: string[][] = [
         "Hunter's mark",
         "Jump",
         "Longstrider",
-        "Speak with animals"
+        "Speak with animals",
+        "Absorb elements",
+        "Beast bond",
+        "Snare",
+        "Zephyr strike"
     ]
 ];
 
@@ -161,7 +166,6 @@ export const sorcererSpells: string[][] = [
     [
         "Acid splash",
         "Blade ward",
-        "Booming blade",
         "Chill touch",
         "Control flames",
         "Create bonfire",
@@ -169,11 +173,9 @@ export const sorcererSpells: string[][] = [
         "Fire bolt",
         "Friends",
         "Frostbite",
-        "Green flame blade",
         "Gust",
         "Infestation",
         "Light",
-        "Lightning lure",
         "Mage hand",
         "Mending",
         "Message",
@@ -184,7 +186,6 @@ export const sorcererSpells: string[][] = [
         "Ray of frost",
         "Shape water",
         "Shocking grasp",
-        "Sword burst",
         "Thunderclap",
         "True strike"
     ],
@@ -220,21 +221,17 @@ export const sorcererSpells: string[][] = [
 export const warlockSpells: string[][] = [
     [
         "Blade ward",
-        "Booming blade",
         "Chill touch",
         "Create bonfire",
         "Eldritch blast",
         "Friends",
         "Frostbite",
-        "Green flame blade",
         "Infestation",
-        "Lightning lure",
         "Mage hand",
         "Magic stone",
         "Minor illusion",
         "Poison spray",
         "Prestidigitation",
-        "Sword burst",
         "Thunderclap",
         "Toll the dead",
         "True strike"
@@ -259,20 +256,16 @@ export const wizardSpells: string[][] = [
     [
         "Acid splash",
         "Blade ward",
-        "Booming blade",
         "Chill touch",
         "Control flames",
         "Create bonfire",
         "Dancing lights",
-        "Encode thoughts",
         "Fire bolt",
         "Friends",
         "Frostbite",
-        "Green flame blade",
         "Gust",
         "Infestation",
         "Light",
-        "Lightning lure",
         "Mage hand",
         "Mending",
         "Message",
@@ -283,7 +276,6 @@ export const wizardSpells: string[][] = [
         "Ray of frost",
         "Shape water",
         "Shocking grasp",
-        "Sword burst",
         "Thunderclap",
         "Toll the dead",
         "True strike"
@@ -337,7 +329,8 @@ export const necromancySpells: string[][] = [
     [
         "False life",
         "Inflict wounds",
-        "Ray of sickness"
+        "Ray of sickness",
+        "Cause fear"
     ]
 ];
 
@@ -364,7 +357,7 @@ export const level1Spells: string[] = [
     "False life",
     "Feather fall",
     "Find familiar",
-    "Floating disk",
+    "Tenser's floating disk",
     "Fog cloud",
     "Goodberry",
     "Grease",
@@ -372,7 +365,7 @@ export const level1Spells: string[] = [
     "Healing word",
     "Hellish rebuke",
     "Heroism",
-    "Hideous laughter",
+    "Tasha's hideous laughter",
     "Hunter's mark",
     "Identify",
     "Illusory script",
