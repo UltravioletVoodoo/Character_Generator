@@ -68,15 +68,13 @@ function addBardLevel2Features(character: Character) {
         "Jack of all trades",
         "Song of rest"
     ]);
-    character.level1Spells = character.level1Spells.concat(
-        util.choice(bardSpells[1], character.level1Spells)
+    character.memorizedSpells[1] = character.memorizedSpells[1].concat(
+        util.choice(bardSpells[1], character.inherentSpells[1].concat(character.memorizedSpells[1]))
     );
 }
 
 function addClericLevel2Features(character: Character) {
     character.traits.push("Channel Divinity (1/rest)");
-    if (character.traits.includes("Arcana Domain")) character.traits.push("Channel Divinity: Arcane Abjuration");
-    if (character.traits.includes("Death Domain")) character.traits.push("Channel Divinity: Touch of Death");
     if (character.traits.includes("Forge Domain")) character.traits.push("Channel Divinity: Artisan's Blessing");
     if (character.traits.includes("Grave Domain")) character.traits.push("Channel Divinity: Path to the Grave");
     if (character.traits.includes("Knowledge Domain")) character.traits.push("Channel Divinity: Knowledge of the Ages");
@@ -87,9 +85,8 @@ function addClericLevel2Features(character: Character) {
     if (character.traits.includes("Trickery Domain")) character.traits.push("Channel Divinity: Invoke Duplicity");
     if (character.traits.includes("War Domain")) character.traits.push("Channel Divinity: Guided Strike")
 
-    character.level1Spells = character.level1Spells.concat(
-        util.choice(clericSpells[1], character.level1Spells)
-    );
+    let spellsKnown = Math.max(character.attrMods.wis + character.level, 1);
+    character.memorizedSpells[1] = util.choices(clericSpells[1], spellsKnown, character.inherentSpells[1])
 }
 
 function addDruidLevel2Features(character: Character) {
@@ -97,8 +94,9 @@ function addDruidLevel2Features(character: Character) {
 
     addDruidSubClassFeatures(character);
 
-    character.level1Spells = character.level1Spells.concat(
-        util.choice(druidSpells[1], character.level1Spells)
+    let spellsKnown = Math.max(character.attrMods.wis + character.level, 1);
+    character.memorizedSpells[1] = util.choices(
+        druidSpells[1], spellsKnown, character.inherentSpells[1]
     );
 }
 
@@ -125,8 +123,10 @@ function addPaladinLevel2Features(character: Character) {
         ]),
         "Divine Smite"
     ]);
-    character.level1Spells = character.level1Spells.concat(
-        util.choices(paladinSpells[1], 2, character.level1Spells)
+    
+    let spellsKnown = Math.max(character.attrMods.cha + character.level, 1);
+    character.memorizedSpells[1] = util.choices(
+        paladinSpells[1], spellsKnown, character.inherentSpells[1]
     );
 }
 
@@ -145,8 +145,8 @@ function addRangerLevel2Features(character: Character) {
             "Fighting Style: Two-Weapon Fighting"
         ])
     ]);
-    character.level1Spells = character.level1Spells.concat(
-        util.choices(rangerSpells[1], 2, character.level1Spells)
+    character.memorizedSpells[1] = util.choices(
+        rangerSpells[1], 2, character.inherentSpells[1].concat(character.memorizedSpells[1])
     );
 }
 
@@ -155,22 +155,36 @@ function addRogueLevel2Features(character: Character) {
 }
 
 function addSorcererLevel2Features(character: Character) {
-    character.level1Spells = character.level1Spells.concat(
-        util.choice(sorcererSpells[1], character.level1Spells)
+    character.memorizedSpells[1].push(
+        util.choice(
+            sorcererSpells[1], character.inherentSpells[1].concat(character.memorizedSpells[1])
+        )
     );
     character.traits.push("Font of Magic");
 }
 
 function addWarlockLevel2Features(character: Character) {
-    character.level1Spells = character.level1Spells.concat(
-        util.choice(warlockSpells[1], character.level1Spells)
+    character.memorizedSpells[1] = character.memorizedSpells[1].concat(
+        util.choice(
+            warlockSpells[1].concat(getExpandedSpells(character)), character.inherentSpells[1].concat(character.memorizedSpells[1])
+        )
     );
     util.choices(validInvocations(character), 2);
 }
 
+function getExpandedSpells(character: Character): string[] {
+    let slots: string[] = [];
+    if (character.traits.includes("Archefey Patron")) slots = slots.concat(["Faerie fire", "Sleep"]);
+    if (character.traits.includes("Fiend Patron")) slots = slots.concat(["Burning hands", "Command"]);
+    if (character.traits.includes("Great Old One Patron")) slots = slots.concat(["Dissonant whispers", "Tasha's hideous laughter"]);
+    if (character.traits.includes("Celestial Patron")) slots = slots.concat(["Cure wounds", "Guiding bolt"]);
+    if (character.traits.includes("Hexblade")) slots = slots.concat(["Shield", "Wrathful smite"]);
+    return slots;
+}
+
 function validInvocations(character: Character) {
     let options: string[] = [];
-    if (character.level1Spells.includes("Eldritch blast")) {
+    if (character.memorizedSpells[1].includes("Eldritch blast") || character.inherentSpells[0].includes("Eldritch blast")) {
         options.push("Eldritch Invocation: Agonizing Blast");
         options.push("Eldritch Invocation: Eldritch Spear");
     }
@@ -189,7 +203,6 @@ function validInvocations(character: Character) {
 
 function addWizardLevel2Features(character: Character) {
     addWizardSubClassFeatures(character);
-    character.level1Spells = character.level1Spells.concat(
-        util.choice(wizardSpells[1], character.level1Spells)
-    );
+    let spellsKnown = Math.max(character.attrMods.int + character.level, 1);
+    character.memorizedSpells[1] = util.choices(wizardSpells[1], spellsKnown, character.inherentSpells[1]);
 }

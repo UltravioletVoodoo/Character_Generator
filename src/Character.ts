@@ -17,6 +17,7 @@ import { chooseEquipment } from "./Equipment";
 import { Shield, noShield } from "./ShieldSets";
 import { miscItem } from "./MiscSet";
 import { addLevelUpFeatures } from "./LevelUp";
+import { generateSpells } from "./Spells";
 
 export interface Character {
     className: string;
@@ -55,9 +56,9 @@ export interface Character {
     bond: string;
     flaw: string;
     traits: string[];
-    level0Spells: string[];
-    level1Spells: string[];
-    level2Spells: string[];
+    spells: string[][];
+    inherentSpells: string[][];
+    memorizedSpells: string[][];
     miscItems: miscItem[];
 }
 
@@ -99,9 +100,9 @@ export function blankCharacter(): Character {
         bond: "",
         flaw: "",
         traits: [],
-        level0Spells: [],
-        level1Spells: [],
-        level2Spells: [],
+        spells: [],
+        inherentSpells: [],
+        memorizedSpells: [],
         miscItems: []
     }
 }
@@ -133,9 +134,12 @@ function removeDuplicatesFromLists(character: Character){
     character.toolProfs = [...new Set(character.toolProfs)];
     character.weaponProfs = [...new Set(character.weaponProfs)];
     character.traits = [...new Set(character.traits)];
-    character.level0Spells = [...new Set(character.level0Spells)];
-    character.level1Spells = [...new Set(character.level1Spells)];
-    character.level2Spells = [...new Set(character.level2Spells)];
+    character.inherentSpells[0] = [...new Set(character.inherentSpells[0])];
+    character.inherentSpells[1] = [...new Set(character.inherentSpells[1])];
+    character.inherentSpells[2] = [...new Set(character.inherentSpells[2])];
+    character.memorizedSpells[0] = [...new Set(character.memorizedSpells[0])];
+    character.memorizedSpells[1] = [...new Set(character.memorizedSpells[1])];
+    character.memorizedSpells[2] = [...new Set(character.memorizedSpells[2])];
 }
 
 function finalizeCharacterFeatures(character: Character): Character {
@@ -156,6 +160,10 @@ function finalizeCharacterFeatures(character: Character): Character {
     character.acWithoutShield = calculateAcWithoutShield(character);
     character.initiative = character.attrMods.dex;
     character.hp = character.hp + character.attrMods.con + character.hitDice;
+
+    // spells
+    generateSpells(character);
+
     return character;
 }
 
@@ -174,12 +182,12 @@ export function generateCharacter(level: number): Character {
     // Add class features
     addCharacterClassFeatures(character);
 
-    // Apply the final touches and compute the values that required class/race
-    finalizeCharacterFeatures(character);
-
     // Handle potential level-ups
     addLevelUpFeatures(character, level);
     
+    // Apply the final touches and compute the values that required class/race
+    finalizeCharacterFeatures(character);
+
     // Return the finalized character
     return character;
 }

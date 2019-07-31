@@ -1,7 +1,7 @@
 import { Character } from "./Character";
 import { util } from "./Util";
 import { mergeAttributes, fleshOutAttributes } from "./Attributes";
-import { addDragonBornSubRaceFeatures, addDwarfSubRaceFeatures, addElfSubRaceFeatures, addGnomeSubRaceFeatures, addHalfElfSubRaceFeatures, addHalflingSubRaceFeatures } from "./SubRace";
+import { addDragonBornSubRaceFeatures, addDwarfSubRaceFeatures, addElfSubRaceFeatures, addGnomeSubRaceFeatures, addHalflingSubRaceFeatures } from "./SubRace";
 import { findWeapon } from "./WeaponSets";
 import { findTool } from "./ToolSets";
 import { languages } from "./Languages";
@@ -144,5 +144,5 @@ function addTieflingFeatures(character: Character){
     character.age = util.randomNumberFromRange([18,100]);
     character.traits = ["Darkvision", "Hellish Resistance", "Infernal Legacy"];
     character.languages = ["Common", "Infernal"];
-    character.level0Spells = character.level0Spells.concat("Thaumaturgy");
+    character.inherentSpells[0].push("Thaumaturgy");
 }

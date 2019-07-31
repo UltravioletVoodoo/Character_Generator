@@ -134,7 +134,7 @@ function addHighElfFeatures(character: Character){
             findWeapon("Shortbow"),
             findWeapon("Longbow")
         );
-    character.level0Spells = character.level0Spells.concat(util.choice(wizardSpells[0]));
+    character.inherentSpells[0].push(util.choice(wizardSpells[0], character.inherentSpells[0]));
     character.languages = character.languages.concat(util.choice(languages, character.languages));
 }
 
@@ -160,13 +160,13 @@ function addDrowElfFeatures(character: Character){
         .concat(findWeapon("Shortsword"))
         .concat(findWeapon("Hand Crossbow"));
     character.traits = util.arrayDelete(character.traits, ["Darkvision"]).concat(["Superior Darkvision", "Sunlight Sensitivity"]);
-    character.level0Spells = character.level0Spells.concat("Dancing lights");
+    character.inherentSpells[0].push("Dancing lights");
 }
 
 function addForestGnomeFeatures(character: Character){
     character.raceName = "Forest Gnome";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({dex: 1})]);
-    character.level0Spells = character.level0Spells.concat("Minor illusion");
+    character.inherentSpells[0].push("Minor illusion");
     character.traits = character.traits.concat("Speak with Small Beasts");
 }
 

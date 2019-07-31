@@ -1,3 +1,18 @@
+import { Character } from "./Character";
+
+export function generateSpells(character: Character) {
+    // add in all of the inherent spells
+    character.spells[0] = character.spells[0].concat(character.inherentSpells[0]);
+    character.spells[1] = character.spells[1].concat(character.inherentSpells[1]);
+    character.spells[2] = character.spells[2].concat(character.inherentSpells[2]);
+
+    // add in all of the memorized spells
+    character.spells[0] = character.spells[0].concat(character.memorizedSpells[0]);
+    character.spells[1] = character.spells[1].concat(character.memorizedSpells[1]);
+    character.spells[2] = character.spells[2].concat(character.memorizedSpells[2]);
+}
+
+
 export const bardSpells: string[][] = [
     [
         "Blade ward",
@@ -36,6 +51,33 @@ export const bardSpells: string[][] = [
         "Thunderwave",
         "Unseen servant",
         "Earth tremor"
+    ],
+    [
+        "Animal messenger",
+        "Blindness/deafness",
+        "Calm emotions",
+        "Cloud of daggers",
+        "Crown of madness",
+        "Detect thoughts",
+        "Enhance ability",
+        "Enthrall",
+        "Heat metal",
+        "Hold person",
+        "Invisibility",
+        "Knock",
+        "Lesser restoration",
+        "Locate animals or plants",
+        "Locate object",
+        "Magic mouth",
+        "Phantasmal force",
+        "See invisibility",
+        "Shatter",
+        "Silence",
+        "Suggestion",
+        "Zone of truth",
+        "Pyrotechnics",
+        "Skywrite",
+        "Warding wind"
     ]
 ];
 
@@ -68,6 +110,25 @@ export const clericSpells: string[][] = [
         "Purify food and drink",
         "Sanctuary",
         "Shield of faith"
+    ],
+    [
+        "Aid",
+        "Augury",
+        "Blindness/deafness",
+        "Calm emotions",
+        "Continual flame",
+        "Enhance ability",
+        "Find traps",
+        "Gentle repose",
+        "Hold person",
+        "Lesser restoration",
+        "Locate object",
+        "Prayer of healing",
+        "Protection from poison",
+        "Silence",
+        "Spiritual weapon",
+        "Warding bond",
+        "Zone of truth",
     ]
 ];
 
@@ -159,6 +220,31 @@ export const druidSpells: string[][] = [
         "Snare",
         "Speak with animals",
         "Thunderwave"
+    ],
+    [
+        "Animal messenger",
+        "Barkskin",
+        "Beast sense",
+        "Darkvision",
+        "Enhance ability",
+        "Find traps",
+        "Flame blade",
+        "Flame sphere",
+        "Gust of wind",
+        "Heat metal",
+        "Hold person",
+        "Lesser restoration",
+        "Locate animals or plants",
+        "Locate object",
+        "Moonbeam",
+        "Pass without trace",
+        "Protection from poison",
+        "Spike growth",
+        "Dust devil",
+        "Earthbind",
+        "Healing spirit",
+        "Skywrite",
+        "Warding wind"
     ]
 ];
 
@@ -215,6 +301,41 @@ export const sorcererSpells: string[][] = [
         "Sleep",
         "Thunderwave",
         "Witch bolt"
+    ],
+    [
+        "Alter self",
+        "Blindness/deafness",
+        "Blur",
+        "Cloud of daggers",
+        "Crown of madness",
+        "Darkness",
+        "Darkvision",
+        "Detect thoughts",
+        "Enhance ability",
+        "Enlarge/reduce",
+        "Gust of wind",
+        "Hold person",
+        "Invisibility",
+        "Knock",
+        "Levitate",
+        "Mirror image",
+        "Misty step",
+        "Phantasmal force",
+        "Scorching ray",
+        "See invisibility",
+        "Shatter",
+        "Spider climb",
+        "Suggestion",
+        "Web",
+        "Agnazzar's scorcher",
+        "Dragon's breath",
+        "Earthbind",
+        "Maximillian's earthen grasp",
+        "Mind spike",
+        "Pyrotechnics",
+        "Shadow blade",
+        "Snilloc's snowball swarm",
+        "Warding wind",
     ]
 ];
 
@@ -249,6 +370,23 @@ export const warlockSpells: string[][] = [
         "Protection from evil and good",
         "Unseen servant",
         "Witch bolt"
+    ],
+    [
+        "Cloud of daggers",
+        "Crown of madness",
+        "Darkness",
+        "Enthrall",
+        "Hold person",
+        "Invisibility",
+        "Mirror image",
+        "Misty step",
+        "Ray of enfeeblement",
+        "Shatter",
+        "Spider climb",
+        "Suggestion",
+        "Earthbind",
+        "Mind spike",
+        "Shadow blade"
     ]
 ];
 
@@ -317,6 +455,53 @@ export const wizardSpells: string[][] = [
         "Thunderwave",
         "Unseen servant",
         "Witch bolt"
+    ],
+    [
+        "Alter self",
+        "Arcane lock",
+        "Blindness/deafness",
+        "Blur",
+        "Cloud of daggers",
+        "Continual flame",
+        "Crown of madness",
+        "Darkness",
+        "Darkvision",
+        "Detect thoughts",
+        "Enlarge/reduce",
+        "Flaming sphere",
+        "Gentle repose",
+        "Gust of wind",
+        "Hold person",
+        "Invisibility",
+        "Knock",
+        "Levitate",
+        "Locate object",
+        "Magic mouth",
+        "Magic weapon",
+        "Melf's acid arrow",
+        "Mirror image",
+        "Misty step",
+        "Nystul's magic aura",
+        "Phantasmal force",
+        "Ray of enfeeblement",
+        "Rope trick",
+        "Scorching ray",
+        "See invisibility",
+        "Shatter",
+        "Spider climb",
+        "Suggestion",
+        "Web",
+        "Aganazzar's scorcher",
+        "Dragon's breath",
+        "Dust devil",
+        "Earthbind",
+        "Maximilian's earthen grasp",
+        "Mind spike",
+        "Pyrotechnics",
+        "Shadow blade",
+        "Skywrite",
+        "Snilloc's snowball swarm",
+        "Warding wind"
     ]
 ];
 
@@ -332,6 +517,30 @@ export const necromancySpells: string[][] = [
         "Ray of sickness",
         "Cause fear"
     ]
+];
+
+export const eldritchKnightSpells: string[] = [
+    "Absorb elements",
+    "Alarm",
+    "Burning hands",
+    "Chromatic orb",
+    "Earth tremor",
+    "Mage armor",
+    "Magic missile",
+    "Protection from evil and good",
+    "Shield",
+    "Thunderwave",
+    "Witch bolt"
+];
+
+export const rogueSpells: string[] = [
+    "Charm person",
+    "Color spray",
+    "Disguise self",
+    "Illusory script",
+    "Silent image",
+    "Sleep",
+    "Tasha's hideous laughter"
 ];
 
 export const level1Spells: string[] = [

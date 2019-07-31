@@ -71,13 +71,17 @@ function addBardFeatures(character: Character){
         util.choices(allSkillPartialProfs, 3, character.skillProfs)
     );
     character.gold = 200;
-    character.level0Spells = character.level0Spells.concat(
-        util.choices(bardSpells[0], 2, character.level0Spells)
-    );
-    character.level1Spells = character.level1Spells.concat(
-        util.choices(bardSpells[1], 4, character.level1Spells)
-    );
+    handleBardMemorizedSpells(character);
     character.traits = character.traits.concat("Bardic Inspiration (d6)");
+}
+
+function handleBardMemorizedSpells(character: Character) {
+    character.memorizedSpells[0] = character.memorizedSpells[0].concat(
+        util.choices(bardSpells[0], 2, character.inherentSpells[0].concat(character.memorizedSpells[0]))
+    );
+    character.memorizedSpells[1] = character.memorizedSpells[1].concat(
+        util.choices(bardSpells[1], 4, character.inherentSpells[1].concat(character.memorizedSpells[1]))
+    );
 }
 
 function addClericFeatures(character: Character){
@@ -102,11 +106,20 @@ function addClericFeatures(character: Character){
         ], 2)
     );
     character.gold = 200;
-    character.level0Spells = character.level0Spells.concat(
-        util.choices(clericSpells[0], 3, character.level0Spells)
+    handleClericMemorizedSpells(character);
+}
+
+function handleClericMemorizedSpells(character: Character) {
+    character.memorizedSpells[0] = util.choices(
+        clericSpells[0],
+        3,
+        character.inherentSpells[0]
     );
-    character.level1Spells = character.level1Spells.concat(
-        util.choices(clericSpells[1], 2, character.level1Spells)
+    let spellsKnown = Math.max(character.attrMods.wis + character.level, 1);
+    character.memorizedSpells[1] = util.choices(
+        clericSpells[1],
+        spellsKnown,
+        character.inherentSpells[1]
     );
 }
 
@@ -144,11 +157,20 @@ function addDruidFeatures(character: Character){
     );
     character.gold = 200;
     character.languages = character.languages.concat("Druidic");
-    character.level0Spells = character.level0Spells.concat(
-        util.choices(druidSpells[0], 2, character.level0Spells)
+    handleDruidMemorizedSpells(character);
+}
+
+function handleDruidMemorizedSpells(character: Character) {
+    character.memorizedSpells[0] = util.choices(
+        druidSpells[0],
+        2,
+        character.inherentSpells[0]
     );
-    character.level1Spells = character.level1Spells.concat(
-        util.choices(druidSpells[1], 2, character.level1Spells)
+    let spellsKnown = Math.max(character.attrMods.wis + character.level, 1);
+    character.memorizedSpells[1] = util.choices(
+        druidSpells[1],
+        spellsKnown,
+        character.inherentSpells[1]
     );
 }
 
@@ -297,11 +319,11 @@ function addRangerFeatures(character: Character){
     character.gold = 200;
     character.traits = character.traits.concat(
         util.choice([
-            "Favored Enemy: Beasts(*)",
-            "Favored Enemy: Fey(*)",
-            "Favored Enemy: Humanoids(*)",
-            "Favored Enemy: Monstrosities(*)",
-            "Favored Enemy: Undead(*)"
+            "Favored Enemy: Beasts",
+            "Favored Enemy: Fey",
+            "Favored Enemy: Humanoids",
+            "Favored Enemy: Monstrosities",
+            "Favored Enemy: Undead"
         ]),
         "Natural Explorer"
     );
@@ -371,11 +393,19 @@ function addSorcererFeatures(character: Character){
         ], 2, character.skillProfs)
     );
     character.gold = 120;
-    character.level0Spells = character.level0Spells.concat(
-        util.choices(sorcererSpells[0], 4, character.level0Spells)
+    handleSorcererMemorizedSpells(character);
+}
+
+function handleSorcererMemorizedSpells(character: Character) {
+    character.memorizedSpells[0] = util.choices(
+        sorcererSpells[0],
+        4,
+        character.inherentSpells[0].concat(character.memorizedSpells[0])
     );
-    character.level1Spells = character.level1Spells.concat(
-        util.choices(sorcererSpells[1], 2, character.level1Spells)
+    character.memorizedSpells[1] = util.choices(
+        sorcererSpells[1],
+        2,
+        character.inherentSpells[1].concat(character.memorizedSpells[1])
     );
 }
 
@@ -399,8 +429,8 @@ function addWarlockFeatures(character: Character){
             {int: {religion: 2}}
         ], 2, character.skillProfs)
     );
-    character.level0Spells = character.level0Spells.concat(
-        util.choices(warlockSpells[0], 2, character.level0Spells)
+    character.memorizedSpells[0] = character.memorizedSpells[0].concat(
+        util.choices(warlockSpells[0], 2, character.inherentSpells[0])
     );
     character.gold = 160;
 }
@@ -429,11 +459,20 @@ function addWizardFeatures(character: Character){
         ], 2, character.skillProfs)
     );
     character.gold = 160;
-    character.level0Spells = character.level0Spells.concat(
-        util.choices(wizardSpells[0], 3, character.level0Spells)
-    );
-    character.level1Spells = character.level1Spells.concat(
-        util.choices(wizardSpells[1], 2, character.level0Spells)
-    );
+    handleWizardMemorizedSpells(character);
     character.traits = character.traits.concat("Arcane Recovery");
+}
+
+function handleWizardMemorizedSpells(character: Character) {
+    character.memorizedSpells[0] = util.choices(
+        wizardSpells[0],
+        3,
+        character.inherentSpells[0]
+    );
+    let spellsKnown = Math.max(character.attrMods.int + character.level, 1);
+    character.memorizedSpells[1] = util.choices(
+        wizardSpells[1],
+        spellsKnown,
+        character.inherentSpells[1]
+    );
 }
