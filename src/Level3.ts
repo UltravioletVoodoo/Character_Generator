@@ -68,7 +68,7 @@ function addBardLevel3Features(character: Character) {
 
     // Always delete 1 old spell then pick TWO new ones
     let index = util.randomNumberFromRange([0, character.memorizedSpells[1].length - 1]);
-    util.arrayDelete(character.memorizedSpells[1], [character.memorizedSpells[1][index]]);
+    character.memorizedSpells[1] = util.arrayDelete(character.memorizedSpells[1], [character.memorizedSpells[1][index]]);
 
     // Choose either a first or second level spell TWICE
     for (let x = 0; x < 2; x++) {

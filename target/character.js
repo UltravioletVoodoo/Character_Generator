@@ -92,7 +92,6 @@ function finalizeCharacterFeatures(character) {
     removeDuplicatesFromLists(character);
     character.skillProfsFlat = sumSkills(character.skillProfs);
     character.savingThrowProfsFlat = mergeAttributes(character.savingThrowProfs.map(fleshOutAttributes));
-    character.attrMods = generateMods(character.attributes);
     character.skills = sumSkills([character.skillProfsFlat]
         .concat(convertAttrToSkills(character.attrMods))
         .concat(sumSkills(character.expertise)));
@@ -115,6 +114,8 @@ export function generateCharacter(level) {
     addBaseFeatures(character);
     // Add race features
     addRaceFeatures(character);
+    // Now that we have the attributes done, we can calculate the mods used elsewhere
+    character.attrMods = generateMods(character.attributes);
     // Add class features
     addCharacterClassFeatures(character);
     // Handle potential level-ups
