@@ -120,8 +120,10 @@ function generateSheet(){
     util.getElement("misc").value = Array.from(character.miscItems).map(miscItem => miscItem.name).join("\n");
     util.getElement("gold").value = character.gold.toFixed(2).toString();
 
-    util.getElement("cantrips").value = character.level0Spells.join("\n");
-    util.getElement("levelOneSpells").value = character.level1Spells.join("\n");
+    util.getElement("cantrips").value = character.spells[0].join("\n");
+    util.getElement("levelOneSpells").value = character.spells[1].join("\n");
+    util.getElement("levelTwoSpells").value = character.spells[2].join("\n");
+
 
     //print the page
     window.print();

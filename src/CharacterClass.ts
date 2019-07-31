@@ -13,18 +13,18 @@ export function addCharacterClassFeatures(character: Character){
 }
 
 const classFunctionList: ((character: Character) => void)[] = [
-    addBarbarianFeatures,
+    // addBarbarianFeatures,
     addBardFeatures,
-    addClericFeatures,
-    addDruidFeatures,
-    addFighterFeatures,
-    addMonkFeatures,
-    addPaladinFeatures,
-    addRangerFeatures,
-    addRogueFeatures,
-    addSorcererFeatures,
-    addWarlockFeatures,
-    addWizardFeatures
+    // addClericFeatures,
+    // addDruidFeatures,
+    // addFighterFeatures,
+    // addMonkFeatures,
+    // addPaladinFeatures,
+    // addRangerFeatures,
+    // addRogueFeatures,
+    // addSorcererFeatures,
+    // addWarlockFeatures,
+    // addWizardFeatures
 ];
 
 function addBarbarianFeatures(character: Character){

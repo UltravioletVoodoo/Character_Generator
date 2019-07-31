@@ -1,5 +1,6 @@
 import { addLevel2Features } from "./Level2";
 import { addLevel3Features } from "./Level3";
+import { chooseMagicItem } from "./MagicItemTableB";
 export function addLevelUpFeatures(character, level) {
     if (level > 1) {
         // Level up to level 2
@@ -10,6 +11,7 @@ export function addLevelUpFeatures(character, level) {
         // Level up to level 3
         addBasicLevelupFeatures(character);
         addLevel3Features(character);
+        chooseMagicItem(character);
     }
 }
 function addBasicLevelupFeatures(character) {

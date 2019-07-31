@@ -14,6 +14,7 @@ import { flaws } from "./FlawSets";
 import { chooseEquipment } from "./Equipment";
 import { noShield } from "./ShieldSets";
 import { addLevelUpFeatures } from "./LevelUp";
+import { generateSpells } from "./Spells";
 export function blankCharacter() {
     return {
         className: "",
@@ -52,8 +53,9 @@ export function blankCharacter() {
         bond: "",
         flaw: "",
         traits: [],
-        level0Spells: [],
-        level1Spells: [],
+        spells: [[], [], []],
+        inherentSpells: [[], [], []],
+        memorizedSpells: [[], [], []],
         miscItems: []
     };
 }
@@ -79,8 +81,12 @@ function removeDuplicatesFromLists(character) {
     character.toolProfs = [...new Set(character.toolProfs)];
     character.weaponProfs = [...new Set(character.weaponProfs)];
     character.traits = [...new Set(character.traits)];
-    character.level0Spells = [...new Set(character.level0Spells)];
-    character.level1Spells = [...new Set(character.level1Spells)];
+    character.inherentSpells[0] = [...new Set(character.inherentSpells[0])];
+    character.inherentSpells[1] = [...new Set(character.inherentSpells[1])];
+    character.inherentSpells[2] = [...new Set(character.inherentSpells[2])];
+    character.memorizedSpells[0] = [...new Set(character.memorizedSpells[0])];
+    character.memorizedSpells[1] = [...new Set(character.memorizedSpells[1])];
+    character.memorizedSpells[2] = [...new Set(character.memorizedSpells[2])];
 }
 function finalizeCharacterFeatures(character) {
     removeDuplicatesFromLists(character);
@@ -97,6 +103,8 @@ function finalizeCharacterFeatures(character) {
     character.acWithoutShield = calculateAcWithoutShield(character);
     character.initiative = character.attrMods.dex;
     character.hp = character.hp + character.attrMods.con + character.hitDice;
+    // spells
+    generateSpells(character);
     return character;
 }
 // Generate the character in its entirety
@@ -109,10 +117,10 @@ export function generateCharacter(level) {
     addRaceFeatures(character);
     // Add class features
     addCharacterClassFeatures(character);
-    // Apply the final touches and compute the values that required class/race
-    finalizeCharacterFeatures(character);
     // Handle potential level-ups
     addLevelUpFeatures(character, level);
+    // Apply the final touches and compute the values that required class/race
+    finalizeCharacterFeatures(character);
     // Return the finalized character
     return character;
 }

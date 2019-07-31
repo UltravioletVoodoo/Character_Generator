@@ -100,9 +100,9 @@ export function blankCharacter(): Character {
         bond: "",
         flaw: "",
         traits: [],
-        spells: [],
-        inherentSpells: [],
-        memorizedSpells: [],
+        spells: [[],[],[]],
+        inherentSpells: [[],[],[]],
+        memorizedSpells: [[],[],[]],
         miscItems: []
     }
 }

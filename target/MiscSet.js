@@ -243,7 +243,7 @@ const misc = [
     },
     {
         name: "Paper (one sheet)",
-        cost: 5
+        cost: 0.2
     },
     {
         name: "Parchment (one sheet)",
@@ -331,10 +331,10 @@ const misc = [
     },
     {
         name: "Soap",
-        cost: 2
+        cost: 0.02
     },
     {
-        name: "Spellbook",
+        name: "Empty Spellbook",
         cost: 50
     },
     {

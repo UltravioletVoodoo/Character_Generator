@@ -1,3 +1,13 @@
+export function generateSpells(character) {
+    // add in all of the inherent spells
+    character.spells[0] = character.spells[0].concat(character.inherentSpells[0]);
+    character.spells[1] = character.spells[1].concat(character.inherentSpells[1]);
+    character.spells[2] = character.spells[2].concat(character.inherentSpells[2]);
+    // add in all of the memorized spells
+    character.spells[0] = character.spells[0].concat(character.memorizedSpells[0]);
+    character.spells[1] = character.spells[1].concat(character.memorizedSpells[1]);
+    character.spells[2] = character.spells[2].concat(character.memorizedSpells[2]);
+}
 export const bardSpells = [
     [
         "Blade ward",
@@ -22,7 +32,6 @@ export const bardSpells = [
         "Detect magic",
         "Disguise self",
         "Dissonant whispers",
-        "Earth tremor",
         "Faerie fire",
         "Feather fall",
         "Healing word",
@@ -33,9 +42,37 @@ export const bardSpells = [
         "Silent image",
         "Sleep",
         "Speak with animals",
-        "Tasha's hideous laughter",
+        "Tasha’s hideous laughter",
         "Thunderwave",
-        "Unseen servant"
+        "Unseen servant",
+        "Earth tremor"
+    ],
+    [
+        "Animal messenger",
+        "Blindness/deafness",
+        "Calm emotions",
+        "Cloud of daggers",
+        "Crown of madness",
+        "Detect thoughts",
+        "Enhance ability",
+        "Enthrall",
+        "Heat metal",
+        "Hold person",
+        "Invisibility",
+        "Knock",
+        "Lesser restoration",
+        "Locate animals or plants",
+        "Locate object",
+        "Magic mouth",
+        "Phantasmal force",
+        "See invisibility",
+        "Shatter",
+        "Silence",
+        "Suggestion",
+        "Zone of truth",
+        "Pyrotechnics",
+        "Skywrite",
+        "Warding wind"
     ]
 ];
 export const clericSpells = [
@@ -44,8 +81,8 @@ export const clericSpells = [
         "Light",
         "Mending",
         "Resistance",
-        "Sacred flame",
-        "Spare the dying",
+        "Sacred Flame",
+        "Spare the Dying",
         "Thaumaturgy",
         "Toll the dead",
         "Word of radiance"
@@ -67,6 +104,25 @@ export const clericSpells = [
         "Purify food and drink",
         "Sanctuary",
         "Shield of faith"
+    ],
+    [
+        "Aid",
+        "Augury",
+        "Blindness/deafness",
+        "Calm emotions",
+        "Continual flame",
+        "Enhance ability",
+        "Find traps",
+        "Gentle repose",
+        "Hold person",
+        "Lesser restoration",
+        "Locate object",
+        "Prayer of healing",
+        "Protection from poison",
+        "Silence",
+        "Spiritual weapon",
+        "Warding bond",
+        "Zone of truth",
     ]
 ];
 export const paladinSpells = [
@@ -86,7 +142,8 @@ export const paladinSpells = [
         "Searing smite",
         "Shield of faith",
         "Thunderous smite",
-        "Wrathful smite"
+        "Wrathful smite",
+        "Ceremony"
     ]
 ];
 export const rangerSpells = [
@@ -104,7 +161,11 @@ export const rangerSpells = [
         "Hunter's mark",
         "Jump",
         "Longstrider",
-        "Speak with animals"
+        "Speak with animals",
+        "Absorb elements",
+        "Beast bond",
+        "Snare",
+        "Zephyr strike"
     ]
 ];
 export const druidSpells = [
@@ -150,13 +211,37 @@ export const druidSpells = [
         "Snare",
         "Speak with animals",
         "Thunderwave"
+    ],
+    [
+        "Animal messenger",
+        "Barkskin",
+        "Beast sense",
+        "Darkvision",
+        "Enhance ability",
+        "Find traps",
+        "Flame blade",
+        "Flame sphere",
+        "Gust of wind",
+        "Heat metal",
+        "Hold person",
+        "Lesser restoration",
+        "Locate animals or plants",
+        "Locate object",
+        "Moonbeam",
+        "Pass without trace",
+        "Protection from poison",
+        "Spike growth",
+        "Dust devil",
+        "Earthbind",
+        "Healing spirit",
+        "Skywrite",
+        "Warding wind"
     ]
 ];
 export const sorcererSpells = [
     [
         "Acid splash",
         "Blade ward",
-        "Booming blade",
         "Chill touch",
         "Control flames",
         "Create bonfire",
@@ -164,11 +249,9 @@ export const sorcererSpells = [
         "Fire bolt",
         "Friends",
         "Frostbite",
-        "Green flame blade",
         "Gust",
         "Infestation",
         "Light",
-        "Lightning lure",
         "Mage hand",
         "Mending",
         "Message",
@@ -179,7 +262,6 @@ export const sorcererSpells = [
         "Ray of frost",
         "Shape water",
         "Shocking grasp",
-        "Sword burst",
         "Thunderclap",
         "True strike"
     ],
@@ -209,26 +291,57 @@ export const sorcererSpells = [
         "Sleep",
         "Thunderwave",
         "Witch bolt"
+    ],
+    [
+        "Alter self",
+        "Blindness/deafness",
+        "Blur",
+        "Cloud of daggers",
+        "Crown of madness",
+        "Darkness",
+        "Darkvision",
+        "Detect thoughts",
+        "Enhance ability",
+        "Enlarge/reduce",
+        "Gust of wind",
+        "Hold person",
+        "Invisibility",
+        "Knock",
+        "Levitate",
+        "Mirror image",
+        "Misty step",
+        "Phantasmal force",
+        "Scorching ray",
+        "See invisibility",
+        "Shatter",
+        "Spider climb",
+        "Suggestion",
+        "Web",
+        "Agnazzar's scorcher",
+        "Dragon's breath",
+        "Earthbind",
+        "Maximillian's earthen grasp",
+        "Mind spike",
+        "Pyrotechnics",
+        "Shadow blade",
+        "Snilloc's snowball swarm",
+        "Warding wind",
     ]
 ];
 export const warlockSpells = [
     [
         "Blade ward",
-        "Booming blade",
         "Chill touch",
         "Create bonfire",
         "Eldritch blast",
         "Friends",
         "Frostbite",
-        "Green flame blade",
         "Infestation",
-        "Lightning lure",
         "Mage hand",
         "Magic stone",
         "Minor illusion",
         "Poison spray",
         "Prestidigitation",
-        "Sword burst",
         "Thunderclap",
         "Toll the dead",
         "True strike"
@@ -246,26 +359,39 @@ export const warlockSpells = [
         "Protection from evil and good",
         "Unseen servant",
         "Witch bolt"
+    ],
+    [
+        "Cloud of daggers",
+        "Crown of madness",
+        "Darkness",
+        "Enthrall",
+        "Hold person",
+        "Invisibility",
+        "Mirror image",
+        "Misty step",
+        "Ray of enfeeblement",
+        "Shatter",
+        "Spider climb",
+        "Suggestion",
+        "Earthbind",
+        "Mind spike",
+        "Shadow blade"
     ]
 ];
 export const wizardSpells = [
     [
         "Acid splash",
         "Blade ward",
-        "Booming blade",
         "Chill touch",
         "Control flames",
         "Create bonfire",
         "Dancing lights",
-        "Encode thoughts",
         "Fire bolt",
         "Friends",
         "Frostbite",
-        "Green flame blade",
         "Gust",
         "Infestation",
         "Light",
-        "Lightning lure",
         "Mage hand",
         "Mending",
         "Message",
@@ -276,7 +402,6 @@ export const wizardSpells = [
         "Ray of frost",
         "Shape water",
         "Shocking grasp",
-        "Sword burst",
         "Thunderclap",
         "Toll the dead",
         "True strike"
@@ -318,6 +443,53 @@ export const wizardSpells = [
         "Thunderwave",
         "Unseen servant",
         "Witch bolt"
+    ],
+    [
+        "Alter self",
+        "Arcane lock",
+        "Blindness/deafness",
+        "Blur",
+        "Cloud of daggers",
+        "Continual flame",
+        "Crown of madness",
+        "Darkness",
+        "Darkvision",
+        "Detect thoughts",
+        "Enlarge/reduce",
+        "Flaming sphere",
+        "Gentle repose",
+        "Gust of wind",
+        "Hold person",
+        "Invisibility",
+        "Knock",
+        "Levitate",
+        "Locate object",
+        "Magic mouth",
+        "Magic weapon",
+        "Melf's acid arrow",
+        "Mirror image",
+        "Misty step",
+        "Nystul's magic aura",
+        "Phantasmal force",
+        "Ray of enfeeblement",
+        "Rope trick",
+        "Scorching ray",
+        "See invisibility",
+        "Shatter",
+        "Spider climb",
+        "Suggestion",
+        "Web",
+        "Aganazzar's scorcher",
+        "Dragon's breath",
+        "Dust devil",
+        "Earthbind",
+        "Maximilian's earthen grasp",
+        "Mind spike",
+        "Pyrotechnics",
+        "Shadow blade",
+        "Skywrite",
+        "Snilloc's snowball swarm",
+        "Warding wind"
     ]
 ];
 export const necromancySpells = [
@@ -329,8 +501,31 @@ export const necromancySpells = [
     [
         "False life",
         "Inflict wounds",
-        "Ray of sickness"
+        "Ray of sickness",
+        "Cause fear"
     ]
+];
+export const eldritchKnightSpells = [
+    "Absorb elements",
+    "Alarm",
+    "Burning hands",
+    "Chromatic orb",
+    "Earth tremor",
+    "Mage armor",
+    "Magic missile",
+    "Protection from evil and good",
+    "Shield",
+    "Thunderwave",
+    "Witch bolt"
+];
+export const rogueSpells = [
+    "Charm person",
+    "Color spray",
+    "Disguise self",
+    "Illusory script",
+    "Silent image",
+    "Sleep",
+    "Tasha's hideous laughter"
 ];
 export const level1Spells = [
     "Alarm",
@@ -355,7 +550,7 @@ export const level1Spells = [
     "False life",
     "Feather fall",
     "Find familiar",
-    "Floating disk",
+    "Tenser's floating disk",
     "Fog cloud",
     "Goodberry",
     "Grease",
@@ -363,7 +558,7 @@ export const level1Spells = [
     "Healing word",
     "Hellish rebuke",
     "Heroism",
-    "Hideous laughter",
+    "Tasha's hideous laughter",
     "Hunter's mark",
     "Identify",
     "Illusory script",

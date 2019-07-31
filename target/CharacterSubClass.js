@@ -1,8 +1,10 @@
-import { wizardSpells, necromancySpells, druidSpells, warlockSpells } from "./Spells";
+import { wizardSpells, druidSpells, warlockSpells, eldritchKnightSpells, rogueSpells } from "./Spells";
 import { util } from "./Util";
-import { martialMelee, martialRanged } from "./WeaponSets";
-import { findArmor, heavy } from "./ArmorSets";
+import { martialMelee, martialRanged, findWeapon, simpleMelee, simpleRanged } from "./WeaponSets";
+import { findArmor, heavy, medium } from "./ArmorSets";
 import { languages } from "./Languages";
+import { allSkillPartialProfs } from "./Skills";
+import { findTool, gaming } from "./ToolSets";
 export function addClericSubClassFeatures(character) {
     util.choice(clericSubClassFunctionList)(character);
 }
@@ -18,9 +20,28 @@ export function addDruidSubClassFeatures(character) {
 export function addWizardSubClassFeatures(character) {
     util.choice(wizardSubClassFunctionList)(character);
 }
+export function addBarbarionSubClassFeatures(character) {
+    util.choice(barbarianSubClassFunctionList)(character);
+}
+export function addBardSubClassFeatures(character) {
+    util.choice(bardSubClassFunctionList)(character);
+}
+export function addFighterSubClassFeatures(character) {
+    util.choice(fighterSubClassFunctionList)(character);
+}
+export function addMonkSubClassFeatures(character) {
+    util.choice(monkSubClassFunctionsList)(character);
+}
+export function addPaladinSubClassFeatures(character) {
+    util.choice(paladinSubClassFunctionsList)(character);
+}
+export function addRangerSubClassFeatures(character) {
+    util.choice(rangerSubClassFunctionsList)(character);
+}
+export function addRogueSubClassFeatures(character) {
+    util.choice(rogueSubClassFunctionsList)(character);
+}
 const clericSubClassFunctionList = [
-    addArcanaDomainFeatures,
-    addDeathDomainFeatures,
     addForgeDomainFeatures,
     addGraveDomainFeatures,
     addKnowledgeDomainFeatures,
@@ -62,30 +83,69 @@ const wizardSubClassFunctionList = [
     addSchoolOfTransmutation,
     addSchoolOfWarMagic
 ];
-function addArcanaDomainFeatures(character) {
-    character.level1Spells = character.level1Spells.concat("Detect magic", "Magic missle");
-    character.level0Spells = character.level0Spells.concat(util.choices(wizardSpells[0], 2, character.level0Spells));
-    character.skillProfs = character.skillProfs.concat({ int: { arcana: 2 } });
-    character.traits = character.traits.concat("Arcana Domain");
-}
-function addDeathDomainFeatures(character) {
-    character.level1Spells = character.level1Spells.concat("False life", "Ray of sickness");
-    character.weaponProfs = character.weaponProfs.concat(martialMelee, martialRanged);
-    character.level0Spells = character.level0Spells.concat(util.choice(necromancySpells[0], character.level0Spells));
-    character.traits = character.traits.concat("Death Domain", "Reaper");
-}
+const barbarianSubClassFunctionList = [
+    addPathOfTheBeserker,
+    addPathOfTheTotemWarrior,
+    addPathOfTheAncestralGuardian,
+    addPathOfTheStormHerald,
+    addPathOfTheZealot
+];
+const bardSubClassFunctionList = [
+    addCollegeOfLore,
+    addCollegeOfValor,
+    addCollegeOfGlamour,
+    addCollegeOfSwords,
+    addCollegeOfWhispers
+];
+const fighterSubClassFunctionList = [
+    addChampionArchetype,
+    addBattleMasterArchetype,
+    addEldritchKnightArchetype,
+    addArcaneArcherArchetype,
+    addCavalierArchetype,
+    addSamuraiArchetype
+];
+const monkSubClassFunctionsList = [
+    addWayOfTheOpenHand,
+    addWayOfShadow,
+    addWayOfTheFourElements,
+    addWayOfTheDrunkenMaster,
+    addWayOfTheKensei,
+    addWayOfTheSunSoul
+];
+const paladinSubClassFunctionsList = [
+    addOathOfDevotion,
+    addOathOfTheAncients,
+    addOathOfVengeance,
+    addOathOfConquest,
+    addOathOfRedemption
+];
+const rangerSubClassFunctionsList = [
+    addBeastConclave,
+    addHunterConclave,
+    addDeepStalkerConclave
+];
+const rogueSubClassFunctionsList = [
+    addThief,
+    addAssassin,
+    addArcaneTrickster,
+    addInquisitive,
+    addMastermind,
+    addScout,
+    addSwashbuckler
+];
 function addForgeDomainFeatures(character) {
-    character.level1Spells = character.level1Spells.concat("Searing smite", "Shield");
+    character.inherentSpells[1] = character.inherentSpells[1].concat("Searing smite", "Shield");
     character.armorProfs = character.armorProfs.concat(heavy);
     character.traits = character.traits.concat("Forge Domain", "Blessing of the Forge");
 }
 function addGraveDomainFeatures(character) {
-    character.level1Spells = character.level1Spells.concat("Bane", "False life");
+    character.inherentSpells[1] = character.inherentSpells[1].concat("Bane", "False life");
     character.armorProfs = character.armorProfs.concat(heavy);
     character.traits = character.traits.concat("Grave Domain", "Circle of Mortality", "Eyes of the Grave");
 }
 function addKnowledgeDomainFeatures(character) {
-    character.level1Spells = character.level1Spells.concat("Command", "Identify");
+    character.inherentSpells[1] = character.inherentSpells[1].concat("Command", "Identify");
     character.languages = character.languages.concat(util.choices(languages, 2, character.languages));
     const blessingOfKnowledge = util.choices([
         { int: { arcana: 2 } },
@@ -98,38 +158,38 @@ function addKnowledgeDomainFeatures(character) {
     character.traits = character.traits.concat("Knowledge Domain");
 }
 function addLifeDomainFeatures(character) {
-    character.level1Spells = character.level1Spells.concat("Bless", "Cure wounds");
+    character.inherentSpells[1] = character.inherentSpells[1].concat("Bless", "Cure wounds");
     character.armorProfs = character.armorProfs.concat(heavy);
     character.traits = character.traits.concat("Life Domain", "Disciple of Life");
 }
 function addLightDomainFeatures(character) {
-    character.level1Spells = character.level1Spells.concat("Burning hands", "Faerie fire");
-    character.level0Spells = character.level0Spells.concat("Light");
+    character.inherentSpells[1] = character.inherentSpells[1].concat("Burning hands", "Faerie fire");
+    character.inherentSpells[0] = character.inherentSpells[0].concat("Light");
     character.traits = character.traits.concat("Light Domain", "Warding Flare");
 }
 function addNatureDomainFeatures(character) {
-    character.level1Spells = character.level1Spells.concat("Animal friendship", "Speak with animals");
+    character.inherentSpells[1] = character.inherentSpells[1].concat("Animal friendship", "Speak with animals");
     character.skillProfs = character.skillProfs.concat(util.choice([
         { int: { nature: 2 } },
         { wis: { animalHandling: 2 } },
         { wis: { survival: 2 } }
     ], character.skillProfs));
-    character.level0Spells = character.level0Spells.concat(util.choice(druidSpells[0], character.level0Spells));
+    character.inherentSpells[0] = character.inherentSpells[0].concat(util.choice(druidSpells[0], character.inherentSpells[0].concat(character.memorizedSpells[0])));
     character.armorProfs = character.armorProfs.concat(heavy);
     character.traits = character.traits.concat("Nature Domain");
 }
 function addTempestDomainFeatures(character) {
-    character.level1Spells = character.level1Spells.concat("Fog cloud", "Thunderwave");
+    character.inherentSpells[1] = character.inherentSpells[1].concat("Fog cloud", "Thunderwave");
     character.weaponProfs = character.weaponProfs.concat(martialMelee, martialRanged);
     character.armorProfs = character.armorProfs.concat(heavy);
     character.traits = character.traits.concat("Tempest Domain", "Wrath of the Storm");
 }
 function addTrickeryDomainFeatures(character) {
-    character.level1Spells = character.level1Spells.concat("Charm person", "Disguise self");
+    character.inherentSpells[1] = character.inherentSpells[1].concat("Charm person", "Disguise self");
     character.traits = character.traits.concat("Trickery Domain", "Blessing of the Trickster");
 }
 function addWarDomainFeatures(character) {
-    character.level1Spells = character.level1Spells.concat("Divine favor", "Shield of faith");
+    character.inherentSpells[1] = character.inherentSpells[1].concat("Divine favor", "Shield of faith");
     character.weaponProfs = character.weaponProfs.concat(martialMelee, martialRanged);
     character.armorProfs = character.armorProfs.concat(heavy);
     character.traits = character.traits.concat("War Domain", "War Priest");
@@ -152,23 +212,23 @@ function addDraconicAncestryOriginFeatures(character) {
 }
 function addGoodAffinityFeatures(character) {
     character.traits = character.traits.concat("Good Divine Magic");
-    character.level1Spells = character.level1Spells.concat("Cure wounds");
+    character.inherentSpells[1] = character.inherentSpells[1].concat("Cure wounds");
 }
 function addEvilAffinityFeatures(character) {
     character.traits = character.traits.concat("Evil Divine Magic");
-    character.level1Spells = character.level1Spells.concat("Inflict wounds");
+    character.inherentSpells[1] = character.inherentSpells[1].concat("Inflict wounds");
 }
 function addLawAffinityFeatures(character) {
     character.traits = character.traits.concat("Lawful Divine Magic");
-    character.level1Spells = character.level1Spells.concat("Bless");
+    character.inherentSpells[1] = character.inherentSpells[1].concat("Bless");
 }
 function addChaosAffinityFeatures(character) {
     character.traits = character.traits.concat("Chaotic Divine Magic");
-    character.level1Spells = character.level1Spells.concat("Bane");
+    character.inherentSpells[1] = character.inherentSpells[1].concat("Bane");
 }
 function addNeutralityAffinityFeatures(character) {
     character.traits = character.traits.concat("Neutral Divine Magic");
-    character.level1Spells = character.level1Spells.concat("Protection from good and evil");
+    character.inherentSpells[1] = character.inherentSpells[1].concat("Protection from good and evil");
 }
 function addFavoredSoulOriginFeatures(character) {
     util.choice([
@@ -191,30 +251,40 @@ function addWildMagicOriginFeatures(character) {
     character.traits = character.traits.concat("Wild Magic", "Wild Magic Surge", "Tides of Chaos");
 }
 function addArchfeyPatronFeatures(character) {
-    character.level1Spells = character.level1Spells.concat(util.choices(warlockSpells[1].concat("Faerie fire", "Sleep"), 2, character.level1Spells));
+    character.memorizedSpells[1] = character.memorizedSpells[1].concat(util.choices(warlockSpells[1].concat("Faerie fire", "Sleep"), 2, character.inherentSpells[1].concat(character.memorizedSpells[1])));
     character.traits = character.traits.concat("Archefey Patron", "Fey Presence");
 }
 function addFiendPatronFeatures(character) {
-    character.level1Spells = character.level1Spells.concat(util.choices(warlockSpells[1].concat("Burning hands", "Command"), 2, character.level1Spells));
+    character.memorizedSpells[1] = character.memorizedSpells[1].concat(util.choices(warlockSpells[1].concat("Burning hands", "Command"), 2, character.inherentSpells[1].concat(character.memorizedSpells[1])));
     character.traits = character.traits.concat("Fiend Patron", "Dark One's Blessing");
 }
 function addGreatOldOnePatronFeatures(character) {
-    character.level1Spells = character.level1Spells.concat(util.choices(warlockSpells[1].concat("Dissonant whispers", "Tasha's hideous laughter"), 2, character.level1Spells));
+    character.memorizedSpells[1] = character.memorizedSpells[1].concat(util.choices(warlockSpells[1].concat("Dissonant whispers", "Tasha's hideous laughter"), 2, character.inherentSpells[1].concat(character.memorizedSpells[1])));
     character.traits = character.traits.concat("Great Old One Patron", "Awakened Mind");
 }
 function addCelestialPatronFeatures(character) {
-    character.level1Spells = character.level1Spells.concat(util.choices(warlockSpells[1].concat("Cure wounds", "Guiding bolt"), 2, character.level1Spells));
-    character.level0Spells = character.level0Spells.concat("Light", "Sacred flame");
+    character.memorizedSpells[1] = character.memorizedSpells[1].concat(util.choices(warlockSpells[1].concat("Cure wounds", "Guiding bolt"), 2, character.inherentSpells[1].concat(character.memorizedSpells[1])));
+    character.inherentSpells[0] = character.inherentSpells[0].concat("Light", "Sacred flame");
     character.traits = character.traits.concat("Celestial Patron", "Healing Light");
 }
 function addHexBladePatronFeatures(character) {
-    character.level1Spells = character.level1Spells.concat(util.choices(warlockSpells[1].concat("Shield", "Wrathful smite"), 2, character.level1Spells));
+    character.memorizedSpells[1] = character.memorizedSpells[1].concat(util.choices(warlockSpells[1].concat("Shield", "Wrathful smite"), 2, character.inherentSpells[1].concat(character.memorizedSpells[1])));
     character.traits = character.traits.concat("Hexblade", "Hexblade's Curse", "Hex Warrior");
 }
 function addCircleOfTheLandFeatures(character) {
-    character.level0Spells = character.level0Spells.concat(util.choice(druidSpells[0], character.level0Spells));
+    character.inherentSpells[0].push(util.choice(druidSpells[0], character.inherentSpells[0].concat(character.memorizedSpells[0])));
     character.traits = character.traits.concat([
         "Circle of the Land",
+        "Circle Spells: " + util.choice([
+            "Arctic",
+            "Coast",
+            "Desert",
+            "Forest",
+            "Grassland",
+            "Mountain",
+            "Swamp",
+            "Underdark"
+        ]),
         "Natural Recovery"
     ]);
 }
@@ -280,11 +350,11 @@ function addSchoolOfIllusion(character) {
         "Illusion Savant",
         "Improved Minor Illusion"
     ]);
-    if (character.level0Spells.includes("Minor illusion")) {
-        character.level0Spells.push(util.choice(wizardSpells[0], character.level0Spells));
+    if (character.inherentSpells[0].includes("Minor illusion") || character.memorizedSpells[0].includes("Minor illusion")) {
+        character.inherentSpells[0].push(util.choice(wizardSpells[0], character.inherentSpells[0].concat(character.memorizedSpells[0])));
     }
     else {
-        character.level0Spells.push("Minor illusion");
+        character.inherentSpells[0].push("Minor illusion");
     }
 }
 function addSchoolOfNecromancy(character) {
@@ -306,5 +376,414 @@ function addSchoolOfWarMagic(character) {
         "Arcane Tradition: War Magic",
         "Arcane Deflection",
         "Tactical Wit"
+    ]);
+}
+function addPathOfTheBeserker(character) {
+    character.traits = character.traits.concat([
+        "Path of the Beserker",
+        "Frenzy"
+    ]);
+}
+function addPathOfTheTotemWarrior(character) {
+    character.traits = character.traits.concat([
+        "Path of the Totem Warrior",
+        "Spirit Seeker",
+        "Totem Spirit: " + util.choice([
+            "Bear",
+            "Eagle",
+            "Wolf"
+        ])
+    ]);
+    character.inherentSpells[1].push("Speak with animals (Ritual Only)");
+    character.inherentSpells[2].push("Beast sense (Ritual Only)");
+}
+function addPathOfTheAncestralGuardian(character) {
+    character.traits = character.traits.concat([
+        "Path of the Ancestral Guardian",
+        "Ancestral Protectors"
+    ]);
+}
+function addPathOfTheStormHerald(character) {
+    character.traits = character.traits.concat([
+        "Path of the Storm Herald",
+        "Storm Aura: " + util.choice([
+            "Desert",
+            "Sea",
+            "Tundra"
+        ])
+    ]);
+}
+function addPathOfTheZealot(character) {
+    character.traits = character.traits.concat([
+        "Path of the Zealot",
+        "Divine Fury",
+        "Warrior of the Gods"
+    ]);
+}
+function addCollegeOfLore(character) {
+    character.skillProfs = character.skillProfs.concat(util.choices(allSkillPartialProfs, 3, character.skillProfs));
+    character.traits = character.traits.concat([
+        "College of Lore",
+        "Cutting Words"
+    ]);
+}
+function addCollegeOfValor(character) {
+    character.traits = character.traits.concat([
+        "College of Valor",
+        "Combat Inspiration"
+    ]);
+    character.armorProfs = character.armorProfs.concat(medium);
+    character.weaponProfs = character.weaponProfs.concat(martialMelee.concat(martialRanged));
+}
+function addCollegeOfGlamour(character) {
+    character.traits = character.traits.concat([
+        "College of Glamour",
+        "Mantle of Inspiration",
+        "Enthralling Performance"
+    ]);
+}
+function addCollegeOfSwords(character) {
+    character.traits = character.traits.concat([
+        "College of Swords",
+        "Fighting Style: " + util.choice([
+            "Dueling",
+            "Two-Weapon Fighting"
+        ]),
+        "Blade Flourish"
+    ]);
+    character.weaponProfs.push(findWeapon("Scimitar"));
+    character.armorProfs = character.armorProfs.concat(medium);
+}
+function addCollegeOfWhispers(character) {
+    character.traits = character.traits.concat([
+        "College of Whispers",
+        "Psychic Blades",
+        "Words of Terror"
+    ]);
+}
+function addChampionArchetype(character) {
+    character.traits = character.traits.concat([
+        "Martial Archetype: Champion",
+        "Improved Critical"
+    ]);
+}
+function addBattleMasterArchetype(character) {
+    character.traits.push("Combat Superiority");
+    character.traits = character.traits.concat(util.choices([
+        "Maneuver: Commander's Strike",
+        "Maneuver: Disarming Attack",
+        "Maneuver: Distracting Strike",
+        "Maneuver: Evasive Footwork",
+        "Maneuver: Feinting Attack",
+        "Maneuver: Goading Attack",
+        "Maneuver: Lunging Attack",
+        "Maneuver: Maneuvering Attack",
+        "Maneuver: Menacing Attack",
+        "Maneuver: Parry",
+        "Maneuver: Precision Attack",
+        "Maneuver: Pushing Attack",
+        "Maneuver: Rally",
+        "Maneuver: Riposte",
+        "Maneuver: Sweeping Attack",
+        "Maneuver: Trip Attack"
+    ], 3));
+}
+function addEldritchKnightArchetype(character) {
+    character.traits = character.traits.concat([
+        "Martial Archetype: Eldritch Knight",
+        "Weapon Bond"
+    ]);
+    character.memorizedSpells[0] = character.memorizedSpells[0].concat(util.choices(wizardSpells[0], 2, character.inherentSpells[0].concat(character.memorizedSpells[0])));
+    character.memorizedSpells[1] = character.memorizedSpells[1].concat(util.choices(eldritchKnightSpells, 2, character.inherentSpells[1].concat(character.memorizedSpells[1])));
+    character.memorizedSpells[1] = character.memorizedSpells[1].concat(util.choice(wizardSpells[1], character.inherentSpells[1].concat(character.memorizedSpells[1])));
+}
+function addArcaneArcherArchetype(character) {
+    character.traits = character.traits.concat([
+        "Martial Archetype: Arcane Archer",
+        "Arcane Archer Lore"
+    ]);
+    character.skillProfs.push(util.choice([
+        { int: { arcana: 2 } },
+        { int: { nature: 2 } }
+    ]));
+    character.inherentSpells[0] = character.inherentSpells[0].concat(util.choice([
+        "Prestidigitation",
+        "Druidcraft"
+    ], character.inherentSpells[0].concat(character.memorizedSpells[0])));
+    character.traits = character.traits.concat(util.choices([
+        "Arcane Shot: Banishing Arrow",
+        "Arcane Shot: Beguiling Arrow",
+        "Arcane Shot: Bursting Arrow",
+        "Arcane Shot: Enfeebling Arrow",
+        "Arcane Shot: Grasping Arrow",
+        "Arcane Shot: Piercing Arrow",
+        "Arcane Shot: Seeking Arrow",
+        "Arcane Shot: Shadow Arrow"
+    ], 2));
+}
+function addCavalierArchetype(character) {
+    if (util.choice([1, 2]) == 1) {
+        character.skillProfs.push(util.choice([
+            { wis: { animalHandling: 2 } },
+            { int: { history: 2 } },
+            { wis: { insight: 2 } },
+            { cha: { performance: 2 } },
+            { cha: { persuasion: 2 } }
+        ]));
+    }
+    else {
+        character.languages.push(util.choice(languages, character.languages));
+    }
+    character.traits = character.traits.concat([
+        "Martial Archetype: Cavalier",
+        "Born to the Saddle",
+        "Unwavering Mark"
+    ]);
+}
+function addSamuraiArchetype(character) {
+    if (util.choice([1, 2]) == 1) {
+        character.skillProfs.push(util.choice([
+            { int: { history: 2 } },
+            { wis: { insight: 2 } },
+            { cha: { performance: 2 } },
+            { cha: { persuasion: 2 } }
+        ]));
+    }
+    else {
+        character.languages.push(util.choice(languages, character.languages));
+    }
+    character.traits = character.traits.concat([
+        "Martial Archetype: Samurai",
+        "Fighting Spirit"
+    ]);
+}
+function addWayOfTheOpenHand(character) {
+    character.traits = character.traits.concat("Way of the Open Hand", "Open Hand Technique");
+}
+function addWayOfShadow(character) {
+    character.traits = character.traits.concat([
+        "Way of Shadow",
+        "Shadow Arts"
+    ]);
+    character.inherentSpells[0].push("Minor illusion");
+}
+function addWayOfTheFourElements(character) {
+    character.traits.push("Way of the Four Elements");
+    character.traits = character.traits.concat([
+        "Elemental Attunement",
+        util.choice([
+            "Fangs of the Fire Snake",
+            "Fist of Four Thunders",
+            "Fist of Unbroken Air",
+            "Rush of the Gale Spirits",
+            "Shape of the Flowing River",
+            "Sweeping Cinder Strike",
+            "Water Whip"
+        ])
+    ]);
+}
+function addWayOfTheDrunkenMaster(character) {
+    character.traits = character.traits.concat([
+        "Way of the Drunken Master",
+        "Drunken Technique"
+    ]);
+    character.skillProfs.push({ cha: { performance: 2 } });
+    character.toolProfs.push(findTool("Brewer's supplies"));
+}
+function addWayOfTheKensei(character) {
+    function getRangedKenseiOptions(character) {
+        let options = [];
+        for (let x of simpleRanged.concat(martialRanged)) {
+            if (!(x.properties.includes("Heavy") || x.properties.includes("Special"))) {
+                options.push(x);
+            }
+        }
+        options.push(findWeapon("Longbow"));
+        return options;
+    }
+    function getMeleeKenseiOptions(character) {
+        let options = [];
+        for (let x of simpleMelee.concat(martialMelee)) {
+            if (!(x.properties.includes("Heavy") || x.properties.includes("Special"))) {
+                options.push(x);
+            }
+        }
+        return options;
+    }
+    let rangedKensei = util.choice(getRangedKenseiOptions(character));
+    let meleeKensei = util.choice(getMeleeKenseiOptions(character));
+    if (character.gold -= rangedKensei.cost)
+        character.weapons.push(rangedKensei);
+    if (character.gold -= meleeKensei.cost)
+        character.weapons.push(meleeKensei);
+    character.traits = character.traits.concat([
+        "Path of the Kensei",
+        "Agile Parry",
+        "Kensei's Shot",
+        "Way of the Brush"
+    ]);
+    character.toolProfs.push(util.choice([
+        findTool("Calligrapher's supplies"),
+        findTool("Painter's supplies")
+    ], character.toolProfs));
+}
+function addWayOfTheSunSoul(character) {
+    character.traits = character.traits.concat([
+        "Way of the Sun Soul",
+        "Radiant Sun Bolt"
+    ]);
+}
+function addOathOfDevotion(character) {
+    character.traits = character.traits.concat([
+        "Oath of Devotion",
+        "Channel Divinity: Sacred Weapon",
+        "Channel Divinity: Turn the Unholy"
+    ]);
+    character.inherentSpells[1] = character.inherentSpells[1].concat("Protection from evil and good", "Sanctuary");
+}
+function addOathOfTheAncients(character) {
+    character.traits = character.traits.concat([
+        "Oath of the Ancients",
+        "Channel Divinity: Nature's Wrath",
+        "Channel Divinity: Turn the Faithless"
+    ]);
+    character.inherentSpells[1] = character.inherentSpells[1].concat([
+        "Ensnaring strike",
+        "Speak with animals"
+    ]);
+}
+function addOathOfVengeance(character) {
+    character.traits = character.traits.concat([
+        "Oath of Vengeance",
+        "Channel Divinity: Abjure Enemy",
+        "Channel Divinity: Vow of Emnity"
+    ]);
+    character.inherentSpells[1] = character.inherentSpells[1].concat([
+        "Bane",
+        "Hunter's mark"
+    ]);
+}
+function addOathOfConquest(character) {
+    character.traits = character.traits.concat([
+        "Oath of Conquest",
+        "Channel Divinity: Conquering Presence",
+        "Channel Divinity: Guided Strike"
+    ]);
+    character.inherentSpells[1] = character.inherentSpells[1].concat([
+        "Armor of agathys",
+        "Command"
+    ]);
+}
+function addOathOfRedemption(character) {
+    character.traits = character.traits.concat([
+        "Oath of Redemption",
+        "Channel Divinity: Emissary of Peace",
+        "Channel Divinity: Rebuke the Violent"
+    ]);
+    character.inherentSpells[1] = character.inherentSpells[1].concat([
+        "Sanctuary",
+        "Sleep"
+    ]);
+}
+function addBeastConclave(character) {
+    character.traits = character.traits.concat([
+        "Beast Conclave",
+        "Animal Companion: " + util.choice([
+            "Ape",
+            "Black Bear",
+            "Boar",
+            "Giant Badger",
+            "Giant Weasel",
+            "Mule",
+            "Panther",
+            "Wolf"
+        ])
+    ]);
+}
+function addHunterConclave(character) {
+    character.traits = character.traits.concat([
+        "Hunter Conclave",
+        "Hunter's Prey: " + util.choice([
+            "Colossus Slayer",
+            "Giant Killer",
+            "Horde Breaker"
+        ])
+    ]);
+}
+function addDeepStalkerConclave(character) {
+    character.traits = character.traits.concat([
+        "Deep Stalker Conclave",
+        "Underdark Scout",
+        "Deep Stalker Magic",
+        "Darkvision"
+    ]);
+    character.inherentSpells[1].push("Disguise self");
+}
+function addThief(character) {
+    character.traits = character.traits.concat([
+        "Roguish Archetype: Thief",
+        "Fast Hands",
+        "Second-Story Work"
+    ]);
+}
+function addAssassin(character) {
+    character.traits = character.traits.concat([
+        "Roguish Archetype: Assassin",
+        "Assassinate"
+    ]);
+    character.toolProfs = character.toolProfs.concat([
+        findTool("Disguise kit"),
+        findTool("Poisoner's kit")
+    ]);
+}
+function addArcaneTrickster(character) {
+    character.traits = character.traits.concat([
+        "Roguish Archetype: Arcane Trickster",
+        "Mage Hand Legerdemain"
+    ]);
+    character.inherentSpells[0].push("Mage hand");
+    character.memorizedSpells[0] = character.memorizedSpells[0].concat(util.choices(wizardSpells[0], 2, character.inherentSpells[0].concat(character.memorizedSpells[0])));
+    character.memorizedSpells[1] = character.memorizedSpells[1].concat(util.choices(rogueSpells, 2, character.inherentSpells[1].concat(character.memorizedSpells[1])));
+    character.memorizedSpells[1].push(util.choice(wizardSpells[1], character.inherentSpells[1].concat(character.memorizedSpells[1])));
+}
+function addInquisitive(character) {
+    character.traits = character.traits.concat([
+        "Roguish Archetype: Inquisitive",
+        "Ear for Deceit",
+        "Eye for Detail",
+        "Insightful Fighting"
+    ]);
+}
+function addMastermind(character) {
+    character.traits = character.traits.concat([
+        "Roguish Archetype: Mastermind",
+        "Master of Intrigue",
+        "Master of Tactics"
+    ]);
+    character.toolProfs = character.toolProfs.concat([
+        findTool("Disguise kit"),
+        findTool("Forgery kit"),
+        util.choice(gaming, character.toolProfs)
+    ]);
+}
+function addScout(character) {
+    character.traits = character.traits.concat([
+        "Roguish Archetype: Scout",
+        "Skirmisher"
+    ]);
+    character.skillProfs = character.skillProfs.concat([
+        { int: { nature: 2 } },
+        { wis: { survival: 2 } }
+    ]);
+    character.expertise = character.expertise.concat([
+        { int: { nature: 2 } },
+        { wis: { survival: 2 } }
+    ]);
+}
+function addSwashbuckler(character) {
+    character.traits = character.traits.concat([
+        "Roguish Archetype: Swashbuckler",
+        "Fancy Footwork",
+        "Rakish Audacity"
     ]);
 }

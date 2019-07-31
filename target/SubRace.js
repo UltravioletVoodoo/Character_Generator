@@ -4,7 +4,6 @@ import { light, medium } from "./ArmorSets";
 import { findWeapon } from "./WeaponSets";
 import { wizardSpells } from "./Spells";
 import { languages } from "./Languages";
-import { allSkillPartialProfs } from "./Skills";
 export function addDragonBornSubRaceFeatures(character) {
     util.choice(dragonBornSubRaceFunctionList)(character);
 }
@@ -16,9 +15,6 @@ export function addElfSubRaceFeatures(character) {
 }
 export function addGnomeSubRaceFeatures(character) {
     util.choice(gnomeSubRaceFunctionList)(character);
-}
-export function addHalfElfSubRaceFeatures(character) {
-    util.choice(halfElfSubRaceFunctionList)(character);
 }
 export function addHalflingSubRaceFeatures(character) {
     util.choice(halflingSubRaceFunctionList)(character);
@@ -48,13 +44,6 @@ const gnomeSubRaceFunctionList = [
     addForestGnomeFeatures,
     addRockGnomeFeatures,
     addDeepGnomeFeatures
-];
-const halfElfSubRaceFunctionList = [
-    addHalfElfV1Features,
-    addHalfElfV2Features,
-    addHalfElfV3Features,
-    addHalfElfV4Features,
-    addHalfElfV5Features
 ];
 const halflingSubRaceFunctionList = [
     addLightFootHalflingFeatures,
@@ -115,7 +104,7 @@ function addHighElfFeatures(character) {
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ int: 1 })]);
     character.weaponProfs = character.weaponProfs
         .concat(findWeapon("Longsword"), findWeapon("Shortsword"), findWeapon("Shortbow"), findWeapon("Longbow"));
-    character.level0Spells = character.level0Spells.concat(util.choice(wizardSpells[0]));
+    character.inherentSpells[0].push(util.choice(wizardSpells[0], character.inherentSpells[0]));
     character.languages = character.languages.concat(util.choice(languages, character.languages));
 }
 function addWoodElfFeatures(character) {
@@ -134,12 +123,12 @@ function addDrowElfFeatures(character) {
         .concat(findWeapon("Shortsword"))
         .concat(findWeapon("Hand Crossbow"));
     character.traits = util.arrayDelete(character.traits, ["Darkvision"]).concat(["Superior Darkvision", "Sunlight Sensitivity"]);
-    character.level0Spells = character.level0Spells.concat("Dancing lights");
+    character.inherentSpells[0].push("Dancing lights");
 }
 function addForestGnomeFeatures(character) {
     character.raceName = "Forest Gnome";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ dex: 1 })]);
-    character.level0Spells = character.level0Spells.concat("Minor illusion");
+    character.inherentSpells[0].push("Minor illusion");
     character.traits = character.traits.concat("Speak with Small Beasts");
 }
 function addRockGnomeFeatures(character) {
@@ -153,25 +142,6 @@ function addDeepGnomeFeatures(character) {
     character.age = util.randomNumberFromRange([25, 225]);
     character.traits = util.arrayDelete(character.traits, ["Darkvision"]).concat(["Superior Darkvision", "Stone Camouflage"]);
     character.languages = character.languages.concat("Undercommon");
-}
-function addHalfElfV1Features(character) {
-    character.traits = character.traits.concat("Skill Versatility");
-    character.skillProfs = character.skillProfs.concat(util.choices(allSkillPartialProfs, 2));
-}
-function addHalfElfV2Features(character) {
-    character.traits = character.traits.concat("High Elf Cantrip");
-    character.level0Spells = character.level0Spells.concat(util.choice(wizardSpells[0]));
-}
-function addHalfElfV3Features(character) {
-    character.traits = character.traits.concat("Fleet of Foot");
-    character.speed = character.speed + 5;
-}
-function addHalfElfV4Features(character) {
-    character.traits = character.traits.concat("Mask of the Wild");
-}
-function addHalfElfV5Features(character) {
-    character.traits = character.traits.concat("Drow Magic");
-    character.level0Spells = character.level0Spells.concat("Dancing lights");
 }
 function addLightFootHalflingFeatures(character) {
     character.raceName = "Lightfoot Halfling";
