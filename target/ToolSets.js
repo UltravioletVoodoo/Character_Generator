@@ -163,5 +163,9 @@ export const miscTools = [
     {
         name: "Herbalism kit",
         cost: 5
+    },
+    {
+        name: "Disguise kit",
+        cost: 25
     }
 ];

@@ -10,8 +10,18 @@ export function addCharacterClassFeatures(character) {
     util.choice(classFunctionList)(character);
 }
 const classFunctionList = [
-    // addBarbarianFeatures,
+    addBarbarianFeatures,
     addBardFeatures,
+    addClericFeatures,
+    addDruidFeatures,
+    addFighterFeatures,
+    addMonkFeatures,
+    addPaladinFeatures,
+    addRangerFeatures,
+    addRogueFeatures,
+    addSorcererFeatures,
+    addWarlockFeatures,
+    addWizardFeatures
 ];
 function addBarbarianFeatures(character) {
     character.className = "Barbarian";

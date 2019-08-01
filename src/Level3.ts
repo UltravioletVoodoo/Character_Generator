@@ -107,7 +107,7 @@ function addClericLevel3Features(character: Character) {
     character.memorizedSpells = [character.memorizedSpells[0],[],[]];
 
     // pick new spells
-    let spellsKnown = Math.max(character.attrMods.wis + character.level + 1);
+    let spellsKnown = Math.max(character.attrMods.wis + character.level, 1);
     handleSpellRechoosing(character, spellsKnown, clericSpells);
 }
 
