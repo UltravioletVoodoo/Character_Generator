@@ -15,9 +15,6 @@ export function addLevelUpFeatures(character, level) {
     }
 }
 function addBasicLevelupFeatures(character) {
-    console.log("Character is leveling up\nHp before level: " + character.hp);
-    console.log("Character level: " + character.level);
-    console.log("Character con mod: " + character.attrMods.con);
     character.hp += Math.floor(character.hitDice / 2) + 1 + character.attrMods.con;
     character.level += 1;
     // deal with hill dwarf and draconic sorcerer bonus hp
@@ -25,5 +22,4 @@ function addBasicLevelupFeatures(character) {
         character.hp += 1;
     if (character.traits.includes("Draconic Bloodline"))
         character.hp += 1;
-    console.log("Hp after level: " + character.hp);
 }

@@ -1,5 +1,8 @@
 export namespace util{
     export function choice<T>(collection: T[], exemptions: T[] = []){
+        console.log("Choice called");
+        console.log(collection);
+        console.log(exemptions);
         collection = arrayDelete(collection, exemptions);
         const index = Math.floor(Math.random() * collection.length);
         return collection[index];

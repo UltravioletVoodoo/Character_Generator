@@ -257,7 +257,14 @@ function addPaladinLevel3Features(character: Character) {
     character.traits.push("Divine Health");
     addPaladinSubClassFeatures(character);
     let spellsKnown = Math.max(character.attrMods.cha + character.level, 1);
-    handleSpellRechoosing(character, spellsKnown, paladinSpells);
+
+    // clear away old memorized spells
+    character.memorizedSpells = [character.memorizedSpells[0],[],[]];
+
+    // pick new ones
+    character.memorizedSpells[1] = util.choices(
+        paladinSpells[1], spellsKnown, character.inherentSpells[1]
+    );
 }
 
 function addRangerLevel3Features(character: Character) {
@@ -268,12 +275,9 @@ function addRangerLevel3Features(character: Character) {
     let index = util.randomNumberFromRange([0, character.memorizedSpells[1].length - 1]);
     character.memorizedSpells[1] = util.arrayDelete(character.memorizedSpells[1], [character.memorizedSpells[1][index]]);
 
-    for (let i = 0; i < 2; i++) {
-        let level = util.choice([1,2]);
-        character.memorizedSpells[level].push(
-            util.choice(rangerSpells[level], character.inherentSpells[level].concat(character.memorizedSpells[level]))
-        );
-    }
+    character.memorizedSpells[1] = character.memorizedSpells[1].concat(
+        util.choices(rangerSpells[1], 2, character.inherentSpells[1].concat(character.memorizedSpells[1]))
+    );
 }
 
 function addRogueLevel3Features(character: Character) {
