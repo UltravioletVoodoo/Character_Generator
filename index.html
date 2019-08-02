@@ -23,6 +23,11 @@
       <option value="2">Level 2</option>
       <option value="3">Level 3</option>
     </select>
+    <div class="hamburger" onclick="animateHamburger(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
     <div class="border"></div>
     <div class="gitHub">
       <a href='https://github.com/UltravioletVoodoo/Character_Generator'" target="_blank">
@@ -432,5 +437,10 @@
   </div>
 
 <script src="dist/bundle.js"></script>
+<script>
+  function animateHamburger(x) {
+    x.classList.toggle("change");
+  }
+</script>
 </body>
 </html>
