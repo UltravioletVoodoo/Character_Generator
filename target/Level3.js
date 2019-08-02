@@ -7,9 +7,9 @@ export function addLevel3Features(character) {
 }
 function addLevel3RaceFeatures(character) {
     if (character.raceName == "Drow Elf")
-        character.inherentSpells[1].concat("Faerie Fire");
+        character.abilities.push("Faerie Fire (1/day)");
     if (character.raceName == "Tiefling")
-        character.inherentSpells[1].concat("Hellish rebuke");
+        character.abilities.push("Hellish rebuke (1/day)");
 }
 function addLevel3ClassFeatures(character) {
     switch (character.className) {
@@ -203,7 +203,7 @@ function addFighterLevel3Features(character) {
     addFighterSubClassFeatures(character);
 }
 function addMonkLevel3Features(character) {
-    character.traits.push("Deflect Missiles");
+    character.abilities.push("Deflect Missiles");
     addMonkSubClassFeatures(character);
 }
 function addPaladinLevel3Features(character) {
@@ -216,7 +216,7 @@ function addPaladinLevel3Features(character) {
     character.memorizedSpells[1] = util.choices(paladinSpells[1], spellsKnown, character.inherentSpells[1]);
 }
 function addRangerLevel3Features(character) {
-    character.traits.push("Primeval Awareness");
+    character.abilities.push("Primeval Awareness");
     addRangerSubClassFeatures(character);
     // Always delete 1 old spell then pick TWO new ones
     let index = util.randomNumberFromRange([0, character.memorizedSpells[1].length - 1]);
@@ -227,7 +227,7 @@ function addRogueLevel3Features(character) {
     addRogueSubClassFeatures(character);
 }
 function addSorcererLevel3Features(character) {
-    character.traits = character.traits.concat(util.choices(metaMagic, 2));
+    character.abilities = character.abilities.concat(util.choices(metaMagic, 2));
     // Always delete 1 old spell then pick TWO new ones
     let index = util.randomNumberFromRange([0, character.memorizedSpells[1].length - 1]);
     character.memorizedSpells[1] = util.arrayDelete(character.memorizedSpells[1], [character.memorizedSpells[1][index]]);

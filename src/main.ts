@@ -114,6 +114,7 @@ function generateSheet(){
     util.getElement("bonds").value = character.bond;
     util.getElement("flaws").value = character.flaw;
     util.getElement("traits").value = Array.from(character.traits).join("\n");
+    util.getElement("abilities").value = Array.from(character.abilities).join("\n");
 
     util.getElement("weapons").value = Array.from(character.weapons).map(weapon => weapon.name).join("\n");
     util.getElement("tools").value = Array.from(character.tools).map(tool => tool.name).join("\n");

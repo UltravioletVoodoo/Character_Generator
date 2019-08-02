@@ -64,52 +64,62 @@ const halflingSubRaceFunctionList: ((character: Character) => void)[] = [
 
 function addBlackDragonBornFeatures(character: Character){ 
     character.raceName = "Black Dragonborn";
-    character.traits = character.traits.concat("Acid Breath").concat("Acid Resistance");
+    character.traits.push("Acid Resistance");
+    character.abilities.push("Acid Breath");
 }
 
 function addBlueDragonBornFeatures(character: Character){ 
     character.raceName = "Blue Dragonborn";
-    character.traits = character.traits.concat("Lightning Breath").concat("Lightning Resistance");
+    character.traits.push("Lightning Resistance");
+    character.abilities.push("Lightning Breath");
 }
 
 function addBrassDragonBornFeatures(character: Character){ 
     character.raceName = "Brass Dragonborn";
-    character.traits = character.traits.concat("Fire Breath").concat("Fire Resistance");
+    character.traits.push("Fire Resistance");
+    character.abilities.push("Fire Breath");
 }
 
 function addBronzeDragonBornFeatures(character: Character){ 
     character.raceName = "Bronze Dragonborn";
-    character.traits = character.traits.concat("Lightning Breath").concat("Lightning Resistance");
+    character.traits.push("Lightning Resistance");
+    character.abilities.push("Lightning Breath");
 }
 
 function addCopperDragonBornFeatures(character: Character){ 
     character.raceName = "Copper Dragonborn";
-    character.traits = character.traits.concat("Acid Breath").concat("Acid Resistance");
+    character.traits.push("Acid Resistance");
+    character.abilities.push("Acid Breath");
 }
 
 function addGoldDragonBornFeatures(character: Character){ 
     character.raceName = "Gold Dragonborn";
-    character.traits = character.traits.concat("Fire Breath").concat("Fire Resistance");
+    character.traits.push("Fire Resistance");
+    character.abilities.push("Fire Breath");
 }
 
 function addGreenDragonBornFeatures(character: Character){ 
     character.raceName = "Green Dragonborn";
-    character.traits = character.traits.concat("Poison Breath").concat("Poison Resistance");
+    character.traits.push("Poison Resistance");
+    character.abilities.push("Poison Breath");
 }
 
 function addRedDragonBornFeatures(character: Character){ 
     character.raceName = "Red Dragonborn";
-    character.traits = character.traits.concat("Fire Breath").concat("Fire Resistance");
+    character.traits.push("Fire Resistance");
+    character.abilities.push("Fire Breath");
 }
 
 function addSilverDragonBornFeatures(character: Character){ 
     character.raceName = "Silver Dragonborn";
-    character.traits = character.traits.concat("Cold Breath").concat("Cold Resistance");
+    character.traits.push("Cold Resistance");
+    character.abilities.push("Cold Breath");
 }
 
 function addWhiteDragonBornFeatures(character: Character){ 
     character.raceName = "White Dragonborn";
-    character.traits = character.traits.concat("Cold Breath").concat("Cold Resistance");
+    character.traits.push("Cold Resistance");
+    character.abilities.push("Cold Breath");
 }
 
 function addHillDwarfFeatures(character: Character){
@@ -173,7 +183,8 @@ function addForestGnomeFeatures(character: Character){
 function addRockGnomeFeatures(character: Character){
     character.raceName = "Rock Gnome";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({con: 1})]);
-    character.traits = character.traits.concat(["Artificer's Lore", "Tinker"]);
+    character.traits.push("Artificer's Lore");
+    character.abilities.push("Tinker");
 }
 
 function addDeepGnomeFeatures(character: Character){
@@ -187,11 +198,11 @@ function addDeepGnomeFeatures(character: Character){
 function addLightFootHalflingFeatures(character: Character){
     character.raceName = "Lightfoot Halfling";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({cha: 1})]);
-    character.traits = character.traits.concat("Naturally Stealthy");
+    character.abilities.push("Naturally Stealthy");
 }
 
 function addStoutHalflingFeatures(character: Character){
     character.raceName = "Stout Halfling";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({con: 1})]);
-    character.traits = character.traits.concat("Stout Resilience");
+    character.traits.push("Stout Resilience");
 }

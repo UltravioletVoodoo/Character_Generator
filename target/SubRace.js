@@ -51,43 +51,53 @@ const halflingSubRaceFunctionList = [
 ];
 function addBlackDragonBornFeatures(character) {
     character.raceName = "Black Dragonborn";
-    character.traits = character.traits.concat("Acid Breath").concat("Acid Resistance");
+    character.traits.push("Acid Resistance");
+    character.abilities.push("Acid Breath");
 }
 function addBlueDragonBornFeatures(character) {
     character.raceName = "Blue Dragonborn";
-    character.traits = character.traits.concat("Lightning Breath").concat("Lightning Resistance");
+    character.traits.push("Lightning Resistance");
+    character.abilities.push("Lightning Breath");
 }
 function addBrassDragonBornFeatures(character) {
     character.raceName = "Brass Dragonborn";
-    character.traits = character.traits.concat("Fire Breath").concat("Fire Resistance");
+    character.traits.push("Fire Resistance");
+    character.abilities.push("Fire Breath");
 }
 function addBronzeDragonBornFeatures(character) {
     character.raceName = "Bronze Dragonborn";
-    character.traits = character.traits.concat("Lightning Breath").concat("Lightning Resistance");
+    character.traits.push("Lightning Resistance");
+    character.abilities.push("Lightning Breath");
 }
 function addCopperDragonBornFeatures(character) {
     character.raceName = "Copper Dragonborn";
-    character.traits = character.traits.concat("Acid Breath").concat("Acid Resistance");
+    character.traits.push("Acid Resistance");
+    character.abilities.push("Acid Breath");
 }
 function addGoldDragonBornFeatures(character) {
     character.raceName = "Gold Dragonborn";
-    character.traits = character.traits.concat("Fire Breath").concat("Fire Resistance");
+    character.traits.push("Fire Resistance");
+    character.abilities.push("Fire Breath");
 }
 function addGreenDragonBornFeatures(character) {
     character.raceName = "Green Dragonborn";
-    character.traits = character.traits.concat("Poison Breath").concat("Poison Resistance");
+    character.traits.push("Poison Resistance");
+    character.abilities.push("Poison Breath");
 }
 function addRedDragonBornFeatures(character) {
     character.raceName = "Red Dragonborn";
-    character.traits = character.traits.concat("Fire Breath").concat("Fire Resistance");
+    character.traits.push("Fire Resistance");
+    character.abilities.push("Fire Breath");
 }
 function addSilverDragonBornFeatures(character) {
     character.raceName = "Silver Dragonborn";
-    character.traits = character.traits.concat("Cold Breath").concat("Cold Resistance");
+    character.traits.push("Cold Resistance");
+    character.abilities.push("Cold Breath");
 }
 function addWhiteDragonBornFeatures(character) {
     character.raceName = "White Dragonborn";
-    character.traits = character.traits.concat("Cold Breath").concat("Cold Resistance");
+    character.traits.push("Cold Resistance");
+    character.abilities.push("Cold Breath");
 }
 function addHillDwarfFeatures(character) {
     character.raceName = "Hill Dwarf";
@@ -134,7 +144,8 @@ function addForestGnomeFeatures(character) {
 function addRockGnomeFeatures(character) {
     character.raceName = "Rock Gnome";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ con: 1 })]);
-    character.traits = character.traits.concat(["Artificer's Lore", "Tinker"]);
+    character.traits.push("Artificer's Lore");
+    character.abilities.push("Tinker");
 }
 function addDeepGnomeFeatures(character) {
     character.raceName = "Svirfneblin";
@@ -146,10 +157,10 @@ function addDeepGnomeFeatures(character) {
 function addLightFootHalflingFeatures(character) {
     character.raceName = "Lightfoot Halfling";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ cha: 1 })]);
-    character.traits = character.traits.concat("Naturally Stealthy");
+    character.abilities.push("Naturally Stealthy");
 }
 function addStoutHalflingFeatures(character) {
     character.raceName = "Stout Halfling";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ con: 1 })]);
-    character.traits = character.traits.concat("Stout Resilience");
+    character.traits.push("Stout Resilience");
 }
