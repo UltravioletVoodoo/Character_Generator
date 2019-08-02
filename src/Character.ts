@@ -56,6 +56,7 @@ export interface Character {
     bond: string;
     flaw: string;
     traits: string[];
+    abilities: string[];
     spells: string[][];
     inherentSpells: string[][];
     memorizedSpells: string[][];
@@ -100,6 +101,7 @@ export function blankCharacter(): Character {
         bond: "",
         flaw: "",
         traits: [],
+        abilities: [],
         spells: [[],[],[]],
         inherentSpells: [[],[],[]],
         memorizedSpells: [[],[],[]],
@@ -134,6 +136,7 @@ function removeDuplicatesFromLists(character: Character){
     character.toolProfs = [...new Set(character.toolProfs)];
     character.weaponProfs = [...new Set(character.weaponProfs)];
     character.traits = [...new Set(character.traits)];
+    character.abilities = [...new Set(character.abilities)];
     character.inherentSpells[0] = [...new Set(character.inherentSpells[0])];
     character.inherentSpells[1] = [...new Set(character.inherentSpells[1])];
     character.inherentSpells[2] = [...new Set(character.inherentSpells[2])];

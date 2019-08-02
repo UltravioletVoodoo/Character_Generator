@@ -47,7 +47,7 @@ function addBarbarianFeatures(character: Character){
             {cha: {intimidation: 2}}
         ],2, character.skillProfs));
     character.gold = 80;
-    character.traits = character.traits.concat("Rage");
+    character.abilities = character.abilities.concat("Rage");
 }
 
 function addBardFeatures(character: Character){
@@ -72,7 +72,7 @@ function addBardFeatures(character: Character){
     );
     character.gold = 200;
     handleBardMemorizedSpells(character);
-    character.traits = character.traits.concat("Bardic Inspiration (d6)");
+    character.abilities = character.abilities.concat("Bardic Inspiration (d6)");
 }
 
 function handleBardMemorizedSpells(character: Character) {
@@ -204,8 +204,7 @@ function addFighterFeatures(character: Character){
         ], 2, character.skillProfs)
     );
     character.gold = 200;
-    character.traits = character.traits.concat(
-        "Second Wind",
+    character.traits.push(
         util.choice([
             "Fighting Style: Archery",
             addDefenceFightingStyle(character),
@@ -215,6 +214,7 @@ function addFighterFeatures(character: Character){
             "Fighting Style: Two-Weapon Fighting"
         ])
     );
+    character.abilities.push("Second Wind");
 }
 
 function addDefenceFightingStyle(character: Character): string {
@@ -285,7 +285,7 @@ function addPaladinFeatures(character: Character){
         ], 2, character.skillProfs)
     );
     character.gold = 200;
-    character.traits = character.traits.concat("Divine Sense", "Lay on Hands");
+    character.abilities = character.abilities.concat("Divine Sense", "Lay on Hands");
 }
 
 function addRangerFeatures(character: Character){
@@ -364,7 +364,7 @@ function addRogueFeatures(character: Character){
     character.expertise = character.expertise.concat(
         util.choices(character.skillProfs, 2, character.expertise)
     );
-    character.traits = character.traits.concat("Sneak Attack");
+    character.abilities = character.abilities.concat("Sneak Attack");
     character.languages.push("Thieve's cant");
 }
 
@@ -460,7 +460,7 @@ function addWizardFeatures(character: Character){
     );
     character.gold = 160;
     handleWizardMemorizedSpells(character);
-    character.traits = character.traits.concat("Arcane Recovery");
+    character.abilities = character.abilities.concat("Arcane Recovery");
 }
 
 function handleWizardMemorizedSpells(character: Character) {

@@ -96,7 +96,8 @@ function addHalflingFeatures(character) {
     character.age = util.randomNumberFromRange([20, 150]);
     character.speed = 25;
     character.languages = ["Common", "Halfling"];
-    character.traits = ["Lucky", "Brave", "Halfling Nimbleness"];
+    character.traits = ["Lucky", "Brave"];
+    character.abilities.concat("Halfling Nimbleness");
     addHalflingSubRaceFeatures(character);
 }
 function addHumanFeatures(character) {

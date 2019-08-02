@@ -9,8 +9,8 @@ export function addLevel3Features(character: Character) {
 }
 
 function addLevel3RaceFeatures(character: Character) {
-    if (character.raceName == "Drow Elf") character.inherentSpells[1].concat("Faerie Fire");
-    if (character.raceName == "Tiefling") character.inherentSpells[1].concat("Hellish rebuke");
+    if (character.raceName == "Drow Elf") character.abilities.push("Faerie Fire (1/day)");
+    if (character.raceName == "Tiefling") character.abilities.push("Hellish rebuke (1/day)");
 }
 
 function addLevel3ClassFeatures(character: Character) {
@@ -249,7 +249,7 @@ function addFighterLevel3Features(character: Character) {
 }
 
 function addMonkLevel3Features(character: Character) {
-    character.traits.push("Deflect Missiles");
+    character.abilities.push("Deflect Missiles");
     addMonkSubClassFeatures(character);
 }
 
@@ -268,7 +268,7 @@ function addPaladinLevel3Features(character: Character) {
 }
 
 function addRangerLevel3Features(character: Character) {
-    character.traits.push("Primeval Awareness");
+    character.abilities.push("Primeval Awareness");
     addRangerSubClassFeatures(character);
 
     // Always delete 1 old spell then pick TWO new ones
@@ -285,7 +285,7 @@ function addRogueLevel3Features(character: Character) {
 }
 
 function addSorcererLevel3Features(character: Character) {
-    character.traits = character.traits.concat(
+    character.abilities = character.abilities.concat(
         util.choices(metaMagic, 2)
     );
     
