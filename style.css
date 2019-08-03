@@ -683,6 +683,7 @@ form.charsheet main section.features div textarea {
 }
 body {
   background-color: rgb(250, 209, 130);
+  overflow: hidden;
 }
 @media print {
   .example-screen {
@@ -854,7 +855,7 @@ input, textarea {
   position: absolute;
   opacity: 0.3;
 }
-.hamburger.change, .hamburger:hover {
+.hamburger.hamburgerAnimate, .hamburger:hover {
   opacity: 1;
 }
 .bar1, .bar2, .bar3 {
@@ -864,20 +865,20 @@ input, textarea {
   margin: 6px 0;
   transition: 0.4s;
 }
-.change .bar1 {
+.hamburgerAnimate .bar1 {
   -webkit-transform: rotate(-45deg) translate(-9px, 6px);
   transform: rotate(-45deg) translate(-9px, 6px);
 }
-.change .bar2 {
+.hamburgerAnimate .bar2 {
   opacity: 0;
 }
-.change .bar3 {
+.hamburgerAnimate .bar3 {
   -webkit-transform: rotate(45deg) translate(-8px, -8px);
   transform: rotate(45deg) translate(-8px, -8px);
 }
 .optionsModalField {
+  position: fixed;
   display: none;
-  position: absolute;
   z-index: 4000;
   top: 0;
   left: 0;
@@ -886,13 +887,15 @@ input, textarea {
 }
 .optionsModalContent {
   position: absolute;
-  right: 5vw;
-  top: 5vh;
+  left: 100vw;
+  top: 14vh;
   width: 25vw;
-  height: 90vh;
+  height: 72vh;
   background-color: #f8c35d;
   border: 1px solid #754F44;
   border-radius: 3em;
+  transition: 1s;
+  z-index: 4001;
 }
 .optionsModalContent > h1 {
   position: absolute;
@@ -913,4 +916,8 @@ input, textarea {
   left: 10%;
   top: 30%;
   transform: translate(-50%, -50%);
+}
+.modalAnimate.optionsModalContent {
+  -webkit-transform: translate(-30vw);
+  transform: translate(-30vw);
 }
