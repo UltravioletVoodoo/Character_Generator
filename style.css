@@ -821,12 +821,6 @@ input, textarea {
   text-decoration: none;
   opacity: 1;
 }
-.levelChoice {
-  left: 50%;
-  top: 50%;
-  z-index: 4000;
-  position: absolute;
-}
 #hitDice {
   background: transparent !important;
 }
@@ -860,7 +854,7 @@ input, textarea {
   position: absolute;
   opacity: 0.3;
 }
-.hamburger:hover {
+.hamburger.change, .hamburger:hover {
   opacity: 1;
 }
 .bar1, .bar2, .bar3 {
@@ -880,4 +874,43 @@ input, textarea {
 .change .bar3 {
   -webkit-transform: rotate(45deg) translate(-8px, -8px);
   transform: rotate(45deg) translate(-8px, -8px);
+}
+.optionsModalField {
+  display: none;
+  position: absolute;
+  z-index: 4000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.optionsModalContent {
+  position: absolute;
+  right: 5vw;
+  top: 5vh;
+  width: 25vw;
+  height: 90vh;
+  background-color: #f8c35d;
+  border: 1px solid #754F44;
+  border-radius: 3em;
+}
+.optionsModalContent > h1 {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #624239;
+}
+.optionsModalContent > .toggleList {
+  position: absolute;
+  left: 25%;
+  top: 15%;
+  transform: translate(-50%, -50%);
+}
+.optionsModalContent > .toggle {
+  position: relative;
+  display: inline-block;
+  width: 48%;
+  left: 10%;
+  top: 30%;
+  transform: translate(-50%, -50%);
 }

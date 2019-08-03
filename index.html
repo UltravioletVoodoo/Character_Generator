@@ -18,15 +18,23 @@
     <div class="generateButton">
       <button class="btn" id="generateSheetBtn">Generate Character</button>
     </div>
-    <select class="levelChoice" id="levelChoice">
-      <option value="1">Level 1</option>
-      <option value="2">Level 2</option>
-      <option value="3">Level 3</option>
-    </select>
-    <div class="hamburger" onclick="animateHamburger(this)">
+    <div class="hamburger" onclick="openModal()" id="hamburger">
       <div class="bar1"></div>
       <div class="bar2"></div>
       <div class="bar3"></div>
+    </div>
+    <div class="optionsModalField" id="optionsModalField">
+      <div class="optionsModalContent">
+        <h1>Options</h1>
+        <select class="toggleList" id="levelChoice">
+            <option value="1">Level 1</option>
+            <option value="2">Level 2</option>
+            <option value="3">Level 3</option>
+        </select>
+        <input type="checkbox" class="toggle"><label class="toggle">Barbarian</label>
+        <input type="checkbox" class="toggle"><label class="toggle">Bard</label>
+        <input type="checkbox" class="toggle"><label class="toggle">Cleric</label>
+      </div>
     </div>
     <div class="border"></div>
     <div class="gitHub">
@@ -438,8 +446,18 @@
 
 <script src="dist/bundle.js"></script>
 <script>
-  function animateHamburger(x) {
-    x.classList.toggle("change");
+  let modal = document.getElementById("optionsModalField");
+  let hamburger = document.getElementById("hamburger");
+  function openModal() {
+    hamburger.classList.toggle("change");
+    modal.style.display = "block";
+  }
+
+  window.onclick = function() {
+    if (event.target == document.getElementById("optionsModalField")) {
+      modal.style.display = "none";
+      hamburger.classList.toggle("change");
+    }
   }
 </script>
 </body>
