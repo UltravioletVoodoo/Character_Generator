@@ -778,9 +778,10 @@ input, textarea {
 }
 .gitHub {
   z-index: 2000;
-  top: 12px;
-  left: 12px;
+  top: 10%;
+  left: 5%;
   position: absolute;
+  transform: translateY(-50%);
   opacity: 0.3;
 }
 .gitHub:hover{
@@ -798,6 +799,7 @@ input, textarea {
   color: #754F44;
   border-bottom: 1px solid #754F44;
   border-top: 1px solid #754F44;
+  font-weight: 400;
 }
 .artCredit{
   z-index: 3500;
@@ -850,9 +852,10 @@ input, textarea {
   display: inline-block;
   cursor: pointer;
   z-index: 2000;
-  top: 12px;
-  right: 12px;
+  top: 10%;
+  right: 5%;
   position: absolute;
+  transform: translateY(-50%);
 }
 .hamburger:hover .bar, .hamburger.hamburgerAnimate .bar{
   background-color: #47281f
