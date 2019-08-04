@@ -857,9 +857,52 @@ input, textarea {
   position: absolute;
   transform: translateY(-50%);
 }
-.hamburger:hover .bar, .hamburger.hamburgerAnimate .bar{
-  background-color: #47281f
+
+@-webkit-keyframes widen {
+  0% {
+    width: 30px;
+  }
+  100% {
+    width: 25vw;
+  }
 }
+
+@keyframes widen {
+  0% {
+    width: 30px;
+  }
+  100% {
+    width: 25vw;
+  }
+}
+
+@-webkit-keyframes unroll {
+  0% {
+    width: 30px;
+    top: 10%;
+  }
+  50% {
+    width: 25vw;
+  }
+  100% {
+    top: 75%;
+  }
+}
+
+@keyframes unroll {
+  0% {
+    width: 30px;
+    top: 10%;
+  }
+  50% {
+    width: 25vw;
+  }
+  100% {
+    top: 75%;
+    width: 25vw;
+  }
+}
+
 .bar {
   width: 30px;
   height: 4px;
@@ -867,18 +910,21 @@ input, textarea {
   border: 1px solid #47281f;
   border-radius: 3em;
   margin-bottom: 7px;
-  transition: 0.4s;
 }
 .hamburgerAnimate .bar1 {
-  -webkit-transform: rotate(-45deg) translate(-7px, 11px);
-  transform: rotate(-45deg) translate(-7px, 11px);
+  -webkit-animation-name: widen;
+  -webkit-animation-duration: 1s;
+  animation-name: widen;
+  animation-duration: 1s;
 }
 .hamburgerAnimate .bar2 {
   opacity: 0;
 }
 .hamburgerAnimate .bar3 {
-  -webkit-transform: rotate(45deg) translate(-7px, -11px);
-  transform: rotate(45deg) translate(-7px, -11px);
+  -webkit-animation-name: unroll;
+  -webkit-animation-duration: 2s;
+  animation-name: unroll;
+  animation-duration: 2s;
 }
 .optionsModalField {
   position: fixed;
