@@ -679,7 +679,9 @@ form.charsheet main section.features div textarea {
   margin: 0mm;
 }
 .example-print {
-  display: none;
+  display: block;
+  position: relative;
+  z-index: 50000;
 }
 body {
   background-color: rgb(250, 209, 130);
@@ -830,24 +832,28 @@ input, textarea {
 #hitDice {
   background: transparent !important;
 }
-.inventory {
-  background-color: #cc0000;
-}
-.inventory > .inventorySection {
+.flexSection {
   display: flex;
   flex-direction: row;
 }
-.inventory > .inventorySection > label{
+.third {
+  padding: 10px;
   flex-basis: 33.3333%;
 }
-.inventory > .inventorySection > label.portrait {
+.sixth {
+  padding: 10px;
   flex-basis: 66.6666%;
 }
-.spells {
-  background-color: #444;
-  display: flex;
-  flex-direction: row;
+.page2Label {
+  padding: 10px;
+  text-align: center;
 }
-.spells > label {
-  flex-basis: 33.3333%
+.page2Label > label {
+  border-bottom: 1px solid black;
+}
+.spellLevel, .inventoryItem, .portrait, .treasure {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align: center;
 }

@@ -412,19 +412,67 @@
     </main>
     <footer class="pagebreak">
       <div class="spells">
-        <label for="cantrips">Cantrips</label><textarea name="cantrips" id="cantrips" readonly></textarea>
-        <label for="Level1Spells">Level 1 Spells</label><textarea name="levelOneSpells" id="levelOneSpells" readonly></textarea>
-        <label for="Level2Spells">Level 2 Spells</label><textarea name="levelTwoSpells" id="levelTwoSpells" readonly></textarea>
+        <div class="page2Label">
+          <label>Spells</label>
+        </div>
+        <div class="flexSection">
+          <div class="third">
+            <div class="spellLevel">
+              <textarea name="cantrips" id="cantrips" readonly></textarea>
+              <label>Cantrips</label>
+            </div>
+          </div>
+          <div class="third">
+            <div class="spellLevel">
+              <textarea name="levelOneSpells" id="levelOneSpells" readonly></textarea>
+              <label>Level 1 Spells</label>
+            </div>
+          </div>
+          <div class="third">
+            <div class="spellLevel">
+              <textarea name="levelTwoSpells" id="levelTwoSpells" readonly></textarea>
+              <label>Level 2 Spells</label>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="inventory">
-        <div class="inventorySection">
-          <label for="Weapons">Weapons</label><textarea name="weapons" id="weapons" readonly></textarea>
-          <label for="Tools">Tools</label><textarea name="tools" id="tools" readonly></textarea>
-          <label for="Misc">Misc Items</label><textarea name="misc" id="misc" readonly></textarea>
+        <div class="page2Label">
+          <label>Inventory</label>
         </div>
-        <div class="inventorySection">
-          <label class="portrait" for="Portrait">Portrait</label><textarea name="portrait" id="portrait" readonly></textarea>
-          <label for="Gold">Treasure</label><textarea name="gold" id="gold" readonly></textarea>
+        <div class="flexSection">
+          <div class="third">
+            <div class="inventoryItem">
+              <textarea name="weapons" id="weapons" readonly></textarea>
+              <label>Weapons</label>
+            </div>
+          </div>
+          <div class="third">
+            <div class="inventoryItem">
+              <textarea name="tools" id="tools" readonly></textarea>
+              <label>Tools</label>
+            </div>
+          </div>
+          <div class="third">
+            <div class="inventoryItem">
+              <textarea name="misc" id="misc" readonly></textarea>
+              <label>Misc Items</label>
+            </div>
+          </div>
+        </div>
+        <div class="flexSection">
+          <div class="sixth">
+            <div class="portrait">
+              <textarea name="portrait" id="portrait" readonly></textarea>
+              <label>Portrait</label>
+            </div>
+          </div>
+          <div class="third">
+            <div class="treasure">
+              <textarea name="treasure" id="treasure" readonly></textarea>
+              <label>Treasure</label>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
