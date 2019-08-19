@@ -827,23 +827,34 @@ input, textarea {
 #hitDice {
   background: transparent !important;
 }
-.inventory {
-  background-color: #cc0000;
-}
-.inventory > .inventorySection {
+.flexSection {
   display: flex;
   flex-direction: row;
 }
-.inventory > .inventorySection > label{
+.third {
+  padding: 10px;
   flex-basis: 33.3333%;
 }
-.inventory > .inventorySection > label.portrait {
-  flex-basis: 66.6666%;
+.sixth {
+  padding: 10px;
+  flex-basis: 69%;
 }
-.spells {
-  background-color: #444;
-  display: flex;
-  flex-direction: row;
+.page2Label {
+  padding: 10px;
+  text-align: center;
+}
+.page2Label > label {
+  border-bottom: 1px solid black;
+}
+.spellLevel, .inventoryItem, .portrait, .treasure {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align: center;
+  background-color: white;
+}
+.spellLevel textarea, .inventoryItem textarea, .portrait textarea, .treasure textarea {
+  border: none;
 }
 .spells > label {
   flex-basis: 33.3333%
@@ -948,4 +959,39 @@ input, textarea {
 .modalAnimate.optionsModalContent {
   -webkit-transform: translate(-30vw);
   transform: translate(-30vw);
+.dark {
+  background-color: #bbb;
+}
+.medium {
+  background-color: #eee;
+}
+.leftElement {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.rightElement {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.bottomElement {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.portrait {
+  border-radius: 10px;
+}
+.backgroundPortrait {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.charSheetArtPage1 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.charSheetArtPage2 {
+  position: relative;
+  left: 0;
+  bottom: 0;
 }
