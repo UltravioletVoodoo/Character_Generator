@@ -959,6 +959,7 @@ input, textarea {
 .modalAnimate.optionsModalContent {
   -webkit-transform: translate(-30vw);
   transform: translate(-30vw);
+}
 .dark {
   background-color: #bbb;
 }
