@@ -858,15 +858,6 @@ input, textarea {
   transform: translateY(-50%);
 }
 
-@-webkit-keyframes widen {
-  0% {
-    width: 30px;
-  }
-  100% {
-    width: 25vw;
-  }
-}
-
 @keyframes widen {
   0% {
     width: 30px;
@@ -876,30 +867,15 @@ input, textarea {
   }
 }
 
-@-webkit-keyframes unroll {
-  0% {
-    width: 30px;
-    top: 10%;
-  }
-  50% {
-    width: 25vw;
-  }
-  100% {
-    top: 75%;
-  }
-}
-
 @keyframes unroll {
   0% {
-    width: 30px;
     top: 10%;
   }
   50% {
-    width: 25vw;
+    top: 10%
   }
   100% {
     top: 75%;
-    width: 25vw;
   }
 }
 
@@ -912,19 +888,21 @@ input, textarea {
   margin-bottom: 7px;
 }
 .hamburgerAnimate .bar1 {
-  -webkit-animation-name: widen;
-  -webkit-animation-duration: 1s;
   animation-name: widen;
-  animation-duration: 1s;
+  animation-duration: 2s;
 }
 .hamburgerAnimate .bar2 {
   opacity: 0;
 }
 .hamburgerAnimate .bar3 {
-  -webkit-animation-name: unroll;
-  -webkit-animation-duration: 2s;
-  animation-name: unroll;
+  animation-name: widen;
   animation-duration: 2s;
+  animation-name: unroll;
+  animation-duration: 1s;
+}
+.hamburgerAnimate {
+  animation-name: unroll;
+  animation-duration: 4s;
 }
 .optionsModalField {
   position: fixed;
