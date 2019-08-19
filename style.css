@@ -683,6 +683,7 @@ form.charsheet main section.features div textarea {
 }
 body {
   background-color: rgb(250, 209, 130);
+  overflow: hidden;
 }
 @media print {
   .example-screen {
@@ -777,9 +778,10 @@ input, textarea {
 }
 .gitHub {
   z-index: 2000;
-  top: 12px;
-  left: 12px;
+  top: 10%;
+  left: 5%;
   position: absolute;
+  transform: translateY(-50%);
   opacity: 0.3;
 }
 .gitHub:hover{
@@ -797,6 +799,7 @@ input, textarea {
   color: #754F44;
   border-bottom: 1px solid #754F44;
   border-top: 1px solid #754F44;
+  font-weight: 400;
 }
 .artCredit{
   z-index: 3500;
@@ -820,12 +823,6 @@ input, textarea {
   color: #754F44;
   text-decoration: none;
   opacity: 1;
-}
-.levelChoice {
-  left: 50%;
-  top: 50%;
-  z-index: 4000;
-  position: absolute;
 }
 #hitDice {
   background: transparent !important;
@@ -859,6 +856,109 @@ input, textarea {
 .spellLevel textarea, .inventoryItem textarea, .portrait textarea, .treasure textarea {
   border: none;
 }
+.spells > label {
+  flex-basis: 33.3333%
+}
+.hamburger {
+  display: inline-block;
+  cursor: pointer;
+  z-index: 2000;
+  top: 10%;
+  right: 5%;
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+@keyframes widen {
+  0% {
+    width: 30px;
+  }
+  100% {
+    width: 25vw;
+  }
+}
+
+@keyframes unroll {
+  0% {
+    top: 10%;
+  }
+  50% {
+    top: 10%
+  }
+  100% {
+    top: 75%;
+  }
+}
+
+.bar {
+  width: 30px;
+  height: 4px;
+  background-color: none;
+  border: 1px solid #47281f;
+  border-radius: 3em;
+  margin-bottom: 7px;
+}
+.hamburgerAnimate .bar1 {
+  animation-name: widen;
+  animation-duration: 2s;
+}
+.hamburgerAnimate .bar2 {
+  opacity: 0;
+}
+.hamburgerAnimate .bar3 {
+  animation-name: widen;
+  animation-duration: 2s;
+  animation-name: unroll;
+  animation-duration: 1s;
+}
+.hamburgerAnimate {
+  animation-name: unroll;
+  animation-duration: 4s;
+}
+.optionsModalField {
+  position: fixed;
+  display: none;
+  z-index: 4000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.optionsModalContent {
+  position: absolute;
+  left: 100vw;
+  top: 14vh;
+  width: 25vw;
+  height: 72vh;
+  background-color: #f8c35d;
+  border: 1px solid #754F44;
+  border-radius: 3em;
+  transition: 1s;
+  z-index: 4001;
+}
+.optionsModalContent > h1 {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #624239;
+}
+.optionsModalContent > .toggleList {
+  position: absolute;
+  left: 25%;
+  top: 15%;
+  transform: translate(-50%, -50%);
+}
+.optionsModalContent > .toggle {
+  position: relative;
+  display: inline-block;
+  width: 48%;
+  left: 10%;
+  top: 30%;
+  transform: translate(-50%, -50%);
+}
+.modalAnimate.optionsModalContent {
+  -webkit-transform: translate(-30vw);
+  transform: translate(-30vw);
 .dark {
   background-color: #bbb;
 }
