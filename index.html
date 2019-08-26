@@ -504,15 +504,17 @@
   let hamburger = document.getElementById("hamburger");
   function openModal() {
     modalField.style.display = "block";
+    modal.style.display = "block";
+    modal.style.opacity = 0;
+    modal.classList.toggle("fadeInOptions");
     hamburger.classList.toggle("hamburgerAnimate");
-    modal.classList.toggle("modalAnimate");
   }
 
   window.onclick = function() {
     if (event.target == document.getElementById("optionsModalField")) {
       modalField.style.display = "none";
+      modal.classList.toggle("fadeInOptions");
       hamburger.classList.toggle("hamburgerAnimate");
-      modal.classList.toggle("modalAnimate");
     }
   }
 </script>
