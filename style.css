@@ -869,6 +869,9 @@ input, textarea {
   height: 32px;
   position: absolute;
 }
+.hamburger:hover > .bar {
+  background-color: #754F44;
+}
 .hamburgerAnimate > .bar1, .hamburgerAnimate > .bar3 {
   background-color: #754F44;
 }
@@ -915,6 +918,7 @@ input, textarea {
   border: 1px solid #47281f;
   border-radius: 3em;
   position: absolute;
+  transition: 0.4s;
 }
 .bar1 {
   top: 0%;

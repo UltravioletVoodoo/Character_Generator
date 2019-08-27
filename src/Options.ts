@@ -23,16 +23,14 @@ export interface Options {
     sorcerer: boolean;
     warlock: boolean;
     wizard: boolean;
-    UARanger: boolean;
-    modShields: boolean;
     magicItems: boolean;
 }
 
 export function getOptions(): Options {
-    let levelElement = document.getElementById("levelChoice") as HTMLSelectElement;
-    let level = parseInt(levelElement.options[levelElement.selectedIndex].value);
+    let level = util.getElement("levelRange").value;
+    util.getElement("levelValue").innerHTML = level;
     return {
-        level: level,
+        level: parseInt(level),
         dwarf: util.getElement("dwarfToggle").checked,
         elf: util.getElement("elfToggle").checked,
         halfling: util.getElement("halflingToggle").checked,
@@ -54,8 +52,6 @@ export function getOptions(): Options {
         sorcerer: util.getElement("sorcererToggle").checked,
         warlock: util.getElement("warlockToggle").checked,
         wizard: util.getElement("wizardToggle").checked,
-        UARanger: util.getElement("unearthedRangerToggle").checked,
-        modShields: util.getElement("myShieldsToggle").checked,
         magicItems: util.getElement("magicItemsToggle").checked
     }
 }

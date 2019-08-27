@@ -758,7 +758,7 @@ function addMastermind(character) {
     ]);
     character.toolProfs = character.toolProfs.concat([
         findTool("Disguise kit"),
-        findTool("Forgery kit"),
+        findTool(" kit"),
         util.choice(gaming, character.toolProfs)
     ]);
 }
