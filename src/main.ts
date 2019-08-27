@@ -1,22 +1,25 @@
 import { util } from "./Util"
 import { generateCharacter } from "./Character";
+import { Options, getOptions } from "./Options";
 
 
 function generateSheet(){
-    // Get the level of the character to be generated from the page
-    let levelElement = document.getElementById("levelChoice") as HTMLSelectElement
-    let level = levelElement.options[levelElement.selectedIndex].value;
 
-    const character = generateCharacter(parseInt(level));
+    // Get the values from the options modal to be passed to generate character
+    let options: Options = getOptions();
+    const character = generateCharacter(options);
     console.log(character);
 
 
+    // Replace the "No shield" string with empty string so as to not show up on the charsheet
     let shieldName = character.shield.name;
     let shieldAc = character.shield.acBonus.toString();
     if (character.shield.name == "No shield") {
         shieldName = ""
         shieldAc = ""
     }
+
+
     // Take the character elements and manipulate the DOM to place them on the sheet
 
     util.getElement("className").value = character.className;

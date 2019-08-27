@@ -6,23 +6,34 @@ import { allSkillPartialProfs } from "./Skills";
 import { findTool, musical, artisan } from "./ToolSets";
 import { bardSpells, clericSpells, druidSpells, sorcererSpells, warlockSpells, wizardSpells } from "./Spells";
 import { addClericSubClassFeatures, addSorcererSubClassFeatures, addWarlockSubClassFeatures } from "./CharacterSubClass";
-export function addCharacterClassFeatures(character) {
-    util.choice(classFunctionList)(character);
+export function addCharacterClassFeatures(character, options) {
+    let classOptions = [];
+    if (options.barbarian)
+        classOptions.push(addBarbarianFeatures);
+    if (options.bard)
+        classOptions.push(addBardFeatures);
+    if (options.cleric)
+        classOptions.push(addClericFeatures);
+    if (options.druid)
+        classOptions.push(addDruidFeatures);
+    if (options.fighter)
+        classOptions.push(addFighterFeatures);
+    if (options.monk)
+        classOptions.push(addMonkFeatures);
+    if (options.paladin)
+        classOptions.push(addPaladinFeatures);
+    if (options.ranger)
+        classOptions.push(addRangerFeatures);
+    if (options.rogue)
+        classOptions.push(addRogueFeatures);
+    if (options.sorcerer)
+        classOptions.push(addSorcererFeatures);
+    if (options.warlock)
+        classOptions.push(addWarlockFeatures);
+    if (options.wizard)
+        classOptions.push(addWizardFeatures);
+    util.choice(classOptions)(character);
 }
-const classFunctionList = [
-    addBarbarianFeatures,
-    addBardFeatures,
-    addClericFeatures,
-    addDruidFeatures,
-    addFighterFeatures,
-    addMonkFeatures,
-    addPaladinFeatures,
-    addRangerFeatures,
-    addRogueFeatures,
-    addSorcererFeatures,
-    addWarlockFeatures,
-    addWizardFeatures
-];
 function addBarbarianFeatures(character) {
     character.className = "Barbarian";
     character.hitDice = 12;

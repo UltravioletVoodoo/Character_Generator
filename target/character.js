@@ -109,19 +109,19 @@ function finalizeCharacterFeatures(character) {
     return character;
 }
 // Generate the character in its entirety
-export function generateCharacter(level) {
+export function generateCharacter(options) {
     // Start with a blank slate in the correct format
     let character = blankCharacter();
     // Add miscelaneous features not related to class or race
     addBaseFeatures(character);
     // Add race features
-    addRaceFeatures(character);
+    addRaceFeatures(character, options);
     // Now that we have the attributes done, we can calculate the mods used elsewhere
     character.attrMods = generateMods(character.attributes);
     // Add class features
-    addCharacterClassFeatures(character);
+    addCharacterClassFeatures(character, options);
     // Handle potential level-ups
-    addLevelUpFeatures(character, level);
+    addLevelUpFeatures(character, options.level);
     // Apply the final touches and compute the values that required class/race
     finalizeCharacterFeatures(character);
     // Return the finalized character

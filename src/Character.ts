@@ -18,6 +18,7 @@ import { Shield, noShield } from "./ShieldSets";
 import { miscItem } from "./MiscSet";
 import { addLevelUpFeatures } from "./LevelUp";
 import { generateSpells } from "./Spells";
+import { Options } from "./Options";
 
 export interface Character {
     className: string;
@@ -170,7 +171,7 @@ function finalizeCharacterFeatures(character: Character): Character {
 }
 
 // Generate the character in its entirety
-export function generateCharacter(level: number): Character {
+export function generateCharacter(options: Options): Character {
 
     // Start with a blank slate in the correct format
     let character = blankCharacter();
@@ -179,16 +180,16 @@ export function generateCharacter(level: number): Character {
     addBaseFeatures(character);
 
     // Add race features
-    addRaceFeatures(character);
+    addRaceFeatures(character, options);
 
     // Now that we have the attributes done, we can calculate the mods used elsewhere
     character.attrMods = generateMods(character.attributes);
 
     // Add class features
-    addCharacterClassFeatures(character);
+    addCharacterClassFeatures(character, options);
 
     // Handle potential level-ups
-    addLevelUpFeatures(character, level);
+    addLevelUpFeatures(character, options.level);
     
     // Apply the final touches and compute the values that required class/race
     finalizeCharacterFeatures(character);
