@@ -27,10 +27,10 @@ export interface Options {
 }
 
 export function getOptions(): Options {
-    let levelElement = document.getElementById("levelChoice") as HTMLSelectElement;
-    let level = parseInt(levelElement.options[levelElement.selectedIndex].value);
+    let level = util.getElement("levelRange").value;
+    util.getElement("levelValue").innerHTML = level;
     return {
-        level: level,
+        level: parseInt(level),
         dwarf: util.getElement("dwarfToggle").checked,
         elf: util.getElement("elfToggle").checked,
         halfling: util.getElement("halflingToggle").checked,
