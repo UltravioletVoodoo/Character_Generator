@@ -862,8 +862,7 @@ input, textarea {
 .hamburger {
   display: inline-block;
   cursor: pointer;
-  /* z-index: 2000; */
-  z-index: 10000000;
+  z-index: 2000;
   top: 10%;
   right: 5%;
   width: 32px;
@@ -871,7 +870,7 @@ input, textarea {
   position: absolute;
 }
 .hamburgerAnimate > .bar1, .hamburgerAnimate > .bar3 {
-  background-color: violet;
+  background-color: #754F44;
 }
 .hamburgerAnimate > .bar2 {
   display: none;
@@ -942,11 +941,15 @@ input, textarea {
   left: 70vw;
   top: 10vh;
   width: 25vw;
-  height: 72vh;
+  height: calc(72vh - 10px);
   background-color: #f2eecb;
-  border: 1px solid #754F44;
+  border-left: 1px solid #754F44;
+  border-right: 1px solid #754F44;
+  border-top: 5px solid #754F44;
+  border-bottom: 5px solid #754F44;
   display: none;
   z-index: 4001;
+  overflow-y: scroll;
 }
 .optionsModalContent > h1 {
   position: absolute;
@@ -954,19 +957,18 @@ input, textarea {
   transform: translate(-50%, -50%);
   color: #624239;
 }
-.optionsModalContent > .toggleList {
-  position: absolute;
-  left: 25%;
-  top: 15%;
-  transform: translate(-50%, -50%);
+.optionsSection {
+  margin-top: 50px;
+  border-top: 1px solid #754F44;
 }
-.optionsModalContent > .toggle {
-  position: relative;
+.toggleList {
   display: inline-block;
-  width: 48%;
-  left: 10%;
-  top: 30%;
-  transform: translate(-50%, -50%);
+}
+.toggleSection {
+  display: block;
+}
+.toggle {
+  border-radius: 3em;
 }
 .dark {
   background-color: #bbb;

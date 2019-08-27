@@ -26,14 +26,91 @@
     <div class="optionsModalField" id="optionsModalField"></div>
     <div class="optionsModalContent" id="optionsModalContent">
       <h1>Options</h1>
-      <select class="toggleList" id="levelChoice">
-          <option value="1">Level 1</option>
-          <option value="2">Level 2</option>
-          <option value="3">Level 3</option>
-      </select>
-      <input type="checkbox" class="toggle"><label class="toggle">Barbarian</label>
-      <input type="checkbox" class="toggle"><label class="toggle">Bard</label>
-      <input type="checkbox" class="toggle"><label class="toggle">Cleric</label>
+      <div class="optionsSection">
+        <select class="toggleList" id="levelChoice">
+            <option value="1">Level 1</option>
+            <option value="2">Level 2</option>
+            <option value="3">Level 3</option>
+        </select>
+      </div>
+      <div class="optionsSection">
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="dwarfToggle"><label class="toggle">Dwarf</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="elfToggle"><label class="toggle">Elf</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="halflingToggle"><label class="toggle">Halfling</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="humanToggle"><label class="toggle">Human</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="dragonbornToggle"><label class="toggle">Dragonborn</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="gnomeToggle"><label class="toggle">Gnome</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="halfElfToggle"><label class="toggle">Half-Elf</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="halfOrcToggle"><label class="toggle">Half-Orc</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="tieflingToggle"><label class="toggle">Tiefling</label>
+        </div>
+      </div>
+      <div class="optionsSection">
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="barbarianToggle"><label class="toggle">Barbarian</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="bardToggle"><label class="toggle">Bard</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="clericToggle"><label class="toggle">Cleric</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="druidToggle"><label class="toggle">Druid</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="fighterToggle"><label class="toggle">Fighter</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="monkToggle"><label class="toggle">Monk</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="paladinToggle"><label class="toggle">Paladin</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="rangerToggle"><label class="toggle">Ranger</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="rogueToggle"><label class="toggle">Rogue</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="sorcererToggle"><label class="toggle">Sorcerer</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="warlockToggle"><label class="toggle">Warlock</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="wizardToggle"><label class="toggle">Wizard</label>
+        </div>
+      </div>
+      <div class="optionsSection">
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="unearthedRangerToggle"><label class="toggle">Use Unearthed Arcana Ranger</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="myShieldsToggle"><label class="toggle">Use Modified Shields</label>
+        </div>
+        <div class="toggleSection">
+          <input type="checkbox" class="toggle" id="magicItemsToggle"><label class="toggle">Give 3rd Level Characters Magic Items</label>
+        </div>
+      </div>
     </div>
     <div class="border"></div>
     <div class="gitHub">
@@ -513,6 +590,7 @@
   window.onclick = function() {
     if (event.target == document.getElementById("optionsModalField")) {
       modalField.style.display = "none";
+      modal.style.display = "none";
       modal.classList.toggle("fadeInOptions");
       hamburger.classList.toggle("hamburgerAnimate");
     }
