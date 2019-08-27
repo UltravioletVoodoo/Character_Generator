@@ -1,11 +1,12 @@
 import { util } from "./Util";
 import { generateCharacter } from "./Character";
+import { getOptions } from "./Options";
 function generateSheet() {
-    // Get the level of the character to be generated from the page
-    let levelElement = document.getElementById("levelChoice");
-    let level = levelElement.options[levelElement.selectedIndex].value;
-    const character = generateCharacter(parseInt(level));
+    // Get the values from the options modal to be passed to generate character
+    let options = getOptions();
+    const character = generateCharacter(options);
     console.log(character);
+    // Replace the "No shield" string with empty string so as to not show up on the charsheet
     let shieldName = character.shield.name;
     let shieldAc = character.shield.acBonus.toString();
     if (character.shield.name == "No shield") {
@@ -97,6 +98,7 @@ function generateSheet() {
     util.getElement("bonds").value = character.bond;
     util.getElement("flaws").value = character.flaw;
     util.getElement("traits").value = Array.from(character.traits).join("\n");
+    util.getElement("abilities").value = Array.from(character.abilities).join("\n");
     util.getElement("weapons").value = Array.from(character.weapons).map(weapon => weapon.name).join("\n");
     util.getElement("tools").value = Array.from(character.tools).map(tool => tool.name).join("\n");
     util.getElement("misc").value = Array.from(character.miscItems).map(miscItem => miscItem.name).join("\n");

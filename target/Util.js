@@ -1,9 +1,6 @@
 export var util;
 (function (util) {
     function choice(collection, exemptions = []) {
-        console.log("Choice called");
-        console.log(collection);
-        console.log(exemptions);
         collection = arrayDelete(collection, exemptions);
         const index = Math.floor(Math.random() * collection.length);
         return collection[index];

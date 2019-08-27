@@ -6,23 +6,34 @@ import { allSkillPartialProfs } from "./Skills";
 import { findTool, musical, artisan } from "./ToolSets";
 import { bardSpells, clericSpells, druidSpells, sorcererSpells, warlockSpells, wizardSpells } from "./Spells";
 import { addClericSubClassFeatures, addSorcererSubClassFeatures, addWarlockSubClassFeatures } from "./CharacterSubClass";
-export function addCharacterClassFeatures(character) {
-    util.choice(classFunctionList)(character);
+export function addCharacterClassFeatures(character, options) {
+    let classOptions = [];
+    if (options.barbarian)
+        classOptions.push(addBarbarianFeatures);
+    if (options.bard)
+        classOptions.push(addBardFeatures);
+    if (options.cleric)
+        classOptions.push(addClericFeatures);
+    if (options.druid)
+        classOptions.push(addDruidFeatures);
+    if (options.fighter)
+        classOptions.push(addFighterFeatures);
+    if (options.monk)
+        classOptions.push(addMonkFeatures);
+    if (options.paladin)
+        classOptions.push(addPaladinFeatures);
+    if (options.ranger)
+        classOptions.push(addRangerFeatures);
+    if (options.rogue)
+        classOptions.push(addRogueFeatures);
+    if (options.sorcerer)
+        classOptions.push(addSorcererFeatures);
+    if (options.warlock)
+        classOptions.push(addWarlockFeatures);
+    if (options.wizard)
+        classOptions.push(addWizardFeatures);
+    util.choice(classOptions)(character);
 }
-const classFunctionList = [
-    addBarbarianFeatures,
-    addBardFeatures,
-    addClericFeatures,
-    addDruidFeatures,
-    addFighterFeatures,
-    addMonkFeatures,
-    addPaladinFeatures,
-    addRangerFeatures,
-    addRogueFeatures,
-    addSorcererFeatures,
-    addWarlockFeatures,
-    addWizardFeatures
-];
 function addBarbarianFeatures(character) {
     character.className = "Barbarian";
     character.hitDice = 12;
@@ -41,7 +52,7 @@ function addBarbarianFeatures(character) {
         { cha: { intimidation: 2 } }
     ], 2, character.skillProfs));
     character.gold = 80;
-    character.traits = character.traits.concat("Rage");
+    character.abilities = character.abilities.concat("Rage");
 }
 function addBardFeatures(character) {
     character.className = "Bard";
@@ -54,7 +65,7 @@ function addBardFeatures(character) {
     character.skillProfs = character.skillProfs.concat(util.choices(allSkillPartialProfs, 3, character.skillProfs));
     character.gold = 200;
     handleBardMemorizedSpells(character);
-    character.traits = character.traits.concat("Bardic Inspiration (d6)");
+    character.abilities = character.abilities.concat("Bardic Inspiration (d6)");
 }
 function handleBardMemorizedSpells(character) {
     character.memorizedSpells[0] = character.memorizedSpells[0].concat(util.choices(bardSpells[0], 2, character.inherentSpells[0].concat(character.memorizedSpells[0])));
@@ -125,7 +136,7 @@ function addFighterFeatures(character) {
         { cha: { intimidation: 2 } }
     ], 2, character.skillProfs));
     character.gold = 200;
-    character.traits = character.traits.concat("Second Wind", util.choice([
+    character.traits.push(util.choice([
         "Fighting Style: Archery",
         addDefenceFightingStyle(character),
         "Fighting Style: Dueling",
@@ -133,6 +144,7 @@ function addFighterFeatures(character) {
         "Fighting Style: Protection",
         "Fighting Style: Two-Weapon Fighting"
     ]));
+    character.abilities.push("Second Wind");
 }
 function addDefenceFightingStyle(character) {
     character.acWithShield++;
@@ -172,7 +184,7 @@ function addPaladinFeatures(character) {
         { cha: { persuasion: 2 } }
     ], 2, character.skillProfs));
     character.gold = 200;
-    character.traits = character.traits.concat("Divine Sense", "Lay on Hands");
+    character.abilities = character.abilities.concat("Divine Sense", "Lay on Hands");
 }
 function addRangerFeatures(character) {
     character.className = "Ranger";
@@ -221,7 +233,7 @@ function addRogueFeatures(character) {
     ], 4, character.skillProfs));
     character.gold = 160;
     character.expertise = character.expertise.concat(util.choices(character.skillProfs, 2, character.expertise));
-    character.traits = character.traits.concat("Sneak Attack");
+    character.abilities = character.abilities.concat("Sneak Attack");
     character.languages.push("Thieve's cant");
 }
 function addSorcererFeatures(character) {
@@ -279,7 +291,7 @@ function addWizardFeatures(character) {
     ], 2, character.skillProfs));
     character.gold = 160;
     handleWizardMemorizedSpells(character);
-    character.traits = character.traits.concat("Arcane Recovery");
+    character.abilities = character.abilities.concat("Arcane Recovery");
 }
 function handleWizardMemorizedSpells(character) {
     character.memorizedSpells[0] = util.choices(wizardSpells[0], 3, character.inherentSpells[0]);

@@ -6,23 +6,21 @@ import { findWeapon } from "./WeaponSets";
 import { findTool } from "./ToolSets";
 import { languages } from "./Languages";
 import { allSkillPartialProfs } from "./Skills";
+import { Options } from "./Options";
 
-export function addRaceFeatures(character: Character){
-    util.choice(raceFunctionList)(character);
-    return character;
+export function addRaceFeatures(character: Character, options: Options){
+    let availableRaces: ((character: Character) => void)[] = [];
+    if (options.dwarf) availableRaces.push(addDwarfFeatures);
+    if (options.elf) availableRaces.push(addElfFeatures);
+    if (options.halfling) availableRaces.push(addHalflingFeatures);
+    if (options.human) availableRaces.push(addHumanFeatures);
+    if (options.dragonborn) availableRaces.push(addHumanFeatures);
+    if (options.gnome) availableRaces.push(addGnomeFeatures);
+    if (options.halfElf) availableRaces.push(addHalfElfFeatures);
+    if (options.halfOrc) availableRaces.push(addHalfOrcFeatures);
+    if (options.tiefling) availableRaces.push(addTieflingFeatures);
+    util.choice(availableRaces)(character);
 }
-
-const raceFunctionList: ((character: Character) => void)[] = [
-    addDragonBornFeatures,
-    addDwarfFeatures,
-    addElfFeatures,
-    addGnomeFeatures,
-    addHalfElfFeatures,
-    addHalfOrcFeatures,
-    addHalflingFeatures,
-    addHumanFeatures,
-    addTieflingFeatures
-]
 
 
 function addDragonBornFeatures(character: Character){
@@ -115,7 +113,8 @@ function addHalflingFeatures(character: Character){
     character.age = util.randomNumberFromRange([20,150]);
     character.speed = 25;
     character.languages = ["Common", "Halfling"];
-    character.traits = ["Lucky", "Brave", "Halfling Nimbleness"];
+    character.traits = ["Lucky", "Brave"];
+    character.abilities.concat("Halfling Nimbleness");
     addHalflingSubRaceFeatures(character);
 }
 

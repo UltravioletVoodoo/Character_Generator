@@ -18,6 +18,7 @@ import { Shield, noShield } from "./ShieldSets";
 import { miscItem } from "./MiscSet";
 import { addLevelUpFeatures } from "./LevelUp";
 import { generateSpells } from "./Spells";
+import { Options } from "./Options";
 
 export interface Character {
     className: string;
@@ -56,6 +57,7 @@ export interface Character {
     bond: string;
     flaw: string;
     traits: string[];
+    abilities: string[];
     spells: string[][];
     inherentSpells: string[][];
     memorizedSpells: string[][];
@@ -100,6 +102,7 @@ export function blankCharacter(): Character {
         bond: "",
         flaw: "",
         traits: [],
+        abilities: [],
         spells: [[],[],[]],
         inherentSpells: [[],[],[]],
         memorizedSpells: [[],[],[]],
@@ -134,6 +137,7 @@ function removeDuplicatesFromLists(character: Character){
     character.toolProfs = [...new Set(character.toolProfs)];
     character.weaponProfs = [...new Set(character.weaponProfs)];
     character.traits = [...new Set(character.traits)];
+    character.abilities = [...new Set(character.abilities)];
     character.inherentSpells[0] = [...new Set(character.inherentSpells[0])];
     character.inherentSpells[1] = [...new Set(character.inherentSpells[1])];
     character.inherentSpells[2] = [...new Set(character.inherentSpells[2])];
@@ -167,7 +171,7 @@ function finalizeCharacterFeatures(character: Character): Character {
 }
 
 // Generate the character in its entirety
-export function generateCharacter(level: number): Character {
+export function generateCharacter(options: Options): Character {
 
     // Start with a blank slate in the correct format
     let character = blankCharacter();
@@ -176,16 +180,16 @@ export function generateCharacter(level: number): Character {
     addBaseFeatures(character);
 
     // Add race features
-    addRaceFeatures(character);
+    addRaceFeatures(character, options);
 
     // Now that we have the attributes done, we can calculate the mods used elsewhere
     character.attrMods = generateMods(character.attributes);
 
     // Add class features
-    addCharacterClassFeatures(character);
+    addCharacterClassFeatures(character, options);
 
     // Handle potential level-ups
-    addLevelUpFeatures(character, level);
+    addLevelUpFeatures(character, options.level);
     
     // Apply the final touches and compute the values that required class/race
     finalizeCharacterFeatures(character);

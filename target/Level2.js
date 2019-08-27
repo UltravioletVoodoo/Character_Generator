@@ -65,53 +65,51 @@ function addBardLevel2Features(character) {
 function addClericLevel2Features(character) {
     character.traits.push("Channel Divinity (1/rest)");
     if (character.traits.includes("Forge Domain"))
-        character.traits.push("Channel Divinity: Artisan's Blessing");
+        character.abilities.push("Channel Divinity: Artisan's Blessing");
     if (character.traits.includes("Grave Domain"))
-        character.traits.push("Channel Divinity: Path to the Grave");
+        character.abilities.push("Channel Divinity: Path to the Grave");
     if (character.traits.includes("Knowledge Domain"))
-        character.traits.push("Channel Divinity: Knowledge of the Ages");
+        character.abilities.push("Channel Divinity: Knowledge of the Ages");
     if (character.traits.includes("Life Domain"))
-        character.traits.push("Channel Divinity: Preserve Life");
+        character.abilities.push("Channel Divinity: Preserve Life");
     if (character.traits.includes("Light Domain"))
-        character.traits.push("Channel Divinity: Radiance of the Dawn");
+        character.abilities.push("Channel Divinity: Radiance of the Dawn");
     if (character.traits.includes("Nature Domain"))
-        character.traits.push("Channel Divinity: Charm Animals and Plants");
+        character.abilities.push("Channel Divinity: Charm Animals and Plants");
     if (character.traits.includes("Tempest Domain"))
-        character.traits.push("Channel Divinity: Destructive Wrath");
+        character.abilities.push("Channel Divinity: Destructive Wrath");
     if (character.traits.includes("Trickery Domain"))
-        character.traits.push("Channel Divinity: Invoke Duplicity");
+        character.abilities.push("Channel Divinity: Invoke Duplicity");
     if (character.traits.includes("War Domain"))
-        character.traits.push("Channel Divinity: Guided Strike");
+        character.abilities.push("Channel Divinity: Guided Strike");
     let spellsKnown = Math.max(character.attrMods.wis + character.level, 1);
     character.memorizedSpells[1] = util.choices(clericSpells[1], spellsKnown, character.inherentSpells[1]);
 }
 function addDruidLevel2Features(character) {
-    character.traits.push("Wild Shape");
+    character.abilities.push("Wild Shape");
     addDruidSubClassFeatures(character);
     let spellsKnown = Math.max(character.attrMods.wis + character.level, 1);
     character.memorizedSpells[1] = util.choices(druidSpells[1], spellsKnown, character.inherentSpells[1]);
 }
 function addFighterLevel2Features(character) {
-    character.traits.push("Action Surge");
+    character.abilities.push("Action Surge");
 }
 function addMonkLevel2Features(character) {
-    character.traits = character.traits.concat([
+    character.traits.push("Unarmored Movement (+10ft.)");
+    character.abilities = character.abilities.concat([
         "Ki: Flurry of Blows",
         "Ki: Patient Defense",
-        "Ki: Step of the Wind",
-        "Unarmored Movement (+10ft.)"
+        "Ki: Step of the Wind"
     ]);
 }
 function addPaladinLevel2Features(character) {
-    character.traits = character.traits.concat([
-        util.choice([
-            addDefenseFightingStyle(character),
-            "Fighting Style: Dueling",
-            "Fighting Style: Great Weapon Fighting",
-            "Fighting Style: Protection"
-        ]),
-        "Divine Smite"
-    ]);
+    character.traits.push(util.choice([
+        addDefenseFightingStyle(character),
+        "Fighting Style: Dueling",
+        "Fighting Style: Great Weapon Fighting",
+        "Fighting Style: Protection"
+    ]));
+    character.abilities.push("Divine Smite");
     let spellsKnown = Math.max(character.attrMods.cha + character.level, 1);
     character.memorizedSpells[1] = util.choices(paladinSpells[1], spellsKnown, character.inherentSpells[1]);
 }
@@ -132,7 +130,7 @@ function addRangerLevel2Features(character) {
     character.memorizedSpells[1] = util.choices(rangerSpells[1], 2, character.inherentSpells[1].concat(character.memorizedSpells[1]));
 }
 function addRogueLevel2Features(character) {
-    character.traits.push("Cunning action");
+    character.abilities.push("Cunning action");
 }
 function addSorcererLevel2Features(character) {
     character.memorizedSpells[1].push(util.choice(sorcererSpells[1], character.inherentSpells[1].concat(character.memorizedSpells[1])));
