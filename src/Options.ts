@@ -23,8 +23,6 @@ export interface Options {
     sorcerer: boolean;
     warlock: boolean;
     wizard: boolean;
-    UARanger: boolean;
-    modShields: boolean;
     magicItems: boolean;
 }
 
@@ -54,8 +52,6 @@ export function getOptions(): Options {
         sorcerer: util.getElement("sorcererToggle").checked,
         warlock: util.getElement("warlockToggle").checked,
         wizard: util.getElement("wizardToggle").checked,
-        UARanger: util.getElement("unearthedRangerToggle").checked,
-        modShields: util.getElement("myShieldsToggle").checked,
         magicItems: util.getElement("magicItemsToggle").checked
     }
 }

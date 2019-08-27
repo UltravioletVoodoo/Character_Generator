@@ -189,7 +189,7 @@ export function generateCharacter(options: Options): Character {
     addCharacterClassFeatures(character, options);
 
     // Handle potential level-ups
-    addLevelUpFeatures(character, options.level);
+    addLevelUpFeatures(character, options);
     
     // Apply the final touches and compute the values that required class/race
     finalizeCharacterFeatures(character);
