@@ -169,7 +169,10 @@ function addWarlockLevel2Features(character: Character) {
             warlockSpells[1].concat(getExpandedSpells(character)), character.inherentSpells[1].concat(character.memorizedSpells[1])
         )
     );
-    util.choices(validInvocations(character), 2);
+    character.traits = character.traits.concat(
+        util.choices(validInvocations(character), 2)
+    );
+        
 }
 
 function getExpandedSpells(character: Character): string[] {
