@@ -793,6 +793,7 @@ input, textarea {
   position: absolute;
   left: calc(50% - 180px); 
   transform: translateY(-50%);
+  display: none;
 }
 .appTitle h1{
   font-family: serif;
@@ -1009,4 +1010,9 @@ input, textarea {
   position: relative;
   left: 0;
   bottom: 0;
+}
+@media only screen and (min-width: 500px) {
+  .appTitle {
+    display: block;
+  }
 }

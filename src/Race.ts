@@ -60,7 +60,7 @@ function addElfFeatures(character: Character){
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({dex: 2})]);
     character.age = util.randomNumberFromRange([100, 750]);
     character.speed = 30;
-    character.languages = ["Common", "Elven"];
+    character.languages = ["Common", "Elvish"];
     character.traits = ["Darkvision", "Fey Ancestry", "Trance", "Keen Senses"];
     character.skillProfs = character.skillProfs.concat({wis: {perception: 2}});
     addElfSubRaceFeatures(character);
@@ -90,7 +90,7 @@ function addHalfElfFeatures(character: Character){
     );
     character.age = util.randomNumberFromRange([20, 180]);
     character.speed = 30;
-    character.languages = ["Common, Elven"].concat(util.choice(languages, ["Common, Elven"]));
+    character.languages = ["Common, Elvish"].concat(util.choice(languages, ["Common, Elvish"]));
     character.traits = [
         "Darkvision",
         "Fey Ancestry",
