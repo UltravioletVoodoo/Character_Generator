@@ -138,7 +138,7 @@ function addSorcererLevel2Features(character) {
 }
 function addWarlockLevel2Features(character) {
     character.memorizedSpells[1] = character.memorizedSpells[1].concat(util.choice(warlockSpells[1].concat(getExpandedSpells(character)), character.inherentSpells[1].concat(character.memorizedSpells[1])));
-    util.choices(validInvocations(character), 2);
+    character.traits = character.traits.concat(util.choices(validInvocations(character), 2));
 }
 function getExpandedSpells(character) {
     let slots = [];
