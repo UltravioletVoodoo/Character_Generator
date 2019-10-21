@@ -82,7 +82,7 @@ function addHalfElfFeatures(character) {
     ], 2).map(item => fleshOutAttributes(item))));
     character.age = util.randomNumberFromRange([20, 180]);
     character.speed = 30;
-    character.languages = ["Common, Elvish"].concat(util.choice(languages, ["Common, Elvish"]));
+    character.languages = ["Common", "Elvish"].concat(util.choice(languages, ["Common", "Elvish"]));
     character.traits = [
         "Darkvision",
         "Fey Ancestry",

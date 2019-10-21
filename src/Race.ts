@@ -90,7 +90,7 @@ function addHalfElfFeatures(character: Character){
     );
     character.age = util.randomNumberFromRange([20, 180]);
     character.speed = 30;
-    character.languages = ["Common, Elvish"].concat(util.choice(languages, ["Common, Elvish"]));
+    character.languages = ["Common", "Elvish"].concat(util.choice(languages, ["Common", "Elvish"]));
     character.traits = [
         "Darkvision",
         "Fey Ancestry",
@@ -104,6 +104,7 @@ function addHalfOrcFeatures(character: Character){
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({str: 2, con: 1})]);
     character.age = util.randomNumberFromRange([14, 75]);
     character.speed = 30;
+    character.languages = ["Common", "Orc"];
     character.skillProfs = character.skillProfs.concat({cha: {intimidation: 2}});
     character.traits = ["Darkvision", "Relentless Endurance", "Savage Attacks"];
 }
