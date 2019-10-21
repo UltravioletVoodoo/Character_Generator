@@ -1019,7 +1019,7 @@ input, textarea {
   left: 50vw;
   top: 50vh;
   width: 80vw;
-  height: 35vh;
+  height: 50vh;
   transform: translate(-50%, -50%);
   z-index: 4001;
   background-color: #f2eecb;
@@ -1106,5 +1106,10 @@ input, textarea {
       height: 72vh;
       width: 25vw;
     }
+  }
+}
+@media only screen and (min-height: 595px) {
+  .noticeModal {
+    height: 35vh;
   }
 }
