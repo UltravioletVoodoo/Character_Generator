@@ -18,6 +18,13 @@
     <div class="generateButton">
       <button class="btn" id="generateSheetBtn">Generate Character</button>
     </div>
+    <div class="noticeModalField" id="noticeModalField"></div>
+    <div class=noticeModal id="noticeModal">
+      <h1 class="noticeHeader">Whoops!</h1>
+      <p class="noticeText" id="noticeText"></p>
+      <p class="noticeText">You can change your selections at any time by using the options menu in the upper right corner.</p>
+    </div>
+
     <div class="hamburger" onclick="openModal()" id="hamburger">
       <div class="bar bar1"></div>
       <div class="bar bar2"></div>
@@ -573,23 +580,34 @@
 
 <script src="dist/bundle.js"></script>
 <script>
-  let modalField = document.getElementById("optionsModalField");
-  let modal = document.getElementById("optionsModalContent");
+  let optionsModalField = document.getElementById("optionsModalField");
+  let optionsModal = document.getElementById("optionsModalContent");
   let hamburger = document.getElementById("hamburger");
+  let noticeModalField = document.getElementById("noticeModalField");
+  let noticeModal = document.getElementById("noticeModal");
+  
   function openModal() {
-    modalField.style.display = "block";
-    modal.style.display = "block";
-    modal.style.opacity = 0;
-    modal.classList.toggle("fadeInOptions");
+    optionsModalField.style.display = "block";
+    optionsModal.style.display = "block";
+    optionsModal.style.opacity = 0;
+    optionsModal.classList.toggle("fadeInOptions");
     hamburger.classList.toggle("hamburgerAnimate");
   }
 
   window.onclick = function() {
+    
+    //handle the options modal
     if (event.target == document.getElementById("optionsModalField")) {
-      modalField.style.display = "none";
-      modal.style.display = "none";
-      modal.classList.toggle("fadeInOptions");
+      optionsModalField.style.display = "none";
+      optionsModal.style.display = "none";
+      optionsModal.classList.toggle("fadeInOptions");
       hamburger.classList.toggle("hamburgerAnimate");
+    }
+
+    //handle the notice message
+    if (event.target == document.getElementById("noticeModalField")) {
+      noticeModalField.style.display = "none";
+      noticeModal.style.display = "none";
     }
   }
 </script>

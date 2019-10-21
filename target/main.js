@@ -1,9 +1,14 @@
 import { util } from "./Util";
 import { generateCharacter } from "./Character";
-import { getOptions } from "./Options";
+import { getOptions, checkOptions } from "./Options";
 function generateSheet() {
     // Get the values from the options modal to be passed to generate character
     let options = getOptions();
+    let optionsReport = checkOptions(options);
+    if (!optionsReport.report) {
+        handleNoticeModal(optionsReport);
+        return;
+    }
     const character = generateCharacter(options);
     console.log(character);
     // Replace the "No shield" string with empty string so as to not show up on the charsheet
@@ -144,6 +149,18 @@ function untoggleClasses() {
         "wizardToggle"
     ];
     untoggle(classIds);
+}
+function handleNoticeModal(report) {
+    let text = "Terribly sorry, it would seem that you forgot to select any";
+    if (!report.races && report.classes)
+        text = text + " races.";
+    if (report.races && !report.classes)
+        text = text + " classes.";
+    if (!report.races && !report.classes)
+        text = text + " races or classes.";
+    util.getElement("noticeText").innerHTML = text;
+    util.getElement("noticeModal").style.display = "block";
+    util.getElement("noticeModalField").style.display = "block";
 }
 // BUTTONS
 //===============================================

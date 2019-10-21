@@ -891,11 +891,11 @@ input, textarea {
   }
   50% {
     height: 32px;
-    width: 25vw;
+    width: 50vw;
   }
   100% {
     height: 72vh;
-    width: 25vw;
+    width: 50vw;
   }
 }
 .fadeInOptions {
@@ -932,7 +932,7 @@ input, textarea {
   top: 100%;
   transform: translateY(-6px);
 }
-.optionsModalField {
+.optionsModalField, .noticeModalField {
   position: fixed;
   display: none;
   z-index: 4000;
@@ -943,9 +943,9 @@ input, textarea {
 }
 .optionsModalContent {
   position: absolute;
-  left: 70vw;
+  left: 45vw;
   top: 10vh;
-  width: 25vw;
+  width: 50vw;
   height: calc(72vh - 10px);
   background-color: #f2eecb;
   border-left: 1px solid #754F44;
@@ -1014,8 +1014,97 @@ input, textarea {
 .unselectAllBtn {
   text-align: center;
 }
+.noticeModal {
+  position: absolute;
+  left: 50vw;
+  top: 50vh;
+  width: 80vw;
+  height: 35vh;
+  transform: translate(-50%, -50%);
+  z-index: 4001;
+  background-color: #f2eecb;
+  border-left: 1px solid #754F44;
+  border-right: 1px solid #754F44;
+  border-top: 5px solid #754F44;
+  border-bottom: 5px solid #754F44;
+  display: none;
+}
+.noticeHeader {
+  text-align: center;
+}
+.noticeText {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+@media only screen and (min-width: 375px) {
+  .noticeModal {
+    width: 60vw;
+  }
+  .optionsModalContent {
+    left: 54vw;
+    width: 41vw;
+  }
+  @keyframes unrollHamburger {
+    0% {
+      height: 32px;
+      width: 32px;
+    }
+    50% {
+      height: 32px;
+      width: 41vw;
+    }
+    100% {
+      height: 72vh;
+      width: 41vw;
+    }
+  }
+}
 @media only screen and (min-width: 500px) {
   .appTitle {
     display: block;
+  }
+  .noticeModal {
+    width: 45vw;
+  }
+  .optionsModalContent {
+    left: 62vw;
+    width: 33vw;
+  }
+  @keyframes unrollHamburger {
+    0% {
+      height: 32px;
+      width: 32px;
+    }
+    50% {
+      height: 32px;
+      width: 33vw;
+    }
+    100% {
+      height: 72vh;
+      width: 33vw;
+    }
+  }
+}
+@media only screen and (min-width: 750px) {
+  .noticeModal {
+    width: 30vw;
+  }
+  .optionsModalContent {
+    left: 70vw;
+    width: 25vw;
+  }
+  @keyframes unrollHamburger {
+    0% {
+      height: 32px;
+      width: 32px;
+    }
+    50% {
+      height: 32px;
+      width: 25vw;
+    }
+    100% {
+      height: 72vh;
+      width: 25vw;
+    }
   }
 }
