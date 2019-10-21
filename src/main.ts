@@ -133,4 +133,55 @@ function generateSheet(){
     window.print();
 }
 
+
+function untoggle(list: string[]) {
+    for (let x of list) {
+        util.getElement(x).checked = false;
+    }
+}
+
+
+function untoggleRaces() {
+    const raceIds = [
+        "dwarfToggle",
+        "elfToggle",
+        "halflingToggle",
+        "humanToggle",
+        "dragonbornToggle",
+        "gnomeToggle",
+        "halfElfToggle",
+        "halfOrcToggle",
+        "tieflingToggle"
+    ];
+    untoggle(raceIds);
+}
+
+function untoggleClasses() {
+    const classIds = [
+        "barbarianToggle",
+        "bardToggle",
+        "clericToggle",
+        "druidToggle",
+        "fighterToggle",
+        "monkToggle",
+        "paladinToggle",
+        "rangerToggle",
+        "rogueToggle",
+        "sorcererToggle",
+        "warlockToggle",
+        "wizardToggle"
+    ];
+    untoggle(classIds);
+}
+
+// BUTTONS
+//===============================================
+
+//Generate character button
 util.getElement("generateSheetBtn").addEventListener("click", generateSheet);
+
+//Untoggle all races button
+util.getElement("unselectRaces").addEventListener("click", untoggleRaces);
+
+//Untoggle all classes button
+util.getElement("unselectClasses").addEventListener("click", untoggleClasses);

@@ -1011,6 +1011,9 @@ input, textarea {
   left: 0;
   bottom: 0;
 }
+.unselectAllBtn {
+  text-align: center;
+}
 @media only screen and (min-width: 500px) {
   .appTitle {
     display: block;
