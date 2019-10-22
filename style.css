@@ -966,14 +966,26 @@ input, textarea {
   margin-top: 50px;
   border-top: 1px solid #754F44;
 }
-.toggleList {
-  display: inline-block;
-}
-.toggleSection {
+.checkboxLabel {
+  margin: 0.5em;
+  cursor: pointer;
+  background-color: beige;
+  line-height: 3em;
   display: block;
 }
+.toggle + span:before {
+  content: "✖";
+  display: inline-block;
+  width: 2em;
+  text-align: center;
+  color: red;
+}
+.toggle:checked + span:before {
+  content: "✔";
+  color: limegreen;
+}
 .toggle {
-  border-radius: 3em;
+  display: none;
 }
 .dark {
   background-color: #bbb;
@@ -1011,8 +1023,20 @@ input, textarea {
   left: 0;
   bottom: 0;
 }
+.unselectAllBtnContainer {
+  text-align: center;
+}
 .unselectAllBtn {
   text-align: center;
+  background-color: deeppink;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  margin: 10px;
+  padding: 10px;
+}
+.unselectAllBtn:hover {
+  background-color: pink; 
 }
 .noticeModal {
   position: absolute;
@@ -1035,6 +1059,15 @@ input, textarea {
 .noticeText {
   margin-left: 10px;
   margin-right: 10px;
+}
+.levelSelect {
+  text-align: center;
+}
+.levelValue {
+  font-family: serif;
+}
+.levelRange {
+  width: 80%;
 }
 @media only screen and (min-width: 375px) {
   .noticeModal {

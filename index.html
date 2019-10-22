@@ -33,87 +33,117 @@
     <div class="optionsModalField" id="optionsModalField"></div>
     <div class="optionsModalContent" id="optionsModalContent">
       <h1>Options</h1>
-      <div class="optionsSection">
-        <input id="levelRange" type="range" value="1" min="1" max="3" step="1">
-        <label id="levelValue">0</label>
+      <div class="optionsSection levelSelect">
+        <h1 class="levelValue" id="levelValue">1</h1>
+        <input class="levelRange" id="levelRange" type="range" value="1" min="1" max="3" step="1" onChange="rangeChange(this.value)" onmousemove="rangeChange(this.value)">
       </div>
       <div class="optionsSection">
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="dwarfToggle" checked><label class="toggle">Dwarf</label>
+
+        <label for="dwarfToggle" class="checkboxLabel">
+          <input type="checkbox" class="toggle" id="dwarfToggle" checked>
+          <span>Dwarf</span>
+        </label>
+
+        <label for="elfToggle" class="checkboxLabel">
+          <input type="checkbox" class="toggle" id="elfToggle" checked>
+          <span>Elf</span>
+        </label>
+
+        <label for="halflingToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="halflingToggle" checked>
+            <span>Halfling</span>
+        </label>
+
+        <label for="humanToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="humanToggle" checked>
+            <span>Human</span>
+        </label>
+
+        <label for="dragonbornToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="dragonbornToggle" checked><span>Dragonborn</span>
+        </label>
+
+        <label for="gnomeToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="gnomeToggle" checked><span>Gnome</span>
+        </label>
+
+        <label for="halfElfToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="halfElfToggle" checked><span>Half-Elf</span>
+        </label>
+
+        <label for="halfOrcToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="halfOrcToggle" checked><span>Half-Orc</span>
+        </label>
+
+        <label for="tieflingToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="tieflingToggle" checked><span>Tiefling</span>
+        </label>
+
+        <div class="unselectAllBtnContainer">
+          <button class="unselectAllBtn" id="unselectRaces">Unselect all</button>
         </div>
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="elfToggle" checked><label class="toggle">Elf</label>
-        </div>
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="halflingToggle" checked><label class="toggle">Halfling</label>
-        </div>
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="humanToggle" checked><label class="toggle">Human</label>
-        </div>
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="dragonbornToggle" checked><label class="toggle">Dragonborn</label>
-        </div>
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="gnomeToggle" checked><label class="toggle">Gnome</label>
-        </div>
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="halfElfToggle" checked><label class="toggle">Half-Elf</label>
-        </div>
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="halfOrcToggle" checked><label class="toggle">Half-Orc</label>
-        </div>
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="tieflingToggle" checked><label class="toggle">Tiefling</label>
-        </div>
-        <div class="unselectAllBtn">
-          <button id="unselectRaces">Unselect all</button>
-        </div>
+
       </div>
       <div class="optionsSection">
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="barbarianToggle" checked><label class="toggle">Barbarian</label>
-        </div>
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="bardToggle" checked><label class="toggle">Bard</label>
-        </div>
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="clericToggle" checked><label class="toggle">Cleric</label>
-        </div>
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="druidToggle" checked><label class="toggle">Druid</label>
-        </div>
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="fighterToggle" checked><label class="toggle">Fighter</label>
-        </div>
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="monkToggle" checked><label class="toggle">Monk</label>
-        </div>
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="paladinToggle" checked><label class="toggle">Paladin</label>
-        </div>
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="rangerToggle" checked><label class="toggle">Ranger</label>
-        </div>
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="rogueToggle" checked><label class="toggle">Rogue</label>
-        </div>
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="sorcererToggle" checked><label class="toggle">Sorcerer</label>
-        </div>
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="warlockToggle" checked><label class="toggle">Warlock</label>
-        </div>
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="wizardToggle" checked><label class="toggle">Wizard</label>
-        </div>
-        <div class="unselectAllBtn">
-            <button id="unselectClasses">Unselect all</button>
+
+        <label for="barbarianToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="barbarianToggle" checked><span>Barbarian</span>
+        </label>
+
+        <label for="bardToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="bardToggle" checked><span>Bard</span>
+        </label>
+        
+        <label for="clericToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="clericToggle" checked><span>Cleric</span>
+        </label>
+          
+        <label for="druidToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="druidToggle" checked><span>Druid</span>
+        </label>
+        
+        <label for="fighterToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="fighterToggle" checked><span>Fighter</span>
+        </label>
+
+        <label for="monkToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="monkToggle" checked><span>Monk</span>
+        </label>
+
+        <label for="paladinToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="paladinToggle" checked><span>Paladin</span>
+        </label>
+
+        <label for="rangerToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="rangerToggle" checked><span>Ranger</span>
+        </label>
+
+        <label for="rogueToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="rogueToggle" checked><span>Rogue</span>
+        </label>
+
+        <label for="sorcererToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="sorcererToggle" checked><span>Sorcerer</span>
+        </label>
+
+        <label for="warlockToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="warlockToggle" checked><span>Warlock</span>
+        </label>
+
+        <label for="wizardToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="wizardToggle" checked><span>Wizard</span>
+        </label>
+
+        <div class="unselectAllBtnContainer">
+            <button class="unselectAllBtn" id="unselectClasses">Unselect all</button>
           </div>
       </div>
       <div class="optionsSection">
-        <div class="toggleSection">
-          <input type="checkbox" class="toggle" id="magicItemsToggle" checked><label class="toggle">Give 3rd Level Characters Magic Items</label>
-        </div>
+
+        <label for="magicItemsToggle" class="checkboxLabel">
+            <input type="checkbox" class="toggle" id="magicItemsToggle" checked><span>Magic items</span>
+        </label>
+
       </div>
     </div>
     <div class="border"></div>
@@ -609,6 +639,10 @@
       noticeModalField.style.display = "none";
       noticeModal.style.display = "none";
     }
+  }
+
+  function rangeChange(value) {
+    document.getElementById("levelValue").innerHTML = value;
   }
 </script>
 </body>
