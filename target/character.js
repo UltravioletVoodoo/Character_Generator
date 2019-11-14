@@ -62,13 +62,13 @@ export function blankCharacter() {
     };
 }
 // Adds the base features that every character needs that are not related to race or class
-export function addBaseFeatures(character) {
+export function addBaseFeatures(character, options) {
     // Choose the character gender
     character.sex = util.choice(sex);
     // Choose the character alignment
     character.alignment = util.choice(alignment);
     // Modify the base attributes using pointbuy
-    character.attributes = mergeAttributes([character.attributes, pointBuy()]);
+    character.attributes = mergeAttributes([character.attributes, pointBuy(character, options)]);
     // Pick the personality, ideals, bonds, and flaws for the character
     character.personality = util.choice(personality);
     character.ideal = util.choice(ideals);
@@ -117,13 +117,13 @@ export function generateCharacter(options) {
     // Start with a blank slate in the correct format
     let character = blankCharacter();
     // Add miscelaneous features not related to class or race
-    addBaseFeatures(character);
+    addBaseFeatures(character, options);
     // Add race features
     addRaceFeatures(character, options);
     // Now that we have the attributes done, we can calculate the mods used elsewhere
     character.attrMods = generateMods(character.attributes);
     // Add class features
-    addCharacterClassFeatures(character, options);
+    addCharacterClassFeatures(character);
     // Handle potential level-ups
     addLevelUpFeatures(character, options);
     // Apply the final touches and compute the values that required class/race

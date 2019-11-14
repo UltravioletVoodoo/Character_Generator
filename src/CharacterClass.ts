@@ -2,32 +2,51 @@ import { Character } from "./Character";
 import { util } from "./Util";
 import { light, medium, findArmor, heavy } from "./ArmorSets";
 import { simpleMelee, simpleRanged, martialMelee, martialRanged, findWeapon } from "./WeaponSets";
-import { fleshOutAttributes } from "./Attributes";
+import { fleshOutAttributes, Attributes } from "./Attributes";
 import { DeepPartial, Skills, allSkillPartialProfs } from "./Skills";
 import { findTool, musical, artisan } from "./ToolSets";
 import { bardSpells, clericSpells, druidSpells, sorcererSpells, warlockSpells, wizardSpells } from "./Spells";
 import { addClericSubClassFeatures, addSorcererSubClassFeatures, addWarlockSubClassFeatures } from "./CharacterSubClass";
 import { Options } from "./Options";
 
-export function addCharacterClassFeatures(character: Character, options: Options){
-    let classOptions: ((character: Character) => void)[] = [];
-    if (options.barbarian) classOptions.push(addBarbarianFeatures);
-    if (options.bard) classOptions.push(addBardFeatures);
-    if (options.cleric) classOptions.push(addClericFeatures);
-    if (options.druid) classOptions.push(addDruidFeatures);
-    if (options.fighter) classOptions.push(addFighterFeatures);
-    if (options.monk) classOptions.push(addMonkFeatures);
-    if (options.paladin) classOptions.push(addPaladinFeatures);
-    if (options.ranger) classOptions.push(addRangerFeatures);
-    if (options.rogue) classOptions.push(addRogueFeatures);
-    if (options.sorcerer) classOptions.push(addSorcererFeatures);
-    if (options.warlock) classOptions.push(addWarlockFeatures);
-    if (options.wizard) classOptions.push(addWizardFeatures);
-    util.choice(classOptions)(character);
+
+export function chooseCharacterClass(character: Character, options: Options) {
+    let classOptions = [];
+    if (options.barbarian) classOptions.push("Barbarian");
+    if (options.bard) classOptions.push("Bard");
+    if (options.cleric) classOptions.push("Cleric");
+    if (options.druid) classOptions.push("Druid");
+    if (options.fighter) classOptions.push("Fighter");
+    if (options.monk) classOptions.push("Monk");
+    if (options.paladin) classOptions.push("Paladin");
+    if (options.ranger) classOptions.push("Ranger");
+    if (options.rogue) classOptions.push("Rogue");
+    if (options.sorcerer) classOptions.push("Sorcerer");
+    if (options.warlock) classOptions.push("Warlock");
+    if (options.wizard) classOptions.push("Wizard");
+    character.className = util.choice(classOptions);
+}
+
+export function addCharacterClassFeatures(character: Character){
+    if (character.className === "Barbarian") addBarbarianFeatures(character);
+    if (character.className === "Bard") addBardFeatures(character);
+    if (character.className === "Cleric") addClericFeatures(character);
+    if (character.className === "Druid") addDruidFeatures(character);
+    if (character.className === "Fighter") addFighterFeatures(character);
+    if (character.className === "Monk") addMonkFeatures(character);
+    if (character.className === "Paladin") addPaladinFeatures(character);
+    if (character.className === "Ranger") addRangerFeatures(character);
+    if (character.className === "Rogue") addRogueFeatures(character);
+    if (character.className === "Sorcerer") addSorcererFeatures(character);
+    if (character.className === "Warlock") addWarlockFeatures(character);
+    if (character.className === "Wizard") addWizardFeatures(character);
+}
+
+export function introduceStatBias(character: Character, attrs: Attributes) {
+    alert("Stat Bias has is under construction");
 }
 
 function addBarbarianFeatures(character: Character){
-    character.className = "Barbarian";
     character.hitDice = 12;
     character.armorProfs = character.armorProfs
         .concat(light, medium, findArmor("Unarmored defence con"));
@@ -50,7 +69,6 @@ function addBarbarianFeatures(character: Character){
 }
 
 function addBardFeatures(character: Character){
-    character.className = "Bard";
     character.hitDice = 8;
     character.armorProfs = character.armorProfs.concat(light);
     character.weaponProfs = character.weaponProfs
@@ -84,7 +102,6 @@ function handleBardMemorizedSpells(character: Character) {
 }
 
 function addClericFeatures(character: Character){
-    character.className = "Cleric";
     addClericSubClassFeatures(character);
     character.hitDice = 8;
     character.weaponProfs = character.weaponProfs.concat(simpleMelee, simpleRanged);
@@ -123,7 +140,6 @@ function handleClericMemorizedSpells(character: Character) {
 }
 
 function addDruidFeatures(character: Character){
-    character.className = "Druid";
     character.hitDice = 8;
     character.armorProfs = character.armorProfs.concat(light,medium);
     character.weaponProfs = character.weaponProfs.concat(
@@ -174,7 +190,6 @@ function handleDruidMemorizedSpells(character: Character) {
 }
 
 function addFighterFeatures(character: Character){
-    character.className = "Fighter";
     character.hitDice = 10;
     character.armorProfs = character.armorProfs.concat(
         light,
@@ -223,7 +238,6 @@ function addDefenceFightingStyle(character: Character): string {
 }
 
 function addMonkFeatures(character: Character){
-    character.className = "Monk";
     character.hitDice = 8;
     character.armorProfs = character.armorProfs.concat(
         findArmor("Unarmored defence wis")
@@ -257,7 +271,6 @@ function addMonkFeatures(character: Character){
 }
 
 function addPaladinFeatures(character: Character){
-    character.className = "Paladin";
     character.hitDice = 10;
     character.armorProfs = character.armorProfs.concat(
         light,
@@ -288,7 +301,6 @@ function addPaladinFeatures(character: Character){
 }
 
 function addRangerFeatures(character: Character){
-    character.className = "Ranger";
     character.hitDice = 10;
     character.armorProfs = character.armorProfs.concat(
         light,
@@ -329,7 +341,6 @@ function addRangerFeatures(character: Character){
 }
 
 function addRogueFeatures(character: Character){
-    character.className = "Rogue";
     character.hitDice = 8;
     character.armorProfs = character.armorProfs.concat(light);
     character.weaponProfs = character.weaponProfs.concat(
@@ -368,7 +379,6 @@ function addRogueFeatures(character: Character){
 }
 
 function addSorcererFeatures(character: Character){
-    character.className = "Sorcerer";
     addSorcererSubClassFeatures(character);
     character.hitDice = 6;
     character.weaponProfs = character.weaponProfs.concat(
@@ -409,7 +419,6 @@ function handleSorcererMemorizedSpells(character: Character) {
 }
 
 function addWarlockFeatures(character: Character){
-    character.className = "Warlock";
     addWarlockSubClassFeatures(character);
     character.hitDice = 8;
     character.armorProfs = character.armorProfs.concat(light);
@@ -435,7 +444,6 @@ function addWarlockFeatures(character: Character){
 }
 
 function addWizardFeatures(character: Character){
-    character.className = "Wizard";
     character.hitDice = 6;
     character.weaponProfs = character.weaponProfs.concat(
         findWeapon("Dagger"),

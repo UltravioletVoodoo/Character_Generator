@@ -25,7 +25,8 @@ export function getOptions() {
         sorcerer: util.getElement("sorcererToggle").checked,
         warlock: util.getElement("warlockToggle").checked,
         wizard: util.getElement("wizardToggle").checked,
-        magicItems: util.getElement("magicItemsToggle").checked
+        magicItems: util.getElement("magicItemsToggle").checked,
+        statBias: util.getElement("statBiasToggle").checked
     };
 }
 function atLeastOneRace(options) {

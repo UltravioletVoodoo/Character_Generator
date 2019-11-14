@@ -1,8 +1,11 @@
 import { Attributes } from "./Attributes";
 import { util } from "./Util"
+import { Options } from "./Options";
+import { chooseCharacterClass, introduceStatBias } from "./CharacterClass";
+import { Character } from "./Character";
 
 // Uses the point buy system to generate character attributes
-export function pointBuy(){
+export function pointBuy(character: Character, options: Options){
     const attrs: Attributes = {
         str: 8,
         dex: 8,
@@ -21,6 +24,15 @@ export function pointBuy(){
             points = points - cost;
         }
     }
+
+    // Choose the class
+    chooseCharacterClass(character, options);
+
+    // If user selected statBias, introduce a stat bias
+    if (options.statBias) {
+        introduceStatBias(character, attrs);
+    }
+
     return attrs;
 }
 
