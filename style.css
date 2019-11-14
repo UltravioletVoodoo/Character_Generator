@@ -966,6 +966,9 @@ input, textarea {
   margin-top: 50px;
   border-top: 1px solid #754F44;
 }
+.optionsSection > h3 {
+  text-align: center;
+}
 .checkboxLabel {
   margin: 0.5em;
   cursor: pointer;
