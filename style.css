@@ -1071,6 +1071,20 @@ input, textarea {
 }
 .levelRange {
   width: 80%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 5px;
+  background: #f8c35d;
+  outline: none;
+  border-radius: 3em;
+}
+.levelRange::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: url('./img/d20.png');
+  cursor: pointer;
 }
 @media only screen and (min-width: 375px) {
   .noticeModal {
