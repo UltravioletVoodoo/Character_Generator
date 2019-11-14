@@ -19,6 +19,7 @@ import { miscItem } from "./MiscSet";
 import { addLevelUpFeatures } from "./LevelUp";
 import { generateSpells } from "./Spells";
 import { Options } from "./Options";
+import { chooseMagicItem } from "./MagicItemTableB";
 
 export interface Character {
     className: string;
@@ -146,7 +147,7 @@ function removeDuplicatesFromLists(character: Character){
     character.memorizedSpells[2] = [...new Set(character.memorizedSpells[2])];
 }
 
-function finalizeCharacterFeatures(character: Character): Character {
+function finalizeCharacterFeatures(character: Character, options: Options): Character {
     removeDuplicatesFromLists(character);
     character.skillProfsFlat = sumSkills(character.skillProfs);
     character.savingThrowProfsFlat = mergeAttributes(character.savingThrowProfs.map(fleshOutAttributes));
@@ -166,6 +167,9 @@ function finalizeCharacterFeatures(character: Character): Character {
 
     // spells
     generateSpells(character);
+
+    // if magic items are selected, give the player a magic item
+    if (options.magicItems) chooseMagicItem(character);
 
     return character;
 }
@@ -192,7 +196,7 @@ export function generateCharacter(options: Options): Character {
     addLevelUpFeatures(character, options);
     
     // Apply the final touches and compute the values that required class/race
-    finalizeCharacterFeatures(character);
+    finalizeCharacterFeatures(character, options);
 
     // Return the finalized character
     return character;

@@ -963,8 +963,10 @@ input, textarea {
   color: #624239;
 }
 .optionsSection {
-  margin-top: 50px;
   border-top: 1px solid #754F44;
+}
+.topMargin {
+  margin-top: 50px;
 }
 .optionsSection > h3 {
   text-align: center;

@@ -15,6 +15,7 @@ import { chooseEquipment } from "./Equipment";
 import { noShield } from "./ShieldSets";
 import { addLevelUpFeatures } from "./LevelUp";
 import { generateSpells } from "./Spells";
+import { chooseMagicItem } from "./MagicItemTableB";
 export function blankCharacter() {
     return {
         className: "",
@@ -90,7 +91,7 @@ function removeDuplicatesFromLists(character) {
     character.memorizedSpells[1] = [...new Set(character.memorizedSpells[1])];
     character.memorizedSpells[2] = [...new Set(character.memorizedSpells[2])];
 }
-function finalizeCharacterFeatures(character) {
+function finalizeCharacterFeatures(character, options) {
     removeDuplicatesFromLists(character);
     character.skillProfsFlat = sumSkills(character.skillProfs);
     character.savingThrowProfsFlat = mergeAttributes(character.savingThrowProfs.map(fleshOutAttributes));
@@ -106,6 +107,9 @@ function finalizeCharacterFeatures(character) {
     character.hp = character.hp + character.attrMods.con + character.hitDice;
     // spells
     generateSpells(character);
+    // if magic items are selected, give the player a magic item
+    if (options.magicItems)
+        chooseMagicItem(character);
     return character;
 }
 // Generate the character in its entirety
@@ -123,7 +127,7 @@ export function generateCharacter(options) {
     // Handle potential level-ups
     addLevelUpFeatures(character, options);
     // Apply the final touches and compute the values that required class/race
-    finalizeCharacterFeatures(character);
+    finalizeCharacterFeatures(character, options);
     // Return the finalized character
     return character;
 }

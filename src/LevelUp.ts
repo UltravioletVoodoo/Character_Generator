@@ -14,7 +14,6 @@ export function addLevelUpFeatures(character: Character, options: Options) {
         // Level up to level 3
         addBasicLevelupFeatures(character);
         addLevel3Features(character);
-        if (options.magicItems) chooseMagicItem(character);
     }
 }
 
