@@ -25,6 +25,7 @@ export interface Options {
     wizard: boolean;
     magicItems: boolean;
     statBias: boolean;
+    UARanger: boolean;
 }
 
 export function getOptions(): Options {
@@ -54,7 +55,8 @@ export function getOptions(): Options {
         warlock: util.getElement("warlockToggle").checked,
         wizard: util.getElement("wizardToggle").checked,
         magicItems: util.getElement("magicItemsToggle").checked,
-        statBias: util.getElement("statBiasToggle").checked
+        statBias: util.getElement("statBiasToggle").checked,
+        UARanger: util.getElement("UARangerToggle").checked
     }
 }
 

@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@types/bootstrap": "^4.3.0",
+    "npm": "^6.13.0",
     "svg.js": "^2.7.1"
   }
 }

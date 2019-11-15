@@ -22,8 +22,14 @@ export function chooseCharacterClass(character, options) {
         classOptions.push("Monk");
     if (options.paladin)
         classOptions.push("Paladin");
-    if (options.ranger)
-        classOptions.push("Ranger");
+    if (options.ranger) {
+        if (options.UARanger) {
+            classOptions.push("Ranger*");
+        }
+        else {
+            classOptions.push("Ranger");
+        }
+    }
     if (options.rogue)
         classOptions.push("Rogue");
     if (options.sorcerer)
@@ -51,6 +57,8 @@ export function addCharacterClassFeatures(character) {
         addPaladinFeatures(character);
     if (character.className === "Ranger")
         addRangerFeatures(character);
+    if (character.className === "Ranger*")
+        addUARangerFeatures(character);
     if (character.className === "Rogue")
         addRogueFeatures(character);
     if (character.className === "Sorcerer")
@@ -208,7 +216,7 @@ function addPaladinFeatures(character) {
     character.gold = 200;
     character.abilities = character.abilities.concat("Divine Sense", "Lay on Hands");
 }
-function addRangerFeatures(character) {
+function addUARangerFeatures(character) {
     character.hitDice = 10;
     character.armorProfs = character.armorProfs.concat(light, medium);
     character.weaponProfs = character.weaponProfs.concat(simpleMelee, simpleRanged, martialMelee, martialRanged);
@@ -231,6 +239,101 @@ function addRangerFeatures(character) {
         "Favored Enemy: Monstrosities",
         "Favored Enemy: Undead"
     ]), "Natural Explorer");
+}
+function addRangerFeatures(character) {
+    character.hitDice = 10;
+    character.armorProfs = character.armorProfs.concat(light, medium);
+    character.weaponProfs = character.weaponProfs.concat(simpleMelee, simpleRanged, martialMelee, martialRanged);
+    character.savingThrowProfs = character.savingThrowProfs.concat([{ str: 2 }, { dex: 2 }].map(fleshOutAttributes));
+    character.skillProfs = character.skillProfs.concat(util.choices([
+        { wis: { animalHandling: 2 } },
+        { str: { athletics: 2 } },
+        { wis: { insight: 2 } },
+        { int: { investigation: 2 } },
+        { int: { nature: 2 } },
+        { wis: { perception: 2 } },
+        { dex: { stealth: 2 } },
+        { wis: { survival: 2 } }
+    ], 3, character.skillProfs));
+    character.gold = 200;
+    let favoredEnemyOptions = [
+        handleRangerAbberations,
+        handleRangerBeasts,
+        handleRangerCelestials,
+        handleRangerConstructs,
+        handleRangerDragons,
+        handleRangerElementals,
+        handleRangerFey,
+        handleRangerFiends,
+        handleRangerGiants,
+        handleRangerMonstrosities,
+        handleRangerOozes,
+        handleRangerPlants,
+        handleRangerUndead
+    ];
+    // let first = util.choice(favoredEnemyOptions);
+    // first(character);
+    // util.choice(favoredEnemyOptions, [first])(character);
+    let first = util.choice(favoredEnemyOptions);
+    first(character);
+    favoredEnemyOptions = util.arrayDelete(favoredEnemyOptions, [first]);
+    util.choice(favoredEnemyOptions);
+    character.traits.push(util.choice([
+        "Favored Terrain: Arctic",
+        "Favored Terrain: Coast",
+        "Favored Terrain: Desert",
+        "Favored Terrain: Forest",
+        "Favored Terrain: Grassland",
+        "Favored Terrain: Mountain",
+        "Favored Terrain: Swamp",
+        "Favored Terrain: Underdark",
+    ]));
+}
+function handleRangerAbberations(character) {
+    character.languages = character.languages.concat(util.choice(["Undercommon", "Deep Speech"], character.languages));
+    character.traits.push("Favored Enemy: Abberations");
+}
+function handleRangerBeasts(character) {
+    character.traits.push("Favored Enemy: Beasts");
+}
+function handleRangerCelestials(character) {
+    character.languages = character.languages.concat("Celestial");
+    character.traits.push("Favored Enemy: Celestials");
+}
+function handleRangerConstructs(character) {
+    character.traits.push("Favored Enemy: Constructs");
+}
+function handleRangerDragons(character) {
+    character.languages = character.languages.concat("Draconic");
+    character.traits.push("Favored Enemy: Dragons");
+}
+function handleRangerElementals(character) {
+    character.languages = character.languages.concat("Primordial");
+    character.traits.push("Favored Enemy: Elementals");
+}
+function handleRangerFey(character) {
+    character.languages = character.languages.concat("Sylvan");
+    character.traits.push("Favored Enemy: Fey");
+}
+function handleRangerFiends(character) {
+    character.languages = character.languages.concat(util.choice(["Infernal", "Abbysal"], character.languages));
+    character.traits.push("Favored Enemy: Fiends");
+}
+function handleRangerGiants(character) {
+    character.languages = character.languages.concat("Giant");
+    character.traits.push("Favored Enemy: Giants");
+}
+function handleRangerMonstrosities(character) {
+    character.traits.push("Favored Enemy: Monstrosities");
+}
+function handleRangerOozes(character) {
+    character.traits.push("Favored Enemy: Oozes");
+}
+function handleRangerPlants(character) {
+    character.traits.push("Favored Enemy: Plants");
+}
+function handleRangerUndead(character) {
+    character.traits.push("Favored Enemy: Undead");
 }
 function addRogueFeatures(character) {
     character.hitDice = 8;

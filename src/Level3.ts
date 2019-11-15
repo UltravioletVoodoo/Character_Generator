@@ -1,5 +1,5 @@
 import { Character } from "./Character";
-import { addBarbarionSubClassFeatures, addBardSubClassFeatures, addFighterSubClassFeatures, addMonkSubClassFeatures, addPaladinSubClassFeatures, addRangerSubClassFeatures, addRogueSubClassFeatures } from "./CharacterSubClass";
+import { addBarbarionSubClassFeatures, addBardSubClassFeatures, addFighterSubClassFeatures, addMonkSubClassFeatures, addPaladinSubClassFeatures, addRangerSubClassFeatures, addRogueSubClassFeatures, addUARangerSubClassFeatures } from "./CharacterSubClass";
 import { bardSpells, clericSpells, druidSpells, paladinSpells, rangerSpells, sorcererSpells, warlockSpells, wizardSpells } from "./Spells";
 import { util } from "./Util";
 
@@ -37,6 +37,9 @@ function addLevel3ClassFeatures(character: Character) {
             addPaladinLevel3Features(character);
             break;
         case "Ranger"   : 
+            addRangerLevel3Features(character);
+            break;
+        case "Ranger*"  :
             addRangerLevel3Features(character);
             break;
         case "Rogue"    : 
@@ -269,7 +272,13 @@ function addPaladinLevel3Features(character: Character) {
 
 function addRangerLevel3Features(character: Character) {
     character.abilities.push("Primeval Awareness");
-    addRangerSubClassFeatures(character);
+
+    // If the player is using a vanilla ranger, respond accordingly, otherwise give UA version
+    if (character.className === "Ranger") {
+        addRangerSubClassFeatures(character);
+    } else {
+        addUARangerSubClassFeatures(character);
+    }
 
     // Always delete 1 old spell then pick TWO new ones
     let index = util.randomNumberFromRange([0, character.memorizedSpells[1].length - 1]);

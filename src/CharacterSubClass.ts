@@ -51,6 +51,10 @@ export function addRangerSubClassFeatures(character: Character) {
     util.choice(rangerSubClassFunctionsList)(character);
 }
 
+export function addUARangerSubClassFeatures(character: Character) {
+    util.choice(UArangerSubClassFunctionsList)(character);
+}
+
 export function addRogueSubClassFeatures(character: Character) {
     util.choice(rogueSubClassFunctionsList)(character);
 }
@@ -145,6 +149,11 @@ const paladinSubClassFunctionsList: ((character: Character) => void)[] = [
 ];
 
 const rangerSubClassFunctionsList: ((character: Character) => void)[] = [
+    addVanillaRangerHunter,
+    addVanillaRangerBeastMaster
+];
+
+const UArangerSubClassFunctionsList: ((character: Character) => void)[] = [
     addBeastConclave,
     addHunterConclave,
     addDeepStalkerConclave
@@ -851,6 +860,77 @@ function addOathOfRedemption(character: Character) {
     character.inherentSpells[1] = character.inherentSpells[1].concat([
         "Sanctuary",
         "Sleep"
+    ]);
+}
+
+function addVanillaRangerHunter(character: Character) {
+    character.traits.push("Hunter Archetype")
+    util.choice([
+        colossusSlayer,
+        giantKiller,
+        hordeBreaker
+    ])(character);
+}
+
+function colossusSlayer(character: Character) {
+    character.traits.push("Colossus Slayer");
+}
+
+function giantKiller(character: Character) {
+    character.abilities.push("Giant Killer");
+}
+
+function hordeBreaker(character: Character) {
+    character.abilities.push("Horde Breaker");
+}
+
+function addVanillaRangerBeastMaster(character: Character) {
+    character.traits = character.traits.concat([
+        "Beast Master Archetype",
+        "Ranger's Companion: " + util.choice([
+            "Baboon",
+            "Badger",
+            "Bat",
+            "Blood Hawk",
+            "Boar",
+            "Cat",
+            "Crab",
+            "Deer",
+            "Eagle",
+            "Flying Snake",
+            "Frog",
+            "Giant Badger",
+            "Giant Centipede",
+            "Giant Crab",
+            "Giant Fire Beetle",
+            "Giant Frog",
+            "Giant Poisonous Snake",
+            "Giant Rat",
+            "Giant Weasel",
+            "Giant Wolf Spider",
+            "Goat",
+            "Hawk",
+            "Hyena",
+            "Jackal",
+            "Lizard",
+            "Mastiff",
+            "Mule",
+            "Octopus",
+            "Owl",
+            "Panther",
+            "Poisonous Snake",
+            "Pony",
+            "Pteranodon",
+            "Quipper",
+            "Rat",
+            "Raven",
+            "Scorpion",
+            "Sea Horse",
+            "Spider",
+            "Stirge",
+            "Weasel",
+            "Wolf"
+        ])
     ]);
 }
 

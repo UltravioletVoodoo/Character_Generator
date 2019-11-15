@@ -32,6 +32,9 @@ function addLevel2ClassFeatures(character) {
         case "Ranger":
             addRangerLevel2Features(character);
             break;
+        case "Ranger*":
+            addRangerLevel2Features(character);
+            break;
         case "Rogue":
             addRogueLevel2Features(character);
             break;
