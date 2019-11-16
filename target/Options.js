@@ -27,7 +27,8 @@ export function getOptions() {
         wizard: util.getElement("wizardToggle").checked,
         magicItems: util.getElement("magicItemsToggle").checked,
         statBias: util.getElement("statBiasToggle").checked,
-        UARanger: util.getElement("UARangerToggle").checked
+        UARanger: util.getElement("UARangerToggle").checked,
+        generatePortrait: util.getElement("generatePortraitToggle").checked
     };
 }
 function atLeastOneRace(options) {

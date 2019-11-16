@@ -133,6 +133,13 @@ function generateSheet(){
     util.getElement("levelOneSpells").value = character.spells[1].join("\n");
     util.getElement("levelTwoSpells").value = character.spells[2].join("\n");
 
+    util.getElement("portraitEar").src      = character.ear;
+    util.getElement("portraitEye").src      = character.eye;
+    util.getElement("portraitHair").src     = character.hair;
+    util.getElement("portraitHead").src     = character.head;
+    util.getElement("portraitMouth").src    = character.mouth;
+    util.getElement("portraitNeck").src     = character.neck;
+    util.getElement("portraitNose").src     = character.nose;
 
     //print the page
     window.print();

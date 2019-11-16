@@ -20,6 +20,7 @@ import { addLevelUpFeatures } from "./LevelUp";
 import { generateSpells } from "./Spells";
 import { Options } from "./Options";
 import { chooseMagicItem } from "./MagicItemTableB";
+import { generatePortrait } from "./Portrait";
 
 export interface Character {
     className: string;
@@ -63,6 +64,13 @@ export interface Character {
     inherentSpells: string[][];
     memorizedSpells: string[][];
     miscItems: miscItem[];
+    ear: string;
+    eye: string;
+    hair: string;
+    head: string;
+    mouth: string;
+    neck: string;
+    nose: string;
 }
 
 export function blankCharacter(): Character {
@@ -107,7 +115,14 @@ export function blankCharacter(): Character {
         spells: [[],[],[]],
         inherentSpells: [[],[],[]],
         memorizedSpells: [[],[],[]],
-        miscItems: []
+        miscItems: [],
+        ear: "",
+        eye: "",
+        hair: "",
+        head: "",
+        mouth: "",
+        neck: "",
+        nose: ""
     }
 }
 
@@ -170,6 +185,9 @@ function finalizeCharacterFeatures(character: Character, options: Options): Char
 
     // if magic items are selected, give the player a magic item
     if (options.magicItems) chooseMagicItem(character);
+
+    // if generate portrait is selected, generate a portrait for the player
+    if (options.generatePortrait) generatePortrait(character);
 
     return character;
 }

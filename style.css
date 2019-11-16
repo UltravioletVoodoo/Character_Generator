@@ -1091,6 +1091,17 @@ input, textarea {
   background: url('./img/d20.png');
   cursor: pointer;
 }
+.portraitImage {
+  position: absolute;
+  left: 20vw;
+  top: 157vh;
+}
+.portraitImage > img {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 250px;
+}
 @media only screen and (min-width: 375px) {
   .noticeModal {
     width: 60vw;

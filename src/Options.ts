@@ -26,6 +26,7 @@ export interface Options {
     magicItems: boolean;
     statBias: boolean;
     UARanger: boolean;
+    generatePortrait: boolean;
 }
 
 export function getOptions(): Options {
@@ -56,7 +57,8 @@ export function getOptions(): Options {
         wizard: util.getElement("wizardToggle").checked,
         magicItems: util.getElement("magicItemsToggle").checked,
         statBias: util.getElement("statBiasToggle").checked,
-        UARanger: util.getElement("UARangerToggle").checked
+        UARanger: util.getElement("UARangerToggle").checked,
+        generatePortrait: util.getElement("generatePortraitToggle").checked
     }
 }
 

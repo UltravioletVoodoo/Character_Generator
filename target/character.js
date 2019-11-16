@@ -16,6 +16,7 @@ import { noShield } from "./ShieldSets";
 import { addLevelUpFeatures } from "./LevelUp";
 import { generateSpells } from "./Spells";
 import { chooseMagicItem } from "./MagicItemTableB";
+import { generatePortrait } from "./Portrait";
 export function blankCharacter() {
     return {
         className: "",
@@ -58,7 +59,14 @@ export function blankCharacter() {
         spells: [[], [], []],
         inherentSpells: [[], [], []],
         memorizedSpells: [[], [], []],
-        miscItems: []
+        miscItems: [],
+        ear: "",
+        eye: "",
+        hair: "",
+        head: "",
+        mouth: "",
+        neck: "",
+        nose: ""
     };
 }
 // Adds the base features that every character needs that are not related to race or class
@@ -110,6 +118,9 @@ function finalizeCharacterFeatures(character, options) {
     // if magic items are selected, give the player a magic item
     if (options.magicItems)
         chooseMagicItem(character);
+    // if generate portrait is selected, generate a portrait for the player
+    if (options.generatePortrait)
+        generatePortrait(character);
     return character;
 }
 // Generate the character in its entirety

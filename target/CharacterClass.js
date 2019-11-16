@@ -271,9 +271,6 @@ function addRangerFeatures(character) {
         handleRangerPlants,
         handleRangerUndead
     ];
-    // let first = util.choice(favoredEnemyOptions);
-    // first(character);
-    // util.choice(favoredEnemyOptions, [first])(character);
     let first = util.choice(favoredEnemyOptions);
     first(character);
     favoredEnemyOptions = util.arrayDelete(favoredEnemyOptions, [first]);
