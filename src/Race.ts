@@ -14,7 +14,7 @@ export function addRaceFeatures(character: Character, options: Options){
     if (options.elf) availableRaces.push(addElfFeatures);
     if (options.halfling) availableRaces.push(addHalflingFeatures);
     if (options.human) availableRaces.push(addHumanFeatures);
-    if (options.dragonborn) availableRaces.push(addHumanFeatures);
+    if (options.dragonborn) availableRaces.push(addDragonBornFeatures);
     if (options.gnome) availableRaces.push(addGnomeFeatures);
     if (options.halfElf) availableRaces.push(addHalfElfFeatures);
     if (options.halfOrc) availableRaces.push(addHalfOrcFeatures);
