@@ -49,10 +49,6 @@ export function addCharacterClassFeatures(character: Character){
     if (character.className === "Wizard") addWizardFeatures(character);
 }
 
-export function introduceStatBias(character: Character, attrs: Attributes) {
-    alert("Stat Bias has is under construction");
-}
-
 function addBarbarianFeatures(character: Character){
     character.hitDice = 12;
     character.armorProfs = character.armorProfs

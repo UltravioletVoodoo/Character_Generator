@@ -1,8 +1,9 @@
+import { introduceStatBias } from "./Attributes";
 import { util } from "./Util";
-import { chooseCharacterClass, introduceStatBias } from "./CharacterClass";
+import { chooseCharacterClass } from "./CharacterClass";
 // Uses the point buy system to generate character attributes
 export function pointBuy(character, options) {
-    const attrs = {
+    let attrs = {
         str: 8,
         dex: 8,
         con: 8,
@@ -19,12 +20,17 @@ export function pointBuy(character, options) {
             points = points - cost;
         }
     }
+    console.log("Point buy attrs:");
+    console.log(attrs);
     // Choose the class
     chooseCharacterClass(character, options);
     // If user selected statBias, introduce a stat bias
     if (options.statBias) {
-        introduceStatBias(character, attrs);
+        console.log("Introducing stat bias");
+        attrs = introduceStatBias(character, attrs);
     }
+    console.log("Point buy attrs after bias:");
+    console.log(attrs);
     return attrs;
 }
 function canBuy(attrs, points) {
