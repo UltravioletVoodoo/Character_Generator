@@ -25,20 +25,13 @@ export function pointBuy(character: Character, options: Options){
         }
     }
 
-    console.log("Point buy attrs:");
-    console.log(attrs);
-
     // Choose the class
     chooseCharacterClass(character, options);
 
     // If user selected statBias, introduce a stat bias
     if (options.statBias) {
-        console.log("Introducing stat bias")
         attrs = introduceStatBias(character, attrs);
     }
-
-    console.log("Point buy attrs after bias:")
-    console.log(attrs);
     return attrs;
 }
 
