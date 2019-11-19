@@ -44,12 +44,15 @@ const noses: string[] = [
     "nose5"
 ];
 
+const basePath = "img/portraitAssets/";
+const extension = ".png";
+
 export function generatePortrait(character: Character) {
-    character.ear     = "img/portraitAssets/" + util.choice(ears) + ".png";
-    character.eye     = "img/portraitAssets/" + util.choice(eyes) + ".png";
-    character.hair    = "img/portraitAssets/" + util.choice(hairs) + ".png";
-    character.head    = "img/portraitAssets/" + util.choice(heads) + ".png";
-    character.mouth   = "img/portraitAssets/" + util.choice(mouths) + ".png";
-    character.neck    = "img/portraitAssets/" + util.choice(necks) + ".png";
-    character.nose    = "img/portraitAssets/" + util.choice(noses) + ".png";
+    character.ear     = basePath + util.choice(ears) + extension;
+    character.eye     = basePath + util.choice(eyes) + extension;
+    character.hair    = basePath + util.choice(hairs) + extension;
+    character.head    = basePath + util.choice(heads) + extension;
+    character.mouth   = basePath + util.choice(mouths) + extension;
+    character.neck    = basePath + util.choice(necks) + extension;
+    character.nose    = basePath + util.choice(noses) + extension;
 }
