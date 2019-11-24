@@ -118,6 +118,7 @@ function generateSheet() {
     util.getElement("portraitMouth").src = character.mouth;
     util.getElement("portraitNeck").src = character.neck;
     util.getElement("portraitNose").src = character.nose;
+    util.getElement("portraitChin").src = character.chin;
     //print the page
     window.print();
 }

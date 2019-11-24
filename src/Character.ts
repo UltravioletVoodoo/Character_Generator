@@ -71,6 +71,7 @@ export interface Character {
     mouth: string;
     neck: string;
     nose: string;
+    chin: string;
 }
 
 export function blankCharacter(): Character {
@@ -122,7 +123,8 @@ export function blankCharacter(): Character {
         head: "",
         mouth: "",
         neck: "",
-        nose: ""
+        nose: "",
+        chin: ""
     }
 }
 

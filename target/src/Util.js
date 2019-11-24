@@ -1,50 +1,81 @@
-export class Util {
-    //Just a class to store various helper functions
-    choice(collection) {
+export var util;
+(function (util) {
+    function choice(collection, exemptions = []) {
+        collection = arrayDelete(collection, exemptions);
         const index = Math.floor(Math.random() * collection.length);
         return collection[index];
     }
-    pointBuy() {
-        const attrs = {
-            str: 8,
-            dex: 8,
-            con: 8,
-            int: 8,
-            wis: 8,
-            cha: 8
-        };
-        let points = 27;
-        while (this.canBuy(attrs, points)) {
-            console.log("attrs: " + attrs + "\n" + "points: " + points);
-            const attr = this.choice(Object.keys(attrs));
-            const cost = this.getCost(attrs, attr);
-            if (cost && cost <= points) {
-                attrs[attr]++;
-                points = points - cost;
+    util.choice = choice;
+    function choices(collection, n, exemptions = []) {
+        collection = arrayDelete(collection, exemptions);
+        let results = [];
+        for (let x of range(n)) {
+            let Choice = choice(collection);
+            collection = arrayDelete(collection, [Choice]);
+            results = results.concat(Choice);
+        }
+        return results;
+    }
+    util.choices = choices;
+    function range(start, end, step) {
+        const array = [];
+        if (end === undefined) {
+            end = start;
+            start = 0;
+        }
+        if (step === undefined) {
+            if (start < end) {
+                step = 1;
+            }
+            else {
+                step = -1;
             }
         }
-        return attrs;
+        let current = start;
+        if (start < end) {
+            while (current < end) {
+                array.push(current);
+                current = current + step;
+            }
+        }
+        else {
+            while (current > end) {
+                array.push(current);
+                current = current + step;
+            }
+        }
+        return array;
     }
-    canBuy(attrs, points) {
-        if (points < 0) {
-            throw 'Error: pointBuy exeeded point cap';
-        }
-        if (points == 0) {
-            return false;
-        }
-        if (points == 1 && Object.values(attrs).every(val => val >= 13)) {
-            return false;
-        }
-        return true;
+    util.range = range;
+    function arrayDelete(collection, values) {
+        return collection.filter(function (item) {
+            return !values.some(function (value) {
+                return JSON.stringify(item) === JSON.stringify(value);
+            });
+        });
     }
-    getCost(attrs, attr) {
-        const currentValue = attrs[attr];
-        if (currentValue < 13) {
-            return 1;
+    util.arrayDelete = arrayDelete;
+    function min(collection, notIncludingNegative = false) {
+        let min = collection[0];
+        for (let x of collection) {
+            if (x < min) {
+                min = x;
+            }
         }
-        if (currentValue < 15) {
-            return 2;
+        if (notIncludingNegative) {
+            if (min < 0) {
+                min = 0;
+            }
         }
-        return false;
+        return min;
     }
-}
+    util.min = min;
+    function getElement(id) {
+        return document.getElementById(id);
+    }
+    util.getElement = getElement;
+    function randomNumberFromRange(range) {
+        return Math.floor(Math.random() * (range[1] - range[0] + 1) + range[0]);
+    }
+    util.randomNumberFromRange = randomNumberFromRange;
+})(util || (util = {}));

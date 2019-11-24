@@ -66,7 +66,8 @@ export function blankCharacter() {
         head: "",
         mouth: "",
         neck: "",
-        nose: ""
+        nose: "",
+        chin: ""
     };
 }
 // Adds the base features that every character needs that are not related to race or class
