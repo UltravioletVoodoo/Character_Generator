@@ -26,6 +26,7 @@ export interface Character {
     className: string;
     level: number;
     raceName: string;
+    subRaceName: string;
     alignment: string;
     sex: string;
     age: number;
@@ -64,14 +65,17 @@ export interface Character {
     inherentSpells: string[][];
     memorizedSpells: string[][];
     miscItems: miscItem[];
-    ear: string;
-    eye: string;
-    hair: string;
-    head: string;
-    mouth: string;
-    neck: string;
-    nose: string;
-    chin: string;
+    assets: {
+        [type: string]: string;
+        Ears: string;
+        Eyes: string;
+        Hair: string;
+        Heads: string;
+        Mouths: string;
+        Necks: string;
+        Noses: string;
+        Chins: string;
+    }
 }
 
 export function blankCharacter(): Character {
@@ -79,6 +83,7 @@ export function blankCharacter(): Character {
         className: "",
         level: 1,
         raceName: "",
+        subRaceName: "",
         alignment: "",
         sex: "",
         age: 0,
@@ -117,14 +122,16 @@ export function blankCharacter(): Character {
         inherentSpells: [[],[],[]],
         memorizedSpells: [[],[],[]],
         miscItems: [],
-        ear: "",
-        eye: "",
-        hair: "",
-        head: "",
-        mouth: "",
-        neck: "",
-        nose: "",
-        chin: ""
+        assets: {
+            Ears: "",
+            Eyes: "",
+            Hair: "",
+            Heads: "",
+            Mouths: "",
+            Necks: "",
+            Noses: "",
+            Chins: ""
+        }
     }
 }
 

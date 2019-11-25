@@ -63,79 +63,79 @@ const halflingSubRaceFunctionList: ((character: Character) => void)[] = [
 ];
 
 function addBlackDragonBornFeatures(character: Character){ 
-    character.raceName = "Black Dragonborn";
+    character.subRaceName = "Black Dragonborn";
     character.traits.push("Acid Resistance");
     character.abilities.push("Acid Breath");
 }
 
 function addBlueDragonBornFeatures(character: Character){ 
-    character.raceName = "Blue Dragonborn";
+    character.subRaceName = "Blue Dragonborn";
     character.traits.push("Lightning Resistance");
     character.abilities.push("Lightning Breath");
 }
 
 function addBrassDragonBornFeatures(character: Character){ 
-    character.raceName = "Brass Dragonborn";
+    character.subRaceName = "Brass Dragonborn";
     character.traits.push("Fire Resistance");
     character.abilities.push("Fire Breath");
 }
 
 function addBronzeDragonBornFeatures(character: Character){ 
-    character.raceName = "Bronze Dragonborn";
+    character.subRaceName = "Bronze Dragonborn";
     character.traits.push("Lightning Resistance");
     character.abilities.push("Lightning Breath");
 }
 
 function addCopperDragonBornFeatures(character: Character){ 
-    character.raceName = "Copper Dragonborn";
+    character.subRaceName = "Copper Dragonborn";
     character.traits.push("Acid Resistance");
     character.abilities.push("Acid Breath");
 }
 
 function addGoldDragonBornFeatures(character: Character){ 
-    character.raceName = "Gold Dragonborn";
+    character.subRaceName = "Gold Dragonborn";
     character.traits.push("Fire Resistance");
     character.abilities.push("Fire Breath");
 }
 
 function addGreenDragonBornFeatures(character: Character){ 
-    character.raceName = "Green Dragonborn";
+    character.subRaceName = "Green Dragonborn";
     character.traits.push("Poison Resistance");
     character.abilities.push("Poison Breath");
 }
 
 function addRedDragonBornFeatures(character: Character){ 
-    character.raceName = "Red Dragonborn";
+    character.subRaceName = "Red Dragonborn";
     character.traits.push("Fire Resistance");
     character.abilities.push("Fire Breath");
 }
 
 function addSilverDragonBornFeatures(character: Character){ 
-    character.raceName = "Silver Dragonborn";
+    character.subRaceName = "Silver Dragonborn";
     character.traits.push("Cold Resistance");
     character.abilities.push("Cold Breath");
 }
 
 function addWhiteDragonBornFeatures(character: Character){ 
-    character.raceName = "White Dragonborn";
+    character.subRaceName = "White Dragonborn";
     character.traits.push("Cold Resistance");
     character.abilities.push("Cold Breath");
 }
 
 function addHillDwarfFeatures(character: Character){
-    character.raceName = "Hill Dwarf";
+    character.subRaceName = "Hill Dwarf";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({wis: 1})]);
     character.hp = character.hp + 1;
 }
 
 function addMountainDwarfFeatures(character: Character){
-    character.raceName = "Mountain Dwarf";
+    character.subRaceName = "Mountain Dwarf";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({str: 2})]);
     character.armorProfs = character.armorProfs.concat(light, medium);
 }
 
 function addHighElfFeatures(character: Character){
-    character.raceName = "High Elf";
+    character.subRaceName = "High Elf";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({int: 1})]);
     character.weaponProfs = character.weaponProfs
         .concat(
@@ -149,7 +149,7 @@ function addHighElfFeatures(character: Character){
 }
 
 function addWoodElfFeatures(character: Character){
-    character.raceName = "Wood Elf";
+    character.subRaceName = "Wood Elf";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({wis: 1})]);
     character.weaponProfs = character.weaponProfs
         .concat(
@@ -163,7 +163,7 @@ function addWoodElfFeatures(character: Character){
 }
 
 function addDrowElfFeatures(character: Character){
-    character.raceName = "Drow Elf";
+    character.subRaceName = "Drow Elf";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({cha: 1})]);
     character.weaponProfs = character.weaponProfs
         .concat(findWeapon("Rapier"))
@@ -174,21 +174,21 @@ function addDrowElfFeatures(character: Character){
 }
 
 function addForestGnomeFeatures(character: Character){
-    character.raceName = "Forest Gnome";
+    character.subRaceName = "Forest Gnome";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({dex: 1})]);
     character.inherentSpells[0].push("Minor illusion");
     character.traits = character.traits.concat("Speak with Small Beasts");
 }
 
 function addRockGnomeFeatures(character: Character){
-    character.raceName = "Rock Gnome";
+    character.subRaceName = "Rock Gnome";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({con: 1})]);
     character.traits.push("Artificer's Lore");
     character.abilities.push("Tinker");
 }
 
 function addDeepGnomeFeatures(character: Character){
-    character.raceName = "Svirfneblin";
+    character.subRaceName = "Svirfneblin";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({dex: 1})]);
     character.age = util.randomNumberFromRange([25, 225]);
     character.traits = util.arrayDelete(character.traits, ["Darkvision"]).concat(["Superior Darkvision", "Stone Camouflage"]);
@@ -196,13 +196,13 @@ function addDeepGnomeFeatures(character: Character){
 }
 
 function addLightFootHalflingFeatures(character: Character){
-    character.raceName = "Lightfoot Halfling";
+    character.subRaceName = "Lightfoot Halfling";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({cha: 1})]);
     character.abilities.push("Naturally Stealthy");
 }
 
 function addStoutHalflingFeatures(character: Character){
-    character.raceName = "Stout Halfling";
+    character.subRaceName = "Stout Halfling";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({con: 1})]);
     character.traits.push("Stout Resilience");
 }

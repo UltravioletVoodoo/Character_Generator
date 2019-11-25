@@ -30,7 +30,7 @@ function generateSheet(){
     util.getElement("className").value = character.className;
     util.getElement("level").value = character.level.toString();
 
-    util.getElement("raceName").value = character.raceName;
+    util.getElement("raceName").value = character.subRaceName;
     util.getElement("alignment").value = character.alignment;
     util.getElement("ageAndSex").value = character.age.toString() + '\t\t' + character.sex;
 
@@ -133,14 +133,14 @@ function generateSheet(){
     util.getElement("levelOneSpells").value = character.spells[1].join("\n");
     util.getElement("levelTwoSpells").value = character.spells[2].join("\n");
 
-    util.getElement("portraitEar").src      = character.ear;
-    util.getElement("portraitEye").src      = character.eye;
-    util.getElement("portraitHair").src     = character.hair;
-    util.getElement("portraitHead").src     = character.head;
-    util.getElement("portraitMouth").src    = character.mouth;
-    util.getElement("portraitNeck").src     = character.neck;
-    util.getElement("portraitNose").src     = character.nose;
-    util.getElement("portraitChin").src     = character.chin;
+    util.getElement("portraitEar").src      = character.assets.Ears;
+    util.getElement("portraitEye").src      = character.assets.Eyes;
+    util.getElement("portraitHair").src     = character.assets.Hair;
+    util.getElement("portraitHead").src     = character.assets.Heads;
+    util.getElement("portraitMouth").src    = character.assets.Mouths;
+    util.getElement("portraitNeck").src     = character.assets.Necks;
+    util.getElement("portraitNose").src     = character.assets.Noses;
+    util.getElement("portraitChin").src     = character.assets.Chins;
 
     //print the page
     window.print();

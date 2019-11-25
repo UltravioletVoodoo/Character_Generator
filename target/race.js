@@ -28,6 +28,7 @@ export function addRaceFeatures(character, options) {
     util.choice(availableRaces)(character);
 }
 function addDragonBornFeatures(character) {
+    character.raceName = "Dragonborn";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ str: 2, cha: 1 })]);
     character.age = util.randomNumberFromRange([15, 80]);
     character.speed = 30;
@@ -35,6 +36,7 @@ function addDragonBornFeatures(character) {
     addDragonBornSubRaceFeatures(character);
 }
 function addDwarfFeatures(character) {
+    character.raceName = "Dwarf";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ con: 2 })]);
     character.age = util.randomNumberFromRange([50, 350]);
     character.speed = 25;
@@ -51,6 +53,7 @@ function addDwarfFeatures(character) {
     addDwarfSubRaceFeatures(character);
 }
 function addElfFeatures(character) {
+    character.raceName = "Elf";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ dex: 2 })]);
     character.age = util.randomNumberFromRange([100, 750]);
     character.speed = 30;
@@ -60,6 +63,7 @@ function addElfFeatures(character) {
     addElfSubRaceFeatures(character);
 }
 function addGnomeFeatures(character) {
+    character.raceName = "Gnome";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ int: 2 })]);
     character.age = util.randomNumberFromRange([40, 425]);
     character.speed = 25;
@@ -69,6 +73,7 @@ function addGnomeFeatures(character) {
 }
 function addHalfElfFeatures(character) {
     character.raceName = "Half-Elf";
+    character.subRaceName = "Half-Elf";
     character.attributes = mergeAttributes([
         character.attributes,
         fleshOutAttributes({ cha: 2 })
@@ -92,6 +97,7 @@ function addHalfElfFeatures(character) {
 }
 function addHalfOrcFeatures(character) {
     character.raceName = "Half-Orc";
+    character.subRaceName = "Half-Orc";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ str: 2, con: 1 })]);
     character.age = util.randomNumberFromRange([14, 75]);
     character.speed = 30;
@@ -100,6 +106,7 @@ function addHalfOrcFeatures(character) {
     character.traits = ["Darkvision", "Relentless Endurance", "Savage Attacks"];
 }
 function addHalflingFeatures(character) {
+    character.raceName = "Halfling";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ dex: 2 })]);
     character.age = util.randomNumberFromRange([20, 150]);
     character.speed = 25;
@@ -110,6 +117,7 @@ function addHalflingFeatures(character) {
 }
 function addHumanFeatures(character) {
     character.raceName = "Human";
+    character.subRaceName = "Human";
     character.attributes = mergeAttributes([
         character.attributes,
         {
@@ -127,6 +135,7 @@ function addHumanFeatures(character) {
 }
 function addTieflingFeatures(character) {
     character.raceName = "Tiefling";
+    character.subRaceName = "Tiefling";
     character.attributes = mergeAttributes([character.attributes, fleshOutAttributes({ cha: 2, int: 1 })]);
     character.speed = 30;
     character.age = util.randomNumberFromRange([18, 100]);

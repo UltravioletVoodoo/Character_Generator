@@ -6,7 +6,7 @@ export function addLevel3Features(character) {
     addLevel3ClassFeatures(character);
 }
 function addLevel3RaceFeatures(character) {
-    if (character.raceName == "Drow Elf")
+    if (character.subRaceName == "Drow Elf")
         character.abilities.push("Faerie Fire (1/day)");
     if (character.raceName == "Tiefling")
         character.abilities.push("Hellish rebuke (1/day)");

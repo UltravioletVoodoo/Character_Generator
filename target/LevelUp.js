@@ -16,7 +16,7 @@ function addBasicLevelupFeatures(character) {
     character.hp += Math.floor(character.hitDice / 2) + 1 + character.attrMods.con;
     character.level += 1;
     // deal with hill dwarf and draconic sorcerer bonus hp
-    if (character.raceName == "Hill Dwarf")
+    if (character.subRaceName == "Hill Dwarf")
         character.hp += 1;
     if (character.traits.includes("Draconic Bloodline"))
         character.hp += 1;

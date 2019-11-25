@@ -22,6 +22,7 @@ export function blankCharacter() {
         className: "",
         level: 1,
         raceName: "",
+        subRaceName: "",
         alignment: "",
         sex: "",
         age: 0,
@@ -60,14 +61,16 @@ export function blankCharacter() {
         inherentSpells: [[], [], []],
         memorizedSpells: [[], [], []],
         miscItems: [],
-        ear: "",
-        eye: "",
-        hair: "",
-        head: "",
-        mouth: "",
-        neck: "",
-        nose: "",
-        chin: ""
+        assets: {
+            Ears: "",
+            Eyes: "",
+            Hair: "",
+            Heads: "",
+            Mouths: "",
+            Necks: "",
+            Noses: "",
+            Chins: ""
+        }
     };
 }
 // Adds the base features that every character needs that are not related to race or class
