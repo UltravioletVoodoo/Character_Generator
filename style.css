@@ -1102,6 +1102,20 @@ input, textarea {
   top: 0px;
   width: 250px;
 }
+.loading {
+  position: absolute;
+  width: 10vw;
+  height: 10vw;
+  left: 45vw;
+  top: 20vh;
+  z-index: 4002;
+  display: none;
+  animation: spinLoad 1s infinite;
+}
+@keyframes spinLoad {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
 @media only screen and (min-width: 375px) {
   .noticeModal {
     width: 60vw;

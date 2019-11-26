@@ -132,6 +132,10 @@ function generateSheet(){
     util.getElement("cantrips").value = character.spells[0].join("\n");
     util.getElement("levelOneSpells").value = character.spells[1].join("\n");
     util.getElement("levelTwoSpells").value = character.spells[2].join("\n");
+    
+
+    let imagesLoaded = 0;
+    let totalImages = 8;
 
     util.getElement("portraitEar").src      = character.assets.Ears;
     util.getElement("portraitEye").src      = character.assets.Eyes;
@@ -142,8 +146,16 @@ function generateSheet(){
     util.getElement("portraitNose").src     = character.assets.Noses;
     util.getElement("portraitChin").src     = character.assets.Chins;
 
-    //print the page
-    window.print();
+    // Wait until all the images have loaded before printing: hacky but works
+    if (options.generatePortrait) {
+        util.getElement("loading").style.display = "block";
+        setTimeout(function () {
+            util.getElement("loading").style.display = "none";
+            window.print();
+        }, 1000);
+    } else {
+        window.print();
+    }
 }
 
 
