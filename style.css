@@ -1104,9 +1104,9 @@ input, textarea {
 }
 .loading {
   position: absolute;
-  width: 10vw;
-  height: 10vw;
-  left: 45vw;
+  width: 100px;
+  height: 100px;
+  left: calc(50vw - 50px);
   top: 20vh;
   z-index: 4002;
   display: none;
