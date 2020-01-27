@@ -94,13 +94,21 @@
             "./img/Assets/Dwarf\\Chins\\dwarf_chin1.png"
         ],
         "Ears": [
-            "./img/Assets/Dwarf\\Ears\\dwarf_ears.png"
+            "./img/Assets/Dwarf\\Ears\\dwarf_ears.png",
+            "./img/Assets/Dwarf\\Ears\\dwarf_ears2.png",
+            "./img/Assets/Dwarf\\Ears\\dwarf_ears3.png",
+            "./img/Assets/Dwarf\\Ears\\dwarf_ears4.png",
+            "./img/Assets/Dwarf\\Ears\\dwarf_ears5.png"
         ],
         "Eyes": [
             "./img/Assets/Dwarf\\Eyes\\dwarf_eyes1.png"
         ],
         "Hair": [
-            "./img/Assets/Dwarf\\Hair\\dwarf_hair1.png"
+            "./img/Assets/Dwarf\\Hair\\dwarf_hair1.png",
+            "./img/Assets/Dwarf\\Hair\\dwarf_hair2.png",
+            "./img/Assets/Dwarf\\Hair\\dwarf_hair3.png",
+            "./img/Assets/Dwarf\\Hair\\dwarf_hair4.png",
+            "./img/Assets/Dwarf\\Hair\\dwarf_hair5.png"
         ],
         "Mouths": [
             "./img/Assets/Dwarf\\Mouths\\dwarf_mouth1.png"
