@@ -124,25 +124,31 @@
     },
     "Elf": {
         "Chins": [
-            "./img/Assets/Elf\\Chins\\elf_chin1.png"
+            "./img/Assets/Elf\\Chins\\elf_chin1.png",
+            "./img/Assets/Elf\\Chins\\elf_chin2.png"
         ],
         "Ears": [
-            "./img/Assets/Elf\\Ears\\elf_ears1.png"
+            "./img/Assets/Elf\\Ears\\elf_ears1.png",
+            "./img/Assets/Elf\\Ears\\elf_ears2.png"
         ],
         "Eyes": [
-            "./img/Assets/Elf\\Eyes\\elf_eyes1.png"
+            "./img/Assets/Elf\\Eyes\\elf_eyes1.png",
+            "./img/Assets/Elf\\Eyes\\elf_eyes2.png"
         ],
         "Hair": [
             "./img/Assets/Elf\\Hair\\elf_hair1.png",
             "./img/Assets/Elf\\Hair\\elf_hair2.png",
             "./img/Assets/Elf\\Hair\\elf_hair3.png",
-            "./img/Assets/Elf\\Hair\\elf_hair4.png"
+            "./img/Assets/Elf\\Hair\\elf_hair4.png",
+            "./img/Assets/Elf\\Hair\\elf_hair5.png"
         ],
         "Mouths": [
-            "./img/Assets/Elf\\Mouths\\elf_mouth1.png"
+            "./img/Assets/Elf\\Mouths\\elf_mouth1.png",
+            "./img/Assets/Elf\\Mouths\\elf_mouth2.png"
         ],
         "Noses": [
-            "./img/Assets/Elf\\Noses\\elf_nose1.png"
+            "./img/Assets/Elf\\Noses\\elf_nose1.png",
+            "./img/Assets/Elf\\Noses\\elf_nose2.png"
         ]
     },
     "Gnome": {
