@@ -91,38 +91,35 @@
     },
     "Dwarf": {
         "Chins": [
-            "./img/Assets/Dwarf\\Chins\\dwarf_chin1.png"
+            "./img/Assets/Dwarf\\Chins\\dwarf_chin1.png",
+            "./img/Assets/Dwarf\\Chins\\dwarf_chin2.png"
         ],
         "Ears": [
             "./img/Assets/Dwarf\\Ears\\dwarf_ears.png",
             "./img/Assets/Dwarf\\Ears\\dwarf_ears2.png",
-            "./img/Assets/Dwarf\\Ears\\dwarf_ears2.png~",
             "./img/Assets/Dwarf\\Ears\\dwarf_ears3.png",
-            "./img/Assets/Dwarf\\Ears\\dwarf_ears3.png~",
             "./img/Assets/Dwarf\\Ears\\dwarf_ears4.png",
-            "./img/Assets/Dwarf\\Ears\\dwarf_ears4.png~",
-            "./img/Assets/Dwarf\\Ears\\dwarf_ears5.png",
-            "./img/Assets/Dwarf\\Ears\\dwarf_ears5.png~"
+            "./img/Assets/Dwarf\\Ears\\dwarf_ears5.png"
         ],
         "Eyes": [
-            "./img/Assets/Dwarf\\Eyes\\dwarf_eyes1.png"
+            "./img/Assets/Dwarf\\Eyes\\dwarf_eyes1.png",
+            "./img/Assets/Dwarf\\Eyes\\dwarf_eyes2.png"
         ],
         "Hair": [
             "./img/Assets/Dwarf\\Hair\\dwarf_hair1.png",
             "./img/Assets/Dwarf\\Hair\\dwarf_hair2.png",
-            "./img/Assets/Dwarf\\Hair\\dwarf_hair2.png~",
             "./img/Assets/Dwarf\\Hair\\dwarf_hair3.png",
-            "./img/Assets/Dwarf\\Hair\\dwarf_hair3.png~",
             "./img/Assets/Dwarf\\Hair\\dwarf_hair4.png",
-            "./img/Assets/Dwarf\\Hair\\dwarf_hair4.png~",
             "./img/Assets/Dwarf\\Hair\\dwarf_hair5.png",
-            "./img/Assets/Dwarf\\Hair\\dwarf_hair5.png~"
+            "./img/Assets/Dwarf\\Hair\\dwarf_hair6.png"
         ],
         "Mouths": [
-            "./img/Assets/Dwarf\\Mouths\\dwarf_mouth1.png"
+            "./img/Assets/Dwarf\\Mouths\\dwarf_mouth1.png",
+            "./img/Assets/Dwarf\\Mouths\\dwarf_mouth2.png"
         ],
         "Noses": [
-            "./img/Assets/Dwarf\\Noses\\dwarf_nose1.png"
+            "./img/Assets/Dwarf\\Noses\\dwarf_nose1.png",
+            "./img/Assets/Dwarf\\Noses\\dwarf_nose2.png"
         ]
     },
     "Elf": {
@@ -170,22 +167,28 @@
     },
     "Half-Elf": {
         "Chins": [
-            "./img/Assets/Half-Elf\\Chins\\half-elf_chin1.png"
+            "./img/Assets/Half-Elf\\Chins\\half-elf_chin1.png",
+            "./img/Assets/Half-Elf\\Chins\\half_elf_chin2.png"
         ],
         "Ears": [
-            "./img/Assets/Half-Elf\\Ears\\half-elf_ears1.png"
+            "./img/Assets/Half-Elf\\Ears\\half-elf_ears1.png",
+            "./img/Assets/Half-Elf\\Ears\\half_elf_ears2.png"
         ],
         "Eyes": [
-            "./img/Assets/Half-Elf\\Eyes\\half-elf_eyes1.png"
+            "./img/Assets/Half-Elf\\Eyes\\half-elf_eyes1.png",
+            "./img/Assets/Half-Elf\\Eyes\\half_elf_eyes2.png"
         ],
         "Hair": [
-            "./img/Assets/Half-Elf\\Hair\\half-elf_hair1.png"
+            "./img/Assets/Half-Elf\\Hair\\half-elf_hair1.png",
+            "./img/Assets/Half-Elf\\Hair\\half_elf_hair2.png"
         ],
         "Mouths": [
-            "./img/Assets/Half-Elf\\Mouths\\half-elf_mouth1.png"
+            "./img/Assets/Half-Elf\\Mouths\\half-elf_mouth1.png",
+            "./img/Assets/Half-Elf\\Mouths\\half_elf_mouth2.png"
         ],
         "Noses": [
-            "./img/Assets/Half-Elf\\Noses\\half-elf_nose1.png"
+            "./img/Assets/Half-Elf\\Noses\\half-elf_nose1.png",
+            "./img/Assets/Half-Elf\\Noses\\half_elf_nose2.png"
         ]
     },
     "Half-Orc": {
