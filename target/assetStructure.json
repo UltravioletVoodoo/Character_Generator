@@ -153,22 +153,28 @@
     },
     "Gnome": {
         "Chins": [
-            "./img/Assets/Gnome\\Chins\\gnome_chin1.png"
+            "./img/Assets/Gnome\\Chins\\gnome_chin1.png",
+            "./img/Assets/Gnome\\Chins\\gnome_chin2.png"
         ],
         "Ears": [
-            "./img/Assets/Gnome\\Ears\\gnome_ears1.png"
+            "./img/Assets/Gnome\\Ears\\gnome_ears1.png",
+            "./img/Assets/Gnome\\Ears\\gnome_ears2.png"
         ],
         "Eyes": [
-            "./img/Assets/Gnome\\Eyes\\gnome_eyes1.png"
+            "./img/Assets/Gnome\\Eyes\\gnome_eyes1.png",
+            "./img/Assets/Gnome\\Eyes\\gnome_eyes2.png"
         ],
         "Hair": [
-            "./img/Assets/Gnome\\Hair\\gnome_hair1.png"
+            "./img/Assets/Gnome\\Hair\\gnome_hair1.png",
+            "./img/Assets/Gnome\\Hair\\gnome_hair2.png"
         ],
         "Mouths": [
-            "./img/Assets/Gnome\\Mouths\\gnome_mouth1.png"
+            "./img/Assets/Gnome\\Mouths\\gnome_mouth1.png",
+            "./img/Assets/Gnome\\Mouths\\gnome_mouth2.png"
         ],
         "Noses": [
-            "./img/Assets/Gnome\\Noses\\gnome_nose1.png"
+            "./img/Assets/Gnome\\Noses\\gnome_nose1.png",
+            "./img/Assets/Gnome\\Noses\\gnome_nose2.png"
         ]
     },
     "Half-Elf": {
