@@ -18,7 +18,7 @@
     <div class="generateButton">
       <button class="btn" id="generateSheetBtn">Generate Character</button>
     </div>
-    
+
     <img class="loading" id="loading" src="img/d20_loading.png">
 
     <div class="noticeModalField" id="noticeModalField"></div>
@@ -103,15 +103,15 @@
         <label for="bardToggle" class="checkboxLabel">
             <input type="checkbox" class="toggle" id="bardToggle" checked><span>Bard</span>
         </label>
-        
+
         <label for="clericToggle" class="checkboxLabel">
             <input type="checkbox" class="toggle" id="clericToggle" checked><span>Cleric</span>
         </label>
-          
+
         <label for="druidToggle" class="checkboxLabel">
             <input type="checkbox" class="toggle" id="druidToggle" checked><span>Druid</span>
         </label>
-        
+
         <label for="fighterToggle" class="checkboxLabel">
             <input type="checkbox" class="toggle" id="fighterToggle" checked><span>Fighter</span>
         </label>
@@ -556,9 +556,9 @@
           </div>
         </section>
       </section>
-      <div class="charSheetArtPage1">
+      <!-- <div class="charSheetArtPage1">
         <img src="./img/page1Art.png">
-      </div>
+      </div> -->
     </main>
     <footer class="pagebreak">
       <div class="spells">
@@ -635,9 +635,9 @@
           <img id="portraitChin" src="">
         </div>
       </div>
-      <div class="charSheetArtPage2">
+      <!-- <div class="charSheetArtPage2">
         <img src="./img/page2Art.png">
-      </div>
+      </div> -->
     </footer>
   </form>
   </div>
@@ -649,7 +649,7 @@
   let hamburger = document.getElementById("hamburger");
   let noticeModalField = document.getElementById("noticeModalField");
   let noticeModal = document.getElementById("noticeModal");
-  
+
   function openModal() {
     optionsModalField.style.display = "block";
     optionsModal.style.display = "block";
@@ -659,7 +659,7 @@
   }
 
   window.onclick = function() {
-    
+
     //handle the options modal
     if (event.target == document.getElementById("optionsModalField")) {
       optionsModalField.style.display = "none";
