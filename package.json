@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm install && tsc && webpack ./target/main.js -o ./dist/bundle.js --mode=\"development\"",
+    "build": "tsc && webpack ./target/main.js -o ./dist/bundle.js --mode=\"development\"",
     "start": "npm run build && index.html"
   },
   "repository": {
@@ -24,6 +24,7 @@
   "dependencies": {
     "@types/bootstrap": "^4.3.0",
     "npm": "^6.13.0",
-    "svg.js": "^2.7.1"
+    "svg.js": "^2.7.1",
+    "webpack": "^4.20.2"
   }
 }
